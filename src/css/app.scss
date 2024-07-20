@@ -1,0 +1,65 @@
+// app global css in SCSS form
+:root {
+  color-scheme: dark;
+  --quality-magic: #4169e1;
+  --quality-rare: #ffff00;
+  --quality-unique: #a59263;
+  --quality-set: #00ff00;
+  --quality-crafted: #ffa500;
+  --border-color: #ffffff15;
+}
+
+.bg-brighten {
+  background-color: var(--border-color);
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 14px;
+  background: transparent;
+  z-index: 12;
+  overflow: visible;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: var(--q-secondary);
+  border-radius: 10px;
+  z-index: 12;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-transition: background-color 0.28s ease-in-out;
+  transition: background-color 0.28s ease-in-out;
+  margin: 4px;
+  min-height: 32px;
+  min-width: 32px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--q-primary);
+}
+
+.q-list--bordered,
+.q-stepper--dark.q-stepper--bordered,
+.q-stepper--dark .q-stepper__header--border,
+.q-card--bordered {
+  border-color: var(--border-color);
+}
+
+.q-menu--dark {
+  box-shadow: none;
+  border: solid 1px var(--border-color);
+  border-radius: 0 0 4px 4px;
+}
+
+.q-field__native span {
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+}
+
+.q-separator--dark {
+  background: var(--border-color);
+  box-shadow: 0 -1px 1px var(--q-dark-page);
+  position: relative;
+  z-index: 1;
+}

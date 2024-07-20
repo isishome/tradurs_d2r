@@ -1,0 +1,2036 @@
+[
+  {
+    "id": 3453,
+    "Key": "Socketable",
+    "koKR": "홈 있음 (%i)",
+    "enUS": "Socketed (%i)"
+  },
+  {
+    "id": 3455,
+    "Key": "ItemStats1b",
+    "koKR": "미감별",
+    "enUS": "Unidentified"
+  },
+  {
+    "id": 3456,
+    "Key": "ItemStats1c",
+    "koKR": "충전 횟수:",
+    "enUS": "Charges:"
+  },
+  {
+    "id": 3457,
+    "Key": "ItemStats1d",
+    "koKR": "내구도: %i / %i",
+    "enUS": "Durability: %i of %i"
+  },
+  {
+    "id": 3458,
+    "Key": "ItemStats1e",
+    "koKR": "필요 힘: %d",
+    "enUS": "Required Strength: %d"
+  },
+  {
+    "id": 3459,
+    "Key": "ItemStats1f",
+    "koKR": "필요 민첩: %d",
+    "enUS": "Required Dexterity: %d"
+  },
+  {
+    "id": 3460,
+    "Key": "ItemStats1g",
+    "koKR": "피해:",
+    "enUS": "Damage:"
+  },
+  {
+    "id": 3461,
+    "Key": "ItemStats1h",
+    "koKR": "방어력: %d",
+    "enUS": "Defense: %d"
+  },
+  {
+    "id": 3462,
+    "Key": "ItemStats1i",
+    "koKR": "수량: %d/%d",
+    "enUS": "Quantity: %d of %d"
+  },
+  {
+    "id": 3465,
+    "Key": "ItemStats1l",
+    "koKR": "한손 피해: %d - %d",
+    "enUS": "One-Hand Damage: %d to %d"
+  },
+  {
+    "id": 3466,
+    "Key": "ItemStats1m",
+    "koKR": "양손 피해: %d - %d",
+    "enUS": "Two-Hand Damage: %d to %d"
+  },
+  {
+    "id": 3467,
+    "Key": "ItemStats1n",
+    "koKR": "투척 피해: %d",
+    "enUS": "Throw Damage: %d"
+  },
+  {
+    "id": 3468,
+    "Key": "ItemStats1o",
+    "koKR": "강타 피해: %d - %d",
+    "enUS": "Smite Damage: %d to %d"
+  },
+  {
+    "id": 3469,
+    "Key": "ItemStats1p",
+    "koKR": "요구 레벨: %d",
+    "enUS": "Required Level: %d"
+  },
+  {
+    "id": 3470,
+    "Key": "ItemStats1q",
+    "koKR": "포인트: %d",
+    "enUS": "Points: %d"
+  },
+  {
+    "id": 3471,
+    "Key": "ItemStatsrejuv1",
+    "koKR": "생명력 및 마나 %d%% 회복",
+    "enUS": "Heals %d%% Life and Mana"
+  },
+  {
+    "id": 3472,
+    "Key": "ItemStatsrejuv2",
+    "koKR": "생명력과 마나 100% 회복",
+    "enUS": "Heals 100% Life and Mana"
+  },
+  {
+    "id": 3473,
+    "Key": "ModStr1a",
+    "koKR": "힘 %+d",
+    "enUS": "%+d to Strength"
+  },
+  {
+    "id": 3474,
+    "Key": "ModStr1b",
+    "koKR": "민첩 %+d",
+    "enUS": "%+d to Dexterity"
+  },
+  {
+    "id": 3475,
+    "Key": "ModStr1c",
+    "koKR": "활력 %+d",
+    "enUS": "%+d to Vitality"
+  },
+  {
+    "id": 3476,
+    "Key": "ModStr1d",
+    "koKR": "마력 %+d",
+    "enUS": "%+d to Energy"
+  },
+  {
+    "id": 3477,
+    "Key": "ModStr1e",
+    "koKR": "마나 %+d",
+    "enUS": "%+d to Mana"
+  },
+  {
+    "id": 3478,
+    "Key": "ModStr1f",
+    "koKR": "최대 피해 %+d",
+    "enUS": "%+d to Maximum Damage"
+  },
+  {
+    "id": 3479,
+    "Key": "ModStr1g",
+    "koKR": "최소 피해 %+d",
+    "enUS": "%+d to Minimum Damage"
+  },
+  {
+    "id": 3480,
+    "Key": "ModStr1h",
+    "koKR": "명중률 %+d",
+    "enUS": "%+d to Attack Rating"
+  },
+  {
+    "id": 3481,
+    "Key": "ModStr1i",
+    "koKR": "방어력 %+d",
+    "enUS": "%+d Defense"
+  },
+  {
+    "id": 3482,
+    "Key": "ModStr1j",
+    "koKR": "화염 저항 %+d%%",
+    "enUS": "Fire Resist %+d%%"
+  },
+  {
+    "id": 3483,
+    "Key": "ModStr1k",
+    "koKR": "냉기 저항 %+d%%",
+    "enUS": "Cold Resist %+d%%"
+  },
+  {
+    "id": 3484,
+    "Key": "ModStr1l",
+    "koKR": "번개 저항 %+d%%",
+    "enUS": "Lightning Resist %+d%%"
+  },
+  {
+    "id": 3485,
+    "Key": "ModStr1m",
+    "koKR": "마법 저항 %+d%%",
+    "enUS": "Magic Resist %+d%%"
+  },
+  {
+    "id": 3486,
+    "Key": "ModStr1n",
+    "koKR": "독 저항 %+d%%",
+    "enUS": "Poison Resist %+d%%"
+  },
+  {
+    "id": 3487,
+    "Key": "ModStr1o",
+    "koKR": "최대 화염 피해 %+d",
+    "enUS": "%+d to Maximum Fire Damage"
+  },
+  {
+    "id": 3488,
+    "Key": "ModStr1p",
+    "koKR": "최소 화염 피해 %+d",
+    "enUS": "%+d to Minimum Fire Damage"
+  },
+  {
+    "id": 3489,
+    "Key": "ModStr1q",
+    "koKR": "최대 번개 피해 %+d",
+    "enUS": "%+d to Maximum Lightning Damage"
+  },
+  {
+    "id": 3490,
+    "Key": "ModStr1r",
+    "koKR": "최소 번개 피해 %+d",
+    "enUS": "%+d to Minimum Lightning Damage"
+  },
+  {
+    "id": 3491,
+    "Key": "ModStr1s",
+    "koKR": "최대 냉기 피해 %+d",
+    "enUS": "%+d to Maximum Cold Damage"
+  },
+  {
+    "id": 3492,
+    "Key": "ModStr1t",
+    "koKR": "최소 냉기 피해 %+d",
+    "enUS": "%+d to Minimum Cold Damage"
+  },
+  {
+    "id": 3493,
+    "Key": "ModStr1u",
+    "koKR": "생명력 %+d",
+    "enUS": "%+d to Life"
+  },
+  {
+    "id": 3494,
+    "Key": "ModStr1v",
+    "koKR": "공격자가 피해를 %d 받음",
+    "enUS": "Attacker Takes Damage of %d"
+  },
+  {
+    "id": 3497,
+    "Key": "ModStr1y",
+    "koKR": "밀쳐내기",
+    "enUS": "Knockback"
+  },
+  {
+    "id": 3498,
+    "Key": "ModStr1z",
+    "koKR": "힘의 비약",
+    "enUS": "Elixir of Strength"
+  },
+  {
+    "id": 3499,
+    "Key": "ModStr2a",
+    "koKR": "민첩의 비약",
+    "enUS": "Elixir of Dexterity"
+  },
+  {
+    "id": 3500,
+    "Key": "ModStr2b",
+    "koKR": "마력의 비약",
+    "enUS": "Elixir of Energy"
+  },
+  {
+    "id": 3501,
+    "Key": "ModStr2c",
+    "koKR": "활력의 비약",
+    "enUS": "Elixir of Vitality"
+  },
+  {
+    "id": 3502,
+    "Key": "ModStr2d",
+    "koKR": "마나의 비약",
+    "enUS": "Elixir of Mana"
+  },
+  {
+    "id": 3503,
+    "Key": "ModStr2e",
+    "koKR": "생명력의 비약",
+    "enUS": "Elixir of Life"
+  },
+  {
+    "id": 3504,
+    "Key": "ModStr2f",
+    "koKR": "초 지속",
+    "enUS": "Sec. Duration"
+  },
+  {
+    "id": 3505,
+    "Key": "ModStr2g",
+    "koKR": "최대 생명력 %d%% 증가",
+    "enUS": "Increase Maximum Life %d%%"
+  },
+  {
+    "id": 3506,
+    "Key": "ModStr2h",
+    "koKR": "최대 마나 %d%% 증가",
+    "enUS": "Increase Maximum Mana %d%%"
+  },
+  {
+    "id": 3507,
+    "Key": "ModStr2i",
+    "koKR": "최대 내구도 %d%% 증가",
+    "enUS": "Increase Maximum Durability %d%%"
+  },
+  {
+    "id": 3508,
+    "Key": "ModStr2j",
+    "koKR": "최대 피해 %+d%% 증가",
+    "enUS": "%+d%% Enhanced Maximum Damage"
+  },
+  {
+    "id": 3509,
+    "Key": "ModStr2k",
+    "koKR": "최소 피해 %+d%% 증가",
+    "enUS": "%+d%% Enhanced Minimum Damage"
+  },
+  {
+    "id": 3510,
+    "Key": "ModStr2l",
+    "koKR": "생명력 회복 %+d",
+    "enUS": "Replenish Life %+d"
+  },
+  {
+    "id": 3511,
+    "Key": "ModStr2m",
+    "koKR": "마나 회복",
+    "enUS": "Replenish Mana"
+  },
+  {
+    "id": 3512,
+    "Key": "ModStr2n",
+    "koKR": "생명력 1/4 회복",
+    "enUS": "Heal 1/4 Life"
+  },
+  {
+    "id": 3513,
+    "Key": "ModStr2o",
+    "koKR": "생명력 1/2 회복",
+    "enUS": "Heal 1/2 Life"
+  },
+  {
+    "id": 3514,
+    "Key": "ModStr2p",
+    "koKR": "생명력 전체 회복",
+    "enUS": "Restore Full Life"
+  },
+  {
+    "id": 3515,
+    "Key": "ModStr2q",
+    "koKR": "마나 1/4 회복",
+    "enUS": "Replenish 1/4 Mana"
+  },
+  {
+    "id": 3516,
+    "Key": "ModStr2r",
+    "koKR": "마나 1/2 회복",
+    "enUS": "Replenish 1/2 Life"
+  },
+  {
+    "id": 3517,
+    "Key": "ModStr2s",
+    "koKR": "마나 전체 회복",
+    "enUS": "Restore Full Mana"
+  },
+  {
+    "id": 3518,
+    "Key": "ModStr2t",
+    "koKR": "마법 피해 %d 감소",
+    "enUS": "Magic Damage Reduced by %d"
+  },
+  {
+    "id": 3519,
+    "Key": "ModStr2u",
+    "koKR": "피해 %d 감소",
+    "enUS": "Damage Reduced by %d"
+  },
+  {
+    "id": 3520,
+    "Key": "Modstr2v",
+    "koKR": "방어력 %+d%% 증가",
+    "enUS": "%+d%% Enhanced Defense"
+  },
+  {
+    "id": 3521,
+    "Key": "ModStr2w",
+    "koKR": "생명력 흡수 %d",
+    "enUS": "Drain Life %d"
+  },
+  {
+    "id": 3522,
+    "Key": "ModStr2x",
+    "koKR": "마나 흡수",
+    "enUS": "Drain Mana"
+  },
+  {
+    "id": 3523,
+    "Key": "ModStr2y",
+    "koKR": "적중당 마나 %d%% 훔침",
+    "enUS": "%d%% Mana stolen per hit"
+  },
+  {
+    "id": 3524,
+    "Key": "ModStr2z",
+    "koKR": "적중당 생명력 %d%% 훔침",
+    "enUS": "%d%% Life stolen per hit"
+  },
+  {
+    "id": 3525,
+    "Key": "ModStr3a",
+    "koKR": "아마존 기술 레벨 %+d",
+    "enUS": "%+d to Amazon Skill Levels"
+  },
+  {
+    "id": 3526,
+    "Key": "ModStr3b",
+    "koKR": "성기사 기술 레벨 %+d",
+    "enUS": "%+d to Paladin Skill Levels"
+  },
+  {
+    "id": 3527,
+    "Key": "ModStr3c",
+    "koKR": "강령술사 기술 레벨 %+d",
+    "enUS": "%+d to Necromancer Skill Levels"
+  },
+  {
+    "id": 3528,
+    "Key": "ModStr3d",
+    "koKR": "원소술사 기술 레벨 %+d",
+    "enUS": "%+d to Sorceress Skill Levels"
+  },
+  {
+    "id": 3529,
+    "Key": "ModStr3e",
+    "koKR": "야만용사 기술 레벨 %+d",
+    "enUS": "%+d to Barbarian Skill Levels"
+  },
+  {
+    "id": 3530,
+    "Key": "ModStr3f",
+    "koKR": "시야 %+d",
+    "enUS": "%+d to Light Radius"
+  },
+  {
+    "id": 3531,
+    "Key": "ModStr3g",
+    "koKR": "막기 확률 %d%% 증가",
+    "enUS": "%d%% Increased Chance of Blocking"
+  },
+  {
+    "id": 3532,
+    "Key": "ModStr3h",
+    "koKR": "착용 조건 %+d%%",
+    "enUS": "Requirements %+d%%"
+  },
+  {
+    "id": 3533,
+    "Key": "ModStr3i",
+    "koKR": "화염 기술 %+d",
+    "enUS": "%+d to Fire Skills"
+  },
+  {
+    "id": 3534,
+    "Key": "ModStr3j",
+    "koKR": "공격자가 번개 피해를 %d 받음",
+    "enUS": "Attacker Takes Lightning Damage of %d"
+  },
+  {
+    "id": 3535,
+    "Key": "ModStr3k",
+    "koKR": "모든 기술 %+d",
+    "enUS": "%+d to All Skills"
+  },
+  {
+    "id": 3536,
+    "Key": "ModStr3l",
+    "koKR": "대상 빙결",
+    "enUS": "Freezes target"
+  },
+  {
+    "id": 3537,
+    "Key": "ModStr3m",
+    "koKR": "상처 악화 확률 %+d%%",
+    "enUS": "%+d%% Chance of Open Wounds"
+  },
+  {
+    "id": 3538,
+    "Key": "ModStr3n",
+    "koKR": "투명",
+    "enUS": "Invisibility"
+  },
+  {
+    "id": 3539,
+    "Key": "ModStr3o",
+    "koKR": "반투명",
+    "enUS": "Neutral Invisibility"
+  },
+  {
+    "id": 3540,
+    "Key": "ModStr3p",
+    "koKR": "마나 회복 불가",
+    "enUS": "No Mana Healing"
+  },
+  {
+    "id": 3541,
+    "Key": "ModStr3q",
+    "koKR": "생명력 회복 불가",
+    "enUS": "No Life Healing"
+  },
+  {
+    "id": 3542,
+    "Key": "ModStr3r",
+    "koKR": "독 지속시간 %d%% 감소",
+    "enUS": "Poison Length Reduced by %d%%"
+  },
+  {
+    "id": 3544,
+    "Key": "ModStr3v",
+    "koKR": "지구력 회복 속도 %d%% 증가",
+    "enUS": "Heal Stamina Plus %d%%"
+  },
+  {
+    "id": 3545,
+    "Key": "ModStr3w",
+    "koKR": "받는 피해의 %+d%%만큼 마나 회복",
+    "enUS": "%+d%% Damage Taken Goes To Mana"
+  },
+  {
+    "id": 3546,
+    "Key": "ModStr3x",
+    "koKR": "생명력 회복 속도 증가",
+    "enUS": "Heal Life Plus"
+  },
+  {
+    "id": 3547,
+    "Key": "ModStr3y",
+    "koKR": "대상의 방어력 무시",
+    "enUS": "Ignore Target's Defense"
+  },
+  {
+    "id": 3548,
+    "Key": "ModStr3z",
+    "koKR": "독 지속시간 절반으로 감소",
+    "enUS": "Half Poison Duration"
+  },
+  {
+    "id": 3549,
+    "Key": "ModStr4a",
+    "koKR": "괴물 회복 저지",
+    "enUS": "Prevent Monster Heal"
+  },
+  {
+    "id": 3550,
+    "Key": "ModStr4b",
+    "koKR": "빙결 지속시간 절반으로 감소",
+    "enUS": "Half Freeze Duration"
+  },
+  {
+    "id": 3552,
+    "Key": "ModStr4d",
+    "koKR": "적중당 괴물 방어력 %d 감소",
+    "enUS": "%d to Monster Defense Per Hit"
+  },
+  {
+    "id": 3553,
+    "Key": "ModStr4e",
+    "koKR": "악마에게 주는 피해 %+d%%",
+    "enUS": "%+d%% Damage to Demons"
+  },
+  {
+    "id": 3554,
+    "Key": "ModStr4f",
+    "koKR": "언데드에게 주는 피해 %+d%%",
+    "enUS": "%+d%% Damage to Undead"
+  },
+  {
+    "id": 3555,
+    "Key": "ModStr4g",
+    "koKR": "마나 재생 %d%%",
+    "enUS": "Regenerate Mana %d%%"
+  },
+  {
+    "id": 3556,
+    "Key": "ModStr4h",
+    "koKR": "최대 독 피해 %+d",
+    "enUS": "%+d to Maximum Poison Damage"
+  },
+  {
+    "id": 3557,
+    "Key": "ModStr4i",
+    "koKR": "최소 독 피해 %+d",
+    "enUS": "%+d to Minimum Poison Damage"
+  },
+  {
+    "id": 3558,
+    "Key": "ModStr4j",
+    "koKR": "악마에 대한 명중률 %+d",
+    "enUS": "%+d to Attack Rating against Demons"
+  },
+  {
+    "id": 3559,
+    "Key": "ModStr4k",
+    "koKR": "언데드에 대한 명중률 %+d",
+    "enUS": "%+d to Attack Rating against Undead"
+  },
+  {
+    "id": 3560,
+    "Key": "ModStr4l",
+    "koKR": "공격 속도 약간 증가",
+    "enUS": "Slightly Increased Attack Speed"
+  },
+  {
+    "id": 3561,
+    "Key": "ModStr4m",
+    "koKR": "공격 속도 %+d%%",
+    "enUS": "%+d%% Increased Attack Speed"
+  },
+  {
+    "id": 3562,
+    "Key": "ModStr4n",
+    "koKR": "공격 속도 대폭 증가",
+    "enUS": "Greatly Increased Attack Speed"
+  },
+  {
+    "id": 3563,
+    "Key": "ModStr4o",
+    "koKR": "빠른 타격 회복 속도",
+    "enUS": "Fast Hit Recovery"
+  },
+  {
+    "id": 3564,
+    "Key": "ModStr4p",
+    "koKR": "타격 회복 속도 %+d%%",
+    "enUS": "%+d%% Faster Hit Recovery"
+  },
+  {
+    "id": 3565,
+    "Key": "ModStr4q",
+    "koKR": "가장 빠른 타격 회복 속도",
+    "enUS": "Fastest Hit Recovery"
+  },
+  {
+    "id": 3566,
+    "Key": "ModStr4r",
+    "koKR": "빠른 달리기/걷기 속도",
+    "enUS": "Fast Run/Walk"
+  },
+  {
+    "id": 3567,
+    "Key": "ModStr4s",
+    "koKR": "달리기/걷기 속도 %+d%%",
+    "enUS": "%+d%% Faster Run/Walk"
+  },
+  {
+    "id": 3568,
+    "Key": "ModStr4t",
+    "koKR": "가장 빠른 달리기/걷기 속도",
+    "enUS": "Fastest Run/Walk"
+  },
+  {
+    "id": 3569,
+    "Key": "ModStr4u",
+    "koKR": "빠른 시전 속도",
+    "enUS": "Fast Cast Rate"
+  },
+  {
+    "id": 3570,
+    "Key": "ModStr4v",
+    "koKR": "시전 속도 %+d%%",
+    "enUS": "%+d%% Faster Cast Rate"
+  },
+  {
+    "id": 3571,
+    "Key": "ModStr4w",
+    "koKR": "가장 빠른 시전 속도",
+    "enUS": "Fastest Cast Rate"
+  },
+  {
+    "id": 3572,
+    "Key": "ModStr4x",
+    "koKR": "빠른 막기 속도",
+    "enUS": "Fast Block Rate"
+  },
+  {
+    "id": 3573,
+    "Key": "ModStr4y",
+    "koKR": "막기 속도 %+d%%",
+    "enUS": "%+d%% Faster Block Rate"
+  },
+  {
+    "id": 3574,
+    "Key": "ModStr4z",
+    "koKR": "가장 빠른 막기 속도",
+    "enUS": "Fastest Block Rate"
+  },
+  {
+    "id": 3575,
+    "Key": "ModStr5a",
+    "koKR": "투척 가능",
+    "enUS": "Throwable"
+  },
+  {
+    "id": 3576,
+    "Key": "ModStr5b",
+    "koKR": "피해 %+d",
+    "enUS": "Damage %+d"
+  },
+  {
+    "id": 3577,
+    "Key": "ModStr5c",
+    "koKR": "강타 확률 %+d%%",
+    "enUS": "%+d%% Chance of Crushing Blow"
+  },
+  {
+    "id": 3579,
+    "Key": "ModStr5e",
+    "koKR": "발차기 피해 %+d",
+    "enUS": "%+d Kick Damage"
+  },
+  {
+    "id": 3580,
+    "Key": "ModStr5f",
+    "koKR": "적 처치 시 마나 %+d",
+    "enUS": "%+d to Mana after each Kill"
+  },
+  {
+    "id": 3581,
+    "Key": "ModStr5g",
+    "koKR": "화염 흡수 %+d%%",
+    "enUS": "Fire Absorb %+d%%"
+  },
+  {
+    "id": 3582,
+    "Key": "ModStr5h",
+    "koKR": "화염 흡수 %+d",
+    "enUS": "%+d Fire Absorb"
+  },
+  {
+    "id": 3583,
+    "Key": "ModStr5i",
+    "koKR": "번개 흡수 %+d%%",
+    "enUS": "Lightning Absorb %+d%%"
+  },
+  {
+    "id": 3584,
+    "Key": "ModStr5j",
+    "koKR": "번개 흡수 %+d",
+    "enUS": "%+d Lightning Absorb"
+  },
+  {
+    "id": 3585,
+    "Key": "ModStr5k",
+    "koKR": "마법 흡수 %+d%%",
+    "enUS": "Magic Absorb %+d%%"
+  },
+  {
+    "id": 3586,
+    "Key": "ModStr5l",
+    "koKR": "마법 흡수 %+d",
+    "enUS": "%+d Magic Absorb"
+  },
+  {
+    "id": 3587,
+    "Key": "ModStr5m",
+    "koKR": "냉기 흡수 %+d%%",
+    "enUS": "Cold Absorb %+d%%"
+  },
+  {
+    "id": 3588,
+    "Key": "ModStr5n",
+    "koKR": "냉기 흡수 %+d",
+    "enUS": "%+d Cold Absorb"
+  },
+  {
+    "id": 3589,
+    "Key": "ModStr5o",
+    "koKR": "대상의 방어력 -%d%%",
+    "enUS": "-%d%% Target Defense"
+  },
+  {
+    "id": 3590,
+    "Key": "ModStr5p",
+    "koKR": "잔인한 공격",
+    "enUS": "Extra Bloody"
+  },
+  {
+    "id": 3591,
+    "Key": "ModStr5q",
+    "koKR": "치명적 공격 %+d%%",
+    "enUS": "%+d%% Deadly Strike"
+  },
+  {
+    "id": 3593,
+    "Key": "ModStr5s",
+    "koKR": "축복받은 조준",
+    "enUS": "Blessed Aim"
+  },
+  {
+    "id": 3594,
+    "Key": "ModStr5t",
+    "koKR": "대항",
+    "enUS": "Defiance"
+  },
+  {
+    "id": 3595,
+    "Key": "ModStr5u",
+    "koKR": "최대 화염 저항 %+d%%",
+    "enUS": "%+d%% to Maximum Fire Resist"
+  },
+  {
+    "id": 3596,
+    "Key": "ModStr5v",
+    "koKR": "최대 냉기 저항 %+d%%",
+    "enUS": "%+d%% to Maximum Cold Resist"
+  },
+  {
+    "id": 3597,
+    "Key": "ModStr5w",
+    "koKR": "최대 번개 저항 %+d%%",
+    "enUS": "%+d%% to Maximum Lightning Resist"
+  },
+  {
+    "id": 3598,
+    "Key": "ModStr5x",
+    "koKR": "최대 마법 저항 %+d%%",
+    "enUS": "%+d%% to Maximum Magic Resist"
+  },
+  {
+    "id": 3599,
+    "Key": "ModStr5y",
+    "koKR": "최대 독 저항 %+d%%",
+    "enUS": "%+d%% to Maximum Poison Resist"
+  },
+  {
+    "id": 3600,
+    "Key": "ModStr5z",
+    "koKR": "빙결되지 않음",
+    "enUS": "Cannot Be Frozen"
+  },
+  {
+    "id": 3601,
+    "Key": "ModStr6a",
+    "koKR": "원거리 공격 방어력 %+d",
+    "enUS": "%+d Defense vs. Missile"
+  },
+  {
+    "id": 3602,
+    "Key": "ModStr6b",
+    "koKR": "근접 공격 방어력 %+d",
+    "enUS": "%+d Defense vs. Melee"
+  },
+  {
+    "id": 3603,
+    "Key": "ModStr6c",
+    "koKR": "악마 처치 시 생명력 %+d",
+    "enUS": "%+d Life after each Demon Kill"
+  },
+  {
+    "id": 3607,
+    "Key": "ModStr6g",
+    "koKR": "관통 공격 %+d%%",
+    "enUS": "%+d%% Piercing Attack"
+  },
+  {
+    "id": 3608,
+    "Key": "ModStr6h",
+    "koKR": "마법 화살 발사",
+    "enUS": "Fires Magic Arrows"
+  },
+  {
+    "id": 3609,
+    "Key": "ModStr6i",
+    "koKR": "폭발하는 화살 발사",
+    "enUS": "Fires Explosive Arrows or Bolts"
+  },
+  {
+    "id": 3625,
+    "Key": "improved damage",
+    "koKR": "피해 향상",
+    "enUS": "Improved Damage"
+  },
+  {
+    "id": 3626,
+    "Key": "improved to hit",
+    "koKR": "명중률 향상",
+    "enUS": "Improved Attack Rating"
+  },
+  {
+    "id": 3627,
+    "Key": "improved armor class",
+    "koKR": "방어력 향상",
+    "enUS": "Improved Defense"
+  },
+  {
+    "id": 3628,
+    "Key": "improved durability",
+    "koKR": "내구도 향상",
+    "enUS": "Improved Durability"
+  },
+  {
+    "id": 3629,
+    "Key": "Quick Strike",
+    "koKR": "빠른 타격",
+    "enUS": "Quick Strike"
+  },
+  {
+    "id": 3630,
+    "Key": "strGemPlace1",
+    "koKR": "홈이 있는 아이템에 삽입 가능",
+    "enUS": "Can Be Inserted in Socketed"
+  },
+  {
+    "id": 3631,
+    "Key": "strGemPlace2",
+    "koKR": "무기, 방패, 투구",
+    "enUS": "Weapons, Shields or Helms"
+  },
+  {
+    "id": 4077,
+    "Key": "WeaponDescMace",
+    "koKR": "철퇴 계열 - %s",
+    "enUS": "Mace Class - %s"
+  },
+  {
+    "id": 4078,
+    "Key": "WeaponDescAxe",
+    "koKR": "도끼 계열 - %s",
+    "enUS": "Axe Class - %s"
+  },
+  {
+    "id": 4079,
+    "Key": "WeaponDescSword - %s",
+    "koKR": "도검 계열 - %s",
+    "enUS": "Sword Class - %s"
+  },
+  {
+    "id": 4080,
+    "Key": "WeaponDescDagger",
+    "koKR": "단도 계열 - %s",
+    "enUS": "Dagger Class - %s"
+  },
+  {
+    "id": 4082,
+    "Key": "WeaponDescJavelin",
+    "koKR": "투창 계열 - %s",
+    "enUS": "Javelin Class - %s"
+  },
+  {
+    "id": 4083,
+    "Key": "WeaponDescSpear",
+    "koKR": "창 계열 - %s",
+    "enUS": "Spear Class - %s"
+  },
+  {
+    "id": 4084,
+    "Key": "WeaponDescBow",
+    "koKR": "활 계열 - %s",
+    "enUS": "Bow Class - %s"
+  },
+  {
+    "id": 4085,
+    "Key": "WeaponDescStaff",
+    "koKR": "지팡이 계열 - %s",
+    "enUS": "Staff Class - %s"
+  },
+  {
+    "id": 4086,
+    "Key": "WeaponDescPoleArm",
+    "koKR": "미늘창 계열 - %s",
+    "enUS": "Polearm Class - %s"
+  },
+  {
+    "id": 4087,
+    "Key": "WeaponDescCrossBow",
+    "koKR": "쇠뇌 계열 - %s",
+    "enUS": "Crossbow Class - %s"
+  },
+  {
+    "id": 4088,
+    "Key": "WeaponAttackFastest",
+    "koKR": "가장 빠른 공격 속도",
+    "enUS": "Fastest Attack Speed"
+  },
+  {
+    "id": 4089,
+    "Key": "WeaponAttackVeryFast",
+    "koKR": "매우 빠른 공격 속도",
+    "enUS": "Very Fast Attack Speed"
+  },
+  {
+    "id": 4090,
+    "Key": "WeaponAttackFast",
+    "koKR": "빠른 공격 속도",
+    "enUS": "Fast Attack Speed"
+  },
+  {
+    "id": 4091,
+    "Key": "WeaponAttackNormal",
+    "koKR": "보통 공격 속도",
+    "enUS": "Normal Attack Speed"
+  },
+  {
+    "id": 4092,
+    "Key": "WeaponAttackSlow",
+    "koKR": "느린 공격 속도",
+    "enUS": "Slow Attack Speed"
+  },
+  {
+    "id": 4093,
+    "Key": "WeaponAttackVerySlow",
+    "koKR": "매우 느린 공격 속도",
+    "enUS": "Very Slow Attack Speed"
+  },
+  {
+    "id": 4094,
+    "Key": "WeaponAttackSlowest",
+    "koKR": "가장 느린 공격 속도",
+    "enUS": "Slowest Attack Speed"
+  },
+  {
+    "id": 10001,
+    "Key": "ModStr5d",
+    "koKR": "최대 지구력 %+d",
+    "enUS": "%+d Maximum Stamina"
+  },
+  {
+    "id": 10020,
+    "Key": "ModStr6e",
+    "koKR": "지구력 고갈 속도 %d%% 감소",
+    "enUS": "%d%% Slower Stamina Drain"
+  },
+  {
+    "id": 10023,
+    "Key": "strModEnhancedDamage",
+    "koKR": "피해 %+d%% 증가",
+    "enUS": "%+d%% Enhanced Damage"
+  },
+  {
+    "id": 10024,
+    "Key": "strModAllResistances",
+    "koKR": "모든 저항 %+d",
+    "enUS": "All Resistances %+d"
+  },
+  {
+    "id": 10025,
+    "Key": "strModAllSkillLevels",
+    "koKR": "모든 기술 레벨 %+d",
+    "enUS": "%+d to All Skill Levels"
+  },
+  {
+    "id": 10026,
+    "Key": "strModFireDamage",
+    "koKR": "화염 피해 %+d",
+    "enUS": "%+d fire damage"
+  },
+  {
+    "id": 10027,
+    "Key": "strModFireDamageRange",
+    "koKR": "화염 피해 %d - %d 추가",
+    "enUS": "Adds %d-%d fire damage"
+  },
+  {
+    "id": 10028,
+    "Key": "strModColdDamage",
+    "koKR": "냉기 피해 %+d",
+    "enUS": "%+d cold damage"
+  },
+  {
+    "id": 10029,
+    "Key": "strModColdDamageRange",
+    "koKR": "냉기 피해 %d - %d 추가",
+    "enUS": "Adds %d-%d cold damage"
+  },
+  {
+    "id": 10030,
+    "Key": "strModLightningDamage",
+    "koKR": "번개 피해 %+d",
+    "enUS": "%+d lightning damage"
+  },
+  {
+    "id": 10031,
+    "Key": "strModLightningDamageRange",
+    "koKR": "번개 피해 %d - %d 추가",
+    "enUS": "Adds %d-%d lightning damage"
+  },
+  {
+    "id": 10032,
+    "Key": "strModMagicDamage",
+    "koKR": "마법 피해 %+d",
+    "enUS": "%+d magic damage"
+  },
+  {
+    "id": 10033,
+    "Key": "strModMagicDamageRange",
+    "koKR": "마법 피해 %d - %d 추가",
+    "enUS": "Adds %d-%d magic damage"
+  },
+  {
+    "id": 10034,
+    "Key": "strModPoisonDamage",
+    "koKR": "독 피해 %+d (%d초에 걸쳐)",
+    "enUS": "%+d poison damage over %d seconds"
+  },
+  {
+    "id": 10035,
+    "Key": "strModPoisonDamageRange",
+    "koKR": "독 피해 %d - %d 추가 (%d초에 걸쳐)",
+    "enUS": "Adds %d-%d poison damage over %d seconds"
+  },
+  {
+    "id": 10036,
+    "Key": "strModMinDamage",
+    "koKR": "피해 %+d",
+    "enUS": "%+d damage"
+  },
+  {
+    "id": 10037,
+    "Key": "strModMinDamageRange",
+    "koKR": "피해 %d - %d 추가",
+    "enUS": "Adds %d-%d damage"
+  },
+  {
+    "id": 10039,
+    "Key": "ModStre9j",
+    "koKR": "화염 피해 감소",
+    "enUS": "Fire Damage Reduced by"
+  },
+  {
+    "id": 10040,
+    "Key": "ModStre9k",
+    "koKR": "냉기 피해 감소",
+    "enUS": "Cold Damage Reduced by"
+  },
+  {
+    "id": 10041,
+    "Key": "ModStre9l",
+    "koKR": "번개 피해 감소",
+    "enUS": "Lightning Damage Reduced by"
+  },
+  {
+    "id": 10042,
+    "Key": "ModStre9m",
+    "koKR": "독 피해 감소",
+    "enUS": "Poison Damage Reduced by"
+  },
+  {
+    "id": 10043,
+    "Key": "ModStre9n",
+    "koKR": "마법 피해 흡수 %+d",
+    "enUS": "%+d Absorbs Magic Damage"
+  },
+  {
+    "id": 10044,
+    "Key": "ModStre9o",
+    "koKR": "화염 피해 흡수 %+d",
+    "enUS": "%+d Absorbs Fire Damage"
+  },
+  {
+    "id": 10045,
+    "Key": "ModStre9p",
+    "koKR": "냉기 피해 흡수 %+d",
+    "enUS": "%+d Absorbs Cold Damage"
+  },
+  {
+    "id": 10046,
+    "Key": "ModStre9q",
+    "koKR": "번개 피해 흡수 %+d",
+    "enUS": "%+d Absorbs Lightning Damage"
+  },
+  {
+    "id": 10047,
+    "Key": "ModStre9r",
+    "koKR": "독 피해 흡수 %+d",
+    "enUS": "%+d Absorbs Poison Damage"
+  },
+  {
+    "id": 10054,
+    "Key": "StrSklTabItem1",
+    "koKR": "투창과 창 기술 %+d",
+    "enUS": "%+d to Javelin and Spear Skills"
+  },
+  {
+    "id": 10055,
+    "Key": "StrSklTabItem2",
+    "koKR": "지속 효과와 마법 기술 %+d",
+    "enUS": "%+d to Passive and Magic Skills"
+  },
+  {
+    "id": 10056,
+    "Key": "StrSklTabItem3",
+    "koKR": "활과 쇠뇌 기술 %+d",
+    "enUS": "%+d to Bow and Crossbow Skills"
+  },
+  {
+    "id": 10057,
+    "Key": "StrSklTabItem4",
+    "koKR": "방어 오라 %+d",
+    "enUS": "%+d to Defensive Auras"
+  },
+  {
+    "id": 10058,
+    "Key": "StrSklTabItem5",
+    "koKR": "공격 오라 %+d",
+    "enUS": "%+d to Offensive Auras"
+  },
+  {
+    "id": 10059,
+    "Key": "StrSklTabItem6",
+    "koKR": "전투 기술 %+d",
+    "enUS": "%+d to Combat Skills"
+  },
+  {
+    "id": 10061,
+    "Key": "StrSklTabItem7",
+    "koKR": "독과 뼈 기술 %+d",
+    "enUS": "%+d to Poison and Bone Skills"
+  },
+  {
+    "id": 10062,
+    "Key": "StrSklTabItem8",
+    "koKR": "저주 %+d",
+    "enUS": "%+d to Curses"
+  },
+  {
+    "id": 10063,
+    "Key": "StrSklTabItem10",
+    "koKR": "함성 %+d",
+    "enUS": "%+d to Warcries"
+  },
+  {
+    "id": 10064,
+    "Key": "StrSklTabItem11",
+    "koKR": "전투 기술 %+d",
+    "enUS": "%+d to Combat Skills"
+  },
+  {
+    "id": 10065,
+    "Key": "StrSklTabItem12",
+    "koKR": "숙련 %+d",
+    "enUS": "%+d to Masteries"
+  },
+  {
+    "id": 10066,
+    "Key": "StrSklTabItem13",
+    "koKR": "냉기 기술 %+d",
+    "enUS": "%+d to Cold Skills"
+  },
+  {
+    "id": 10067,
+    "Key": "StrSklTabItem14",
+    "koKR": "번개 기술 %+d",
+    "enUS": "%+d to Lightning Skills"
+  },
+  {
+    "id": 10068,
+    "Key": "StrSklTabItem15",
+    "koKR": "화염 기술 %+d",
+    "enUS": "%+d to Fire Skills"
+  },
+  {
+    "id": 10069,
+    "Key": "StrSklTabItem16",
+    "koKR": "소환 기술 %+d",
+    "enUS": "%+d to Summoning Skills"
+  },
+  {
+    "id": 10070,
+    "Key": "StrSklTabItem17",
+    "koKR": "변신 기술 %+d",
+    "enUS": "%+d to Shape Shifting Skills"
+  },
+  {
+    "id": 10071,
+    "Key": "StrSklTabItem18",
+    "koKR": "원소 기술 %+d",
+    "enUS": "%+d to Elemental Skills"
+  },
+  {
+    "id": 10072,
+    "Key": "StrSklTabItem19",
+    "koKR": "덫 %+d",
+    "enUS": "%+d to Traps"
+  },
+  {
+    "id": 10073,
+    "Key": "StrSklTabItem20",
+    "koKR": "그림자 단련 %+d",
+    "enUS": "%+d to Shadow Disciplines"
+  },
+  {
+    "id": 10074,
+    "Key": "StrSklTabItem21",
+    "koKR": "무술 %+d",
+    "enUS": "%+d to Martial Arts"
+  },
+  {
+    "id": 10917,
+    "Key": "AmaOnly",
+    "koKR": "(아마존 전용)",
+    "enUS": "(Amazon Only)"
+  },
+  {
+    "id": 10918,
+    "Key": "SorOnly",
+    "koKR": "(원소술사 전용)",
+    "enUS": "(Sorceress Only)"
+  },
+  {
+    "id": 10919,
+    "Key": "NecOnly",
+    "koKR": "(강령술사 전용)",
+    "enUS": "(Necromancer Only)"
+  },
+  {
+    "id": 10920,
+    "Key": "PalOnly",
+    "koKR": "(성기사 전용)",
+    "enUS": "(Paladin Only)"
+  },
+  {
+    "id": 10921,
+    "Key": "BarOnly",
+    "koKR": "(야만용사 전용)",
+    "enUS": "(Barbarian Only)"
+  },
+  {
+    "id": 10922,
+    "Key": "DruOnly",
+    "koKR": "(드루이드 전용)",
+    "enUS": "(Druid Only)"
+  },
+  {
+    "id": 10923,
+    "Key": "AssOnly",
+    "koKR": "(암살자 전용)",
+    "enUS": "(Assassin Only)"
+  },
+  {
+    "id": 10976,
+    "Key": "ModitemAura",
+    "koKR": "장착 시 %d 레벨 %s 오라 효과 적용",
+    "enUS": "Level %d %s Aura When Equipped"
+  },
+  {
+    "id": 10977,
+    "Key": "Moditem2allattrib",
+    "koKR": "모든 능력치 %+d",
+    "enUS": "%+d to all Attributes"
+  },
+  {
+    "id": 10978,
+    "Key": "Moditem2ExpG",
+    "koKR": "경험치 획득량 %+d%%",
+    "enUS": "%+d%% to Experience Gained"
+  },
+  {
+    "id": 10979,
+    "Key": "ModitemHPaK",
+    "koKR": "적 처치 시 생명력 %+d",
+    "enUS": "%+d Life after each Kill"
+  },
+  {
+    "id": 10980,
+    "Key": "ModitemRedVendP",
+    "koKR": "상점 물품 가격 %d%% 하락",
+    "enUS": "Reduces all Vendor Prices %d%%"
+  },
+  {
+    "id": 10981,
+    "Key": "ModitemSMRIP",
+    "koKR": "처치한 괴물이 안식에 듦",
+    "enUS": "Slain Monsters Rest in Peace"
+  },
+  {
+    "id": 10982,
+    "Key": "ModitemAttratvsM",
+    "koKR": "명중률 %d%% 증가 / 대상 한정:",
+    "enUS": "%d%% to Attack Rating versus"
+  },
+  {
+    "id": 10983,
+    "Key": "Moditemdamvsm",
+    "koKR": "피해 %d%% 증가 / 대상 한정:",
+    "enUS": "%d%% to Damage versus"
+  },
+  {
+    "id": 10984,
+    "Key": "Moditemslayat",
+    "koKR": "처단:",
+    "enUS": "Slaying:"
+  },
+  {
+    "id": 10985,
+    "Key": "Moditemreanimas",
+    "koKR": "처치 시 %0%% 확률로 %1 소생",
+    "enUS": "%0%% Reanimate as: %1"
+  },
+  {
+    "id": 10986,
+    "Key": "Moditemenrescoldsk",
+    "koKR": "적의 냉기 저항 -%d%%",
+    "enUS": "-%d%% to Enemy Cold Resistance"
+  },
+  {
+    "id": 10987,
+    "Key": "Moditemenresfiresk",
+    "koKR": "적의 화염 저항 -%d%%",
+    "enUS": "-%d%% to Enemy Fire Resistance"
+  },
+  {
+    "id": 10988,
+    "Key": "Moditemenresltngsk",
+    "koKR": "적의 번개 저항 -%d%%",
+    "enUS": "-%d%% to Enemy Lightning Resistance"
+  },
+  {
+    "id": 10989,
+    "Key": "Moditemenrespoissk",
+    "koKR": "적의 독 저항 -%d%%",
+    "enUS": "-%d%% to Enemy Poison Resistance"
+  },
+  {
+    "id": 10990,
+    "Key": "ModitemdamFiresk",
+    "koKR": "화염 기술 피해 %+d%%",
+    "enUS": "%+d%% to Fire Skill Damage"
+  },
+  {
+    "id": 10991,
+    "Key": "ModitemdamColdsk",
+    "koKR": "냉기 기술 피해 %+d%%",
+    "enUS": "%+d%% to Cold Skill Damage"
+  },
+  {
+    "id": 10992,
+    "Key": "ModitemdamLtngsk",
+    "koKR": "번개 기술 피해 %+d%%",
+    "enUS": "%+d%% to Lightning Skill Damage"
+  },
+  {
+    "id": 10993,
+    "Key": "ModitemdamPoissk",
+    "koKR": "독 기술 피해 %+d%%",
+    "enUS": "%+d%% to Poison Skill Damage"
+  },
+  {
+    "id": 10994,
+    "Key": "Moditemskondeath",
+    "koKR": "사망 시 %d%% 확률로 %d 레벨 %s 시전",
+    "enUS": "%d%% Chance to cast level %d %s when you Die"
+  },
+  {
+    "id": 10995,
+    "Key": "ModitemskonLevel",
+    "koKR": "레벨 상승 시 %d%% 확률로 %d 레벨 %s 시전",
+    "enUS": "%d%% Chance to cast level %d %s when you Level-Up"
+  },
+  {
+    "id": 10996,
+    "Key": "ModitemskonKill",
+    "koKR": "적 처치 시 %d%% 확률로 %d 레벨 %s 시전",
+    "enUS": "%d%% Chance to cast level %d %s when you Kill an Enemy"
+  },
+  {
+    "id": 11003,
+    "Key": "StrSklTabItem9",
+    "koKR": "소환 기술 +%d",
+    "enUS": "+%d to Summoning Skills"
+  },
+  {
+    "id": 11018,
+    "Key": "ItemStats1r",
+    "koKR": "막기 확률: %d%%",
+    "enUS": "Chance to Block: %d%%"
+  },
+  {
+    "id": 11032,
+    "Key": "ModStr1w",
+    "koKR": "괴물에게서 얻는 금화 %d%% 증가",
+    "enUS": "%d%% Extra Gold from Monsters"
+  },
+  {
+    "id": 11033,
+    "Key": "ModStr1x",
+    "koKR": "마법 아이템 발견 확률 %d%% 증가",
+    "enUS": "%d%% Better Chance of Getting Magic Items"
+  },
+  {
+    "id": 11034,
+    "Key": "ModStr3u",
+    "koKR": "적중 시 괴물 도주 %+d%%",
+    "enUS": "Hit Causes Monster to Flee %+d%%"
+  },
+  {
+    "id": 11035,
+    "Key": "ModStr4c",
+    "koKR": "명중률 보너스 %d%%",
+    "enUS": "%d%% Bonus to Attack Rating"
+  },
+  {
+    "id": 11036,
+    "Key": "ModStr5r",
+    "koKR": "대상 감속 %d%%",
+    "enUS": "Slows Target by %d%%"
+  },
+  {
+    "id": 11037,
+    "Key": "ModStr6f",
+    "koKR": "일정 확률로 대상 소생",
+    "enUS": "Chance to Reanimate Target"
+  },
+  {
+    "id": 11038,
+    "Key": "ModStr6d",
+    "koKR": "적중 시 대상 실명",
+    "enUS": "Hit Blinds Target"
+  },
+  {
+    "id": 11080,
+    "Key": "ExInsertSocketsX",
+    "koKR": "홈이 있는 아이템에 삽입 가능",
+    "enUS": "Can be Inserted into Socketed Items"
+  },
+  {
+    "id": 11091,
+    "Key": "increaseswithplaylevelX",
+    "koKR": "(캐릭터 레벨에 비례)",
+    "enUS": "(Based on Character Level)"
+  },
+  {
+    "id": 11158,
+    "Key": "ModStre8b",
+    "koKR": "암살자 기술 레벨 %+d",
+    "enUS": "%+d to Assassin Skill Levels"
+  },
+  {
+    "id": 11163,
+    "Key": "toa",
+    "koKR": "면죄의 징표",
+    "enUS": "Token of Absolution"
+  },
+  {
+    "id": 20438,
+    "Key": "Charmdes",
+    "koKR": "소지품에 보관 시 보너스 획득",
+    "enUS": "Keep in Inventory to Gain Bonus"
+  },
+  {
+    "id": 20439,
+    "Key": "ice",
+    "koKR": "말라의 물약",
+    "enUS": "Malah's Potion"
+  },
+  {
+    "id": 21205,
+    "Key": "ModStre8a",
+    "koKR": "드루이드 기술 레벨 %+d",
+    "enUS": "%+d to Druid Skill Levels"
+  },
+  {
+    "id": 21207,
+    "Key": "ModStre8c",
+    "koKR": " 홈",
+    "enUS": " Sockets"
+  },
+  {
+    "id": 21208,
+    "Key": "ModStre8d",
+    "koKR": " 악마에 대한 명중률",
+    "enUS": " to Attack Rating vs. Demons"
+  },
+  {
+    "id": 21209,
+    "Key": "ModStre8e",
+    "koKR": " 언데드에 대한 명중률",
+    "enUS": " to Attack Rating vs. Undead"
+  },
+  {
+    "id": 21210,
+    "Key": "ModStre8f",
+    "koKR": " 악마에게 주는 피해",
+    "enUS": " to Damage vs. Demons"
+  },
+  {
+    "id": 21211,
+    "Key": "ModStre8g",
+    "koKR": "% 명중률 상승",
+    "enUS": " percent to Attack Rating"
+  },
+  {
+    "id": 21212,
+    "Key": "ModStre8h",
+    "koKR": " 투창과 창 기술 상승",
+    "enUS": " to Javelin and Spear Skills"
+  },
+  {
+    "id": 21213,
+    "Key": "ModStre8i",
+    "koKR": " 지속 효과와 마법 기술 상승",
+    "enUS": " to Passive and Magic Skills"
+  },
+  {
+    "id": 21214,
+    "Key": "ModStre8j",
+    "koKR": " 활과 쇠뇌 기술 상승",
+    "enUS": " to Bow and Crossbow Skills"
+  },
+  {
+    "id": 21215,
+    "Key": "ModStre8k",
+    "koKR": " 방어 오라 기술 상승",
+    "enUS": " to Defensive Aura Skills"
+  },
+  {
+    "id": 21216,
+    "Key": "ModStre8l",
+    "koKR": " 공격 오라 기술 상승",
+    "enUS": " to Offensive Aura Skills"
+  },
+  {
+    "id": 21217,
+    "Key": "ModStre8m",
+    "koKR": " 전투 기술 상승",
+    "enUS": " to Combat Skills"
+  },
+  {
+    "id": 21218,
+    "Key": "ModStre8n",
+    "koKR": " 소환 기술 상승",
+    "enUS": " to Summoning Skills"
+  },
+  {
+    "id": 21219,
+    "Key": "ModStre8o",
+    "koKR": " 독과 뼈 기술 상승",
+    "enUS": " to Poison and Bone Skills"
+  },
+  {
+    "id": 21220,
+    "Key": "ModStre8p",
+    "koKR": " 저주 상승",
+    "enUS": " to Curses"
+  },
+  {
+    "id": 21221,
+    "Key": "ModStre8q",
+    "koKR": " 함성 기술 상승",
+    "enUS": " to Warcry Skills"
+  },
+  {
+    "id": 21222,
+    "Key": "ModStre8r",
+    "koKR": " 전투 기술 상승",
+    "enUS": " to Combat Skills"
+  },
+  {
+    "id": 21223,
+    "Key": "ModStre8s",
+    "koKR": " 숙련 기술 상승",
+    "enUS": " to Masteries Skills"
+  },
+  {
+    "id": 21224,
+    "Key": "ModStre8t",
+    "koKR": " 냉기 기술 상승",
+    "enUS": " to Cold Skills"
+  },
+  {
+    "id": 21225,
+    "Key": "ModStre8u",
+    "koKR": " 번개 기술 상승",
+    "enUS": " to Lightning Skills"
+  },
+  {
+    "id": 21226,
+    "Key": "ModStre8v",
+    "koKR": " 화염 기술 상승",
+    "enUS": " to Fire Skills"
+  },
+  {
+    "id": 21227,
+    "Key": "ModStre8w",
+    "koKR": " 소환 기술 상승",
+    "enUS": " to Summoning Skills"
+  },
+  {
+    "id": 21228,
+    "Key": "ModStre8x",
+    "koKR": " 변신 기술 상승",
+    "enUS": " to Shape-Shifting Skills"
+  },
+  {
+    "id": 21229,
+    "Key": "ModStre8y",
+    "koKR": " 원소 기술 상승",
+    "enUS": " to Elemental Skills"
+  },
+  {
+    "id": 21230,
+    "Key": "ModStre8z",
+    "koKR": " 덫 기술 상승",
+    "enUS": " to Trap Skills"
+  },
+  {
+    "id": 21231,
+    "Key": "ModStre9a",
+    "koKR": " 그림자 단련 기술 상승",
+    "enUS": " to Shadow Discipline Skills"
+  },
+  {
+    "id": 21232,
+    "Key": "ModStre9b",
+    "koKR": " 무술 기술 상승",
+    "enUS": " to Martial Art Skills"
+  },
+  {
+    "id": 21233,
+    "Key": "ModStre9c",
+    "koKR": "(캐릭터 레벨에 비례)",
+    "enUS": "(Based on Character Level)"
+  },
+  {
+    "id": 21234,
+    "Key": "ModStre9d",
+    "koKR": "%s (밤에 증가)",
+    "enUS": "%s (Increases During Nighttime)"
+  },
+  {
+    "id": 21235,
+    "Key": "ModStre9e",
+    "koKR": "%s (낮에 증가)",
+    "enUS": "%s (Increases During Daytime)"
+  },
+  {
+    "id": 21236,
+    "Key": "ModStre9f",
+    "koKR": "%s (새벽에 증가)",
+    "enUS": "%s (Increases Near Dawn)"
+  },
+  {
+    "id": 21237,
+    "Key": "ModStre9g",
+    "koKR": "%s (해 질 녘에 증가)",
+    "enUS": "%s (Increases Near Dusk)"
+  },
+  {
+    "id": 21238,
+    "Key": "ModStre9h",
+    "koKR": "회 충전:",
+    "enUS": " Charges of"
+  },
+  {
+    "id": 21239,
+    "Key": "ModStre9i",
+    "koKR": "중첩 수량 증가",
+    "enUS": "Increased Stack Size"
+  },
+  {
+    "id": 21240,
+    "Key": "ModStre9s",
+    "koKR": "파괴 불가",
+    "enUS": "Indestructible"
+  },
+  {
+    "id": 21241,
+    "Key": "ModStre9t",
+    "koKR": "내구도 %d 회복 (매초)",
+    "enUS": "Repairs %d durability per second"
+  },
+  {
+    "id": 21242,
+    "Key": "ModStre9u",
+    "koKR": "내구도 %d 회복 (%d초마다)",
+    "enUS": "Repairs %d durability in %d seconds"
+  },
+  {
+    "id": 21243,
+    "Key": "ModStre9v",
+    "koKR": "수량 자동 회복",
+    "enUS": "Replenishes quantity"
+  },
+  {
+    "id": 21244,
+    "Key": "ModStre9w",
+    "koKR": "시전: %d 레벨",
+    "enUS": "Cast a Level %d"
+  },
+  {
+    "id": 21245,
+    "Key": "ModStre9x",
+    "koKR": "휘두를 때",
+    "enUS": "When You Swing"
+  },
+  {
+    "id": 21246,
+    "Key": "ModStre9y",
+    "koKR": "적중당할 때",
+    "enUS": "When You Get Hit"
+  },
+  {
+    "id": 21247,
+    "Key": "ModStre9z",
+    "koKR": "적을 적중시킬 때",
+    "enUS": "When You Hit an Enemy"
+  },
+  {
+    "id": 21248,
+    "Key": "ModStre10a",
+    "koKR": "충전 횟수",
+    "enUS": "Charges"
+  },
+  {
+    "id": 21249,
+    "Key": "ModStre10b",
+    "koKR": "레벨",
+    "enUS": "Level"
+  },
+  {
+    "id": 21250,
+    "Key": "ModStre10c",
+    "koKR": "레벨당",
+    "enUS": "Per Level"
+  },
+  {
+    "id": 21251,
+    "Key": "ModStre10d",
+    "koKR": "%d 레벨 %s (충전 %d/%d회)",
+    "enUS": "Level %d %s (%d/%d Charges)"
+  },
+  {
+    "id": 21254,
+    "Key": "ModStre10g",
+    "koKR": "은폐",
+    "enUS": "Stealth"
+  },
+  {
+    "id": 21255,
+    "Key": "ModStre10h",
+    "koKR": "독 면역",
+    "enUS": "Immunity to Poison"
+  },
+  {
+    "id": 21256,
+    "Key": "ModStre10i",
+    "koKR": "저주받음",
+    "enUS": "Cursed"
+  },
+  {
+    "id": 21257,
+    "Key": "ModStre10j",
+    "koKR": "파티 내의 플레이어 인당",
+    "enUS": "Per Player in Party"
+  },
+  {
+    "id": 21258,
+    "Key": "WeaponDescH2H",
+    "koKR": "손톱 계열 - %s",
+    "enUS": "Claw Class - %s"
+  },
+  {
+    "id": 21259,
+    "Key": "WeaponDescOrb",
+    "koKR": "보주 계열 - %s",
+    "enUS": "Orb Class - %s"
+  },
+  {
+    "id": 21260,
+    "Key": "ItemexpED",
+    "koKR": " 원소 피해",
+    "enUS": " Elemental Damage"
+  },
+  {
+    "id": 21782,
+    "Key": "ModStre10k",
+    "koKR": "발차기 피해: %d - %d",
+    "enUS": "Kick Damage: %d to %d"
+  },
+  {
+    "id": 21783,
+    "Key": "ModStre10L",
+    "koKR": "% 확률로 시전:",
+    "enUS": "Percent Chance to Cast"
+  },
+  {
+    "id": 21806,
+    "Key": "tr2",
+    "koKR": "저항의 두루마리",
+    "enUS": "Scroll of Resistance"
+  },
+  {
+    "id": 21874,
+    "Key": "ExInsertSockets",
+    "koKR": "홈이 있는 아이템에 삽입 가능",
+    "enUS": "Can be Inserted into Socketed Items"
+  },
+  {
+    "id": 21885,
+    "Key": "ItemExpansiveChancX",
+    "koKR": "공격 시 %d%% 확률로 %d 레벨 %s 시전",
+    "enUS": "%d%% Chance to cast level %d %s on attack"
+  },
+  {
+    "id": 21886,
+    "Key": "ItemExpansiveChanc1",
+    "koKR": "타격 시 %d%% 확률로 %d 레벨 %s 시전",
+    "enUS": "%d%% Chance to cast level %d %s on striking"
+  },
+  {
+    "id": 21887,
+    "Key": "ItemExpansiveChanc2",
+    "koKR": "피격 시 %d%% 확률로 %d 레벨 %s 시전",
+    "enUS": "%d%% Chance to cast level %d %s when struck"
+  },
+  {
+    "id": 21888,
+    "Key": "ItemExpcharmdesc",
+    "koKR": "소지품에 보관 시 보너스 획득",
+    "enUS": "Keep in inventory to gain bonus"
+  },
+  {
+    "id": 22745,
+    "Key": "strethereal",
+    "koKR": "무형 (수리 불가)",
+    "enUS": "Ethereal (Cannot be Repaired)"
+  },
+  {
+    "id": 22746,
+    "Key": "stretherealnonrepair",
+    "koKR": "이 아이템은 수리할 수 없습니다.",
+    "enUS": "This item cannot be repaired."
+  },
+  {
+    "id": 23001,
+    "Key": "ModStr2uPercent",
+    "koKR": "받는 물리 피해 %d%% 감소",
+    "enUS": "Physical Damage Received Reduced by %d%%"
+  },
+  {
+    "id": 23004,
+    "Key": "ItemModifierClassSkill",
+    "koKR": "%+d %s %s",
+    "enUS": "%+d to %s %s"
+  },
+  {
+    "id": 23005,
+    "Key": "ItemModifierNonClassSkill",
+    "koKR": "%+d %s",
+    "enUS": "%+d to %s"
+  },
+  {
+    "id": 23049,
+    "Key": "strItemModEtherealSocketed",
+    "koKR": "무형 (수리 불가), 홈 있음 (%i)",
+    "enUS": "Ethereal (Cannot be Repaired), Socketed (%i)"
+  },
+  {
+    "id": 23050,
+    "Key": "strItemStatThrowDamageRange",
+    "koKR": "투척 피해: %d - %d",
+    "enUS": "Throw Damage: %d to %d"
+  },
+  {
+    "id": 26333,
+    "Key": "UseTokenOfAbsolution",
+    "koKR": "오른쪽 클릭으로 능력치/기술 포인트 초기화",
+    "enUS": "Right Click to reset Stat/Skill Points"
+  },
+  {
+    "id": 26360,
+    "Key": "MalahsPotionDescription",
+    "koKR": "안야를 녹이는 데 사용",
+    "enUS": "Keep it to thaw Anya"
+  },
+  {
+    "id": 26705,
+    "Key": "ItemModifierPersonalized",
+    "koKR": "이름 새겨짐",
+    "enUS": "Personalized"
+  },
+  {
+    "id": 27212,
+    "Key": "ModStr6j",
+    "koKR": "%+d%% 확률로 수량을 소모하지 않음",
+    "enUS": "%+d%% Chance to not consume Quantity"
+  },
+  {
+    "id": 27339,
+    "Key": "ModItemMonColdSunder",
+    "koKR": "괴물의 냉기 면역이 파괴됨",
+    "enUS": "Monster Cold Immunity is Sundered"
+  },
+  {
+    "id": 27340,
+    "Key": "ModItemMonFireSunder",
+    "koKR": "괴물의 화염 면역이 파괴됨",
+    "enUS": "Monster Fire Immunity is Sundered"
+  },
+  {
+    "id": 27341,
+    "Key": "ModItemMonLightSunder",
+    "koKR": "괴물의 번개 면역이 파괴됨",
+    "enUS": "Monster Lightning Immunity is Sundered"
+  },
+  {
+    "id": 27342,
+    "Key": "ModItemMonPoisonSunder",
+    "koKR": "괴물의 독 면역이 파괴됨",
+    "enUS": "Monster Poison Immunity is Sundered"
+  },
+  {
+    "id": 27343,
+    "Key": "ModItemMonPhysicalSunder",
+    "koKR": "괴물의 물리 면역이 파괴됨",
+    "enUS": "Monster Physical Immunity is Sundered"
+  },
+  {
+    "id": 27344,
+    "Key": "ModItemMonMagicSunder",
+    "koKR": "괴물의 마법 면역이 파괴됨",
+    "enUS": "Monster Magic Immunity is Sundered"
+  },
+  {
+    "id": 27351,
+    "Key": "ModStr2uPercentNegative",
+    "koKR": "받는 물리 피해 %d%% 증가",
+    "enUS": "Physical Damage Received Increased by %d%%"
+  },
+  {
+    "id": 27371,
+    "Key": "ModStr6k",
+    "koKR": "필살기가 충전을 소모하지 않을 확률 %+d%%",
+    "enUS": "%+d%% chance for finishing moves to not consume charges"
+  },
+  {
+    "id": 27374,
+    "Key": "ModStr6l",
+    "koKR": "공격 속도 %+d%%",
+    "enUS": "%+d%% Attack Speed"
+  }
+]

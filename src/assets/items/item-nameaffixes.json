@@ -1,0 +1,6032 @@
+[
+  {
+    "id": 1723,
+    "Key": "Low Quality",
+    "koKR": "질 낮은",
+    "enUS": "Low Quality"
+  },
+  {
+    "id": 1724,
+    "Key": "Damaged",
+    "koKR": "파손된",
+    "enUS": "Damaged"
+  },
+  {
+    "id": 1725,
+    "Key": "Cracked",
+    "koKR": "손상된",
+    "enUS": "Cracked"
+  },
+  {
+    "id": 1727,
+    "Key": "Hiquality",
+    "koKR": "고급",
+    "enUS": "Superior"
+  },
+  {
+    "id": 1728,
+    "Key": "Gemmed",
+    "koKR": "보석 박힌",
+    "enUS": "Gemmed"
+  },
+  {
+    "id": 1729,
+    "Key": "Resiliant",
+    "koKR": "튼튼한",
+    "enUS": "Resilient"
+  },
+  {
+    "id": 1730,
+    "Key": "Sturdy",
+    "koKR": "공고한",
+    "enUS": "Sturdy"
+  },
+  {
+    "id": 1731,
+    "Key": "Strong",
+    "koKR": "힘센",
+    "enUS": "Strong"
+  },
+  {
+    "id": 1732,
+    "Key": "Glorious",
+    "koKR": "영예로운",
+    "enUS": "Glorious"
+  },
+  {
+    "id": 1733,
+    "Key": "Blessed",
+    "koKR": "축복받은",
+    "enUS": "Blessed"
+  },
+  {
+    "id": 1734,
+    "Key": "Saintly",
+    "koKR": "성인의",
+    "enUS": "Saintly"
+  },
+  {
+    "id": 1735,
+    "Key": "Holy",
+    "koKR": "성스러운",
+    "enUS": "Holy"
+  },
+  {
+    "id": 1736,
+    "Key": "Devious",
+    "koKR": "간악한",
+    "enUS": "Devious"
+  },
+  {
+    "id": 1737,
+    "Key": "Fortified",
+    "koKR": "강화된",
+    "enUS": "Fortified"
+  },
+  {
+    "id": 1738,
+    "Key": "Urgent",
+    "koKR": "긴박한",
+    "enUS": "Urgent"
+  },
+  {
+    "id": 1739,
+    "Key": "Fleet",
+    "koKR": "잽싼",
+    "enUS": "Fleet"
+  },
+  {
+    "id": 1740,
+    "Key": "Muscular",
+    "koKR": "근육질",
+    "enUS": "Muscular"
+  },
+  {
+    "id": 1741,
+    "Key": "Jagged",
+    "koKR": "톱날의",
+    "enUS": "Jagged"
+  },
+  {
+    "id": 1742,
+    "Key": "Deadly",
+    "koKR": "치명적인",
+    "enUS": "Deadly"
+  },
+  {
+    "id": 1743,
+    "Key": "Vicious",
+    "koKR": "사악한",
+    "enUS": "Vicious"
+  },
+  {
+    "id": 1744,
+    "Key": "Brutal",
+    "koKR": "냉혹한",
+    "enUS": "Brutal"
+  },
+  {
+    "id": 1745,
+    "Key": "Massive",
+    "koKR": "육중한",
+    "enUS": "Massive"
+  },
+  {
+    "id": 1746,
+    "Key": "Savage",
+    "koKR": "맹렬한",
+    "enUS": "Savage"
+  },
+  {
+    "id": 1747,
+    "Key": "Merciless",
+    "koKR": "사정없는",
+    "enUS": "Merciless"
+  },
+  {
+    "id": 1748,
+    "Key": "Vulpine",
+    "koKR": "간사한",
+    "enUS": "Vulpine"
+  },
+  {
+    "id": 1749,
+    "Key": "Swift",
+    "koKR": "날랜",
+    "enUS": "Swift"
+  },
+  {
+    "id": 1750,
+    "Key": "Artful",
+    "koKR": "예술적인",
+    "enUS": "Artful"
+  },
+  {
+    "id": 1752,
+    "Key": "Adroit",
+    "koKR": "능숙한",
+    "enUS": "Adroit"
+  },
+  {
+    "id": 1753,
+    "Key": "Tireless",
+    "koKR": "지칠 줄 모르는",
+    "enUS": "Tireless"
+  },
+  {
+    "id": 1754,
+    "Key": "Rugged",
+    "koKR": "다부진",
+    "enUS": "Rugged"
+  },
+  {
+    "id": 1755,
+    "Key": "Bronze",
+    "koKR": "청동의",
+    "enUS": "Bronze"
+  },
+  {
+    "id": 1756,
+    "Key": "Iron",
+    "koKR": "철의",
+    "enUS": "Iron"
+  },
+  {
+    "id": 1757,
+    "Key": "Steel",
+    "koKR": "강철의",
+    "enUS": "Steel"
+  },
+  {
+    "id": 1758,
+    "Key": "Silver",
+    "koKR": "은의",
+    "enUS": "Silver"
+  },
+  {
+    "id": 1759,
+    "Key": "Gold",
+    "koKR": "금의",
+    "enUS": "Gold"
+  },
+  {
+    "id": 1760,
+    "Key": "Platinum",
+    "koKR": "백금의",
+    "enUS": "Platinum"
+  },
+  {
+    "id": 1761,
+    "Key": "Meteoric",
+    "koKR": "운석의",
+    "enUS": "Meteoric"
+  },
+  {
+    "id": 1762,
+    "Key": "Sharp",
+    "koKR": "날카로운",
+    "enUS": "Sharp"
+  },
+  {
+    "id": 1763,
+    "Key": "Fine",
+    "koKR": "우수한",
+    "enUS": "Fine"
+  },
+  {
+    "id": 1764,
+    "Key": "Warrior's",
+    "koKR": "전사의",
+    "enUS": "Warrior's"
+  },
+  {
+    "id": 1765,
+    "Key": "Soldier's",
+    "koKR": "병사의",
+    "enUS": "Soldier's"
+  },
+  {
+    "id": 1766,
+    "Key": "Knight's",
+    "koKR": "기사의",
+    "enUS": "Knight's"
+  },
+  {
+    "id": 1767,
+    "Key": "Lord's",
+    "koKR": "군주의",
+    "enUS": "Lord's"
+  },
+  {
+    "id": 1768,
+    "Key": "King's",
+    "koKR": "왕의",
+    "enUS": "King's"
+  },
+  {
+    "id": 1769,
+    "Key": "Howling",
+    "koKR": "울부짖는",
+    "enUS": "Howling"
+  },
+  {
+    "id": 1770,
+    "Key": "Fortuitous",
+    "koKR": "우연한",
+    "enUS": "Fortuitous"
+  },
+  {
+    "id": 1771,
+    "Key": "Brilliant",
+    "koKR": "무지막지한",
+    "enUS": "Brilliant"
+  },
+  {
+    "id": 1772,
+    "Key": "Omniscient",
+    "koKR": "전지적",
+    "enUS": "Omniscient"
+  },
+  {
+    "id": 1773,
+    "Key": "Sage",
+    "koKR": "현명",
+    "enUS": "Sage"
+  },
+  {
+    "id": 1774,
+    "Key": "Shrewd",
+    "koKR": "예리한",
+    "enUS": "Shrewd"
+  },
+  {
+    "id": 1775,
+    "Key": "Vivid",
+    "koKR": "선명한",
+    "enUS": "Vivid"
+  },
+  {
+    "id": 1776,
+    "Key": "Glimmering",
+    "koKR": "명멸하는",
+    "enUS": "Glimmering"
+  },
+  {
+    "id": 1777,
+    "Key": "Glowing",
+    "koKR": "이채로운",
+    "enUS": "Glowing"
+  },
+  {
+    "id": 1778,
+    "Key": "Bright",
+    "koKR": "밝은",
+    "enUS": "Bright"
+  },
+  {
+    "id": 1779,
+    "Key": "Solar",
+    "koKR": "태양의",
+    "enUS": "Solar"
+  },
+  {
+    "id": 1780,
+    "Key": "Lizard's",
+    "koKR": "도마뱀의",
+    "enUS": "Lizard's"
+  },
+  {
+    "id": 1781,
+    "Key": "Forceful",
+    "koKR": "강압적인",
+    "enUS": "Forceful"
+  },
+  {
+    "id": 1782,
+    "Key": "Snake's",
+    "koKR": "뱀의",
+    "enUS": "Snake's"
+  },
+  {
+    "id": 1783,
+    "Key": "Serpent's",
+    "koKR": "구렁이의",
+    "enUS": "Serpent's"
+  },
+  {
+    "id": 1784,
+    "Key": "Drake's",
+    "koKR": "비룡의",
+    "enUS": "Drake's"
+  },
+  {
+    "id": 1785,
+    "Key": "Dragon's",
+    "koKR": "용의",
+    "enUS": "Dragon's"
+  },
+  {
+    "id": 1786,
+    "Key": "Wyrm's",
+    "koKR": "고룡의",
+    "enUS": "Wyrm's"
+  },
+  {
+    "id": 1787,
+    "Key": "Dazzling",
+    "koKR": "눈부신",
+    "enUS": "Dazzling"
+  },
+  {
+    "id": 1788,
+    "Key": "Facinating",
+    "koKR": "호화로운",
+    "enUS": "Fascinating"
+  },
+  {
+    "id": 1789,
+    "Key": "Prismatic",
+    "koKR": "휘황한",
+    "enUS": "Prismatic"
+  },
+  {
+    "id": 1790,
+    "Key": "Azure",
+    "koKR": "하늘색",
+    "enUS": "Azure"
+  },
+  {
+    "id": 1791,
+    "Key": "Lapis",
+    "koKR": "청금석",
+    "enUS": "Lapis"
+  },
+  {
+    "id": 1792,
+    "Key": "Cobalt",
+    "koKR": "군청색",
+    "enUS": "Cobalt"
+  },
+  {
+    "id": 1793,
+    "Key": "Indigo",
+    "koKR": "남색",
+    "enUS": "Indigo"
+  },
+  {
+    "id": 1794,
+    "Key": "Sapphire",
+    "koKR": "사파이어색",
+    "enUS": "Sapphire"
+  },
+  {
+    "id": 1795,
+    "Key": "Cerulean",
+    "koKR": "연청색",
+    "enUS": "Cerulean"
+  },
+  {
+    "id": 1796,
+    "Key": "Red",
+    "koKR": "붉은색",
+    "enUS": "Red"
+  },
+  {
+    "id": 1797,
+    "Key": "Crimson",
+    "koKR": "심홍색",
+    "enUS": "Crimson"
+  },
+  {
+    "id": 1798,
+    "Key": "Burgundy",
+    "koKR": "암적색",
+    "enUS": "Burgundy"
+  },
+  {
+    "id": 1799,
+    "Key": "Garnet",
+    "koKR": "석류석",
+    "enUS": "Garnet"
+  },
+  {
+    "id": 1800,
+    "Key": "Russet",
+    "koKR": "적갈색",
+    "enUS": "Russet"
+  },
+  {
+    "id": 1801,
+    "Key": "Ruby",
+    "koKR": "루비색",
+    "enUS": "Ruby"
+  },
+  {
+    "id": 1802,
+    "Key": "Vermilion",
+    "koKR": "주색",
+    "enUS": "Vermilion"
+  },
+  {
+    "id": 1803,
+    "Key": "Orange",
+    "koKR": "주황색",
+    "enUS": "Orange"
+  },
+  {
+    "id": 1804,
+    "Key": "Ocher",
+    "koKR": "황갈색",
+    "enUS": "Ocher"
+  },
+  {
+    "id": 1805,
+    "Key": "Tangerine",
+    "koKR": "귤색",
+    "enUS": "Tangerine"
+  },
+  {
+    "id": 1806,
+    "Key": "Coral",
+    "koKR": "산호색",
+    "enUS": "Coral"
+  },
+  {
+    "id": 1807,
+    "Key": "Crackling",
+    "koKR": "탁탁거리는",
+    "enUS": "Crackling"
+  },
+  {
+    "id": 1808,
+    "Key": "Amber",
+    "koKR": "호박색",
+    "enUS": "Amber"
+  },
+  {
+    "id": 1809,
+    "Key": "Forked",
+    "koKR": "갈린",
+    "enUS": "Forked"
+  },
+  {
+    "id": 1811,
+    "Key": "Beryl",
+    "koKR": "녹주색",
+    "enUS": "Beryl"
+  },
+  {
+    "id": 1812,
+    "Key": "Jade",
+    "koKR": "비취색",
+    "enUS": "Jade"
+  },
+  {
+    "id": 1813,
+    "Key": "Viridian",
+    "koKR": "청록색",
+    "enUS": "Viridian"
+  },
+  {
+    "id": 1814,
+    "Key": "Vital",
+    "koKR": "생생한",
+    "enUS": "Vital"
+  },
+  {
+    "id": 1815,
+    "Key": "Emerald",
+    "koKR": "에메랄드색",
+    "enUS": "Emerald"
+  },
+  {
+    "id": 1816,
+    "Key": "Enduring",
+    "koKR": "강인함의",
+    "enUS": "Enduring"
+  },
+  {
+    "id": 1817,
+    "Key": "Fletcher's",
+    "koKR": "화살장이의",
+    "enUS": "Fletcher's"
+  },
+  {
+    "id": 1818,
+    "Key": "Archer's",
+    "koKR": "궁수의",
+    "enUS": "Archer's"
+  },
+  {
+    "id": 1819,
+    "Key": "Monk's",
+    "koKR": "수도사의",
+    "enUS": "Monk's"
+  },
+  {
+    "id": 1820,
+    "Key": "Priest's",
+    "koKR": "사제의",
+    "enUS": "Priest's"
+  },
+  {
+    "id": 1821,
+    "Key": "Summoner's",
+    "koKR": "소환사의",
+    "enUS": "Summoner's"
+  },
+  {
+    "id": 1822,
+    "Key": "Necromancer's",
+    "koKR": "강령술사의",
+    "enUS": "Necromancer's"
+  },
+  {
+    "id": 1823,
+    "Key": "Angel's",
+    "koKR": "천사의",
+    "enUS": "Angel's"
+  },
+  {
+    "id": 1824,
+    "Key": "Arch-Angel's",
+    "koKR": "대천사의",
+    "enUS": "Arch-Angel's"
+  },
+  {
+    "id": 1825,
+    "Key": "Slayer's",
+    "koKR": "학살자의",
+    "enUS": "Slayer's"
+  },
+  {
+    "id": 1826,
+    "Key": "Berserker's",
+    "koKR": "광전사의",
+    "enUS": "Berserker's"
+  },
+  {
+    "id": 1827,
+    "Key": "Kicking",
+    "koKR": "걷어차는",
+    "enUS": "Kicking"
+  },
+  {
+    "id": 1828,
+    "Key": "Triumphant",
+    "koKR": "승전보의",
+    "enUS": "Triumphant"
+  },
+  {
+    "id": 1829,
+    "Key": "Mighty",
+    "koKR": "위세의",
+    "enUS": "Mighty"
+  },
+  {
+    "id": 1830,
+    "Key": "Energizing",
+    "koKR": "보양하는",
+    "enUS": "Energizing"
+  },
+  {
+    "id": 1832,
+    "Key": "Empowering",
+    "koKR": "힘을 주는",
+    "enUS": "Empowering"
+  },
+  {
+    "id": 1833,
+    "Key": "Brisk",
+    "koKR": "선선한",
+    "enUS": "Brisk"
+  },
+  {
+    "id": 1834,
+    "Key": "Tough",
+    "koKR": "질긴",
+    "enUS": "Tough"
+  },
+  {
+    "id": 1835,
+    "Key": "Hardy",
+    "koKR": "탄탄한",
+    "enUS": "Hardy"
+  },
+  {
+    "id": 1836,
+    "Key": "Robust",
+    "koKR": "팔팔한",
+    "enUS": "Robust"
+  },
+  {
+    "id": 1837,
+    "Key": "of Health",
+    "koKR": "건강의",
+    "enUS": "of Health"
+  },
+  {
+    "id": 1838,
+    "Key": "of Protection",
+    "koKR": "보호의",
+    "enUS": "of Protection"
+  },
+  {
+    "id": 1839,
+    "Key": "of Absorption",
+    "koKR": "흡수의",
+    "enUS": "of Absorption"
+  },
+  {
+    "id": 1840,
+    "Key": "of Warding",
+    "koKR": "수호의",
+    "enUS": "of Warding"
+  },
+  {
+    "id": 1841,
+    "Key": "of the Sentinel",
+    "koKR": "파수꾼의",
+    "enUS": "of the Sentinel"
+  },
+  {
+    "id": 1842,
+    "Key": "of Guarding",
+    "koKR": "방어의",
+    "enUS": "of Guarding"
+  },
+  {
+    "id": 1843,
+    "Key": "of Negation",
+    "koKR": "부정의",
+    "enUS": "of Negation"
+  },
+  {
+    "id": 1844,
+    "Key": "of Piercing",
+    "koKR": "관통의",
+    "enUS": "of Piercing"
+  },
+  {
+    "id": 1845,
+    "Key": "of Bashing",
+    "koKR": "강격의",
+    "enUS": "of Bashing"
+  },
+  {
+    "id": 1846,
+    "Key": "of Puncturing",
+    "koKR": "관통의",
+    "enUS": "of Puncturing"
+  },
+  {
+    "id": 1847,
+    "Key": "of Thorns",
+    "koKR": "바늘의",
+    "enUS": "of Thorns"
+  },
+  {
+    "id": 1848,
+    "Key": "of Spikes",
+    "koKR": "쐐기의",
+    "enUS": "of Spikes"
+  },
+  {
+    "id": 1849,
+    "Key": "of Readiness",
+    "koKR": "준비성의",
+    "enUS": "of Readiness"
+  },
+  {
+    "id": 1850,
+    "Key": "of Alacrity",
+    "koKR": "날렵함의",
+    "enUS": "of Alacrity"
+  },
+  {
+    "id": 1851,
+    "Key": "of Swiftness",
+    "koKR": "빠름의",
+    "enUS": "of Swiftness"
+  },
+  {
+    "id": 1852,
+    "Key": "of Quickness",
+    "koKR": "기민의",
+    "enUS": "of Quickness"
+  },
+  {
+    "id": 1853,
+    "Key": "of Blocking",
+    "koKR": "막기의",
+    "enUS": "of Blocking"
+  },
+  {
+    "id": 1854,
+    "Key": "of Deflecting",
+    "koKR": "차폐의",
+    "enUS": "of Deflecting"
+  },
+  {
+    "id": 1855,
+    "Key": "of the Apprentice",
+    "koKR": "수습생의",
+    "enUS": "of the Apprentice"
+  },
+  {
+    "id": 1856,
+    "Key": "of the Magus",
+    "koKR": "마술사의",
+    "enUS": "of the Magus"
+  },
+  {
+    "id": 1857,
+    "Key": "of Frost",
+    "koKR": "서리의",
+    "enUS": "of Frost"
+  },
+  {
+    "id": 1858,
+    "Key": "of the Glacier",
+    "koKR": "빙하의",
+    "enUS": "of the Glacier"
+  },
+  {
+    "id": 1859,
+    "Key": "of Warmth",
+    "koKR": "해빙의",
+    "enUS": "of Thawing"
+  },
+  {
+    "id": 1860,
+    "Key": "of Flame",
+    "koKR": "불꽃의",
+    "enUS": "of Flame"
+  },
+  {
+    "id": 1861,
+    "Key": "of Fire",
+    "koKR": "불의",
+    "enUS": "of Fire"
+  },
+  {
+    "id": 1862,
+    "Key": "of Burning",
+    "koKR": "작열의",
+    "enUS": "of Burning"
+  },
+  {
+    "id": 1863,
+    "Key": "of Shock",
+    "koKR": "충격의",
+    "enUS": "of Shock"
+  },
+  {
+    "id": 1864,
+    "Key": "of Lightning",
+    "koKR": "번개의",
+    "enUS": "of Lightning"
+  },
+  {
+    "id": 1865,
+    "Key": "of Thunder",
+    "koKR": "천둥의",
+    "enUS": "of Thunder"
+  },
+  {
+    "id": 1866,
+    "Key": "of Craftsmanship",
+    "koKR": "세공술의",
+    "enUS": "of Craftmanship"
+  },
+  {
+    "id": 1867,
+    "Key": "of Quality",
+    "koKR": "품질의",
+    "enUS": "of Quality"
+  },
+  {
+    "id": 1868,
+    "Key": "of Maiming",
+    "koKR": "폭행의",
+    "enUS": "of Maiming"
+  },
+  {
+    "id": 1869,
+    "Key": "of Slaying",
+    "koKR": "퇴치의",
+    "enUS": "of Slaying"
+  },
+  {
+    "id": 1870,
+    "Key": "of Gore",
+    "koKR": "선혈의",
+    "enUS": "of Gore"
+  },
+  {
+    "id": 1871,
+    "Key": "of Carnage",
+    "koKR": "대학살의",
+    "enUS": "of Carnage"
+  },
+  {
+    "id": 1872,
+    "Key": "of Slaughter",
+    "koKR": "도살의",
+    "enUS": "of Slaughter"
+  },
+  {
+    "id": 1873,
+    "Key": "of Worth",
+    "koKR": "가치의",
+    "enUS": "of Worth"
+  },
+  {
+    "id": 1874,
+    "Key": "of Measure",
+    "koKR": "조치의",
+    "enUS": "of Measure"
+  },
+  {
+    "id": 1875,
+    "Key": "of Excellence",
+    "koKR": "탁월의",
+    "enUS": "of Excellence"
+  },
+  {
+    "id": 1876,
+    "Key": "of Performance",
+    "koKR": "성능의",
+    "enUS": "of Performance"
+  },
+  {
+    "id": 1877,
+    "Key": "of Blight",
+    "koKR": "괴멸의",
+    "enUS": "of Blight"
+  },
+  {
+    "id": 1878,
+    "Key": "of Venom",
+    "koKR": "맹독의",
+    "enUS": "of Venom"
+  },
+  {
+    "id": 1879,
+    "Key": "of Pestilence",
+    "koKR": "해충의",
+    "enUS": "of Pestilence"
+  },
+  {
+    "id": 1880,
+    "Key": "of Dexterity",
+    "koKR": "민첩의",
+    "enUS": "of Dexterity"
+  },
+  {
+    "id": 1881,
+    "Key": "of Skill",
+    "koKR": "기술의",
+    "enUS": "of Skill"
+  },
+  {
+    "id": 1882,
+    "Key": "of Accuracy",
+    "koKR": "정확성의",
+    "enUS": "of Accuracy"
+  },
+  {
+    "id": 1883,
+    "Key": "of Precision",
+    "koKR": "정밀도의",
+    "enUS": "of Precision"
+  },
+  {
+    "id": 1884,
+    "Key": "of Perfection",
+    "koKR": "완벽함의",
+    "enUS": "of Perfection"
+  },
+  {
+    "id": 1885,
+    "Key": "of Balance",
+    "koKR": "균형의",
+    "enUS": "of Balance"
+  },
+  {
+    "id": 1886,
+    "Key": "of Stability",
+    "koKR": "안정성의",
+    "enUS": "of Stability"
+  },
+  {
+    "id": 1887,
+    "Key": "of the Horse",
+    "koKR": "말의",
+    "enUS": "of the Horse"
+  },
+  {
+    "id": 1888,
+    "Key": "of Regeneration",
+    "koKR": "재생의",
+    "enUS": "of Regeneration"
+  },
+  {
+    "id": 1889,
+    "Key": "of Regrowth",
+    "koKR": "재성장의",
+    "enUS": "of Regrowth"
+  },
+  {
+    "id": 1890,
+    "Key": "of Vileness",
+    "koKR": "악독의",
+    "enUS": "of Vileness"
+  },
+  {
+    "id": 1891,
+    "Key": "of Greed",
+    "koKR": "욕심의",
+    "enUS": "of Greed"
+  },
+  {
+    "id": 1892,
+    "Key": "of Wealth",
+    "koKR": "부의",
+    "enUS": "of Wealth"
+  },
+  {
+    "id": 1893,
+    "Key": "of Chance",
+    "koKR": "기회의",
+    "enUS": "of Chance"
+  },
+  {
+    "id": 1894,
+    "Key": "of Fortune",
+    "koKR": "행운의",
+    "enUS": "of Fortune"
+  },
+  {
+    "id": 1895,
+    "Key": "of Energy",
+    "koKR": "마력의",
+    "enUS": "of Energy"
+  },
+  {
+    "id": 1896,
+    "Key": "of the Mind",
+    "koKR": "정신의",
+    "enUS": "of the Mind"
+  },
+  {
+    "id": 1897,
+    "Key": "of Brilliance",
+    "koKR": "총명의",
+    "enUS": "of Brilliance"
+  },
+  {
+    "id": 1898,
+    "Key": "of Sorcery",
+    "koKR": "마술의",
+    "enUS": "of Sorcery"
+  },
+  {
+    "id": 1899,
+    "Key": "of Wizardry",
+    "koKR": "마법의",
+    "enUS": "of Wizardry"
+  },
+  {
+    "id": 1900,
+    "Key": "of the Bear",
+    "koKR": "곰의",
+    "enUS": "of the Bear"
+  },
+  {
+    "id": 1901,
+    "Key": "of Light",
+    "koKR": "빛의",
+    "enUS": "of Light"
+  },
+  {
+    "id": 1902,
+    "Key": "of Radiance",
+    "koKR": "광휘의",
+    "enUS": "of Radiance"
+  },
+  {
+    "id": 1903,
+    "Key": "of the Sun",
+    "koKR": "태양의",
+    "enUS": "of the Sun"
+  },
+  {
+    "id": 1904,
+    "Key": "of Life",
+    "koKR": "생명력의",
+    "enUS": "of Life"
+  },
+  {
+    "id": 1905,
+    "Key": "of the Jackal",
+    "koKR": "자칼의",
+    "enUS": "of the Jackal"
+  },
+  {
+    "id": 1906,
+    "Key": "of the Fox",
+    "koKR": "여우의",
+    "enUS": "of the Fox"
+  },
+  {
+    "id": 1907,
+    "Key": "of the Wolf",
+    "koKR": "늑대의",
+    "enUS": "of the Wolf"
+  },
+  {
+    "id": 1908,
+    "Key": "of the Tiger",
+    "koKR": "호랑이의",
+    "enUS": "of the Tiger"
+  },
+  {
+    "id": 1909,
+    "Key": "of the Mammoth",
+    "koKR": "매머드의",
+    "enUS": "of the Mammoth"
+  },
+  {
+    "id": 1910,
+    "Key": "of the Colosuss",
+    "koKR": "거수의",
+    "enUS": "of the Colossus"
+  },
+  {
+    "id": 1911,
+    "Key": "of the Leech",
+    "koKR": "거머리의",
+    "enUS": "of the Leech"
+  },
+  {
+    "id": 1912,
+    "Key": "of the Locust",
+    "koKR": "메뚜기 떼의",
+    "enUS": "of the Locust"
+  },
+  {
+    "id": 1913,
+    "Key": "of the Bat",
+    "koKR": "박쥐의",
+    "enUS": "of the Bat"
+  },
+  {
+    "id": 1914,
+    "Key": "of the Vampire",
+    "koKR": "흡혈귀의",
+    "enUS": "of the Vampire"
+  },
+  {
+    "id": 1915,
+    "Key": "of Defiance",
+    "koKR": "반발의",
+    "enUS": "of Defiance"
+  },
+  {
+    "id": 1916,
+    "Key": "of Remedy",
+    "koKR": "치료의",
+    "enUS": "of Remedy"
+  },
+  {
+    "id": 1917,
+    "Key": "of Amelioration",
+    "koKR": "향상의",
+    "enUS": "of Amelioration"
+  },
+  {
+    "id": 1918,
+    "Key": "of Ice",
+    "koKR": "얼음의",
+    "enUS": "of Ice"
+  },
+  {
+    "id": 1919,
+    "Key": "of Simplicity",
+    "koKR": "단순성의",
+    "enUS": "of Simplicity"
+  },
+  {
+    "id": 1920,
+    "Key": "of Ease",
+    "koKR": "편의의",
+    "enUS": "of Ease"
+  },
+  {
+    "id": 1921,
+    "Key": "of the Mule",
+    "koKR": "노새의",
+    "enUS": "of the Mule"
+  },
+  {
+    "id": 1922,
+    "Key": "of Strength",
+    "koKR": "힘의",
+    "enUS": "of Strength"
+  },
+  {
+    "id": 1923,
+    "Key": "of Might",
+    "koKR": "위세의",
+    "enUS": "of Might"
+  },
+  {
+    "id": 1924,
+    "Key": "of the Ox",
+    "koKR": "소의",
+    "enUS": "of the Ox"
+  },
+  {
+    "id": 1925,
+    "Key": "of the Giant",
+    "koKR": "거인의",
+    "enUS": "of the Giant"
+  },
+  {
+    "id": 1926,
+    "Key": "of the Titan",
+    "koKR": "거한의",
+    "enUS": "of the Titan"
+  },
+  {
+    "id": 1927,
+    "Key": "of Pacing",
+    "koKR": "보조의",
+    "enUS": "of Pacing"
+  },
+  {
+    "id": 1928,
+    "Key": "of Haste",
+    "koKR": "신속의",
+    "enUS": "of Haste"
+  },
+  {
+    "id": 1929,
+    "Key": "of Speed",
+    "koKR": "속도의",
+    "enUS": "of Speed"
+  },
+  {
+    "id": 2215,
+    "Key": "gld",
+    "koKR": "금화",
+    "enUS": "Gold"
+  },
+  {
+    "id": 2248,
+    "Key": "gsb",
+    "koKR": "사파이어",
+    "enUS": "Sapphire"
+  },
+  {
+    "id": 2254,
+    "Key": "gsg",
+    "koKR": "에메랄드",
+    "enUS": "Emerald"
+  },
+  {
+    "id": 2258,
+    "Key": "gsr",
+    "koKR": "루비",
+    "enUS": "Ruby"
+  },
+  {
+    "id": 2263,
+    "Key": "gsw",
+    "koKR": "다이아몬드",
+    "enUS": "Diamond"
+  },
+  {
+    "id": 2282,
+    "Key": "Beast",
+    "koKR": "야수의",
+    "enUS": "Beast"
+  },
+  {
+    "id": 2283,
+    "Key": "Eagle",
+    "koKR": "독수리의",
+    "enUS": "Eagle"
+  },
+  {
+    "id": 2285,
+    "Key": "Viper",
+    "koKR": "독사의",
+    "enUS": "Viper"
+  },
+  {
+    "id": 2287,
+    "Key": "Skull",
+    "koKR": "해골의",
+    "enUS": "Skull"
+  },
+  {
+    "id": 2288,
+    "Key": "Blood",
+    "koKR": "피의",
+    "enUS": "Blood"
+  },
+  {
+    "id": 2289,
+    "Key": "Dread",
+    "koKR": "공포의",
+    "enUS": "Dread"
+  },
+  {
+    "id": 2290,
+    "Key": "Doom",
+    "koKR": "파멸의",
+    "enUS": "Doom"
+  },
+  {
+    "id": 2291,
+    "Key": "Grim",
+    "koKR": "악랄한",
+    "enUS": "Grim"
+  },
+  {
+    "id": 2292,
+    "Key": "Bone",
+    "koKR": "뼈의",
+    "enUS": "Bone"
+  },
+  {
+    "id": 2293,
+    "Key": "Death",
+    "koKR": "죽음의",
+    "enUS": "Death"
+  },
+  {
+    "id": 2294,
+    "Key": "Shadow",
+    "koKR": "그림자의",
+    "enUS": "Shadow"
+  },
+  {
+    "id": 2295,
+    "Key": "Storm",
+    "koKR": "폭풍의",
+    "enUS": "Storm"
+  },
+  {
+    "id": 2296,
+    "Key": "Rune",
+    "koKR": "룬",
+    "enUS": "Rune"
+  },
+  {
+    "id": 2297,
+    "Key": "PlagueRI",
+    "koKR": "역병",
+    "enUS": "Plague"
+  },
+  {
+    "id": 2298,
+    "Key": "Stone",
+    "koKR": "돌의",
+    "enUS": "Stone"
+  },
+  {
+    "id": 2300,
+    "Key": "Spirit",
+    "koKR": "기백의",
+    "enUS": "Spirit"
+  },
+  {
+    "id": 2301,
+    "Key": "Demon",
+    "koKR": "악마의",
+    "enUS": "Demon"
+  },
+  {
+    "id": 2302,
+    "Key": "Cruel",
+    "koKR": "잔혹한",
+    "enUS": "Cruel"
+  },
+  {
+    "id": 2303,
+    "Key": "Empyrion",
+    "koKR": "창공의",
+    "enUS": "Empyrian"
+  },
+  {
+    "id": 2304,
+    "Key": "Bramble",
+    "koKR": "찔레의",
+    "enUS": "Bramble"
+  },
+  {
+    "id": 2305,
+    "Key": "Pain",
+    "koKR": "고통의",
+    "enUS": "Pain"
+  },
+  {
+    "id": 2306,
+    "Key": "Loath",
+    "koKR": "지긋지긋한",
+    "enUS": "Loath"
+  },
+  {
+    "id": 2307,
+    "Key": "Glyph",
+    "koKR": "문양의",
+    "enUS": "Glyph"
+  },
+  {
+    "id": 2310,
+    "Key": "Hailstone",
+    "koKR": "우박의",
+    "enUS": "Hailstone"
+  },
+  {
+    "id": 2311,
+    "Key": "Gale",
+    "koKR": "질풍의",
+    "enUS": "Gale"
+  },
+  {
+    "id": 2312,
+    "Key": "Dire",
+    "koKR": "악독한",
+    "enUS": "Dire"
+  },
+  {
+    "id": 2313,
+    "Key": "Soul",
+    "koKR": "영혼의",
+    "enUS": "Soul"
+  },
+  {
+    "id": 2314,
+    "Key": "Brimstone",
+    "koKR": "유황석",
+    "enUS": "Brimstone"
+  },
+  {
+    "id": 2315,
+    "Key": "Corpse",
+    "koKR": "시체의",
+    "enUS": "Corpse"
+  },
+  {
+    "id": 2316,
+    "Key": "Carrion",
+    "koKR": "청소부의",
+    "enUS": "Carrion"
+  },
+  {
+    "id": 2318,
+    "Key": "Havoc",
+    "koKR": "파국의",
+    "enUS": "Havoc"
+  },
+  {
+    "id": 2319,
+    "Key": "Bitter",
+    "koKR": "씁쓸한",
+    "enUS": "Bitter"
+  },
+  {
+    "id": 2320,
+    "Key": "Entropy",
+    "koKR": "엔트로피의",
+    "enUS": "Entropy"
+  },
+  {
+    "id": 2321,
+    "Key": "Chaos",
+    "koKR": "혼돈의",
+    "enUS": "Chaos"
+  },
+  {
+    "id": 2322,
+    "Key": "Order",
+    "koKR": "질서의",
+    "enUS": "Order"
+  },
+  {
+    "id": 2323,
+    "Key": "Rift",
+    "koKR": "균열의",
+    "enUS": "Rift"
+  },
+  {
+    "id": 2324,
+    "Key": "Corruption",
+    "koKR": "타락의",
+    "enUS": "Corruption"
+  },
+  {
+    "id": 2325,
+    "Key": "bite",
+    "koKR": "통증",
+    "enUS": "Bite"
+  },
+  {
+    "id": 2326,
+    "Key": "scratch",
+    "koKR": "찰과",
+    "enUS": "Scratch"
+  },
+  {
+    "id": 2327,
+    "Key": "scalpel",
+    "koKR": "비수",
+    "enUS": "Scalpel"
+  },
+  {
+    "id": 2328,
+    "Key": "fang",
+    "koKR": "송곳니",
+    "enUS": "Fang"
+  },
+  {
+    "id": 2329,
+    "Key": "gutter",
+    "koKR": "적출자",
+    "enUS": "Gutter"
+  },
+  {
+    "id": 2330,
+    "Key": "thirst",
+    "koKR": "갈증",
+    "enUS": "Thirst"
+  },
+  {
+    "id": 2331,
+    "Key": "razor",
+    "koKR": "서슬",
+    "enUS": "Razor"
+  },
+  {
+    "id": 2332,
+    "Key": "scythe",
+    "koKR": "낫",
+    "enUS": "Scythe"
+  },
+  {
+    "id": 2333,
+    "Key": "edge",
+    "koKR": "날붙이",
+    "enUS": "Edge"
+  },
+  {
+    "id": 2335,
+    "Key": "splitter",
+    "koKR": "분리기",
+    "enUS": "Splitter"
+  },
+  {
+    "id": 2336,
+    "Key": "cleaver",
+    "koKR": "가르개",
+    "enUS": "Cleaver"
+  },
+  {
+    "id": 2337,
+    "Key": "sever",
+    "koKR": "절단",
+    "enUS": "Sever"
+  },
+  {
+    "id": 2338,
+    "Key": "sunder",
+    "koKR": "분리",
+    "enUS": "Sunder"
+  },
+  {
+    "id": 2339,
+    "Key": "rend",
+    "koKR": "분쇄",
+    "enUS": "Rend"
+  },
+  {
+    "id": 2340,
+    "Key": "mangler",
+    "koKR": "망나니",
+    "enUS": "Mangler"
+  },
+  {
+    "id": 2341,
+    "Key": "slayer",
+    "koKR": "학살자",
+    "enUS": "Slayer"
+  },
+  {
+    "id": 2342,
+    "Key": "reaver",
+    "koKR": "강탈자",
+    "enUS": "Reaver"
+  },
+  {
+    "id": 2343,
+    "Key": "Spawn",
+    "koKR": "종자",
+    "enUS": "Spawn"
+  },
+  {
+    "id": 2344,
+    "Key": "gnash",
+    "koKR": "이갈이",
+    "enUS": "Gnash"
+  },
+  {
+    "id": 2345,
+    "Key": "star",
+    "koKR": "별",
+    "enUS": "Star"
+  },
+  {
+    "id": 2346,
+    "Key": "blow",
+    "koKR": "타격",
+    "enUS": "Blow"
+  },
+  {
+    "id": 2347,
+    "Key": "smasher",
+    "koKR": "맹타자",
+    "enUS": "Smasher"
+  },
+  {
+    "id": 2348,
+    "Key": "Bane",
+    "koKR": "재앙",
+    "enUS": "Bane"
+  },
+  {
+    "id": 2350,
+    "Key": "breaker",
+    "koKR": "격파구",
+    "enUS": "Breaker"
+  },
+  {
+    "id": 2351,
+    "Key": "grinder",
+    "koKR": "분쇄기",
+    "enUS": "Grinder"
+  },
+  {
+    "id": 2352,
+    "Key": "crack",
+    "koKR": "열상",
+    "enUS": "Crack"
+  },
+  {
+    "id": 2353,
+    "Key": "mallet",
+    "koKR": "맬릿",
+    "enUS": "Mallet"
+  },
+  {
+    "id": 2354,
+    "Key": "knell",
+    "koKR": "타종",
+    "enUS": "Knell"
+  },
+  {
+    "id": 2355,
+    "Key": "lance",
+    "koKR": "기병창",
+    "enUS": "Lance"
+  },
+  {
+    "id": 2356,
+    "Key": "spike",
+    "koKR": "대못",
+    "enUS": "Spike"
+  },
+  {
+    "id": 2357,
+    "Key": "impaler",
+    "koKR": "송곳",
+    "enUS": "Impaler"
+  },
+  {
+    "id": 2358,
+    "Key": "skewer",
+    "koKR": "꼬챙이",
+    "enUS": "Skewer"
+  },
+  {
+    "id": 2359,
+    "Key": "prod",
+    "koKR": "재촉",
+    "enUS": "Prod"
+  },
+  {
+    "id": 2360,
+    "Key": "scourge",
+    "koKR": "참화",
+    "enUS": "Scourge"
+  },
+  {
+    "id": 2361,
+    "Key": "wand",
+    "koKR": "마법봉",
+    "enUS": "Wand"
+  },
+  {
+    "id": 2362,
+    "Key": "wrack",
+    "koKR": "와해",
+    "enUS": "Wrack"
+  },
+  {
+    "id": 2363,
+    "Key": "barb",
+    "koKR": "미늘",
+    "enUS": "Barb"
+  },
+  {
+    "id": 2364,
+    "Key": "needle",
+    "koKR": "바늘",
+    "enUS": "Needle"
+  },
+  {
+    "id": 2365,
+    "Key": "dart",
+    "koKR": "침",
+    "enUS": "Dart"
+  },
+  {
+    "id": 2366,
+    "Key": "bolt",
+    "koKR": "볼트",
+    "enUS": "Bolt"
+  },
+  {
+    "id": 2367,
+    "Key": "quarrel",
+    "koKR": "네모촉 화살",
+    "enUS": "Quarrel"
+  },
+  {
+    "id": 2368,
+    "Key": "fletch",
+    "koKR": "화살깃",
+    "enUS": "Fletch"
+  },
+  {
+    "id": 2369,
+    "Key": "flight",
+    "koKR": "비행",
+    "enUS": "Flight"
+  },
+  {
+    "id": 2370,
+    "Key": "nock",
+    "koKR": "오늬",
+    "enUS": "Nock"
+  },
+  {
+    "id": 2371,
+    "Key": "horn",
+    "koKR": "뿔",
+    "enUS": "Horn"
+  },
+  {
+    "id": 2372,
+    "Key": "stinger",
+    "koKR": "쐐기",
+    "enUS": "Stinger"
+  },
+  {
+    "id": 2373,
+    "Key": "quill",
+    "koKR": "쇠가시",
+    "enUS": "Quill"
+  },
+  {
+    "id": 2374,
+    "Key": "goad",
+    "koKR": "몰이",
+    "enUS": "Goad"
+  },
+  {
+    "id": 2375,
+    "Key": "branch",
+    "koKR": "나뭇가지",
+    "enUS": "Branch"
+  },
+  {
+    "id": 2376,
+    "Key": "spire",
+    "koKR": "첨탑",
+    "enUS": "Spire"
+  },
+  {
+    "id": 2377,
+    "Key": "song",
+    "koKR": "노래",
+    "enUS": "Song"
+  },
+  {
+    "id": 2378,
+    "Key": "call",
+    "koKR": "부름",
+    "enUS": "Call"
+  },
+  {
+    "id": 2380,
+    "Key": "spell",
+    "koKR": "주문",
+    "enUS": "Spell"
+  },
+  {
+    "id": 2381,
+    "Key": "chant",
+    "koKR": "성가",
+    "enUS": "Chant"
+  },
+  {
+    "id": 2382,
+    "Key": "weaver",
+    "koKR": "직조자",
+    "enUS": "Weaver"
+  },
+  {
+    "id": 2383,
+    "Key": "gnarl",
+    "koKR": "옹이",
+    "enUS": "Gnarl"
+  },
+  {
+    "id": 2496,
+    "Key": "Civerb's",
+    "koKR": "시버브의",
+    "enUS": "Civerb's"
+  },
+  {
+    "id": 2497,
+    "Key": "Hsarus'",
+    "koKR": "흐사루의",
+    "enUS": "Hsaru's"
+  },
+  {
+    "id": 2498,
+    "Key": "Cleglaw's",
+    "koKR": "클리글로의",
+    "enUS": "Cleglaw's"
+  },
+  {
+    "id": 2499,
+    "Key": "Iratha's",
+    "koKR": "이라타의",
+    "enUS": "Iratha's"
+  },
+  {
+    "id": 2500,
+    "Key": "Isenhart's",
+    "koKR": "아이젠하트의",
+    "enUS": "Isenhart's"
+  },
+  {
+    "id": 2501,
+    "Key": "Vidala's",
+    "koKR": "비달라의",
+    "enUS": "Vidala's"
+  },
+  {
+    "id": 2502,
+    "Key": "Milabrega's",
+    "koKR": "밀라브레가의",
+    "enUS": "Milabrega's"
+  },
+  {
+    "id": 2503,
+    "Key": "Cathan's",
+    "koKR": "카탄의",
+    "enUS": "Cathan's"
+  },
+  {
+    "id": 2504,
+    "Key": "Tancred's",
+    "koKR": "탄크레드의",
+    "enUS": "Tancred's"
+  },
+  {
+    "id": 2505,
+    "Key": "Sigon's",
+    "koKR": "시곤의",
+    "enUS": "Sigon's"
+  },
+  {
+    "id": 2506,
+    "Key": "Infernal",
+    "koKR": "지옥불의",
+    "enUS": "Infernal"
+  },
+  {
+    "id": 2508,
+    "Key": "Death's",
+    "koKR": "죽음의",
+    "enUS": "Death's"
+  },
+  {
+    "id": 2509,
+    "Key": "Angelical",
+    "koKR": "천사의",
+    "enUS": "Angelic"
+  },
+  {
+    "id": 2510,
+    "Key": "Arctic",
+    "koKR": "북극의",
+    "enUS": "Arctic"
+  },
+  {
+    "id": 2511,
+    "Key": "Arcanna's",
+    "koKR": "아르카나의",
+    "enUS": "Arcanna's"
+  },
+  {
+    "id": 2564,
+    "Key": "Weird",
+    "koKR": "기묘한",
+    "enUS": "Weird"
+  },
+  {
+    "id": 2702,
+    "Key": "GloomUM",
+    "koKR": "음침한",
+    "enUS": "Gloom"
+  },
+  {
+    "id": 2703,
+    "Key": "Gray",
+    "koKR": "회색",
+    "enUS": "Gray"
+  },
+  {
+    "id": 2704,
+    "Key": "DireUM",
+    "koKR": "악독한",
+    "enUS": "Dire"
+  },
+  {
+    "id": 2705,
+    "Key": "Black",
+    "koKR": "검은색",
+    "enUS": "Black"
+  },
+  {
+    "id": 2706,
+    "Key": "ShadowUM",
+    "koKR": "그림자의",
+    "enUS": "Shadow"
+  },
+  {
+    "id": 2707,
+    "Key": "Haze",
+    "koKR": "연무의",
+    "enUS": "Haze"
+  },
+  {
+    "id": 2708,
+    "Key": "Wind",
+    "koKR": "바람의",
+    "enUS": "Wind"
+  },
+  {
+    "id": 2709,
+    "Key": "StormUM",
+    "koKR": "폭풍의",
+    "enUS": "Storm"
+  },
+  {
+    "id": 2710,
+    "Key": "Warp",
+    "koKR": "왜곡의",
+    "enUS": "Warp"
+  },
+  {
+    "id": 2711,
+    "Key": "Night",
+    "koKR": "밤의",
+    "enUS": "Night"
+  },
+  {
+    "id": 2712,
+    "Key": "Moon",
+    "koKR": "달의",
+    "enUS": "Moon"
+  },
+  {
+    "id": 2713,
+    "Key": "Star",
+    "koKR": "별의",
+    "enUS": "Star"
+  },
+  {
+    "id": 2714,
+    "Key": "Pit",
+    "koKR": "구덩이의",
+    "enUS": "Pit"
+  },
+  {
+    "id": 2715,
+    "Key": "Fire",
+    "koKR": "불꽃의",
+    "enUS": "Flame"
+  },
+  {
+    "id": 2716,
+    "Key": "Cold",
+    "koKR": "얼음의",
+    "enUS": "Ice"
+  },
+  {
+    "id": 2717,
+    "Key": "Seethe",
+    "koKR": "충천의",
+    "enUS": "Seethe"
+  },
+  {
+    "id": 2718,
+    "Key": "SharpUM",
+    "koKR": "날카로운",
+    "enUS": "Sharp"
+  },
+  {
+    "id": 2719,
+    "Key": "AshUM",
+    "koKR": "잿더미의",
+    "enUS": "Ash"
+  },
+  {
+    "id": 2720,
+    "Key": "Blade",
+    "koKR": "칼날의",
+    "enUS": "Blade"
+  },
+  {
+    "id": 2721,
+    "Key": "SteelUM",
+    "koKR": "강철의",
+    "enUS": "Steel"
+  },
+  {
+    "id": 2722,
+    "Key": "StoneUM",
+    "koKR": "돌의",
+    "enUS": "Stone"
+  },
+  {
+    "id": 2723,
+    "Key": "Rust",
+    "koKR": "녹슨",
+    "enUS": "Rust"
+  },
+  {
+    "id": 2724,
+    "Key": "Mold",
+    "koKR": "거푸집의",
+    "enUS": "Mold"
+  },
+  {
+    "id": 2725,
+    "Key": "Blight",
+    "koKR": "마름병의",
+    "enUS": "Blight"
+  },
+  {
+    "id": 2726,
+    "Key": "Plague",
+    "koKR": "역병의",
+    "enUS": "Plague"
+  },
+  {
+    "id": 2727,
+    "Key": "Rot",
+    "koKR": "부패의",
+    "enUS": "Rot"
+  },
+  {
+    "id": 2728,
+    "Key": "Ooze",
+    "koKR": "점액의",
+    "enUS": "Ooze"
+  },
+  {
+    "id": 2729,
+    "Key": "Puke",
+    "koKR": "구토의",
+    "enUS": "Puke"
+  },
+  {
+    "id": 2730,
+    "Key": "Snot",
+    "koKR": "끈적이는",
+    "enUS": "Snot"
+  },
+  {
+    "id": 2731,
+    "Key": "Bile",
+    "koKR": "가래의",
+    "enUS": "Bile"
+  },
+  {
+    "id": 2732,
+    "Key": "BloodUM",
+    "koKR": "피의",
+    "enUS": "Blood"
+  },
+  {
+    "id": 2733,
+    "Key": "Pulse",
+    "koKR": "맥박의",
+    "enUS": "Pulse"
+  },
+  {
+    "id": 2734,
+    "Key": "Gut",
+    "koKR": "근성의",
+    "enUS": "Gut"
+  },
+  {
+    "id": 2735,
+    "Key": "Gore",
+    "koKR": "선혈의",
+    "enUS": "Gore"
+  },
+  {
+    "id": 2736,
+    "Key": "FleshUM",
+    "koKR": "살점의",
+    "enUS": "Flesh"
+  },
+  {
+    "id": 2737,
+    "Key": "BoneUM",
+    "koKR": "뼈의",
+    "enUS": "Bone"
+  },
+  {
+    "id": 2738,
+    "Key": "SpineUM",
+    "koKR": "가시의",
+    "enUS": "Spine"
+  },
+  {
+    "id": 2739,
+    "Key": "Mind",
+    "koKR": "정신의",
+    "enUS": "Mind"
+  },
+  {
+    "id": 2740,
+    "Key": "SpiritUM",
+    "koKR": "기백의",
+    "enUS": "Spirit"
+  },
+  {
+    "id": 2741,
+    "Key": "SoulUM",
+    "koKR": "영혼의",
+    "enUS": "Soul"
+  },
+  {
+    "id": 2742,
+    "Key": "Wrath",
+    "koKR": "진노의",
+    "enUS": "Wrath"
+  },
+  {
+    "id": 2743,
+    "Key": "GriefUM",
+    "koKR": "슬픔의",
+    "enUS": "Grief"
+  },
+  {
+    "id": 2744,
+    "Key": "Foul",
+    "koKR": "더러운",
+    "enUS": "Foul"
+  },
+  {
+    "id": 2745,
+    "Key": "Vile",
+    "koKR": "지독한",
+    "enUS": "Vile"
+  },
+  {
+    "id": 2746,
+    "Key": "Sin",
+    "koKR": "죄악의",
+    "enUS": "Sin"
+  },
+  {
+    "id": 2747,
+    "Key": "ChaosUM",
+    "koKR": "혼돈의",
+    "enUS": "Chaos"
+  },
+  {
+    "id": 2748,
+    "Key": "DreadUM",
+    "koKR": "공포의",
+    "enUS": "Dread"
+  },
+  {
+    "id": 2749,
+    "Key": "DoomUM",
+    "koKR": "파멸의",
+    "enUS": "Doom"
+  },
+  {
+    "id": 2750,
+    "Key": "BaneUM",
+    "koKR": "재앙의",
+    "enUS": "Bane"
+  },
+  {
+    "id": 2751,
+    "Key": "DeathUM",
+    "koKR": "죽음의",
+    "enUS": "Death"
+  },
+  {
+    "id": 2752,
+    "Key": "ViperUM",
+    "koKR": "독사의",
+    "enUS": "Viper"
+  },
+  {
+    "id": 2753,
+    "Key": "Dragon",
+    "koKR": "용의",
+    "enUS": "Dragon"
+  },
+  {
+    "id": 2754,
+    "Key": "Devil",
+    "koKR": "악마의",
+    "enUS": "Devil"
+  },
+  {
+    "id": 2755,
+    "Key": "touchUM",
+    "koKR": "손길",
+    "enUS": "Touch"
+  },
+  {
+    "id": 2756,
+    "Key": "spellUM",
+    "koKR": "주문",
+    "enUS": "Spell"
+  },
+  {
+    "id": 2757,
+    "Key": "feast",
+    "koKR": "향연",
+    "enUS": "Feast"
+  },
+  {
+    "id": 2758,
+    "Key": "wound",
+    "koKR": "상처",
+    "enUS": "Wound"
+  },
+  {
+    "id": 2759,
+    "Key": "grin",
+    "koKR": "웃음",
+    "enUS": "Grin"
+  },
+  {
+    "id": 2760,
+    "Key": "maim",
+    "koKR": "폭행",
+    "enUS": "Maim"
+  },
+  {
+    "id": 2761,
+    "Key": "hack",
+    "koKR": "난도질",
+    "enUS": "Hack"
+  },
+  {
+    "id": 2762,
+    "Key": "biteUM",
+    "koKR": "통증",
+    "enUS": "Bite"
+  },
+  {
+    "id": 2763,
+    "Key": "rendUM",
+    "koKR": "분쇄",
+    "enUS": "Rend"
+  },
+  {
+    "id": 2764,
+    "Key": "burn",
+    "koKR": "작열",
+    "enUS": "Burn"
+  },
+  {
+    "id": 2765,
+    "Key": "rip",
+    "koKR": "갈취자",
+    "enUS": "Ripper"
+  },
+  {
+    "id": 2766,
+    "Key": "kill",
+    "koKR": "살해",
+    "enUS": "Kill"
+  },
+  {
+    "id": 2767,
+    "Key": "callUM",
+    "koKR": "부름",
+    "enUS": "Call"
+  },
+  {
+    "id": 2768,
+    "Key": "vex",
+    "koKR": "골칫거리",
+    "enUS": "Vex"
+  },
+  {
+    "id": 2769,
+    "Key": "jade",
+    "koKR": "비취",
+    "enUS": "Jade"
+  },
+  {
+    "id": 2770,
+    "Key": "web",
+    "koKR": "거미줄",
+    "enUS": "Web"
+  },
+  {
+    "id": 2771,
+    "Key": "shieldUM",
+    "koKR": "방패",
+    "enUS": "Shield"
+  },
+  {
+    "id": 2772,
+    "Key": "KillerUM",
+    "koKR": "살해자",
+    "enUS": "Killer"
+  },
+  {
+    "id": 2773,
+    "Key": "RazorUM",
+    "koKR": "서슬",
+    "enUS": "Razor"
+  },
+  {
+    "id": 2774,
+    "Key": "drinker",
+    "koKR": "마시는 자",
+    "enUS": "Drinker"
+  },
+  {
+    "id": 2775,
+    "Key": "shifter",
+    "koKR": "변신자",
+    "enUS": "Shifter"
+  },
+  {
+    "id": 2776,
+    "Key": "crawler",
+    "koKR": "거미",
+    "enUS": "Crawler"
+  },
+  {
+    "id": 2777,
+    "Key": "dancer",
+    "koKR": "춤꾼",
+    "enUS": "Dancer"
+  },
+  {
+    "id": 2778,
+    "Key": "bender",
+    "koKR": "왜곡자",
+    "enUS": "Bender"
+  },
+  {
+    "id": 2779,
+    "Key": "weaverUM",
+    "koKR": "직조자",
+    "enUS": "Weaver"
+  },
+  {
+    "id": 2780,
+    "Key": "eater",
+    "koKR": "먹보",
+    "enUS": "Eater"
+  },
+  {
+    "id": 2781,
+    "Key": "widow",
+    "koKR": "과부",
+    "enUS": "Widow"
+  },
+  {
+    "id": 2782,
+    "Key": "maggot",
+    "koKR": "구더기",
+    "enUS": "Maggot"
+  },
+  {
+    "id": 2783,
+    "Key": "spawn",
+    "koKR": "종자",
+    "enUS": "Spawn"
+  },
+  {
+    "id": 2784,
+    "Key": "wight",
+    "koKR": "요물",
+    "enUS": "Wight"
+  },
+  {
+    "id": 2785,
+    "Key": "GrumbleUM",
+    "koKR": "불만",
+    "enUS": "Grumble"
+  },
+  {
+    "id": 2786,
+    "Key": "GrowlerUM",
+    "koKR": "으르렁야수",
+    "enUS": "Growler"
+  },
+  {
+    "id": 2787,
+    "Key": "SnarlUM",
+    "koKR": "포효",
+    "enUS": "Snarl"
+  },
+  {
+    "id": 2788,
+    "Key": "wolf",
+    "koKR": "늑대",
+    "enUS": "Wolf"
+  },
+  {
+    "id": 2789,
+    "Key": "crow",
+    "koKR": "까마귀",
+    "enUS": "Crow"
+  },
+  {
+    "id": 2790,
+    "Key": "raven",
+    "koKR": "큰까마귀",
+    "enUS": "Raven"
+  },
+  {
+    "id": 2791,
+    "Key": "hawk",
+    "koKR": "수리",
+    "enUS": "Hawk"
+  },
+  {
+    "id": 2792,
+    "Key": "cloud",
+    "koKR": "구름",
+    "enUS": "Cloud"
+  },
+  {
+    "id": 2793,
+    "Key": "BangUM",
+    "koKR": "굉음",
+    "enUS": "Bang"
+  },
+  {
+    "id": 2794,
+    "Key": "head",
+    "koKR": "머리",
+    "enUS": "Head"
+  },
+  {
+    "id": 2795,
+    "Key": "skullUM",
+    "koKR": "두개골",
+    "enUS": "Skull"
+  },
+  {
+    "id": 2796,
+    "Key": "browUM",
+    "koKR": "이마",
+    "enUS": "Brow"
+  },
+  {
+    "id": 2797,
+    "Key": "eyeUM",
+    "koKR": "눈",
+    "enUS": "Eye"
+  },
+  {
+    "id": 2798,
+    "Key": "maw",
+    "koKR": "아귀",
+    "enUS": "Maw"
+  },
+  {
+    "id": 2799,
+    "Key": "tongue",
+    "koKR": "혓바닥",
+    "enUS": "Tongue"
+  },
+  {
+    "id": 2800,
+    "Key": "fangUM",
+    "koKR": "송곳니",
+    "enUS": "Fang"
+  },
+  {
+    "id": 2801,
+    "Key": "hornUM",
+    "koKR": "뿔",
+    "enUS": "Horn"
+  },
+  {
+    "id": 2802,
+    "Key": "thorn",
+    "koKR": "바늘",
+    "enUS": "Thorn"
+  },
+  {
+    "id": 2803,
+    "Key": "clawUM",
+    "koKR": "손톱",
+    "enUS": "Claw"
+  },
+  {
+    "id": 2804,
+    "Key": "fistUM",
+    "koKR": "주먹",
+    "enUS": "Fist"
+  },
+  {
+    "id": 2805,
+    "Key": "heartUM",
+    "koKR": "심장",
+    "enUS": "Heart"
+  },
+  {
+    "id": 2806,
+    "Key": "shankUM",
+    "koKR": "칼자루",
+    "enUS": "Shank"
+  },
+  {
+    "id": 2807,
+    "Key": "skinUM",
+    "koKR": "거죽",
+    "enUS": "Skin"
+  },
+  {
+    "id": 2808,
+    "Key": "wingUM",
+    "koKR": "날개",
+    "enUS": "Wing"
+  },
+  {
+    "id": 2809,
+    "Key": "pox",
+    "koKR": "천연두",
+    "enUS": "Pox"
+  },
+  {
+    "id": 2810,
+    "Key": "fester",
+    "koKR": "궤양",
+    "enUS": "Fester"
+  },
+  {
+    "id": 2811,
+    "Key": "blister",
+    "koKR": "물집",
+    "enUS": "Blister"
+  },
+  {
+    "id": 2812,
+    "Key": "pus",
+    "koKR": "고름",
+    "enUS": "Pus"
+  },
+  {
+    "id": 2813,
+    "Key": "SlimeUM",
+    "koKR": "진흙괴물",
+    "enUS": "Slime"
+  },
+  {
+    "id": 2814,
+    "Key": "drool",
+    "koKR": "침",
+    "enUS": "Drool"
+  },
+  {
+    "id": 2815,
+    "Key": "froth",
+    "koKR": "거품",
+    "enUS": "Froth"
+  },
+  {
+    "id": 2816,
+    "Key": "sludge",
+    "koKR": "핏덩어리",
+    "enUS": "Sludge"
+  },
+  {
+    "id": 2817,
+    "Key": "venom",
+    "koKR": "맹독",
+    "enUS": "Venom"
+  },
+  {
+    "id": 2818,
+    "Key": "poison",
+    "koKR": "독",
+    "enUS": "Poison"
+  },
+  {
+    "id": 2819,
+    "Key": "break",
+    "koKR": "격파",
+    "enUS": "Break"
+  },
+  {
+    "id": 2820,
+    "Key": "shard",
+    "koKR": "파편",
+    "enUS": "Shard"
+  },
+  {
+    "id": 2821,
+    "Key": "flame",
+    "koKR": "불꽃",
+    "enUS": "Flame"
+  },
+  {
+    "id": 2822,
+    "Key": "maul",
+    "koKR": "쇠메",
+    "enUS": "Maul"
+  },
+  {
+    "id": 2823,
+    "Key": "thirstUM",
+    "koKR": "갈증",
+    "enUS": "Thirst"
+  },
+  {
+    "id": 2824,
+    "Key": "lust",
+    "koKR": "욕정",
+    "enUS": "Lust"
+  },
+  {
+    "id": 2825,
+    "Key": "the Hammer",
+    "koKR": "망치장이",
+    "enUS": "the Hammer"
+  },
+  {
+    "id": 2826,
+    "Key": "the Axe",
+    "koKR": "도끼장이",
+    "enUS": "the Axe"
+  },
+  {
+    "id": 2827,
+    "Key": "the Sharp",
+    "koKR": "날카로운 자",
+    "enUS": "the Sharp"
+  },
+  {
+    "id": 2828,
+    "Key": "the Jagged",
+    "koKR": "뾰족한 자",
+    "enUS": "the Jagged"
+  },
+  {
+    "id": 2829,
+    "Key": "the Flayer",
+    "koKR": "가죽을 벗기는 자",
+    "enUS": "the Flayer"
+  },
+  {
+    "id": 2830,
+    "Key": "the Slasher",
+    "koKR": "난도질꾼",
+    "enUS": "the Slasher"
+  },
+  {
+    "id": 2831,
+    "Key": "the Impaler",
+    "koKR": "꿰뚫는 자",
+    "enUS": "the Impaler"
+  },
+  {
+    "id": 2832,
+    "Key": "the Hunter",
+    "koKR": "사냥꾼",
+    "enUS": "the Hunter"
+  },
+  {
+    "id": 2833,
+    "Key": "the Slayer",
+    "koKR": "학살자",
+    "enUS": "the Slayer"
+  },
+  {
+    "id": 2834,
+    "Key": "the Mauler",
+    "koKR": "싸움꾼",
+    "enUS": "the Mauler"
+  },
+  {
+    "id": 2835,
+    "Key": "the Destroyer",
+    "koKR": "파괴자",
+    "enUS": "the Destroyer"
+  },
+  {
+    "id": 2836,
+    "Key": "theQuick",
+    "koKR": "빠른 자",
+    "enUS": "the Quick"
+  },
+  {
+    "id": 2837,
+    "Key": "the Witch",
+    "koKR": "마녀의",
+    "enUS": "the Witch"
+  },
+  {
+    "id": 2838,
+    "Key": "the Mad",
+    "koKR": "미친 자",
+    "enUS": "the Mad"
+  },
+  {
+    "id": 2839,
+    "Key": "the Wraith",
+    "koKR": "망령의",
+    "enUS": "the Wraith"
+  },
+  {
+    "id": 2840,
+    "Key": "the Shade",
+    "koKR": "그늘의",
+    "enUS": "the Shade"
+  },
+  {
+    "id": 2841,
+    "Key": "the Dead",
+    "koKR": "죽음의",
+    "enUS": "the Dead"
+  },
+  {
+    "id": 2842,
+    "Key": "the Unholy",
+    "koKR": "부정한 자",
+    "enUS": "the Unholy"
+  },
+  {
+    "id": 2843,
+    "Key": "the Howler",
+    "koKR": "울음꾼",
+    "enUS": "the Howler"
+  },
+  {
+    "id": 2844,
+    "Key": "the Grim",
+    "koKR": "악랄한 자",
+    "enUS": "the Grim"
+  },
+  {
+    "id": 2845,
+    "Key": "the Dark",
+    "koKR": "어두운 자",
+    "enUS": "the Dark"
+  },
+  {
+    "id": 2846,
+    "Key": "the Tainted",
+    "koKR": "오염된 자",
+    "enUS": "the Tainted"
+  },
+  {
+    "id": 2847,
+    "Key": "the Unclean",
+    "koKR": "더러운 자",
+    "enUS": "the Unclean"
+  },
+  {
+    "id": 2848,
+    "Key": "the Hungry",
+    "koKR": "굶주린 자",
+    "enUS": "the Hungry"
+  },
+  {
+    "id": 2849,
+    "Key": "the Cold",
+    "koKR": "차가운 자",
+    "enUS": "the Cold"
+  },
+  {
+    "id": 3220,
+    "Key": "Champion",
+    "koKR": "용사",
+    "enUS": "Champion"
+  },
+  {
+    "id": 10048,
+    "Key": "of the Wraith",
+    "koKR": "망령의",
+    "enUS": "of the Wraith"
+  },
+  {
+    "id": 10049,
+    "Key": "of Equilibrium",
+    "koKR": "평형의",
+    "enUS": "of Equilibrium"
+  },
+  {
+    "id": 10050,
+    "Key": "Valkyrie's",
+    "koKR": "발키리의",
+    "enUS": "Valkyrie's"
+  },
+  {
+    "id": 10051,
+    "Key": "Maiden's",
+    "koKR": "여제의",
+    "enUS": "Maiden's"
+  },
+  {
+    "id": 10052,
+    "Key": "Blank",
+    "koKR": "공허의",
+    "enUS": "Void"
+  },
+  {
+    "id": 11085,
+    "Key": "champfanaticX",
+    "koKR": "광신자",
+    "enUS": "Fanatic"
+  },
+  {
+    "id": 11087,
+    "Key": "champberserkX",
+    "koKR": "광전사",
+    "enUS": "Berserker"
+  },
+  {
+    "id": 20688,
+    "Key": "Stout",
+    "koKR": "강건한",
+    "enUS": "Stout"
+  },
+  {
+    "id": 20689,
+    "Key": "Antimagic",
+    "koKR": "반마법",
+    "enUS": "Antimagic"
+  },
+  {
+    "id": 20690,
+    "Key": "Null",
+    "koKR": "공백의",
+    "enUS": "Null"
+  },
+  {
+    "id": 20691,
+    "Key": "Godly",
+    "koKR": "신의",
+    "enUS": "Godly"
+  },
+  {
+    "id": 20692,
+    "Key": "Ivory",
+    "koKR": "상아색",
+    "enUS": "Ivory"
+  },
+  {
+    "id": 20693,
+    "Key": "Eburin",
+    "koKR": "상아질",
+    "enUS": "Eburine"
+  },
+  {
+    "id": 20694,
+    "Key": "Blanched",
+    "koKR": "표백된",
+    "enUS": "Blanched"
+  },
+  {
+    "id": 20695,
+    "Key": "Stalwart",
+    "koKR": "건장한",
+    "enUS": "Stalwart"
+  },
+  {
+    "id": 20696,
+    "Key": "Burly",
+    "koKR": "훤칠한",
+    "enUS": "Burly"
+  },
+  {
+    "id": 20697,
+    "Key": "Dense",
+    "koKR": "빽빽한",
+    "enUS": "Dense"
+  },
+  {
+    "id": 20698,
+    "Key": "Thin",
+    "koKR": "얇은",
+    "enUS": "Thin"
+  },
+  {
+    "id": 20699,
+    "Key": "Compact",
+    "koKR": "적은",
+    "enUS": "Compact"
+  },
+  {
+    "id": 20700,
+    "Key": "Witch-hunter's",
+    "koKR": "마녀사냥꾼의",
+    "enUS": "Witch-hunter's"
+  },
+  {
+    "id": 20701,
+    "Key": "Magekiller's",
+    "koKR": "마법사살해자의",
+    "enUS": "Magekiller's"
+  },
+  {
+    "id": 20702,
+    "Key": "Hierophant's",
+    "koKR": "대변인의",
+    "enUS": "Hierophant's"
+  },
+  {
+    "id": 20703,
+    "Key": "Shaman's",
+    "koKR": "영매의",
+    "enUS": "Shaman's"
+  },
+  {
+    "id": 20704,
+    "Key": "Pestilent",
+    "koKR": "질병의",
+    "enUS": "Pestilent"
+  },
+  {
+    "id": 20705,
+    "Key": "Toxic",
+    "koKR": "독성의",
+    "enUS": "Toxic"
+  },
+  {
+    "id": 20706,
+    "Key": "Corosive",
+    "koKR": "부식성의",
+    "enUS": "Corrosive"
+  },
+  {
+    "id": 20707,
+    "Key": "Envenomed",
+    "koKR": "더러운",
+    "enUS": "Foul"
+  },
+  {
+    "id": 20708,
+    "Key": "Septic",
+    "koKR": "패혈성의",
+    "enUS": "Septic"
+  },
+  {
+    "id": 20709,
+    "Key": "Shocking",
+    "koKR": "충격적인",
+    "enUS": "Shocking"
+  },
+  {
+    "id": 20710,
+    "Key": "Arcing",
+    "koKR": "뻗어나가는",
+    "enUS": "Arcing"
+  },
+  {
+    "id": 20711,
+    "Key": "Buzzing",
+    "koKR": "웅웅거리는",
+    "enUS": "Buzzing"
+  },
+  {
+    "id": 20712,
+    "Key": "Static",
+    "koKR": "정전기의",
+    "enUS": "Static"
+  },
+  {
+    "id": 20713,
+    "Key": "Scorching",
+    "koKR": "응축하는",
+    "enUS": "Condensing"
+  },
+  {
+    "id": 20714,
+    "Key": "Flaming",
+    "koKR": "불타오르는",
+    "enUS": "Flaming"
+  },
+  {
+    "id": 20715,
+    "Key": "Smoking",
+    "koKR": "연기 나는",
+    "enUS": "Smoking"
+  },
+  {
+    "id": 20716,
+    "Key": "Smoldering",
+    "koKR": "타오르는",
+    "enUS": "Smoldering"
+  },
+  {
+    "id": 20717,
+    "Key": "Ember",
+    "koKR": "불 같은",
+    "enUS": "Fiery"
+  },
+  {
+    "id": 20718,
+    "Key": "Hibernal",
+    "koKR": "동절의",
+    "enUS": "Hibernal"
+  },
+  {
+    "id": 20719,
+    "Key": "Boreal",
+    "koKR": "북녘의",
+    "enUS": "Boreal"
+  },
+  {
+    "id": 20720,
+    "Key": "Shivering",
+    "koKR": "오한의",
+    "enUS": "Shivering"
+  },
+  {
+    "id": 20721,
+    "Key": "Snowflake",
+    "koKR": "눈발의",
+    "enUS": "Snowy"
+  },
+  {
+    "id": 20722,
+    "Key": "Mnemonic",
+    "koKR": "기억력의",
+    "enUS": "Mnemonic"
+  },
+  {
+    "id": 20723,
+    "Key": "Visionary",
+    "koKR": "선견지명의",
+    "enUS": "Visionary"
+  },
+  {
+    "id": 20724,
+    "Key": "Eagleeye",
+    "koKR": "독수리눈의",
+    "enUS": "Eagleeye"
+  },
+  {
+    "id": 20725,
+    "Key": "Hawkeye",
+    "koKR": "매눈의",
+    "enUS": "Hawkeye"
+  },
+  {
+    "id": 20726,
+    "Key": "Falconeye",
+    "koKR": "송골눈의",
+    "enUS": "Falconeye"
+  },
+  {
+    "id": 20727,
+    "Key": "Sparroweye",
+    "koKR": "참새눈의",
+    "enUS": "Sparroweye"
+  },
+  {
+    "id": 20728,
+    "Key": "Robineye",
+    "koKR": "울새눈의",
+    "enUS": "Robineye"
+  },
+  {
+    "id": 20729,
+    "Key": "Paradox",
+    "koKR": "모순의",
+    "enUS": "Paradox"
+  },
+  {
+    "id": 20730,
+    "Key": "Shouting",
+    "koKR": "울부짖는",
+    "enUS": "Howling"
+  },
+  {
+    "id": 20731,
+    "Key": "Yelling",
+    "koKR": "고함치는",
+    "enUS": "Yelling"
+  },
+  {
+    "id": 20732,
+    "Key": "Calling",
+    "koKR": "부르는",
+    "enUS": "Calling"
+  },
+  {
+    "id": 20733,
+    "Key": "Loud",
+    "koKR": "경계하는",
+    "enUS": "Alarming"
+  },
+  {
+    "id": 20734,
+    "Key": "Trump",
+    "koKR": "바보의",
+    "enUS": "Fool's"
+  },
+  {
+    "id": 20735,
+    "Key": "Joker's",
+    "koKR": "익살꾼의",
+    "enUS": "Joker's"
+  },
+  {
+    "id": 20736,
+    "Key": "Jester's",
+    "koKR": "어릿광대의",
+    "enUS": "Jester's"
+  },
+  {
+    "id": 20737,
+    "Key": "Jack's",
+    "koKR": "사내의",
+    "enUS": "Jack's"
+  },
+  {
+    "id": 20738,
+    "Key": "Knave's",
+    "koKR": "악한의",
+    "enUS": "Knave's"
+  },
+  {
+    "id": 20739,
+    "Key": "Paleocene",
+    "koKR": "충직한",
+    "enUS": "Faithful"
+  },
+  {
+    "id": 20740,
+    "Key": "Eocene",
+    "koKR": "고결한",
+    "enUS": "Righteous"
+  },
+  {
+    "id": 20741,
+    "Key": "Oligocene",
+    "koKR": "명예로운",
+    "enUS": "Honorable"
+  },
+  {
+    "id": 20742,
+    "Key": "Miocene",
+    "koKR": "득도의",
+    "enUS": "Enlightened"
+  },
+  {
+    "id": 20743,
+    "Key": "Kenshi's",
+    "koKR": "검사의",
+    "enUS": "Kenshi's"
+  },
+  {
+    "id": 20744,
+    "Key": "Sensei's",
+    "koKR": "선생의",
+    "enUS": "Sensei's"
+  },
+  {
+    "id": 20745,
+    "Key": "Shogukusha's",
+    "koKR": "쇼구쿠샤의",
+    "enUS": "Shogukusha's"
+  },
+  {
+    "id": 20746,
+    "Key": "Psychic",
+    "koKR": "심령의",
+    "enUS": "Psychic"
+  },
+  {
+    "id": 20747,
+    "Key": "Mentalist's",
+    "koKR": "독심술사의",
+    "enUS": "Mentalist's"
+  },
+  {
+    "id": 20748,
+    "Key": "Cunning",
+    "koKR": "약삭빠른",
+    "enUS": "Cunning"
+  },
+  {
+    "id": 20749,
+    "Key": "Trickster's",
+    "koKR": "말썽꾼의",
+    "enUS": "Trickster's"
+  },
+  {
+    "id": 20750,
+    "Key": "Entrapping",
+    "koKR": "사로잡는",
+    "enUS": "Entrapping"
+  },
+  {
+    "id": 20751,
+    "Key": "Gaea's",
+    "koKR": "가이아",
+    "enUS": "Gaean"
+  },
+  {
+    "id": 20752,
+    "Key": "Terra's",
+    "koKR": "대지의",
+    "enUS": "Terrene"
+  },
+  {
+    "id": 20753,
+    "Key": "Nature's",
+    "koKR": "자연적인",
+    "enUS": "Natural"
+  },
+  {
+    "id": 20754,
+    "Key": "Communal",
+    "koKR": "공동의",
+    "enUS": "Communal"
+  },
+  {
+    "id": 20755,
+    "Key": "Feral",
+    "koKR": "흉포한",
+    "enUS": "Feral"
+  },
+  {
+    "id": 20756,
+    "Key": "Spiritual",
+    "koKR": "영적인",
+    "enUS": "Spiritual"
+  },
+  {
+    "id": 20757,
+    "Key": "Keeper's",
+    "koKR": "지킴이의",
+    "enUS": "Keeper's"
+  },
+  {
+    "id": 20758,
+    "Key": "Caretaker's",
+    "koKR": "관리인의",
+    "enUS": "Caretaker's"
+  },
+  {
+    "id": 20759,
+    "Key": "Trainer's",
+    "koKR": "교관의",
+    "enUS": "Trainer's"
+  },
+  {
+    "id": 20760,
+    "Key": "Veteran's",
+    "koKR": "백전노장의",
+    "enUS": "Veteran's"
+  },
+  {
+    "id": 20761,
+    "Key": "Expert's",
+    "koKR": "고수의",
+    "enUS": "Expert's"
+  },
+  {
+    "id": 20762,
+    "Key": "Furious",
+    "koKR": "격심한",
+    "enUS": "Furious"
+  },
+  {
+    "id": 20763,
+    "Key": "Raging",
+    "koKR": "격노한",
+    "enUS": "Raging"
+  },
+  {
+    "id": 20764,
+    "Key": "Echoing",
+    "koKR": "메아리치는",
+    "enUS": "Echoing"
+  },
+  {
+    "id": 20765,
+    "Key": "Resonant",
+    "koKR": "공명하는",
+    "enUS": "Resonant"
+  },
+  {
+    "id": 20766,
+    "Key": "Sounding",
+    "koKR": "울려퍼지는",
+    "enUS": "Sounding"
+  },
+  {
+    "id": 20767,
+    "Key": "Guardian's",
+    "koKR": "수호자의",
+    "enUS": "Guardian's"
+  },
+  {
+    "id": 20768,
+    "Key": "Warder's",
+    "koKR": "파수꾼의",
+    "enUS": "Warden's"
+  },
+  {
+    "id": 20769,
+    "Key": "Preserver's",
+    "koKR": "보존자의",
+    "enUS": "Preserver's"
+  },
+  {
+    "id": 20770,
+    "Key": "Marshal's",
+    "koKR": "대원수의",
+    "enUS": "Marshal's"
+  },
+  {
+    "id": 20771,
+    "Key": "Commander's",
+    "koKR": "사령관의",
+    "enUS": "Commander's"
+  },
+  {
+    "id": 20772,
+    "Key": "Captain's",
+    "koKR": "대장의",
+    "enUS": "Captain's"
+  },
+  {
+    "id": 20773,
+    "Key": "Rose Branded",
+    "koKR": "장미 낙인의",
+    "enUS": "Rose Branded"
+  },
+  {
+    "id": 20774,
+    "Key": "Hawk Branded",
+    "koKR": "매 낙인의",
+    "enUS": "Hawk Branded"
+  },
+  {
+    "id": 20775,
+    "Key": "Lion Branded",
+    "koKR": "사자 낙인의",
+    "enUS": "Lion Branded"
+  },
+  {
+    "id": 20776,
+    "Key": "Golemlord's",
+    "koKR": "골렘군주의",
+    "enUS": "Golemlord's"
+  },
+  {
+    "id": 20777,
+    "Key": "Vodoun",
+    "koKR": "액막이",
+    "enUS": "Mojo"
+  },
+  {
+    "id": 20778,
+    "Key": "Graverobber's",
+    "koKR": "도굴꾼의",
+    "enUS": "Graverobber's"
+  },
+  {
+    "id": 20779,
+    "Key": "Venomous",
+    "koKR": "맹독",
+    "enUS": "Venomous"
+  },
+  {
+    "id": 20780,
+    "Key": "Noxious",
+    "koKR": "유독한",
+    "enUS": "Noxious"
+  },
+  {
+    "id": 20781,
+    "Key": "Fungal",
+    "koKR": "진균의",
+    "enUS": "Fungal"
+  },
+  {
+    "id": 20782,
+    "Key": "Accursed",
+    "koKR": "저주하는",
+    "enUS": "Cursing"
+  },
+  {
+    "id": 20783,
+    "Key": "Blighting",
+    "koKR": "마름병의",
+    "enUS": "Blighting"
+  },
+  {
+    "id": 20784,
+    "Key": "Hexing",
+    "koKR": "사술",
+    "enUS": "Hexing"
+  },
+  {
+    "id": 20785,
+    "Key": "Glacial",
+    "koKR": "빙하",
+    "enUS": "Glacial"
+  },
+  {
+    "id": 20786,
+    "Key": "Freezing",
+    "koKR": "빙결의",
+    "enUS": "Freezing"
+  },
+  {
+    "id": 20787,
+    "Key": "Chilling",
+    "koKR": "싸늘한",
+    "enUS": "Chilling"
+  },
+  {
+    "id": 20788,
+    "Key": "Powered",
+    "koKR": "강한",
+    "enUS": "Powered"
+  },
+  {
+    "id": 20789,
+    "Key": "Charged",
+    "koKR": "충전된",
+    "enUS": "Charged"
+  },
+  {
+    "id": 20790,
+    "Key": "Sparking",
+    "koKR": "불꽃 튀는",
+    "enUS": "Sparking"
+  },
+  {
+    "id": 20791,
+    "Key": "Volcanic",
+    "koKR": "화산의",
+    "enUS": "Volcanic"
+  },
+  {
+    "id": 20792,
+    "Key": "Blazing",
+    "koKR": "활활 타는",
+    "enUS": "Blazing"
+  },
+  {
+    "id": 20793,
+    "Key": "Burning",
+    "koKR": "불타는",
+    "enUS": "Burning"
+  },
+  {
+    "id": 20794,
+    "Key": "Lancer's",
+    "koKR": "창기병의",
+    "enUS": "Lancer's"
+  },
+  {
+    "id": 20795,
+    "Key": "Spearmaiden's",
+    "koKR": "창 여전사의",
+    "enUS": "Spearmaiden's"
+  },
+  {
+    "id": 20796,
+    "Key": "Harpoonist's",
+    "koKR": "작살꾼의",
+    "enUS": "Harpoonist's"
+  },
+  {
+    "id": 20797,
+    "Key": "Athlete's",
+    "koKR": "체육의",
+    "enUS": "Athletic"
+  },
+  {
+    "id": 20798,
+    "Key": "Gymnast's",
+    "koKR": "체조의",
+    "enUS": "Gymnastic"
+  },
+  {
+    "id": 20799,
+    "Key": "Acrobat's",
+    "koKR": "곡예의",
+    "enUS": "Acrobatic"
+  },
+  {
+    "id": 20800,
+    "Key": "Bowyer's",
+    "koKR": "활잡이의",
+    "enUS": "Bowyer's"
+  },
+  {
+    "id": 20801,
+    "Key": "Diamond",
+    "koKR": "다이아몬드색",
+    "enUS": "Diamond"
+  },
+  {
+    "id": 20802,
+    "Key": "Celestial",
+    "koKR": "천공의",
+    "enUS": "Celestial"
+  },
+  {
+    "id": 20803,
+    "Key": "Elysian",
+    "koKR": "천국의",
+    "enUS": "Elysian"
+  },
+  {
+    "id": 20804,
+    "Key": "Astral",
+    "koKR": "별무리",
+    "enUS": "Astral"
+  },
+  {
+    "id": 20805,
+    "Key": "Unearthly",
+    "koKR": "기이한",
+    "enUS": "Unearthly"
+  },
+  {
+    "id": 20806,
+    "Key": "Arcadian",
+    "koKR": "이상향",
+    "enUS": "Arcadian"
+  },
+  {
+    "id": 20807,
+    "Key": "Jeweler's",
+    "koKR": "보석공의",
+    "enUS": "Jeweler's"
+  },
+  {
+    "id": 20808,
+    "Key": "Artificer's",
+    "koKR": "장인의",
+    "enUS": "Artisan's"
+  },
+  {
+    "id": 20809,
+    "Key": "Mechanist's",
+    "koKR": "기계공의",
+    "enUS": "Mechanic's"
+  },
+  {
+    "id": 20810,
+    "Key": "Aureolin",
+    "koKR": "후광",
+    "enUS": "Aureolic"
+  },
+  {
+    "id": 20811,
+    "Key": "Victorious",
+    "koKR": "승리의",
+    "enUS": "Victorious"
+  },
+  {
+    "id": 20812,
+    "Key": "Ambergris",
+    "koKR": "용연향",
+    "enUS": "Ambergris"
+  },
+  {
+    "id": 20813,
+    "Key": "Camphor",
+    "koKR": "장뇌",
+    "enUS": "Camphor"
+  },
+  {
+    "id": 20814,
+    "Key": "Lapis Lazuli",
+    "koKR": "청금석",
+    "enUS": "Lapis Lazuli"
+  },
+  {
+    "id": 20815,
+    "Key": "Chromatic",
+    "koKR": "다채로운",
+    "enUS": "Chromatic"
+  },
+  {
+    "id": 20816,
+    "Key": "Scintillating",
+    "koKR": "정채로운",
+    "enUS": "Scintillating"
+  },
+  {
+    "id": 20817,
+    "Key": "Turquoise",
+    "koKR": "터키석",
+    "enUS": "Turquoise"
+  },
+  {
+    "id": 20818,
+    "Key": "Jacinth",
+    "koKR": "적황색",
+    "enUS": "Jacinth"
+  },
+  {
+    "id": 20819,
+    "Key": "Zircon",
+    "koKR": "지르콘",
+    "enUS": "Zircon"
+  },
+  {
+    "id": 20820,
+    "Key": "Bahamut's",
+    "koKR": "바하무트의",
+    "enUS": "Bahamut's"
+  },
+  {
+    "id": 20821,
+    "Key": "Great Wyrm's",
+    "koKR": "대고룡의",
+    "enUS": "Great Wyrm's"
+  },
+  {
+    "id": 20822,
+    "Key": "Felicitous",
+    "koKR": "길한",
+    "enUS": "Felicitous"
+  },
+  {
+    "id": 20823,
+    "Key": "Lucky",
+    "koKR": "길운의",
+    "enUS": "Lucky"
+  },
+  {
+    "id": 20824,
+    "Key": "Wailing",
+    "koKR": "통곡하는",
+    "enUS": "Wailing"
+  },
+  {
+    "id": 20825,
+    "Key": "Screaming",
+    "koKR": "비명의",
+    "enUS": "Screaming"
+  },
+  {
+    "id": 20826,
+    "Key": "Grandmaster's",
+    "koKR": "거장의",
+    "enUS": "Grandmaster's"
+  },
+  {
+    "id": 20827,
+    "Key": "Master's",
+    "koKR": "달인의",
+    "enUS": "Master's"
+  },
+  {
+    "id": 20828,
+    "Key": "Argent",
+    "koKR": "은빛",
+    "enUS": "Argent"
+  },
+  {
+    "id": 20829,
+    "Key": "Tin",
+    "koKR": "주석",
+    "enUS": "Tin"
+  },
+  {
+    "id": 20830,
+    "Key": "Nickel",
+    "koKR": "니켈",
+    "enUS": "Nickel"
+  },
+  {
+    "id": 20831,
+    "Key": "Maroon",
+    "koKR": "고동색",
+    "enUS": "Maroon"
+  },
+  {
+    "id": 20832,
+    "Key": "Chestnut",
+    "koKR": "밤색",
+    "enUS": "Chestnut"
+  },
+  {
+    "id": 20833,
+    "Key": "Vigorous",
+    "koKR": "기운찬",
+    "enUS": "Vigorous"
+  },
+  {
+    "id": 20834,
+    "Key": "Brown",
+    "koKR": "갈색",
+    "enUS": "Brown"
+  },
+  {
+    "id": 20835,
+    "Key": "Dun",
+    "koKR": "회갈색",
+    "enUS": "Dun"
+  },
+  {
+    "id": 20836,
+    "Key": "Realgar",
+    "koKR": "계관석",
+    "enUS": "Realgar"
+  },
+  {
+    "id": 20837,
+    "Key": "Rusty",
+    "koKR": "녹슨",
+    "enUS": "Rusty"
+  },
+  {
+    "id": 20838,
+    "Key": "Cinnabar",
+    "koKR": "선홍색",
+    "enUS": "Cinnabar"
+  },
+  {
+    "id": 20839,
+    "Key": "Vermillion",
+    "koKR": "주색",
+    "enUS": "Vermilion"
+  },
+  {
+    "id": 20840,
+    "Key": "Carmine",
+    "koKR": "단홍색",
+    "enUS": "Carmine"
+  },
+  {
+    "id": 20841,
+    "Key": "Carbuncle",
+    "koKR": "석류색",
+    "enUS": "Carbuncle"
+  },
+  {
+    "id": 20842,
+    "Key": "Serrated",
+    "koKR": "톱니",
+    "enUS": "Serrated"
+  },
+  {
+    "id": 20843,
+    "Key": "Scarlet",
+    "koKR": "진홍색",
+    "enUS": "Scarlet"
+  },
+  {
+    "id": 20844,
+    "Key": "Bloody",
+    "koKR": "핏빛",
+    "enUS": "Bloody"
+  },
+  {
+    "id": 20845,
+    "Key": "Sanguinary",
+    "koKR": "유혈의",
+    "enUS": "Sanguinary"
+  },
+  {
+    "id": 20846,
+    "Key": "Pearl",
+    "koKR": "진주색",
+    "enUS": "Pearl"
+  },
+  {
+    "id": 20847,
+    "Key": "Divine",
+    "koKR": "신의",
+    "enUS": "Divine"
+  },
+  {
+    "id": 20848,
+    "Key": "Hallowed",
+    "koKR": "존엄한",
+    "enUS": "Hallowed"
+  },
+  {
+    "id": 20849,
+    "Key": "Sacred",
+    "koKR": "신성한",
+    "enUS": "Sacred"
+  },
+  {
+    "id": 20850,
+    "Key": "Pure",
+    "koKR": "순수한",
+    "enUS": "Pure"
+  },
+  {
+    "id": 20851,
+    "Key": "Consecrated",
+    "koKR": "신성한",
+    "enUS": "Consecrated"
+  },
+  {
+    "id": 20852,
+    "Key": "Assamic",
+    "koKR": "달의",
+    "enUS": "Lunar"
+  },
+  {
+    "id": 20853,
+    "Key": "Frantic",
+    "koKR": "정신없는",
+    "enUS": "Frantic"
+  },
+  {
+    "id": 20854,
+    "Key": "Hellatial",
+    "koKR": "혹독한",
+    "enUS": "Hellacious"
+  },
+  {
+    "id": 20855,
+    "Key": "Quixotic",
+    "koKR": "주책없는",
+    "enUS": "Quixotic"
+  },
+  {
+    "id": 20856,
+    "Key": "Smiting",
+    "koKR": "강타하는",
+    "enUS": "Smiting"
+  },
+  {
+    "id": 20857,
+    "Key": "Steller",
+    "koKR": "성운의",
+    "enUS": "Stellar"
+  },
+  {
+    "id": 20858,
+    "Key": "Stinging",
+    "koKR": "독침의",
+    "enUS": "Stinging"
+  },
+  {
+    "id": 20859,
+    "Key": "Singing",
+    "koKR": "노래하는",
+    "enUS": "Singing"
+  },
+  {
+    "id": 20860,
+    "Key": "Timeless",
+    "koKR": "영속적인",
+    "enUS": "Timeless"
+  },
+  {
+    "id": 20861,
+    "Key": "Original",
+    "koKR": "본래",
+    "enUS": "Original"
+  },
+  {
+    "id": 20862,
+    "Key": "Corporal",
+    "koKR": "육체의",
+    "enUS": "Corporal"
+  },
+  {
+    "id": 20863,
+    "Key": "Lawful",
+    "koKR": "질서",
+    "enUS": "Lawful"
+  },
+  {
+    "id": 20864,
+    "Key": "Chaotic",
+    "koKR": "혼돈",
+    "enUS": "Chaotic"
+  },
+  {
+    "id": 20865,
+    "Key": "Fierce",
+    "koKR": "사나운",
+    "enUS": "Fierce"
+  },
+  {
+    "id": 20866,
+    "Key": "Ferocious",
+    "koKR": "포악한",
+    "enUS": "Ferocious"
+  },
+  {
+    "id": 20867,
+    "Key": "Perpetual",
+    "koKR": "영구적인",
+    "enUS": "Perpetual"
+  },
+  {
+    "id": 20868,
+    "Key": "Continuous",
+    "koKR": "영구한",
+    "enUS": "Everlasting"
+  },
+  {
+    "id": 20869,
+    "Key": "Laden",
+    "koKR": "고민하는",
+    "enUS": "Laden"
+  },
+  {
+    "id": 20870,
+    "Key": "Pernicious",
+    "koKR": "치명성",
+    "enUS": "Pernicious"
+  },
+  {
+    "id": 20871,
+    "Key": "Harmful",
+    "koKR": "나쁜",
+    "enUS": "Harmful"
+  },
+  {
+    "id": 20872,
+    "Key": "Evil",
+    "koKR": "악한",
+    "enUS": "Evil"
+  },
+  {
+    "id": 20873,
+    "Key": "Insidious",
+    "koKR": "약은",
+    "enUS": "Insidious"
+  },
+  {
+    "id": 20874,
+    "Key": "Malicious",
+    "koKR": "악의적인",
+    "enUS": "Malicious"
+  },
+  {
+    "id": 20875,
+    "Key": "Spiteful",
+    "koKR": "한풀이",
+    "enUS": "Spiteful"
+  },
+  {
+    "id": 20876,
+    "Key": "Precocious",
+    "koKR": "조숙한",
+    "enUS": "Precocious"
+  },
+  {
+    "id": 20877,
+    "Key": "Majestic",
+    "koKR": "위풍당당한",
+    "enUS": "Majestic"
+  },
+  {
+    "id": 20878,
+    "Key": "Sanguine",
+    "koKR": "다혈질의",
+    "enUS": "Sanguine"
+  },
+  {
+    "id": 20879,
+    "Key": "Monumental",
+    "koKR": "기념비적인",
+    "enUS": "Monumental"
+  },
+  {
+    "id": 20880,
+    "Key": "Irresistible",
+    "koKR": "매혹적인",
+    "enUS": "Irresistible"
+  },
+  {
+    "id": 20881,
+    "Key": "Festering",
+    "koKR": "곪는",
+    "enUS": "Festering"
+  },
+  {
+    "id": 20882,
+    "Key": "Musty",
+    "koKR": "퀴퀴한",
+    "enUS": "Musty"
+  },
+  {
+    "id": 20883,
+    "Key": "Dusty",
+    "koKR": "먼지투성이",
+    "enUS": "Dusty"
+  },
+  {
+    "id": 20884,
+    "Key": "Decaying",
+    "koKR": "부패하는",
+    "enUS": "Decaying"
+  },
+  {
+    "id": 20885,
+    "Key": "Rotting",
+    "koKR": "썩은",
+    "enUS": "Rotting"
+  },
+  {
+    "id": 20886,
+    "Key": "Infectious",
+    "koKR": "전염성",
+    "enUS": "Infectious"
+  },
+  {
+    "id": 20887,
+    "Key": "Foggy",
+    "koKR": "안개 낀",
+    "enUS": "Foggy"
+  },
+  {
+    "id": 20888,
+    "Key": "Cloudy",
+    "koKR": "구름 낀",
+    "enUS": "Cloudy"
+  },
+  {
+    "id": 20889,
+    "Key": "Hazy",
+    "koKR": "아스라한",
+    "enUS": "Hazy"
+  },
+  {
+    "id": 20890,
+    "Key": "Punishing",
+    "koKR": "벌하는",
+    "enUS": "Punishing"
+  },
+  {
+    "id": 20891,
+    "Key": "Obsidian",
+    "koKR": "흑요암",
+    "enUS": "Obsidian"
+  },
+  {
+    "id": 20892,
+    "Key": "Royal",
+    "koKR": "왕권의",
+    "enUS": "Royal"
+  },
+  {
+    "id": 20893,
+    "Key": "Frigid",
+    "koKR": "혹한의",
+    "enUS": "Frigid"
+  },
+  {
+    "id": 20894,
+    "Key": "Moldy",
+    "koKR": "곰팡이 핀",
+    "enUS": "Moldy"
+  },
+  {
+    "id": 20895,
+    "Key": "Gaudy",
+    "koKR": "야한",
+    "enUS": "Gaudy"
+  },
+  {
+    "id": 20896,
+    "Key": "Impecable",
+    "koKR": "흠 없는",
+    "enUS": "Impeccable"
+  },
+  {
+    "id": 20897,
+    "Key": "Soulless",
+    "koKR": "영혼 잃은",
+    "enUS": "Soulless"
+  },
+  {
+    "id": 20898,
+    "Key": "Heated",
+    "koKR": "가열된",
+    "enUS": "Heated"
+  },
+  {
+    "id": 20899,
+    "Key": "Lasting",
+    "koKR": "오래가는",
+    "enUS": "Lasting"
+  },
+  {
+    "id": 20900,
+    "Key": "Scorched",
+    "koKR": "그을린",
+    "enUS": "Scorched"
+  },
+  {
+    "id": 20901,
+    "Key": "Marred",
+    "koKR": "훼손된",
+    "enUS": "Marred"
+  },
+  {
+    "id": 20902,
+    "Key": "Lilac",
+    "koKR": "라일락",
+    "enUS": "Lilac"
+  },
+  {
+    "id": 20903,
+    "Key": "Rose",
+    "koKR": "장미",
+    "enUS": "Rose"
+  },
+  {
+    "id": 20904,
+    "Key": "Shimmering",
+    "koKR": "반작이는",
+    "enUS": "Shimmering"
+  },
+  {
+    "id": 20905,
+    "Key": "Green",
+    "koKR": "녹색",
+    "enUS": "Green"
+  },
+  {
+    "id": 20906,
+    "Key": "Wicked",
+    "koKR": "고약한",
+    "enUS": "Wicked"
+  },
+  {
+    "id": 20907,
+    "Key": "Strange",
+    "koKR": "이상한",
+    "enUS": "Strange"
+  },
+  {
+    "id": 20908,
+    "Key": "Repulsive",
+    "koKR": "격퇴",
+    "enUS": "Repulsive"
+  },
+  {
+    "id": 20909,
+    "Key": "Reclusive",
+    "koKR": "은둔자의",
+    "enUS": "Reclusive"
+  },
+  {
+    "id": 20910,
+    "Key": "Crude",
+    "koKR": "조잡한",
+    "enUS": "Crude"
+  },
+  {
+    "id": 20911,
+    "Key": "Rude",
+    "koKR": "무례한",
+    "enUS": "Rude"
+  },
+  {
+    "id": 20912,
+    "Key": "Hermetic",
+    "koKR": "은신",
+    "enUS": "Hermetic"
+  },
+  {
+    "id": 20913,
+    "Key": "Rainbow",
+    "koKR": "무지개",
+    "enUS": "Rainbow"
+  },
+  {
+    "id": 20914,
+    "Key": "Colorful",
+    "koKR": "색색의",
+    "enUS": "Colorful"
+  },
+  {
+    "id": 20915,
+    "Key": "Stinky",
+    "koKR": "악취 나는",
+    "enUS": "Odiferous"
+  },
+  {
+    "id": 20916,
+    "Key": "Gritty",
+    "koKR": "분쇄하는",
+    "enUS": "Grinding"
+  },
+  {
+    "id": 20917,
+    "Key": "of Warming",
+    "koKR": "온기의",
+    "enUS": "of Warming"
+  },
+  {
+    "id": 20918,
+    "Key": "of Stoicism",
+    "koKR": "금욕의",
+    "enUS": "of Stoicism"
+  },
+  {
+    "id": 20919,
+    "Key": "of the Dynamo",
+    "koKR": "발전체의",
+    "enUS": "of the Dynamo"
+  },
+  {
+    "id": 20920,
+    "Key": "of Grounding",
+    "koKR": "접지의",
+    "enUS": "of Grounding"
+  },
+  {
+    "id": 20921,
+    "Key": "of Insulation",
+    "koKR": "단열의",
+    "enUS": "of Insulation"
+  },
+  {
+    "id": 20922,
+    "Key": "of Resistance",
+    "koKR": "저항의",
+    "enUS": "of Resistance"
+  },
+  {
+    "id": 20923,
+    "Key": "of Faith",
+    "koKR": "신념의",
+    "enUS": "of Faith"
+  },
+  {
+    "id": 20924,
+    "Key": "of Fire Quenching",
+    "koKR": "해소의",
+    "enUS": "of Quenching"
+  },
+  {
+    "id": 20925,
+    "Key": "of Amianthus",
+    "koKR": "석면의",
+    "enUS": "of Amianthus"
+  },
+  {
+    "id": 20926,
+    "Key": "of Incombustibility",
+    "koKR": "불연의",
+    "enUS": "of Inflammability"
+  },
+  {
+    "id": 20927,
+    "Key": "of Coolness",
+    "koKR": "냉각의",
+    "enUS": "of Coolness"
+  },
+  {
+    "id": 20928,
+    "Key": "of Anima",
+    "koKR": "아미카이의",
+    "enUS": "of Amicae"
+  },
+  {
+    "id": 20929,
+    "Key": "of Life Everlasting",
+    "koKR": "영생의",
+    "enUS": "of Life Everlasting"
+  },
+  {
+    "id": 20930,
+    "Key": "of Sunlight",
+    "koKR": "햇빛의",
+    "enUS": "of Sunlight"
+  },
+  {
+    "id": 20931,
+    "Key": "of Frozen Orb",
+    "koKR": "얼음 보주의",
+    "enUS": "of Frozen Orb"
+  },
+  {
+    "id": 20932,
+    "Key": "of Hydra Shield",
+    "koKR": "히드라 방패의",
+    "enUS": "of Hydra Shield"
+  },
+  {
+    "id": 20933,
+    "Key": "of Chilling Armor",
+    "koKR": "냉기 갑옷의",
+    "enUS": "of Chilling Armor"
+  },
+  {
+    "id": 20934,
+    "Key": "of Blizzard",
+    "koKR": "눈보라의",
+    "enUS": "of Blizzard"
+  },
+  {
+    "id": 20935,
+    "Key": "of Energy Shield",
+    "koKR": "마력 보호막의",
+    "enUS": "of Energy Shield"
+  },
+  {
+    "id": 20936,
+    "Key": "of Thunder Storm",
+    "koKR": "뇌우의",
+    "enUS": "of Thunder Storm"
+  },
+  {
+    "id": 20937,
+    "Key": "of Meteor",
+    "koKR": "운석 낙하의",
+    "enUS": "of Meteor"
+  },
+  {
+    "id": 20938,
+    "Key": "of Glacial Spike",
+    "koKR": "빙하 가시의",
+    "enUS": "of Glacial Spike"
+  },
+  {
+    "id": 20939,
+    "Key": "of Teleport Shield",
+    "koKR": "순간이동 방패의",
+    "enUS": "of Teleport Shield"
+  },
+  {
+    "id": 20940,
+    "Key": "of Chain Lightning",
+    "koKR": "연쇄 번개의",
+    "enUS": "of Chain Lightning"
+  },
+  {
+    "id": 20941,
+    "Key": "of Enchant",
+    "koKR": "마법부여의",
+    "enUS": "of Enchant"
+  },
+  {
+    "id": 20942,
+    "Key": "of Fire Wall",
+    "koKR": "화염벽의",
+    "enUS": "of Fire Wall"
+  },
+  {
+    "id": 20943,
+    "Key": "of Shiver Armor",
+    "koKR": "오한 갑옷의",
+    "enUS": "of Shiver Armor"
+  },
+  {
+    "id": 20944,
+    "Key": "of Nova Shield",
+    "koKR": "회오리 방패의",
+    "enUS": "of Nova Shield"
+  },
+  {
+    "id": 20945,
+    "Key": "of Nova",
+    "koKR": "번개 파장의",
+    "enUS": "of Nova"
+  },
+  {
+    "id": 20946,
+    "Key": "of Fire Ball",
+    "koKR": "화염구의",
+    "enUS": "of Fire Ball"
+  },
+  {
+    "id": 20947,
+    "Key": "of Blaze",
+    "koKR": "불길의",
+    "enUS": "of Blaze"
+  },
+  {
+    "id": 20948,
+    "Key": "of Ice Blast",
+    "koKR": "얼음 작렬의",
+    "enUS": "of Ice Blast"
+  },
+  {
+    "id": 20949,
+    "Key": "of Frost Shield",
+    "koKR": "서리 방패의",
+    "enUS": "of Frost Shield"
+  },
+  {
+    "id": 20950,
+    "Key": "of Telekinesis",
+    "koKR": "염력의",
+    "enUS": "of Telekinesis"
+  },
+  {
+    "id": 20951,
+    "Key": "of Static Field",
+    "koKR": "전자기장의",
+    "enUS": "of Static Field"
+  },
+  {
+    "id": 20952,
+    "Key": "of Frozen Armor",
+    "koKR": "얼어붙은 갑옷의",
+    "enUS": "of Frozen Armor"
+  },
+  {
+    "id": 20953,
+    "Key": "of Icebolt",
+    "koKR": "얼음화살의",
+    "enUS": "of Icebolt"
+  },
+  {
+    "id": 20954,
+    "Key": "of Charged Shield",
+    "koKR": "번개 줄기의",
+    "enUS": "of Charged Bolt"
+  },
+  {
+    "id": 20955,
+    "Key": "of Firebolts",
+    "koKR": "불화살들의",
+    "enUS": "of Firebolts"
+  },
+  {
+    "id": 20956,
+    "Key": "of the Elements",
+    "koKR": "원소의",
+    "enUS": "of the Elements"
+  },
+  {
+    "id": 20957,
+    "Key": "of the Cobra",
+    "koKR": "코브라의",
+    "enUS": "of the Cobra"
+  },
+  {
+    "id": 20958,
+    "Key": "of the Efreeti",
+    "koKR": "에프리티의",
+    "enUS": "of the Efreeti"
+  },
+  {
+    "id": 20959,
+    "Key": "of the Phoenix",
+    "koKR": "불사조의",
+    "enUS": "of the Phoenix"
+  },
+  {
+    "id": 20960,
+    "Key": "of the Yeti",
+    "koKR": "설인의",
+    "enUS": "of the Yeti"
+  },
+  {
+    "id": 20961,
+    "Key": "of Grace and Power",
+    "koKR": "은총과 힘의",
+    "enUS": "of Grace and Power"
+  },
+  {
+    "id": 20962,
+    "Key": "of Grace",
+    "koKR": "은총의",
+    "enUS": "of Grace"
+  },
+  {
+    "id": 20963,
+    "Key": "of Power",
+    "koKR": "위력의",
+    "enUS": "of Power"
+  },
+  {
+    "id": 20964,
+    "Key": "of the Elephant",
+    "koKR": "코끼리의",
+    "enUS": "of the Elephant"
+  },
+  {
+    "id": 20965,
+    "Key": "of Memory",
+    "koKR": "기억의",
+    "enUS": "of Memory"
+  },
+  {
+    "id": 20966,
+    "Key": "of the Kraken1",
+    "koKR": "크라켄의",
+    "enUS": "of the Kraken"
+  },
+  {
+    "id": 20967,
+    "Key": "of Propogation",
+    "koKR": "증식의",
+    "enUS": "of Propogation"
+  },
+  {
+    "id": 20968,
+    "Key": "of Replenishing",
+    "koKR": "충족의",
+    "enUS": "of Replenishing"
+  },
+  {
+    "id": 20969,
+    "Key": "of Ages",
+    "koKR": "시대의",
+    "enUS": "of Ages"
+  },
+  {
+    "id": 20970,
+    "Key": "of Fast Repair",
+    "koKR": "회복의",
+    "enUS": "of Restoration"
+  },
+  {
+    "id": 20971,
+    "Key": "of Self-Repair",
+    "koKR": "자가 수리의",
+    "enUS": "of Self-Repair"
+  },
+  {
+    "id": 20972,
+    "Key": "of Acceleration",
+    "koKR": "가속의",
+    "enUS": "of Acceleration"
+  },
+  {
+    "id": 20973,
+    "Key": "of Traveling",
+    "koKR": "이동의",
+    "enUS": "of Transportation"
+  },
+  {
+    "id": 20974,
+    "Key": "of Virility",
+    "koKR": "원기의",
+    "enUS": "of Virility"
+  },
+  {
+    "id": 20975,
+    "Key": "of Atlus",
+    "koKR": "아틀라스의",
+    "enUS": "of Atlas"
+  },
+  {
+    "id": 20976,
+    "Key": "of Freedom",
+    "koKR": "자유의",
+    "enUS": "of Freedom"
+  },
+  {
+    "id": 20977,
+    "Key": "of the Lamprey",
+    "koKR": "빨판구더기의",
+    "enUS": "of the Lamprey"
+  },
+  {
+    "id": 20978,
+    "Key": "of Hope",
+    "koKR": "희망의",
+    "enUS": "of Hope"
+  },
+  {
+    "id": 20979,
+    "Key": "of Spirit",
+    "koKR": "기백의",
+    "enUS": "of Spirit"
+  },
+  {
+    "id": 20980,
+    "Key": "of Vita",
+    "koKR": "활기의",
+    "enUS": "of Vita"
+  },
+  {
+    "id": 20981,
+    "Key": "of Substinence",
+    "koKR": "자양의",
+    "enUS": "of Sustenance"
+  },
+  {
+    "id": 20982,
+    "Key": "of the Whale",
+    "koKR": "고래의",
+    "enUS": "of the Whale"
+  },
+  {
+    "id": 20983,
+    "Key": "of the Squid",
+    "koKR": "오징어의",
+    "enUS": "of the Squid"
+  },
+  {
+    "id": 20984,
+    "Key": "of the Colossus1",
+    "koKR": "거신의",
+    "enUS": "of the Colossus"
+  },
+  {
+    "id": 20985,
+    "Key": "of Knowledge",
+    "koKR": "지식의",
+    "enUS": "of Knowledge"
+  },
+  {
+    "id": 20986,
+    "Key": "of Enlightenment",
+    "koKR": "계몽의",
+    "enUS": "of Enlightenment"
+  },
+  {
+    "id": 20987,
+    "Key": "of Prosperity",
+    "koKR": "번영의",
+    "enUS": "of Prosperity"
+  },
+  {
+    "id": 20988,
+    "Key": "of Good Luck",
+    "koKR": "대운의",
+    "enUS": "of Good Luck"
+  },
+  {
+    "id": 20989,
+    "Key": "of Luck",
+    "koKR": "운의",
+    "enUS": "of Luck"
+  },
+  {
+    "id": 20990,
+    "Key": "of Avarice",
+    "koKR": "탐욕의",
+    "enUS": "of Avarice"
+  },
+  {
+    "id": 20991,
+    "Key": "of Honor",
+    "koKR": "명예의",
+    "enUS": "of Honor"
+  },
+  {
+    "id": 20992,
+    "Key": "of Revivification",
+    "koKR": "소생의",
+    "enUS": "of Revivification"
+  },
+  {
+    "id": 20993,
+    "Key": "of Truth",
+    "koKR": "진실의",
+    "enUS": "of Truth"
+  },
+  {
+    "id": 20994,
+    "Key": "of Daring",
+    "koKR": "배짱의",
+    "enUS": "of Daring"
+  },
+  {
+    "id": 20995,
+    "Key": "of Nirvana",
+    "koKR": "열반의",
+    "enUS": "of Nirvana"
+  },
+  {
+    "id": 20996,
+    "Key": "of Envy",
+    "koKR": "시샘의",
+    "enUS": "of Envy"
+  },
+  {
+    "id": 20997,
+    "Key": "of Anthrax",
+    "koKR": "탄저병의",
+    "enUS": "of Anthrax"
+  },
+  {
+    "id": 20998,
+    "Key": "of Bliss",
+    "koKR": "지복의",
+    "enUS": "of Bliss"
+  },
+  {
+    "id": 20999,
+    "Key": "of Joy",
+    "koKR": "기쁨의",
+    "enUS": "of Joy"
+  },
+  {
+    "id": 21000,
+    "Key": "of Transcendence",
+    "koKR": "초월의",
+    "enUS": "of Transcendence"
+  },
+  {
+    "id": 21001,
+    "Key": "of Wrath",
+    "koKR": "진노의",
+    "enUS": "of Wrath"
+  },
+  {
+    "id": 21002,
+    "Key": "of Ire",
+    "koKR": "울화의",
+    "enUS": "of Ire"
+  },
+  {
+    "id": 21003,
+    "Key": "of Evisceration",
+    "koKR": "도축의",
+    "enUS": "of Evisceration"
+  },
+  {
+    "id": 21004,
+    "Key": "of Butchery",
+    "koKR": "살육의",
+    "enUS": "of Butchery"
+  },
+  {
+    "id": 21005,
+    "Key": "of Ennui",
+    "koKR": "권태의",
+    "enUS": "of Ennui"
+  },
+  {
+    "id": 21006,
+    "Key": "of Storms",
+    "koKR": "폭풍의",
+    "enUS": "of Storms"
+  },
+  {
+    "id": 21007,
+    "Key": "of Passion",
+    "koKR": "열정의",
+    "enUS": "of Passion"
+  },
+  {
+    "id": 21008,
+    "Key": "of Incineration",
+    "koKR": "소각의",
+    "enUS": "of Incineration"
+  },
+  {
+    "id": 21009,
+    "Key": "of Frigidity",
+    "koKR": "냉담의",
+    "enUS": "of Frigidity"
+  },
+  {
+    "id": 21010,
+    "Key": "of Winter",
+    "koKR": "겨울의",
+    "enUS": "of Winter"
+  },
+  {
+    "id": 21011,
+    "Key": "of the Icicle",
+    "koKR": "고드름의",
+    "enUS": "of the Icicle"
+  },
+  {
+    "id": 21012,
+    "Key": "of Fervor",
+    "koKR": "열성의",
+    "enUS": "of Fervor"
+  },
+  {
+    "id": 21013,
+    "Key": "of Malice",
+    "koKR": "적의의",
+    "enUS": "of Malice"
+  },
+  {
+    "id": 21014,
+    "Key": "of Swords",
+    "koKR": "검의",
+    "enUS": "of Swords"
+  },
+  {
+    "id": 21015,
+    "Key": "of Razors",
+    "koKR": "서슬의",
+    "enUS": "of Razors"
+  },
+  {
+    "id": 21016,
+    "Key": "of Desire",
+    "koKR": "욕망의",
+    "enUS": "of Desire"
+  },
+  {
+    "id": 21017,
+    "Key": "of the Sirocco",
+    "koKR": "시로코의",
+    "enUS": "of the Scirocco"
+  },
+  {
+    "id": 21018,
+    "Key": "of the Dunes",
+    "koKR": "모래언덕의",
+    "enUS": "of the Dunes"
+  },
+  {
+    "id": 21019,
+    "Key": "of Thawing",
+    "koKR": "해빙의",
+    "enUS": "of Thawing"
+  },
+  {
+    "id": 21020,
+    "Key": "Of the Choir",
+    "koKR": "합창단의",
+    "enUS": "Of the Choir"
+  },
+  {
+    "id": 21021,
+    "Key": "Of the Sniper",
+    "koKR": "저격수의",
+    "enUS": "Of the Sniper"
+  },
+  {
+    "id": 21022,
+    "Key": "Of the Stiletto",
+    "koKR": "단도의",
+    "enUS": "Of the Stiletto"
+  },
+  {
+    "id": 21023,
+    "Key": "Of Bile",
+    "koKR": "가래의",
+    "enUS": "of Bile"
+  },
+  {
+    "id": 21024,
+    "Key": "Of Blitzen",
+    "koKR": "대공세의",
+    "enUS": "of Blitzen"
+  },
+  {
+    "id": 21025,
+    "Key": "Of Cremation",
+    "koKR": "화장의",
+    "enUS": "of Cremation"
+  },
+  {
+    "id": 21026,
+    "Key": "Of Darkness",
+    "koKR": "어둠의",
+    "enUS": "of Darkness"
+  },
+  {
+    "id": 21027,
+    "Key": "Of Disease",
+    "koKR": "질병의",
+    "enUS": "of Disease"
+  },
+  {
+    "id": 21028,
+    "Key": "Of Remorse",
+    "koKR": "통한의",
+    "enUS": "of Remorse"
+  },
+  {
+    "id": 21029,
+    "Key": "Of Terror",
+    "koKR": "공포의",
+    "enUS": "of Terror"
+  },
+  {
+    "id": 21030,
+    "Key": "Of the Sky",
+    "koKR": "하늘의",
+    "enUS": "of the Sky"
+  },
+  {
+    "id": 21031,
+    "Key": "Of Valhalla",
+    "koKR": "발할라의",
+    "enUS": "of Valhalla"
+  },
+  {
+    "id": 21032,
+    "Key": "Of Waste",
+    "koKR": "낭비의",
+    "enUS": "of Waste"
+  },
+  {
+    "id": 21033,
+    "Key": "Of Nobility",
+    "koKR": "고귀의",
+    "enUS": "of Nobility"
+  },
+  {
+    "id": 21034,
+    "Key": "Of Karma",
+    "koKR": "업보의",
+    "enUS": "of Karma"
+  },
+  {
+    "id": 21035,
+    "Key": "Of Grounding",
+    "koKR": "접지의",
+    "enUS": "of Grounding"
+  },
+  {
+    "id": 21036,
+    "Key": "Of the River",
+    "koKR": "강의",
+    "enUS": "of the River"
+  },
+  {
+    "id": 21037,
+    "Key": "Of the Lake",
+    "koKR": "호수의",
+    "enUS": "of the Lake"
+  },
+  {
+    "id": 21038,
+    "Key": "Of the Ocean",
+    "koKR": "바다의",
+    "enUS": "of the Ocean"
+  },
+  {
+    "id": 21039,
+    "Key": "Of the Bayou",
+    "koKR": "늪지의",
+    "enUS": "of the Bayou"
+  },
+  {
+    "id": 21040,
+    "Key": "Of the Stream",
+    "koKR": "개울의",
+    "enUS": "of the Stream"
+  },
+  {
+    "id": 21041,
+    "Key": "Of the Lady",
+    "koKR": "부인의",
+    "enUS": "of the Lady"
+  },
+  {
+    "id": 21042,
+    "Key": "Of the Maiden",
+    "koKR": "여제의",
+    "enUS": "Of the Maiden"
+  },
+  {
+    "id": 21043,
+    "Key": "Of the Virgin",
+    "koKR": "처녀의",
+    "enUS": "of the Virgin"
+  },
+  {
+    "id": 21044,
+    "Key": "Of the Hag",
+    "koKR": "노파의",
+    "enUS": "of the Hag"
+  },
+  {
+    "id": 21045,
+    "Key": "Of the Witch",
+    "koKR": "마녀의",
+    "enUS": "of the Witch"
+  },
+  {
+    "id": 21046,
+    "Key": "Of Judgement",
+    "koKR": "심판의",
+    "enUS": "of Judgement"
+  },
+  {
+    "id": 21047,
+    "Key": "Of Illusion",
+    "koKR": "환상의",
+    "enUS": "of Illusion"
+  },
+  {
+    "id": 21048,
+    "Key": "Of Elusion",
+    "koKR": "신출귀몰의",
+    "enUS": "of Eluding"
+  },
+  {
+    "id": 21049,
+    "Key": "Of Combat",
+    "koKR": "격전의",
+    "enUS": "of Combat"
+  },
+  {
+    "id": 21050,
+    "Key": "Of Attrition",
+    "koKR": "마멸의",
+    "enUS": "of Attrition"
+  },
+  {
+    "id": 21051,
+    "Key": "Of Abrasion",
+    "koKR": "마모의",
+    "enUS": "of Abrasion"
+  },
+  {
+    "id": 21052,
+    "Key": "Of Erosion",
+    "koKR": "침식의",
+    "enUS": "of Erosion"
+  },
+  {
+    "id": 21053,
+    "Key": "Of Searing",
+    "koKR": "태움의",
+    "enUS": "of Searing"
+  },
+  {
+    "id": 21054,
+    "Key": "Of Stone",
+    "koKR": "돌의",
+    "enUS": "of Stone"
+  },
+  {
+    "id": 21055,
+    "Key": "Of Stature",
+    "koKR": "위상의",
+    "enUS": "of Stature"
+  },
+  {
+    "id": 21056,
+    "Key": "Of Fortication",
+    "koKR": "요새화의",
+    "enUS": "of Fortification"
+  },
+  {
+    "id": 21057,
+    "Key": "Of Quickening",
+    "koKR": "가속의",
+    "enUS": "of Quickening"
+  },
+  {
+    "id": 21058,
+    "Key": "Of Dispatch",
+    "koKR": "파견의",
+    "enUS": "of Dispatch"
+  },
+  {
+    "id": 21059,
+    "Key": "Of Daring",
+    "koKR": "배짱의",
+    "enUS": "of Daring"
+  },
+  {
+    "id": 21060,
+    "Key": "Of Dread",
+    "koKR": "근심의",
+    "enUS": "of Dread"
+  },
+  {
+    "id": 21061,
+    "Key": "Of Suffering",
+    "koKR": "고초의",
+    "enUS": "of Suffering"
+  },
+  {
+    "id": 21062,
+    "Key": "Of Doom",
+    "koKR": "파멸의",
+    "enUS": "of Doom"
+  },
+  {
+    "id": 21063,
+    "Key": "Of Vengence",
+    "koKR": "복수의",
+    "enUS": "of Vengence"
+  },
+  {
+    "id": 21064,
+    "Key": "Of Redemption",
+    "koKR": "속죄의",
+    "enUS": "of Redemption"
+  },
+  {
+    "id": 21065,
+    "Key": "Of Luck",
+    "koKR": "운의",
+    "enUS": "of Luck"
+  },
+  {
+    "id": 21066,
+    "Key": "Of the Avenger",
+    "koKR": "복수자의",
+    "enUS": "of the Avenger"
+  },
+  {
+    "id": 21067,
+    "Key": "Of the Specter",
+    "koKR": "허깨비의",
+    "enUS": "of the Specter"
+  },
+  {
+    "id": 21068,
+    "Key": "Of the Ghost",
+    "koKR": "유령의",
+    "enUS": "of the Ghost"
+  },
+  {
+    "id": 21069,
+    "Key": "Of the Infantry",
+    "koKR": "보병의",
+    "enUS": "of the Infantry"
+  },
+  {
+    "id": 21070,
+    "Key": "Of the Mosquito",
+    "koKR": "모기의",
+    "enUS": "of the Mosquito"
+  },
+  {
+    "id": 21071,
+    "Key": "Of the Gnat",
+    "koKR": "각다귀의",
+    "enUS": "of the Gnat"
+  },
+  {
+    "id": 21072,
+    "Key": "Of the Fly",
+    "koKR": "파리의",
+    "enUS": "of the Fly"
+  },
+  {
+    "id": 21073,
+    "Key": "Of the Plague",
+    "koKR": "역병의",
+    "enUS": "of the Plague"
+  },
+  {
+    "id": 21074,
+    "Key": "Of Twilight",
+    "koKR": "황혼의",
+    "enUS": "of Twilight"
+  },
+  {
+    "id": 21075,
+    "Key": "Of Dusk",
+    "koKR": "땅거미의",
+    "enUS": "of Dusk"
+  },
+  {
+    "id": 21076,
+    "Key": "Of Dawn",
+    "koKR": "새벽의",
+    "enUS": "of Dawn"
+  },
+  {
+    "id": 21077,
+    "Key": "Of the Imbecile",
+    "koKR": "천치의",
+    "enUS": "of the Imbecile"
+  },
+  {
+    "id": 21078,
+    "Key": "Of the Idiot",
+    "koKR": "멍청이의",
+    "enUS": "of the Idiot"
+  },
+  {
+    "id": 21079,
+    "Key": "Of the Retard",
+    "koKR": "멍텅구리의",
+    "enUS": "of the Moron"
+  },
+  {
+    "id": 21080,
+    "Key": "Of the Jujube",
+    "koKR": "대추의",
+    "enUS": "of the Jujube"
+  },
+  {
+    "id": 21081,
+    "Key": "Of the Obscenity",
+    "koKR": "음란의",
+    "enUS": "of the Obscene"
+  },
+  {
+    "id": 21082,
+    "Key": "Of Quota",
+    "koKR": "할당량의",
+    "enUS": "of the Quota"
+  },
+  {
+    "id": 21083,
+    "Key": "Of the Maggot",
+    "koKR": "구더기의",
+    "enUS": "of Maggots"
+  },
+  {
+    "id": 21084,
+    "Key": "Of Horror",
+    "koKR": "경악의",
+    "enUS": "of Horror"
+  },
+  {
+    "id": 21085,
+    "Key": "Of Baddass",
+    "koKR": "심연의",
+    "enUS": "of the Abyss"
+  },
+  {
+    "id": 21086,
+    "Key": "Of the Beast",
+    "koKR": "야수의",
+    "enUS": "of the Beast"
+  },
+  {
+    "id": 21087,
+    "Key": "Of Cruelty",
+    "koKR": "잔혹함의",
+    "enUS": "of Cruelty"
+  },
+  {
+    "id": 21088,
+    "Key": "Of Badness",
+    "koKR": "나쁨의",
+    "enUS": "of Badness"
+  },
+  {
+    "id": 21089,
+    "Key": "Of the Horde",
+    "koKR": "도당의",
+    "enUS": "of the Horde"
+  },
+  {
+    "id": 21090,
+    "Key": "Of the Forest",
+    "koKR": "숲의",
+    "enUS": "of the Forest"
+  },
+  {
+    "id": 21091,
+    "Key": "Of the Lilly",
+    "koKR": "백합의",
+    "enUS": "of the Lilly"
+  },
+  {
+    "id": 21092,
+    "Key": "Of the Grassy Gnoll",
+    "koKR": "풀빛 놀의",
+    "enUS": "of the Grassy Gnoll"
+  },
+  {
+    "id": 21093,
+    "Key": "Of the Stars",
+    "koKR": "별의",
+    "enUS": "of the Stars"
+  },
+  {
+    "id": 21094,
+    "Key": "Of the Moon",
+    "koKR": "달의",
+    "enUS": "of the Moon"
+  },
+  {
+    "id": 21095,
+    "Key": "Of Love",
+    "koKR": "사랑의",
+    "enUS": "of Love"
+  },
+  {
+    "id": 21096,
+    "Key": "Of the Unicorn",
+    "koKR": "유니콘의",
+    "enUS": "of the Unicorn"
+  },
+  {
+    "id": 21097,
+    "Key": "Of the Walrus",
+    "koKR": "바다코끼리의",
+    "enUS": "of the Walrus"
+  },
+  {
+    "id": 21098,
+    "Key": "Of the Earth",
+    "koKR": "땅의",
+    "enUS": "of the Earth"
+  },
+  {
+    "id": 21099,
+    "Key": "Of Vines",
+    "koKR": "덩굴의",
+    "enUS": "of Vines"
+  },
+  {
+    "id": 21100,
+    "Key": "Of Honor",
+    "koKR": "명예의",
+    "enUS": "of Honor"
+  },
+  {
+    "id": 21101,
+    "Key": "Of Tribute",
+    "koKR": "공물의",
+    "enUS": "of Tribute"
+  },
+  {
+    "id": 21102,
+    "Key": "Of Credit",
+    "koKR": "신뢰의",
+    "enUS": "of Credit"
+  },
+  {
+    "id": 21103,
+    "Key": "Of Admiration",
+    "koKR": "경의의",
+    "enUS": "of Admiration"
+  },
+  {
+    "id": 21104,
+    "Key": "Of Sweetness",
+    "koKR": "다정의",
+    "enUS": "of Sweetness"
+  },
+  {
+    "id": 21105,
+    "Key": "Of Beauty",
+    "koKR": "아름다움의",
+    "enUS": "of Beauty"
+  },
+  {
+    "id": 21106,
+    "Key": "Of Pilfering",
+    "koKR": "좀도둑질의",
+    "enUS": "of Pilfering"
+  },
+  {
+    "id": 21107,
+    "Key": "of Damage Amplification",
+    "koKR": "피해 증폭의",
+    "enUS": "of Amplify Damage"
+  },
+  {
+    "id": 21108,
+    "Key": "of Hurricane",
+    "koKR": "허리케인의",
+    "enUS": "of Hurricane"
+  },
+  {
+    "id": 21109,
+    "Key": "of Armageddon",
+    "koKR": "대전쟁의",
+    "enUS": "of Armageddon"
+  },
+  {
+    "id": 21110,
+    "Key": "of Tornado",
+    "koKR": "회오리바람의",
+    "enUS": "of Tornado"
+  },
+  {
+    "id": 21111,
+    "Key": "of Volcano",
+    "koKR": "화산의",
+    "enUS": "of Volcano"
+  },
+  {
+    "id": 21112,
+    "Key": "of Twister",
+    "koKR": "돌개바람의",
+    "enUS": "of Twister"
+  },
+  {
+    "id": 21113,
+    "Key": "of Cyclone Armor",
+    "koKR": "회오리 갑옷의",
+    "enUS": "of Cyclone Armor"
+  },
+  {
+    "id": 21114,
+    "Key": "of Eruption",
+    "koKR": "틈새의",
+    "enUS": "of Fissure"
+  },
+  {
+    "id": 21115,
+    "Key": "of Molten Boulders",
+    "koKR": "타오르는 바위의",
+    "enUS": "of Molten Boulder"
+  },
+  {
+    "id": 21116,
+    "Key": "of Firestorms",
+    "koKR": "화염폭풍의",
+    "enUS": "of Firestorms"
+  },
+  {
+    "id": 21117,
+    "Key": "of Battle Command",
+    "koKR": "전투 명령의",
+    "enUS": "of Battle Command"
+  },
+  {
+    "id": 21118,
+    "Key": "of War Cry",
+    "koKR": "전장의 함성의",
+    "enUS": "of War Cry"
+  },
+  {
+    "id": 21119,
+    "Key": "of Grim Ward",
+    "koKR": "섬뜩한 호신부의",
+    "enUS": "of Grim Ward"
+  },
+  {
+    "id": 21120,
+    "Key": "of Battle Orders",
+    "koKR": "전투 지시의",
+    "enUS": "of Battle Orders"
+  },
+  {
+    "id": 21121,
+    "Key": "of Battle Cry",
+    "koKR": "전투의 함성의",
+    "enUS": "of Battle Cry"
+  },
+  {
+    "id": 21122,
+    "Key": "of Concentration",
+    "koKR": "집중의",
+    "enUS": "of Concentration"
+  },
+  {
+    "id": 21123,
+    "Key": "of Item Finding",
+    "koKR": "아이템 발견의",
+    "enUS": "of Find Item"
+  },
+  {
+    "id": 21124,
+    "Key": "of Stunning",
+    "koKR": "기절의",
+    "enUS": "of Stun"
+  },
+  {
+    "id": 21125,
+    "Key": "of Shouting",
+    "koKR": "외침의",
+    "enUS": "of Shout"
+  },
+  {
+    "id": 21126,
+    "Key": "of Taunting",
+    "koKR": "도발의",
+    "enUS": "of Taunt"
+  },
+  {
+    "id": 21127,
+    "Key": "of Potion Finding",
+    "koKR": "물약 발견의",
+    "enUS": "of Find Potion"
+  },
+  {
+    "id": 21128,
+    "Key": "of Howling",
+    "koKR": "포효의",
+    "enUS": "of Howl"
+  },
+  {
+    "id": 21129,
+    "Key": "of Fist of the Heavens",
+    "koKR": "천상의 주먹의",
+    "enUS": "of Fist of the Heavens"
+  },
+  {
+    "id": 21130,
+    "Key": "of Holy Shield",
+    "koKR": "신성한 방패의",
+    "enUS": "of Holy Shield"
+  },
+  {
+    "id": 21131,
+    "Key": "of Conversion",
+    "koKR": "변환의",
+    "enUS": "of Conversion"
+  },
+  {
+    "id": 21132,
+    "Key": "of Blessed Hammers",
+    "koKR": "축복받은 망치의",
+    "enUS": "of Blessed Hammer"
+  },
+  {
+    "id": 21133,
+    "Key": "of Vengeance",
+    "koKR": "복수의",
+    "enUS": "of Vengeance"
+  },
+  {
+    "id": 21134,
+    "Key": "of Charging",
+    "koKR": "돌진의",
+    "enUS": "of Charge"
+  },
+  {
+    "id": 21135,
+    "Key": "of Zeal",
+    "koKR": "열의의",
+    "enUS": "of Zeal"
+  },
+  {
+    "id": 21136,
+    "Key": "of Holy Bolts",
+    "koKR": "신성한 빛줄기의",
+    "enUS": "of Holy Bolt"
+  },
+  {
+    "id": 21137,
+    "Key": "of Sacrifice",
+    "koKR": "희생의",
+    "enUS": "of Sacrifice"
+  },
+  {
+    "id": 21138,
+    "Key": "of Fire Golem Summoning",
+    "koKR": "화염 골렘의",
+    "enUS": "of Fire Golem"
+  },
+  {
+    "id": 21139,
+    "Key": "of Bone Spirits",
+    "koKR": "뼈 영혼의",
+    "enUS": "of Bone Spirit"
+  },
+  {
+    "id": 21140,
+    "Key": "of Poison Novas",
+    "koKR": "맹독 확산의",
+    "enUS": "of Poison Nova"
+  },
+  {
+    "id": 21141,
+    "Key": "of Lower Resistance",
+    "koKR": "저항 감소의",
+    "enUS": "of Lower Resistance"
+  },
+  {
+    "id": 21142,
+    "Key": "of Iron Golem Creation",
+    "koKR": "강철 골렘의",
+    "enUS": "of Iron Golem"
+  },
+  {
+    "id": 21143,
+    "Key": "of Bone Imprisonment",
+    "koKR": "뼈 감옥의",
+    "enUS": "of Bone Prison"
+  },
+  {
+    "id": 21144,
+    "Key": "of Decrepification",
+    "koKR": "노화의",
+    "enUS": "of Decrepify"
+  },
+  {
+    "id": 21145,
+    "Key": "of Attraction",
+    "koKR": "유혹의",
+    "enUS": "of Attract"
+  },
+  {
+    "id": 21146,
+    "Key": "of Blood Golem Summoning",
+    "koKR": "피 골렘의",
+    "enUS": "of Blood Golem"
+  },
+  {
+    "id": 21147,
+    "Key": "of Bone Spears",
+    "koKR": "뼈 창의",
+    "enUS": "of Bone Spear"
+  },
+  {
+    "id": 21148,
+    "Key": "of Poison Explosion",
+    "koKR": "맹독 폭발의",
+    "enUS": "of Poison Explosion"
+  },
+  {
+    "id": 21149,
+    "Key": "of Life Tap",
+    "koKR": "생명력 추출의",
+    "enUS": "of Life Tap"
+  },
+  {
+    "id": 21150,
+    "Key": "of Confusion",
+    "koKR": "혼란의",
+    "enUS": "of Confusion"
+  },
+  {
+    "id": 21151,
+    "Key": "of Raise Skeletal Mages",
+    "koKR": "해골 마법학자의",
+    "enUS": "of Skeletal Mages"
+  },
+  {
+    "id": 21152,
+    "Key": "of Bone Walls",
+    "koKR": "뼈의 벽의",
+    "enUS": "of Bone Wall"
+  },
+  {
+    "id": 21153,
+    "Key": "of Terror",
+    "koKR": "공포의",
+    "enUS": "of Terror"
+  },
+  {
+    "id": 21154,
+    "Key": "of Iron Maiden",
+    "koKR": "철관의",
+    "enUS": "of Iron Maiden"
+  },
+  {
+    "id": 21155,
+    "Key": "of Clay Golem Summoning",
+    "koKR": "점토 골렘의",
+    "enUS": "of Clay Golem"
+  },
+  {
+    "id": 21156,
+    "Key": "of Corpse Explosions",
+    "koKR": "시체 폭발의",
+    "enUS": "of Corpse Explosion"
+  },
+  {
+    "id": 21157,
+    "Key": "of Poison Dagger",
+    "koKR": "맹독 단도의",
+    "enUS": "of Poison Dagger"
+  },
+  {
+    "id": 21158,
+    "Key": "of Weaken",
+    "koKR": "약화의",
+    "enUS": "of Weaken"
+  },
+  {
+    "id": 21159,
+    "Key": "of Dim Vision",
+    "koKR": "시야 흐리기의",
+    "enUS": "of Dim Vision"
+  },
+  {
+    "id": 21160,
+    "Key": "of Raise Skeletons",
+    "koKR": "해골 되살리기의",
+    "enUS": "of Raise Skeleton"
+  },
+  {
+    "id": 21161,
+    "Key": "of Bone Armor",
+    "koKR": "뼈 갑옷의",
+    "enUS": "of Bone Armor"
+  },
+  {
+    "id": 21162,
+    "Key": "of Teeth",
+    "koKR": "이빨의",
+    "enUS": "of Teeth"
+  },
+  {
+    "id": 21163,
+    "Key": "of Amplify Damage",
+    "koKR": "피해 증폭의",
+    "enUS": "of Amplify Damage"
+  },
+  {
+    "id": 21164,
+    "Key": "of Frozen Orbs",
+    "koKR": "얼음 보주의",
+    "enUS": "of Frozen Orb"
+  },
+  {
+    "id": 21165,
+    "Key": "of Hydras",
+    "koKR": "히드라의",
+    "enUS": "of Hydra"
+  },
+  {
+    "id": 21166,
+    "Key": "of Blizzards",
+    "koKR": "눈보라의",
+    "enUS": "of Blizzard"
+  },
+  {
+    "id": 21167,
+    "Key": "of Meteors",
+    "koKR": "운석 낙하의",
+    "enUS": "of Meteor"
+  },
+  {
+    "id": 21168,
+    "Key": "of Glacial Spikes",
+    "koKR": "빙하 가시의",
+    "enUS": "of Glacial Spike"
+  },
+  {
+    "id": 21169,
+    "Key": "of Teleportation",
+    "koKR": "순간이동의",
+    "enUS": "of Teleportation"
+  },
+  {
+    "id": 21170,
+    "Key": "of Enchantment",
+    "koKR": "마법부여식의",
+    "enUS": "of Enchantment"
+  },
+  {
+    "id": 21171,
+    "Key": "of Fire Walls",
+    "koKR": "화염벽의",
+    "enUS": "of Fire Wall"
+  },
+  {
+    "id": 21172,
+    "Key": "of Novas",
+    "koKR": "번개 파장의",
+    "enUS": "of Nova"
+  },
+  {
+    "id": 21173,
+    "Key": "of Fire Balls",
+    "koKR": "화염구의",
+    "enUS": "of Fire Ball"
+  },
+  {
+    "id": 21174,
+    "Key": "of Blazing",
+    "koKR": "이글거림의",
+    "enUS": "of Blazing"
+  },
+  {
+    "id": 21175,
+    "Key": "of Ice Blasts",
+    "koKR": "얼음 작렬의",
+    "enUS": "of Ice Blast"
+  },
+  {
+    "id": 21176,
+    "Key": "of Frost Novas",
+    "koKR": "서릿발의",
+    "enUS": "of Frost Nova"
+  },
+  {
+    "id": 21177,
+    "Key": "of Ice Bolts",
+    "koKR": "얼음살의",
+    "enUS": "of Ice Bolt"
+  },
+  {
+    "id": 21178,
+    "Key": "of Charged Bolts",
+    "koKR": "번개 줄기의",
+    "enUS": "of Charged Bolt"
+  },
+  {
+    "id": 21179,
+    "Key": "of Fire Bolts",
+    "koKR": "불화살의",
+    "enUS": "of Fire Bolt"
+  },
+  {
+    "id": 21180,
+    "Key": "of Lightning Fury",
+    "koKR": "번개의 격노의",
+    "enUS": "of Lightning Fury"
+  },
+  {
+    "id": 21181,
+    "Key": "of Lightning Spear",
+    "koKR": "번개 창의",
+    "enUS": "of Lightning Spear"
+  },
+  {
+    "id": 21182,
+    "Key": "of Freezing Arrows",
+    "koKR": "빙결 화살의",
+    "enUS": "of Freezing Arrow"
+  },
+  {
+    "id": 21183,
+    "Key": "of Fending",
+    "koKR": "난격의",
+    "enUS": "of Fending"
+  },
+  {
+    "id": 21184,
+    "Key": "of Immolating Arrows",
+    "koKR": "점화 화살의",
+    "enUS": "of Immolating Arrow"
+  },
+  {
+    "id": 21185,
+    "Key": "of Plague Javelin",
+    "koKR": "역병 투창의",
+    "enUS": "of Plague Javelin"
+  },
+  {
+    "id": 21186,
+    "Key": "of Charged Spear",
+    "koKR": "충전된 창의",
+    "enUS": "of Charged Spear"
+  },
+  {
+    "id": 21187,
+    "Key": "of Guided Arrows",
+    "koKR": "유도 화살의",
+    "enUS": "of Guided Arrow"
+  },
+  {
+    "id": 21188,
+    "Key": "of Ice Arrows",
+    "koKR": "얼음 화살의",
+    "enUS": "of Ice Arrow"
+  },
+  {
+    "id": 21189,
+    "Key": "of Lightning Javelin",
+    "koKR": "번개 투창의",
+    "enUS": "of Lightning Javelin"
+  },
+  {
+    "id": 21190,
+    "Key": "of Impaling Spear",
+    "koKR": "관통하는 창의",
+    "enUS": "of Impaling Spear"
+  },
+  {
+    "id": 21191,
+    "Key": "of Slow Missiles",
+    "koKR": "투사체 감속의",
+    "enUS": "of Slow Missile"
+  },
+  {
+    "id": 21192,
+    "Key": "of Exploding Arrows",
+    "koKR": "폭발 화살의",
+    "enUS": "of Exploding Arrow"
+  },
+  {
+    "id": 21193,
+    "Key": "of Poison Javelin",
+    "koKR": "맹독 투창의",
+    "enUS": "of Poison Javelin"
+  },
+  {
+    "id": 21194,
+    "Key": "of Power Spear",
+    "koKR": "강한 창의",
+    "enUS": "of Power Spear"
+  },
+  {
+    "id": 21195,
+    "Key": "of Multiple Shot",
+    "koKR": "다발 사격의",
+    "enUS": "of Multiple Shot"
+  },
+  {
+    "id": 21196,
+    "Key": "of Cold Arrows",
+    "koKR": "냉기 화살의",
+    "enUS": "of Cold Arrow"
+  },
+  {
+    "id": 21197,
+    "Key": "of Jabbing",
+    "koKR": "찌르기의",
+    "enUS": "of Jab"
+  },
+  {
+    "id": 21198,
+    "Key": "of Inner Sight",
+    "koKR": "내면의 시야의",
+    "enUS": "of Inner Sight"
+  },
+  {
+    "id": 21199,
+    "Key": "of Fire Arrows",
+    "koKR": "불꽃 화살의",
+    "enUS": "of Fire Arrow"
+  },
+  {
+    "id": 21200,
+    "Key": "of Magic Arrows",
+    "koKR": "마법 화살의",
+    "enUS": "of Magic Arrow"
+  },
+  {
+    "id": 21201,
+    "Key": "Of self-repair",
+    "koKR": "자가 수리",
+    "enUS": "Self-Repair"
+  },
+  {
+    "id": 21202,
+    "Key": "of Dawn",
+    "koKR": "새벽의",
+    "enUS": "of Dawn"
+  },
+  {
+    "id": 21203,
+    "Key": "of Inertia",
+    "koKR": "관성의",
+    "enUS": "of Inertia"
+  },
+  {
+    "id": 21204,
+    "Key": "of Joyfulness",
+    "koKR": "낙의",
+    "enUS": "of Joyfulness"
+  },
+  {
+    "id": 21807,
+    "Key": "of Lightning Strike",
+    "koKR": "번개의 일격의",
+    "enUS": "of Lightning Strike"
+  },
+  {
+    "id": 21808,
+    "Key": "of Plague Jab",
+    "koKR": "역병 찌르기의",
+    "enUS": "of Plague Jab"
+  },
+  {
+    "id": 21809,
+    "Key": "of Charged Strike",
+    "koKR": "전류의 일격의",
+    "enUS": "of Charged Strike"
+  },
+  {
+    "id": 21810,
+    "Key": "of Impaling Strike",
+    "koKR": "꿰뚫는 강타의",
+    "enUS": "of Impaling Strike"
+  },
+  {
+    "id": 21811,
+    "Key": "of Poison Jab",
+    "koKR": "독 찌르기의",
+    "enUS": "of Poison Jab"
+  },
+  {
+    "id": 21812,
+    "Key": "of Power Strike",
+    "koKR": "전기의 일격의",
+    "enUS": "of Power Strike"
+  },
+  {
+    "id": 21813,
+    "Key": "of the Colossus",
+    "koKR": "덩치의",
+    "enUS": "of the Gargantuan"
+  },
+  {
+    "id": 21814,
+    "Key": "of the Kraken",
+    "koKR": "켄타우로스의",
+    "enUS": "of the Centaur"
+  },
+  {
+    "id": 21883,
+    "Key": "of the Plague",
+    "koKR": "역병의",
+    "enUS": "of the Plague"
+  },
+  {
+    "id": 22332,
+    "Key": "UiShadowUI",
+    "koKR": "그림자",
+    "enUS": "Shadow"
+  },
+  {
+    "id": 22472,
+    "Key": "Ghostly",
+    "koKR": "유령",
+    "enUS": "Ghostly"
+  },
+  {
+    "id": 22473,
+    "Key": "Fanatic",
+    "koKR": "광신자",
+    "enUS": "Fanatic"
+  },
+  {
+    "id": 22474,
+    "Key": "Possessed",
+    "koKR": "빙의",
+    "enUS": "Possessed"
+  },
+  {
+    "id": 22475,
+    "Key": "Berserk",
+    "koKR": "광전사",
+    "enUS": "Berserker"
+  },
+  {
+    "id": 8001,
+    "Key": "pgm",
+    "koKR": "최상급 보석",
+    "enUS": "Perfect Gem"
+  }
+]

@@ -1,0 +1,1472 @@
+[
+  {
+    "id": 10902,
+    "Key": "r16",
+    "koKR": "이오 룬",
+    "enUS": "Io Rune"
+  },
+  {
+    "id": 10903,
+    "Key": "r16L",
+    "koKR": "이오",
+    "enUS": "Io"
+  },
+  {
+    "id": 10904,
+    "Key": "r13",
+    "koKR": "샤엘 룬",
+    "enUS": "Shael Rune"
+  },
+  {
+    "id": 10905,
+    "Key": "r13L",
+    "koKR": "샤엘",
+    "enUS": "Shael"
+  },
+  {
+    "id": 10906,
+    "Key": "r31",
+    "koKR": "자 룬",
+    "enUS": "Jah Rune"
+  },
+  {
+    "id": 10907,
+    "Key": "r31L",
+    "koKR": "자",
+    "enUS": "Jah"
+  },
+  {
+    "id": 10910,
+    "Key": "Runeword22",
+    "koKR": "착란",
+    "enUS": "Delirium"
+  },
+  {
+    "id": 20440,
+    "Key": "r33",
+    "koKR": "조드 룬",
+    "enUS": "Zod Rune"
+  },
+  {
+    "id": 20441,
+    "Key": "r32",
+    "koKR": "참 룬",
+    "enUS": "Cham Rune"
+  },
+  {
+    "id": 20443,
+    "Key": "r30",
+    "koKR": "베르 룬",
+    "enUS": "Ber Rune"
+  },
+  {
+    "id": 20444,
+    "Key": "r29",
+    "koKR": "수르 룬",
+    "enUS": "Sur Rune"
+  },
+  {
+    "id": 20445,
+    "Key": "r28",
+    "koKR": "로 룬",
+    "enUS": "Lo Rune"
+  },
+  {
+    "id": 20446,
+    "Key": "r27",
+    "koKR": "오움 룬",
+    "enUS": "Ohm Rune"
+  },
+  {
+    "id": 20447,
+    "Key": "r26",
+    "koKR": "벡스 룬",
+    "enUS": "Vex Rune"
+  },
+  {
+    "id": 20448,
+    "Key": "r25",
+    "koKR": "굴 룬",
+    "enUS": "Gul Rune"
+  },
+  {
+    "id": 20449,
+    "Key": "r24",
+    "koKR": "이스트 룬",
+    "enUS": "Ist Rune"
+  },
+  {
+    "id": 20450,
+    "Key": "r23",
+    "koKR": "말 룬",
+    "enUS": "Mal Rune"
+  },
+  {
+    "id": 20451,
+    "Key": "r22",
+    "koKR": "우움 룬",
+    "enUS": "Um Rune"
+  },
+  {
+    "id": 20452,
+    "Key": "r21",
+    "koKR": "풀 룬",
+    "enUS": "Pul Rune"
+  },
+  {
+    "id": 20453,
+    "Key": "r20",
+    "koKR": "렘 룬",
+    "enUS": "Lem Rune"
+  },
+  {
+    "id": 20454,
+    "Key": "r19",
+    "koKR": "팔 룬",
+    "enUS": "Fal Rune"
+  },
+  {
+    "id": 20455,
+    "Key": "r18",
+    "koKR": "코 룬",
+    "enUS": "Ko Rune"
+  },
+  {
+    "id": 20456,
+    "Key": "r17",
+    "koKR": "룸 룬",
+    "enUS": "Lum Rune"
+  },
+  {
+    "id": 20458,
+    "Key": "r15",
+    "koKR": "헬 룬",
+    "enUS": "Hel Rune"
+  },
+  {
+    "id": 20459,
+    "Key": "r14",
+    "koKR": "돌 룬",
+    "enUS": "Dol Rune"
+  },
+  {
+    "id": 20461,
+    "Key": "r12",
+    "koKR": "솔 룬",
+    "enUS": "Sol Rune"
+  },
+  {
+    "id": 20462,
+    "Key": "r11",
+    "koKR": "앰 룬",
+    "enUS": "Amn Rune"
+  },
+  {
+    "id": 20463,
+    "Key": "r10",
+    "koKR": "주울 룬",
+    "enUS": "Thul Rune"
+  },
+  {
+    "id": 20464,
+    "Key": "r09",
+    "koKR": "오르트 룬",
+    "enUS": "Ort Rune"
+  },
+  {
+    "id": 20465,
+    "Key": "r08",
+    "koKR": "랄 룬",
+    "enUS": "Ral Rune"
+  },
+  {
+    "id": 20466,
+    "Key": "r07",
+    "koKR": "탈 룬",
+    "enUS": "Tal Rune"
+  },
+  {
+    "id": 20467,
+    "Key": "r06",
+    "koKR": "아이드 룬",
+    "enUS": "Ith Rune"
+  },
+  {
+    "id": 20468,
+    "Key": "r05",
+    "koKR": "에드 룬",
+    "enUS": "Eth Rune"
+  },
+  {
+    "id": 20469,
+    "Key": "r04",
+    "koKR": "네프 룬",
+    "enUS": "Nef Rune"
+  },
+  {
+    "id": 20470,
+    "Key": "r03",
+    "koKR": "티르 룬",
+    "enUS": "Tir Rune"
+  },
+  {
+    "id": 20471,
+    "Key": "r02",
+    "koKR": "엘드 룬",
+    "enUS": "Eld Rune"
+  },
+  {
+    "id": 20472,
+    "Key": "r01",
+    "koKR": "엘 룬",
+    "enUS": "El Rune"
+  },
+  {
+    "id": 20473,
+    "Key": "r33L",
+    "koKR": "조드",
+    "enUS": "Zod"
+  },
+  {
+    "id": 20474,
+    "Key": "r32L",
+    "koKR": "참",
+    "enUS": "Cham"
+  },
+  {
+    "id": 20476,
+    "Key": "r30L",
+    "koKR": "베르",
+    "enUS": "Ber"
+  },
+  {
+    "id": 20477,
+    "Key": "r29L",
+    "koKR": "수르",
+    "enUS": "Sur"
+  },
+  {
+    "id": 20478,
+    "Key": "r28L",
+    "koKR": "로",
+    "enUS": "Lo"
+  },
+  {
+    "id": 20479,
+    "Key": "r27L",
+    "koKR": "오움",
+    "enUS": "Ohm"
+  },
+  {
+    "id": 20480,
+    "Key": "r26L",
+    "koKR": "벡스",
+    "enUS": "Vex"
+  },
+  {
+    "id": 20481,
+    "Key": "r25L",
+    "koKR": "굴",
+    "enUS": "Gul"
+  },
+  {
+    "id": 20482,
+    "Key": "r24L",
+    "koKR": "이스트",
+    "enUS": "Ist"
+  },
+  {
+    "id": 20483,
+    "Key": "r23L",
+    "koKR": "말",
+    "enUS": "Mal"
+  },
+  {
+    "id": 20484,
+    "Key": "r22L",
+    "koKR": "우움",
+    "enUS": "Um"
+  },
+  {
+    "id": 20485,
+    "Key": "r21L",
+    "koKR": "풀",
+    "enUS": "Pul"
+  },
+  {
+    "id": 20486,
+    "Key": "r20L",
+    "koKR": "렘",
+    "enUS": "Lem"
+  },
+  {
+    "id": 20487,
+    "Key": "r19L",
+    "koKR": "팔",
+    "enUS": "Fal"
+  },
+  {
+    "id": 20488,
+    "Key": "r18L",
+    "koKR": "코",
+    "enUS": "Ko"
+  },
+  {
+    "id": 20489,
+    "Key": "r17L",
+    "koKR": "룸",
+    "enUS": "Lum"
+  },
+  {
+    "id": 20491,
+    "Key": "r15L",
+    "koKR": "헬",
+    "enUS": "Hel"
+  },
+  {
+    "id": 20492,
+    "Key": "r14L",
+    "koKR": "돌",
+    "enUS": "Dol"
+  },
+  {
+    "id": 20494,
+    "Key": "r12L",
+    "koKR": "솔",
+    "enUS": "Sol"
+  },
+  {
+    "id": 20495,
+    "Key": "r11L",
+    "koKR": "앰",
+    "enUS": "Amn"
+  },
+  {
+    "id": 20496,
+    "Key": "r10L",
+    "koKR": "주울",
+    "enUS": "Thul"
+  },
+  {
+    "id": 20497,
+    "Key": "r09L",
+    "koKR": "오르트",
+    "enUS": "Ort"
+  },
+  {
+    "id": 20498,
+    "Key": "r08L",
+    "koKR": "랄",
+    "enUS": "Ral"
+  },
+  {
+    "id": 20499,
+    "Key": "r07L",
+    "koKR": "탈",
+    "enUS": "Tal"
+  },
+  {
+    "id": 20500,
+    "Key": "r06L",
+    "koKR": "아이드",
+    "enUS": "Ith"
+  },
+  {
+    "id": 20501,
+    "Key": "r05L",
+    "koKR": "에드",
+    "enUS": "Eth"
+  },
+  {
+    "id": 20502,
+    "Key": "r04L",
+    "koKR": "네프",
+    "enUS": "Nef"
+  },
+  {
+    "id": 20503,
+    "Key": "r03L",
+    "koKR": "티르",
+    "enUS": "Tir"
+  },
+  {
+    "id": 20504,
+    "Key": "r02L",
+    "koKR": "엘드",
+    "enUS": "Eld"
+  },
+  {
+    "id": 20505,
+    "Key": "r01L",
+    "koKR": "엘",
+    "enUS": "El"
+  },
+  {
+    "id": 20506,
+    "Key": "RuneQuote",
+    "koKR": "'",
+    "enUS": "'"
+  },
+  {
+    "id": 20507,
+    "Key": "Runeword1",
+    "koKR": "고대인의 서약",
+    "enUS": "Ancients' Pledge"
+  },
+  {
+    "id": 20508,
+    "Key": "Runeword2",
+    "koKR": "대전쟁",
+    "enUS": "Armageddon"
+  },
+  {
+    "id": 20509,
+    "Key": "Runeword3",
+    "koKR": "권위",
+    "enUS": "Authority"
+  },
+  {
+    "id": 20510,
+    "Key": "Runeword4",
+    "koKR": "야수",
+    "enUS": "Beast"
+  },
+  {
+    "id": 20511,
+    "Key": "Runeword5",
+    "koKR": "아름다움",
+    "enUS": "Beauty"
+  },
+  {
+    "id": 20512,
+    "Key": "Runeword6",
+    "koKR": "어둠",
+    "enUS": "Black"
+  },
+  {
+    "id": 20513,
+    "Key": "Runeword7",
+    "koKR": "피",
+    "enUS": "Blood"
+  },
+  {
+    "id": 20514,
+    "Key": "Runeword8",
+    "koKR": "뼈",
+    "enUS": "Bone"
+  },
+  {
+    "id": 20515,
+    "Key": "Runeword9",
+    "koKR": "찔레",
+    "enUS": "Bramble"
+  },
+  {
+    "id": 20516,
+    "Key": "Runeword10",
+    "koKR": "낙인",
+    "enUS": "Brand"
+  },
+  {
+    "id": 20517,
+    "Key": "Runeword11",
+    "koKR": "죽어가는 자의 숨결",
+    "enUS": "Breath of the Dying"
+  },
+  {
+    "id": 20518,
+    "Key": "Runeword12",
+    "koKR": "깨어진 약속",
+    "enUS": "Broken Promise"
+  },
+  {
+    "id": 20519,
+    "Key": "Runeword13",
+    "koKR": "소집",
+    "enUS": "Call to Arms"
+  },
+  {
+    "id": 20520,
+    "Key": "Runeword14",
+    "koKR": "명예의 굴레",
+    "enUS": "Chains of Honor"
+  },
+  {
+    "id": 20521,
+    "Key": "Runeword15",
+    "koKR": "기회",
+    "enUS": "Chance"
+  },
+  {
+    "id": 20522,
+    "Key": "Runeword16",
+    "koKR": "혼돈",
+    "enUS": "Chaos"
+  },
+  {
+    "id": 20523,
+    "Key": "Runeword17",
+    "koKR": "초승달",
+    "enUS": "Crescent Moon"
+  },
+  {
+    "id": 20524,
+    "Key": "Runeword18",
+    "koKR": "암흑",
+    "enUS": "Darkness"
+  },
+  {
+    "id": 20525,
+    "Key": "Runeword19",
+    "koKR": "햇빛",
+    "enUS": "Daylight"
+  },
+  {
+    "id": 20526,
+    "Key": "Runeword20",
+    "koKR": "죽음",
+    "enUS": "Death"
+  },
+  {
+    "id": 20527,
+    "Key": "Runeword21",
+    "koKR": "기만",
+    "enUS": "Deception"
+  },
+  {
+    "id": 20529,
+    "Key": "Runeword23",
+    "koKR": "욕망",
+    "enUS": "Desire"
+  },
+  {
+    "id": 20530,
+    "Key": "Runeword24",
+    "koKR": "절망",
+    "enUS": "Despair"
+  },
+  {
+    "id": 20531,
+    "Key": "Runeword25",
+    "koKR": "파괴",
+    "enUS": "Destruction"
+  },
+  {
+    "id": 20532,
+    "Key": "Runeword26",
+    "koKR": "파멸",
+    "enUS": "Doom"
+  },
+  {
+    "id": 20533,
+    "Key": "Runeword27",
+    "koKR": "용",
+    "enUS": "Dragon"
+  },
+  {
+    "id": 20534,
+    "Key": "Runeword28",
+    "koKR": "두려움",
+    "enUS": "Dread"
+  },
+  {
+    "id": 20535,
+    "Key": "Runeword29",
+    "koKR": "꿈",
+    "enUS": "Dream"
+  },
+  {
+    "id": 20536,
+    "Key": "Runeword30",
+    "koKR": "협박",
+    "enUS": "Duress"
+  },
+  {
+    "id": 20537,
+    "Key": "Runeword31",
+    "koKR": "모서리",
+    "enUS": "Edge"
+  },
+  {
+    "id": 20538,
+    "Key": "Runeword32",
+    "koKR": "득의",
+    "enUS": "Elation"
+  },
+  {
+    "id": 20539,
+    "Key": "Runeword33",
+    "koKR": "수수께끼",
+    "enUS": "Enigma"
+  },
+  {
+    "id": 20540,
+    "Key": "Runeword34",
+    "koKR": "깨우침",
+    "enUS": "Enlightenment"
+  },
+  {
+    "id": 20541,
+    "Key": "Runeword35",
+    "koKR": "시기",
+    "enUS": "Envy"
+  },
+  {
+    "id": 20542,
+    "Key": "Runeword36",
+    "koKR": "영원",
+    "enUS": "Eternity"
+  },
+  {
+    "id": 20543,
+    "Key": "Runeword37",
+    "koKR": "추방",
+    "enUS": "Exile"
+  },
+  {
+    "id": 20544,
+    "Key": "Runeword38",
+    "koKR": "신념",
+    "enUS": "Faith"
+  },
+  {
+    "id": 20545,
+    "Key": "Runeword39",
+    "koKR": "기근",
+    "enUS": "Famine"
+  },
+  {
+    "id": 20546,
+    "Key": "Runeword40",
+    "koKR": "꺼져가는 불길",
+    "enUS": "Flickering Flame"
+  },
+  {
+    "id": 20547,
+    "Key": "Runeword41",
+    "koKR": "인내",
+    "enUS": "Fortitude"
+  },
+  {
+    "id": 20548,
+    "Key": "Runeword42",
+    "koKR": "행운",
+    "enUS": "Fortune"
+  },
+  {
+    "id": 20549,
+    "Key": "Runeword43",
+    "koKR": "우정",
+    "enUS": "Friendship"
+  },
+  {
+    "id": 20550,
+    "Key": "Runeword44",
+    "koKR": "분노",
+    "enUS": "Fury"
+  },
+  {
+    "id": 20551,
+    "Key": "Runeword45",
+    "koKR": "어스름",
+    "enUS": "Gloom"
+  },
+  {
+    "id": 20552,
+    "Key": "Runeword46",
+    "koKR": "영예",
+    "enUS": "Glory"
+  },
+  {
+    "id": 20553,
+    "Key": "Runeword47",
+    "koKR": "슬픔",
+    "enUS": "Grief"
+  },
+  {
+    "id": 20554,
+    "Key": "Runeword48",
+    "koKR": "정의의 손길",
+    "enUS": "Hand of Justice"
+  },
+  {
+    "id": 20555,
+    "Key": "Runeword49",
+    "koKR": "조화",
+    "enUS": "Harmony"
+  },
+  {
+    "id": 20556,
+    "Key": "Runeword50",
+    "koKR": "증오",
+    "enUS": "Hatred"
+  },
+  {
+    "id": 20557,
+    "Key": "Runeword51",
+    "koKR": "참나무의 심장",
+    "enUS": "Heart of the Oak"
+  },
+  {
+    "id": 20558,
+    "Key": "Runeword52",
+    "koKR": "천상의 의지",
+    "enUS": "Heaven's Will"
+  },
+  {
+    "id": 20559,
+    "Key": "Runeword53",
+    "koKR": "신성한 눈물",
+    "enUS": "Holy Tears"
+  },
+  {
+    "id": 20560,
+    "Key": "Runeword54",
+    "koKR": "신성한 천둥",
+    "enUS": "Holy Thunder"
+  },
+  {
+    "id": 20561,
+    "Key": "Runeword55",
+    "koKR": "명예",
+    "enUS": "Honor"
+  },
+  {
+    "id": 20562,
+    "Key": "Runeword56",
+    "koKR": "보복",
+    "enUS": "Revenge"
+  },
+  {
+    "id": 20563,
+    "Key": "Runeword57",
+    "koKR": "겸손",
+    "enUS": "Humility"
+  },
+  {
+    "id": 20564,
+    "Key": "Runeword58",
+    "koKR": "굶주림",
+    "enUS": "Hunger"
+  },
+  {
+    "id": 20565,
+    "Key": "Runeword59",
+    "koKR": "얼음",
+    "enUS": "Ice"
+  },
+  {
+    "id": 20566,
+    "Key": "Runeword60",
+    "koKR": "무한",
+    "enUS": "Infinity"
+  },
+  {
+    "id": 20567,
+    "Key": "Runeword61",
+    "koKR": "결백",
+    "enUS": "Innocence"
+  },
+  {
+    "id": 20568,
+    "Key": "Runeword62",
+    "koKR": "통찰",
+    "enUS": "Insight"
+  },
+  {
+    "id": 20569,
+    "Key": "Runeword63",
+    "koKR": "질투",
+    "enUS": "Jealousy"
+  },
+  {
+    "id": 20570,
+    "Key": "Runeword64",
+    "koKR": "심판",
+    "enUS": "Judgement"
+  },
+  {
+    "id": 20571,
+    "Key": "Runeword65",
+    "koKR": "왕의 은총",
+    "enUS": "King's Grace"
+  },
+  {
+    "id": 20572,
+    "Key": "Runeword66",
+    "koKR": "왕 시해자",
+    "enUS": "Kingslayer"
+  },
+  {
+    "id": 20573,
+    "Key": "Runeword67",
+    "koKR": "기사의 경계",
+    "enUS": "Knight's Vigil"
+  },
+  {
+    "id": 20574,
+    "Key": "Runeword68",
+    "koKR": "지식",
+    "enUS": "Knowledge"
+  },
+  {
+    "id": 20575,
+    "Key": "Runeword69",
+    "koKR": "마지막 소원",
+    "enUS": "Last Wish"
+  },
+  {
+    "id": 20576,
+    "Key": "Runeword70",
+    "koKR": "법률",
+    "enUS": "Law"
+  },
+  {
+    "id": 20577,
+    "Key": "Runeword71",
+    "koKR": "집행자",
+    "enUS": "Lawbringer"
+  },
+  {
+    "id": 20578,
+    "Key": "Runeword72",
+    "koKR": "잎새",
+    "enUS": "Leaf"
+  },
+  {
+    "id": 20579,
+    "Key": "Runeword73",
+    "koKR": "번개",
+    "enUS": "Lightning"
+  },
+  {
+    "id": 20580,
+    "Key": "Runeword74",
+    "koKR": "용맹",
+    "enUS": "Lionheart"
+  },
+  {
+    "id": 20581,
+    "Key": "Runeword75",
+    "koKR": "전승",
+    "enUS": "Lore"
+  },
+  {
+    "id": 20582,
+    "Key": "Runeword76",
+    "koKR": "사랑",
+    "enUS": "Love"
+  },
+  {
+    "id": 20583,
+    "Key": "Runeword77",
+    "koKR": "충심",
+    "enUS": "Loyalty"
+  },
+  {
+    "id": 20584,
+    "Key": "Runeword78",
+    "koKR": "욕정",
+    "enUS": "Lust"
+  },
+  {
+    "id": 20585,
+    "Key": "Runeword79",
+    "koKR": "광기",
+    "enUS": "Madness"
+  },
+  {
+    "id": 20586,
+    "Key": "Runeword81",
+    "koKR": "악의",
+    "enUS": "Malice"
+  },
+  {
+    "id": 20587,
+    "Key": "Runeword82",
+    "koKR": "선율",
+    "enUS": "Melody"
+  },
+  {
+    "id": 20588,
+    "Key": "Runeword83",
+    "koKR": "기억",
+    "enUS": "Memory"
+  },
+  {
+    "id": 20589,
+    "Key": "Runeword84",
+    "koKR": "안개",
+    "enUS": "Mist"
+  },
+  {
+    "id": 20590,
+    "Key": "Runeword85",
+    "koKR": "아침",
+    "enUS": "Morning"
+  },
+  {
+    "id": 20591,
+    "Key": "Runeword86",
+    "koKR": "신비",
+    "enUS": "Mystery"
+  },
+  {
+    "id": 20592,
+    "Key": "Runeword87",
+    "koKR": "신화",
+    "enUS": "Myth"
+  },
+  {
+    "id": 20593,
+    "Key": "Runeword88",
+    "koKR": "구렁텅이",
+    "enUS": "Nadir"
+  },
+  {
+    "id": 20594,
+    "Key": "Runeword89",
+    "koKR": "자연의 왕국",
+    "enUS": "Nature's Kingdom"
+  },
+  {
+    "id": 20595,
+    "Key": "Runeword90",
+    "koKR": "밤",
+    "enUS": "Night"
+  },
+  {
+    "id": 20596,
+    "Key": "Runeword91",
+    "koKR": "서약",
+    "enUS": "Oath"
+  },
+  {
+    "id": 20597,
+    "Key": "Runeword92",
+    "koKR": "순종",
+    "enUS": "Obedience"
+  },
+  {
+    "id": 20598,
+    "Key": "Runeword93",
+    "koKR": "망각",
+    "enUS": "Oblivion"
+  },
+  {
+    "id": 20599,
+    "Key": "Runeword94",
+    "koKR": "집착",
+    "enUS": "Obsession"
+  },
+  {
+    "id": 20600,
+    "Key": "Runeword95",
+    "koKR": "열정",
+    "enUS": "Passion"
+  },
+  {
+    "id": 20601,
+    "Key": "Runeword96",
+    "koKR": "끈기",
+    "enUS": "Patience"
+  },
+  {
+    "id": 20602,
+    "Key": "Runeword97",
+    "koKR": "귀감",
+    "enUS": "Pattern"
+  },
+  {
+    "id": 20603,
+    "Key": "Runeword98",
+    "koKR": "평화",
+    "enUS": "Peace"
+  },
+  {
+    "id": 20604,
+    "Key": "Runeword99",
+    "koKR": "이성의 목소리",
+    "enUS": "Voice of Reason"
+  },
+  {
+    "id": 20605,
+    "Key": "Runeword100",
+    "koKR": "참회",
+    "enUS": "Penitence"
+  },
+  {
+    "id": 20606,
+    "Key": "Runeword101",
+    "koKR": "위기",
+    "enUS": "Peril"
+  },
+  {
+    "id": 20607,
+    "Key": "Runeword102",
+    "koKR": "질병",
+    "enUS": "Pestilence"
+  },
+  {
+    "id": 20608,
+    "Key": "Runeword103",
+    "koKR": "불사조",
+    "enUS": "Phoenix"
+  },
+  {
+    "id": 20609,
+    "Key": "Runeword104",
+    "koKR": "경건",
+    "enUS": "Piety"
+  },
+  {
+    "id": 20610,
+    "Key": "Runeword105",
+    "koKR": "신념의 기둥",
+    "enUS": "Pillar of Faith"
+  },
+  {
+    "id": 20611,
+    "Key": "Runeword106",
+    "koKR": "역병",
+    "enUS": "Plague"
+  },
+  {
+    "id": 20612,
+    "Key": "Runeword107",
+    "koKR": "칭송",
+    "enUS": "Praise"
+  },
+  {
+    "id": 20613,
+    "Key": "Runeword108",
+    "koKR": "기도",
+    "enUS": "Prayer"
+  },
+  {
+    "id": 20614,
+    "Key": "Runeword109",
+    "koKR": "긍지",
+    "enUS": "Pride"
+  },
+  {
+    "id": 20615,
+    "Key": "Runeword110",
+    "koKR": "원칙",
+    "enUS": "Principle"
+  },
+  {
+    "id": 20616,
+    "Key": "Runeword111",
+    "koKR": "전장의 기량",
+    "enUS": "Prowess in Battle"
+  },
+  {
+    "id": 20617,
+    "Key": "Runeword112",
+    "koKR": "신중",
+    "enUS": "Prudence"
+  },
+  {
+    "id": 20618,
+    "Key": "Runeword113",
+    "koKR": "징벌",
+    "enUS": "Punishment"
+  },
+  {
+    "id": 20619,
+    "Key": "Runeword114",
+    "koKR": "순수",
+    "enUS": "Purity"
+  },
+  {
+    "id": 20620,
+    "Key": "Runeword115",
+    "koKR": "의문",
+    "enUS": "Question"
+  },
+  {
+    "id": 20621,
+    "Key": "Runeword116",
+    "koKR": "광휘",
+    "enUS": "Radiance"
+  },
+  {
+    "id": 20622,
+    "Key": "Runeword117",
+    "koKR": "비",
+    "enUS": "Rain"
+  },
+  {
+    "id": 20623,
+    "Key": "Runeword118",
+    "koKR": "이성",
+    "enUS": "Reason"
+  },
+  {
+    "id": 20624,
+    "Key": "Runeword119",
+    "koKR": "핏빛",
+    "enUS": "Red"
+  },
+  {
+    "id": 20625,
+    "Key": "Runeword120",
+    "koKR": "각운",
+    "enUS": "Rhyme"
+  },
+  {
+    "id": 20626,
+    "Key": "Runeword121",
+    "koKR": "균열",
+    "enUS": "Rift"
+  },
+  {
+    "id": 20627,
+    "Key": "Runeword122",
+    "koKR": "성역",
+    "enUS": "Sanctuary"
+  },
+  {
+    "id": 20628,
+    "Key": "Runeword123",
+    "koKR": "우연한 행운",
+    "enUS": "Serendipity"
+  },
+  {
+    "id": 20629,
+    "Key": "Runeword124",
+    "koKR": "그림자",
+    "enUS": "Shadow"
+  },
+  {
+    "id": 20630,
+    "Key": "Runeword125",
+    "koKR": "의심의 그림자",
+    "enUS": "Shadow of Doubt"
+  },
+  {
+    "id": 20631,
+    "Key": "Runeword126",
+    "koKR": "침묵",
+    "enUS": "Silence"
+  },
+  {
+    "id": 20632,
+    "Key": "Runeword127",
+    "koKR": "세이렌의 노래",
+    "enUS": "Siren's Song"
+  },
+  {
+    "id": 20633,
+    "Key": "Runeword128",
+    "koKR": "연기",
+    "enUS": "Smoke"
+  },
+  {
+    "id": 20634,
+    "Key": "Runeword129",
+    "koKR": "비탄",
+    "enUS": "Sorrow"
+  },
+  {
+    "id": 20635,
+    "Key": "Runeword130",
+    "koKR": "영혼",
+    "enUS": "Spirit"
+  },
+  {
+    "id": 20636,
+    "Key": "Runeword131",
+    "koKR": "광채",
+    "enUS": "Splendor"
+  },
+  {
+    "id": 20637,
+    "Key": "Runeword132",
+    "koKR": "별빛",
+    "enUS": "Starlight"
+  },
+  {
+    "id": 20638,
+    "Key": "Runeword133",
+    "koKR": "잠행",
+    "enUS": "Stealth"
+  },
+  {
+    "id": 20639,
+    "Key": "Runeword134",
+    "koKR": "강철",
+    "enUS": "Steel"
+  },
+  {
+    "id": 20640,
+    "Key": "Runeword135",
+    "koKR": "고요한 물",
+    "enUS": "Still Water"
+  },
+  {
+    "id": 20641,
+    "Key": "Runeword136",
+    "koKR": "쐐기",
+    "enUS": "Sting"
+  },
+  {
+    "id": 20642,
+    "Key": "Runeword137",
+    "koKR": "돌",
+    "enUS": "Stone"
+  },
+  {
+    "id": 20643,
+    "Key": "Runeword138",
+    "koKR": "폭풍",
+    "enUS": "Storm"
+  },
+  {
+    "id": 20644,
+    "Key": "Runeword139",
+    "koKR": "강함",
+    "enUS": "Strength"
+  },
+  {
+    "id": 20645,
+    "Key": "Runeword140",
+    "koKR": "비바람",
+    "enUS": "Tempest"
+  },
+  {
+    "id": 20646,
+    "Key": "Runeword141",
+    "koKR": "유혹",
+    "enUS": "Temptation"
+  },
+  {
+    "id": 20647,
+    "Key": "Runeword142",
+    "koKR": "공포",
+    "enUS": "Terror"
+  },
+  {
+    "id": 20648,
+    "Key": "Runeword143",
+    "koKR": "갈증",
+    "enUS": "Thirst"
+  },
+  {
+    "id": 20649,
+    "Key": "Runeword144",
+    "koKR": "사고",
+    "enUS": "Thought"
+  },
+  {
+    "id": 20650,
+    "Key": "Runeword145",
+    "koKR": "천둥",
+    "enUS": "Thunder"
+  },
+  {
+    "id": 20651,
+    "Key": "Runeword146",
+    "koKR": "시간",
+    "enUS": "Time"
+  },
+  {
+    "id": 20652,
+    "Key": "Runeword147",
+    "koKR": "전통",
+    "enUS": "Tradition"
+  },
+  {
+    "id": 20653,
+    "Key": "Runeword148",
+    "koKR": "배신",
+    "enUS": "Treachery"
+  },
+  {
+    "id": 20654,
+    "Key": "Runeword149",
+    "koKR": "신임",
+    "enUS": "Trust"
+  },
+  {
+    "id": 20655,
+    "Key": "Runeword150",
+    "koKR": "진실",
+    "enUS": "Truth"
+  },
+  {
+    "id": 20656,
+    "Key": "Runeword151",
+    "koKR": "불굴의 의지",
+    "enUS": "Unbending Will"
+  },
+  {
+    "id": 20657,
+    "Key": "Runeword152",
+    "koKR": "용기",
+    "enUS": "Valor"
+  },
+  {
+    "id": 20658,
+    "Key": "Runeword153",
+    "koKR": "복수",
+    "enUS": "Vengeance"
+  },
+  {
+    "id": 20659,
+    "Key": "Runeword154",
+    "koKR": "맹독",
+    "enUS": "Venom"
+  },
+  {
+    "id": 20660,
+    "Key": "Runeword155",
+    "koKR": "승리",
+    "enUS": "Victory"
+  },
+  {
+    "id": 20661,
+    "Key": "Runeword156",
+    "koKR": "목소리",
+    "enUS": "Voice"
+  },
+  {
+    "id": 20662,
+    "Key": "Runeword157",
+    "koKR": "공허",
+    "enUS": "Void"
+  },
+  {
+    "id": 20663,
+    "Key": "Runeword158",
+    "koKR": "전쟁",
+    "enUS": "War"
+  },
+  {
+    "id": 20664,
+    "Key": "Runeword159",
+    "koKR": "물",
+    "enUS": "Water"
+  },
+  {
+    "id": 20665,
+    "Key": "Runeword160",
+    "koKR": "부",
+    "enUS": "Wealth"
+  },
+  {
+    "id": 20666,
+    "Key": "Runeword161",
+    "koKR": "속삭임",
+    "enUS": "Whisper"
+  },
+  {
+    "id": 20667,
+    "Key": "Runeword162",
+    "koKR": "순백",
+    "enUS": "White"
+  },
+  {
+    "id": 20668,
+    "Key": "Runeword163",
+    "koKR": "바람",
+    "enUS": "Wind"
+  },
+  {
+    "id": 20669,
+    "Key": "Runeword164",
+    "koKR": "희망의 날개",
+    "enUS": "Wings of Hope"
+  },
+  {
+    "id": 20670,
+    "Key": "Runeword165",
+    "koKR": "지혜",
+    "enUS": "Wisdom"
+  },
+  {
+    "id": 20671,
+    "Key": "Runeword166",
+    "koKR": "재난",
+    "enUS": "Woe"
+  },
+  {
+    "id": 20672,
+    "Key": "Runeword167",
+    "koKR": "경이",
+    "enUS": "Wonder"
+  },
+  {
+    "id": 20673,
+    "Key": "Runeword168",
+    "koKR": "진노",
+    "enUS": "Wrath"
+  },
+  {
+    "id": 20674,
+    "Key": "Runeword169",
+    "koKR": "젊음",
+    "enUS": "Youth"
+  },
+  {
+    "id": 20675,
+    "Key": "Runeword170",
+    "koKR": "서풍",
+    "enUS": "Zephyr"
+  },
+  {
+    "id": 27360,
+    "Key": "Runeword171",
+    "koKR": "투지",
+    "enUS": "Hustle"
+  },
+  {
+    "id": 27361,
+    "Key": "Runeword172",
+    "koKR": "투지",
+    "enUS": "Hustle"
+  },
+  {
+    "id": 27362,
+    "Key": "Runeword173",
+    "koKR": "모자이크",
+    "enUS": "Mosaic"
+  },
+  {
+    "id": 27363,
+    "Key": "Runeword174",
+    "koKR": "탈태",
+    "enUS": "Metamorphosis"
+  },
+  {
+    "id": 27364,
+    "Key": "Runeword175",
+    "koKR": "접지",
+    "enUS": "Ground"
+  },
+  {
+    "id": 27365,
+    "Key": "Runeword176",
+    "koKR": "담금질",
+    "enUS": "Temper"
+  },
+  {
+    "id": 27366,
+    "Key": "Runeword177",
+    "koKR": "화로",
+    "enUS": "Hearth"
+  },
+  {
+    "id": 27367,
+    "Key": "Runeword178",
+    "koKR": "치료",
+    "enUS": "Cure"
+  },
+  {
+    "id": 27368,
+    "Key": "Runeword179",
+    "koKR": "방벽",
+    "enUS": "Bulwark"
+  }
+]
