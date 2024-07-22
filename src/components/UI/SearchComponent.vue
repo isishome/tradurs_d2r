@@ -4,7 +4,7 @@ import { QSelect } from 'quasar'
 import type { Label } from 'src/types/global'
 
 const props = defineProps<{
-  modelValue: string | number
+  modelValue?: string | number
   options: Array<Label>
   noData?: string
 }>()
@@ -12,7 +12,7 @@ const props = defineProps<{
 const emit = defineEmits(['update:model-value'])
 
 const searchRef = ref<QSelect | null>()
-const search = ref<string | number>(props.modelValue)
+const search = ref<string | number | undefined>(props.modelValue)
 const searchNeedle = ref<string>()
 const searchOptions = computed(() =>
   props.options.filter(
@@ -45,7 +45,6 @@ const select = (val: string | number): void => {
     map-options
     emit-value
     use-input
-    hide-selected
     :options="searchOptions"
     @blur="() => (searchNeedle = undefined)"
     @input.stop="filter"

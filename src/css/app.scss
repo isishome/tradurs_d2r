@@ -1,11 +1,13 @@
 // app global css in SCSS form
 :root {
   color-scheme: dark;
-  --quality-magic: #4169e1;
+  --quality-magic: rgb(105, 105, 255);
   --quality-rare: #ffff00;
   --quality-unique: #a59263;
   --quality-set: #00ff00;
   --quality-crafted: #ffa500;
+  --quality-runewords: #a59263;
+  --sockoreth: #777777;
   --border-color: #ffffff15;
 }
 
@@ -62,4 +64,8 @@ body::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 -1px 1px var(--q-dark-page);
   position: relative;
   z-index: 1;
+}
+
+.q-btn--outline:before {
+  border-color: var(--border-color);
 }

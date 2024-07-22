@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { QForm } from 'quasar'
 import type { Price } from 'src/types/item'
-import { useItemStore } from 'stores/item-store'
+import { useItemAddStore } from 'stores/item-add-store'
 
 const props = defineProps<{
   data: Price
@@ -11,9 +11,9 @@ const props = defineProps<{
 
 const emit = defineEmits(['update'])
 
-const is = useItemStore()
+const ias = useItemAddStore()
 const categoryOptions = computed(() =>
-  is.category('normal').filter((c) => c.currency)
+  ias.category('normal').filter((c) => c.currency)
 )
 const formRef = ref<QForm>()
 const _price = ref<Price>(props.data)
@@ -78,11 +78,11 @@ defineExpose({ validate })
         v-model="_price.item"
         :options="
           _price.category === 'runes'
-            ? is.runes
+            ? ias.runes
             : _price.category === 'gems'
-            ? is.gems
+            ? ias.gems
             : _price.category === 'misc'
-            ? is.misc
+            ? ias.misc
             : []
         "
         :label="

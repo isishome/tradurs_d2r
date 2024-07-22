@@ -4,6 +4,7 @@ import { ref, computed } from 'vue'
 
 import type { Item, Price, Modifier } from 'src/types/item'
 import { separator, ModifierType, defaultItem } from 'src/types/item'
+import { useItemAddStore } from 'src/stores/item-add-store'
 import { useItemStore } from 'src/stores/item-store'
 
 import AnalysisComponent from 'components/item/AnalysisComponent.vue'
@@ -16,6 +17,7 @@ const props = defineProps<{
   id?: string
 }>()
 
+const ias = useItemAddStore()
 const is = useItemStore()
 
 const stepper = ref<QStepper>()
@@ -198,13 +200,13 @@ const updatePrice = (price: Price, progressTime: number) => {
 
 const addModifier = (val: number) => {
   const text =
-    [...is.modifiers, ...is.skills].find((m) => m.value === val)?.label ?? ''
+    [...ias.modifiers, ...ias.skills].find((m) => m.value === val)?.label ?? ''
 
   const addingModifier = {
     order: _item.value.modifiers.length,
     type: ModifierType.String,
     id: val,
-    children: is.findChildren(text.replace(separator, '0'), text, val)
+    children: ias.findChildren(text.replace(separator, '0'), text, val)
   }
   _item.value.modifiers.push(addingModifier)
   modifier.value = undefined
@@ -225,6 +227,10 @@ const updateModifier = (val: Modifier) => {
   if (findModifier) Object.assign(findModifier, val)
 }
 
+const updateImage = (val: number) => {
+  _item.value.imageId = val
+}
+
 const checkValidate = async () => {
   switch (step.value) {
     case 1:
@@ -243,7 +249,7 @@ const checkValidate = async () => {
 const modifierRef = ref<QSelect | null>(null)
 const modifierNeedle = ref<string>()
 const modifierOptions = computed(() =>
-  [...is.modifiers, ...is.skills].filter(
+  [...ias.modifiers, ...ias.skills].filter(
     (mf) =>
       mf.label.indexOf(modifierNeedle.value as string) !==
       (!!modifierNeedle.value ? -1 : -2)
@@ -288,6 +294,7 @@ const selectModifier = (val: number): void => {
             <div>아이템 명 : {{ _item.names }}</div>
             <div>경매 시간 : {{ _item.progressTime }}</div>
             <div>가격 : {{ _item.price }}</div>
+            <!-- <div>속성 : {{ _item.modifiers }}</div> -->
           </div>
         </q-card-section>
       </q-card>
@@ -317,7 +324,7 @@ const selectModifier = (val: number): void => {
             v-for="m in _item.modifiers"
             :key="m.order"
             :data="m"
-            :options="[...is.modifiers, ...is.skills]"
+            :options="[...ias.modifiers, ...ias.skills]"
             editable
             @remove="removeModifier"
             @update="updateModifier"
@@ -341,7 +348,7 @@ const selectModifier = (val: number): void => {
       </q-step>
       <q-step :name="4" title="확인" icon="play_arrow">
         <div class="row justify-center">
-          <ItemComponent :data="_item" />
+          <ItemComponent :data="_item" editable @update-image="updateImage" />
         </div>
       </q-step>
       <template v-slot:navigation>
@@ -384,12 +391,38 @@ const selectModifier = (val: number): void => {
               class="q-ml-sm"
             />
             <q-btn
+              v-if="step !== 4"
               @click="checkValidate"
               color="primary"
               text-color="dark"
-              :label="step === 4 ? '등록' : '계속'"
-              class="q-ml-sm text-weight-bold"
+              label="계속"
+              class="q-ml-sm"
             />
+            <template v-else>
+              <q-btn-dropdown
+                color="positive"
+                text-color="dark"
+                class="q-ml-sm text-weight-bold"
+                label="완료"
+              >
+                <q-list>
+                  <q-item clickable v-close-popup @click="is.upsertItem(_item)">
+                    <q-item-section>
+                      <q-item-label>등록</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                  <q-item
+                    clickable
+                    v-close-popup
+                    @click="is.upsertItem(_item, true)"
+                  >
+                    <q-item-section>
+                      <q-item-label>등록 및 경매 시작</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-btn-dropdown>
+            </template>
           </div>
         </q-stepper-navigation>
       </template>

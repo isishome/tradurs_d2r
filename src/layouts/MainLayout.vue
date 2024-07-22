@@ -15,6 +15,9 @@ const rightDrawer = ref<boolean>(false)
 
 <template>
   <q-layout view="lHh Lpr lff">
+    <q-inner-loading class="global-loading" :showing="gs.loading">
+      <q-spinner size="50px" color="primary" />
+    </q-inner-loading>
     <q-header class="bg-dark">
       <q-toolbar class="justify-center">
         <div class="col"></div>
@@ -94,5 +97,11 @@ const rightDrawer = ref<boolean>(false)
   width: 160px;
   height: 600px;
   border: solid 1px #444444;
+}
+
+.global-loading {
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
 }
 </style>

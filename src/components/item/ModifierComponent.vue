@@ -14,6 +14,7 @@ enum ModifierSplitType {
 
 type ModifierSplit = {
   type: ModifierSplitType
+  sign?: string
   value: number | string | undefined
 }
 
@@ -42,9 +43,14 @@ const _modifierConnect = ref<Modifier | undefined>(
   _modifier.value.children?.find((c) => c.type === ModifierType.Connect)
 )
 
+const updateModifier = (ms: ModifierSplit, val?: number | string) => {
+  ms.value = val
+  update()
+}
+
 const update = () => {
-  const values = _modifierSplit.value.filter(
-    (ms) => ms.type === ModifierSplitType.Value
+  const values = _modifierSplit.value.filter((ms) =>
+    [ModifierSplitType.Value, ModifierSplitType.Modifier].includes(ms.type)
   )
   _modifier.value.children?.forEach((c, idx) => {
     if (c.type === ModifierType.String) c.id = values[idx]?.value as number
@@ -93,19 +99,16 @@ onMounted(() => {
   _modifierSplit.value.push(
     ...(fm
       ?.split(separator)
-      .map((p) => ({ type: ModifierSplitType.Text, value: p })) ?? [])
+      .map((p) => ({ type: ModifierSplitType.Text, sign: '', value: p })) ?? [])
   )
 
   fm?.match(separator)?.forEach((s, i) => {
     _modifierSplit.value.splice(i * 2 + 1, 0, {
       type: s === '%s' ? ModifierSplitType.Modifier : ModifierSplitType.Value,
+      sign: children?.[i]?.signed && (children?.[i]?.value ?? 0) > 0 ? '+' : '',
       value: s === '%s' ? children?.[i]?.id : children?.[i]?.value
     })
   })
-
-  _modifierSplit.value = _modifierSplit.value.filter(
-    (ms) => typeof ms.value !== 'undefined'
-  )
 })
 </script>
 <template>
@@ -115,7 +118,7 @@ onMounted(() => {
         <q-item-label class="row justify-between q-gutter-sm items-center">
           <div class="row q-gutter-sm items-center">
             <template v-for="(ms, idx) in _modifierSplit" :key="idx">
-              <div v-if="ms.type === ModifierSplitType.Text">
+              <div v-if="ms.type === ModifierSplitType.Text && !!ms.value">
                 {{ ms.value }}
               </div>
               <q-input
@@ -125,24 +128,18 @@ onMounted(() => {
                 map-options
                 emit-value
                 standout
-                input-class="text-center"
-                maxlength="4"
-                type="tel"
-                mask="#"
-                fill-mask="0"
-                reverse-fill-mask
+                maxlength="5"
+                type="number"
                 @update:model-value="update"
               />
-              <q-select
+              <D2Search
                 v-else-if="ms.type === ModifierSplitType.Modifier"
                 :options="connectOptions"
                 v-model="ms.value"
                 dense
-                clearable
-                map-options
-                emit-value
                 standout
-                @update:model-value="update"
+                @update:model-value="(val:number) => updateModifier(ms, val)"
+                noData="추가 속성을 찾을 수 없습니다"
               />
             </template>
           </div>
@@ -180,25 +177,24 @@ onMounted(() => {
       </q-item-section>
     </template>
     <q-item-section v-else no-wrap>
-      <q-item-label class="row items-center justify-center">
-        <div class="row q-gutter-xs items-center">
-          <div
+      <q-item-label class="row justify-center">
+        <div class="modifier-wrap">
+          <span
             v-for="(ms, idx) in _modifierSplit"
             :key="idx"
             :class="{
-              'text-blue text-weight-bold': ms.type === ModifierSplitType.Value
+              'text-red-4': ms.type === ModifierSplitType.Value
             }"
           >
             {{
               ms.type === ModifierSplitType.Modifier
                 ? findModifier(ms.value as number)
-                : ms.value
+                : `${ms.sign}${ms.value}`
             }}
-          </div>
-
-          <div v-if="!!_modifierConnect">
+          </span>
+          <span v-if="!!_modifierConnect">
             {{ findModifier(_modifierConnect.id as number) }}
-          </div>
+          </span>
         </div>
       </q-item-label>
     </q-item-section>
@@ -208,7 +204,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .modifier {
   &:deep(.q-input) {
-    max-width: 60px;
+    max-width: 80px;
   }
 
   &:deep(.q-select) {
@@ -218,7 +214,12 @@ onMounted(() => {
 
   &.plain {
     padding: 0;
-    min-height: 24px;
+    min-height: 22px;
   }
+}
+
+.modifier-wrap {
+  text-align: center;
+  white-space: normal;
 }
 </style>

@@ -4,7 +4,7 @@ import { QFile, useQuasar } from 'quasar'
 import stringComparison from 'string-comparison'
 import { createWorker, ImageLike } from 'tesseract.js'
 import { useGlobalStore } from 'src/stores/global-store'
-import { useItemStore } from 'src/stores/item-store'
+import { useItemAddStore } from 'src/stores/item-add-store'
 import type { Modifier, DropBox, Item, Similarity } from 'src/types/item'
 import {
   ModifierType,
@@ -34,7 +34,7 @@ const emit = defineEmits(['start', 'end', 'failed'])
 
 const $q = useQuasar()
 const gs = useGlobalStore()
-const is = useItemStore()
+const ias = useItemAddStore()
 
 const cos = stringComparison.cosine
 
@@ -98,7 +98,7 @@ const findModifier = (str: string): Modifier => {
 
   if (!!str && !!!plainStr) plainStr = makePlainText(str, '\\(\\)\\+%')
 
-  const findTargets = [...is.modifiers, ...is.skills]
+  const findTargets = [...ias.modifiers, ...ias.skills]
     .filter(
       (im) =>
         im.value !== 26333 &&
@@ -130,7 +130,7 @@ const findModifier = (str: string): Modifier => {
   findTargets.sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
 
   if (findTargets[0]) {
-    findTargets[0].children = is.findChildren(
+    findTargets[0].children = ias.findChildren(
       str,
       findTargets[0].text as string,
       findTargets[0].id
@@ -147,7 +147,7 @@ const filterNames = (str: string) => {
 
   if (!!!plainText) return []
 
-  const names = [...is.nameAffixes, ...is.names]
+  const names = [...ias.nameAffixes, ...ias.names]
     .filter(
       (name) => !!plainText && cos.similarity(plainText, name.label) > midRate
     )
@@ -177,10 +177,10 @@ const findItemInfo = (
   // 1단계 : 기타, 세트, 고유, 룬어 아이템 검색
   if (!!!names || names.length === 0) {
     const funcs = [
-      { name: 'misc', func: is.misc },
-      { name: 'set', func: is.setItems() },
-      { name: 'unique', func: is.uniques() },
-      { name: 'runewords', func: is.runewords() }
+      { name: 'misc', func: ias.misc },
+      { name: 'unique', func: ias.uniques() },
+      { name: 'set', func: ias.setItems() },
+      { name: 'runewords', func: ias.runewords() }
     ]
 
     funcs.forEach((f) => {
@@ -219,11 +219,11 @@ const findItemInfo = (
     if (checkDetailTypes.map((fn) => fn.id).includes(30000)) return null
 
     if (checkDetailTypes.length > 0) {
-      const findWP = is
+      const findWP = ias
         .weapons()
         .find((w) => w.value === checkDetailTypes[0]?.Key)
 
-      const findAM = is
+      const findAM = ias
         .armor()
         .find((a) => a.value === checkDetailTypes[0]?.Key)
 
@@ -236,7 +236,7 @@ const findItemInfo = (
           imageType: findWP?.imageType ?? findAM?.imageType
         } as Item)
       } else {
-        const findCategory = is
+        const findCategory = ias
           .category()
           .filter(
             (c) =>
@@ -294,7 +294,6 @@ const analyze = (text: string) => {
           names.splice(2, names.length)
           item.quality = item.quality ?? 'rare'
           item.names = names.map((n) => n.id)
-          item.name = names.map((n) => n.text).join(' ')
         } else item.quality = item.quality ?? 'normal'
 
         Object.assign(item, itemInfo[0])

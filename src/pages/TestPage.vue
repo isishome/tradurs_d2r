@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useItemStore } from 'stores/item-store'
+import { useItemAddStore } from 'stores/item-add-store'
 
-const is = useItemStore()
+const ias = useItemAddStore()
 
 const filtered = computed(() =>
-  is
+  ias
     .weapons()
     .map(
       (w, i) =>
@@ -27,7 +27,7 @@ const filtered = computed(() =>
 )
 
 const filtered2 = computed(() =>
-  is
+  ias
     .armor()
     .map(
       (a, i) =>
@@ -48,7 +48,7 @@ filtered2
     <textarea class="fit"></textarea>
     <div>
       {{
-        is.base.data.runewordMappingWeapon
+        ias.base.data.runewordMappingWeapon
           .filter(
             (rmw) =>
               (!!!rmw.mappingId2 && !!!rmw.mappingId3 && !!!rmw.mappingId4) ||
@@ -58,6 +58,6 @@ filtered2
       }}
     </div>
     <br />
-    <div>{{ is.runewords('swor') }}</div>
+    <div>{{ ias.runewords('swor') }}</div>
   </div>
 </template>

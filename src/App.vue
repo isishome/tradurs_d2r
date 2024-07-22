@@ -1,20 +1,21 @@
 <script lang="ts">
-import { useItemStore } from 'stores/item-store'
+import { useItemAddStore } from 'stores/item-add-store'
 
 export default {
   async preFetch({ store, ssrContext, currentRoute }) {
-    const is = useItemStore(store)
+    const ias = useItemAddStore(store)
 
     const options = process.env.SERVER
       ? {
           headers: {
             Cookie: ssrContext?.req.headers['cookie'],
             'Accept-Language': currentRoute.params.lang || 'ko'
+            //'Cache-Control': 'max-age=3600'
           }
         }
       : undefined
 
-    const promises = [is.getBase(options)]
+    const promises = [ias.getBase(options)]
 
     return Promise.all(promises)
       .then(() => {

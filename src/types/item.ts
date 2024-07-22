@@ -11,6 +11,7 @@ export enum ModifierType {
 
 type LangString = Record<Lang, string>
 type SkillPrefix = Record<Lang, string>
+type RandImage = Record<string, number>
 
 export const langStr: LangString = {
   ko: '가-힣',
@@ -20,6 +21,13 @@ export const langStr: LangString = {
 export const skillPrefix: SkillPrefix = {
   ko: '+%d ',
   en: '+%d to '
+}
+
+export const randImage: RandImage = {
+  rings: 5,
+  amulets: 3,
+  jewels: 6,
+  charms: 3
 }
 
 export type Similarity = {
@@ -79,6 +87,7 @@ export type Modifier = Similarity & {
   order: number
   item_id?: number
   type: ModifierType
+  signed?: boolean
   id?: number
   value?: number
   children?: Array<Modifier>
@@ -92,7 +101,7 @@ export type Item = Similarity & {
   socket: number
   id?: number
   name?: string
-  names?: Array<number>
+  names: Array<number>
   quality?: string
   category?: string
   itemType?: string
@@ -100,6 +109,7 @@ export type Item = Similarity & {
   detailType?: string
   item?: number
   imageType?: string
+  imageId?: number
   quantity: number
   modifiers: Array<Modifier>
   price: Price
@@ -108,6 +118,7 @@ export type Item = Similarity & {
   startDate?: string
   progressTime?: number
   addProgressTime?: number
+  show: boolean
 }
 
 export const defaultItem = (): Item => {
@@ -119,7 +130,7 @@ export const defaultItem = (): Item => {
     socket: 0,
     id: undefined,
     name: undefined,
-    names: undefined,
+    names: [],
     quality: undefined,
     category: undefined,
     itemType: undefined,
@@ -127,6 +138,7 @@ export const defaultItem = (): Item => {
     detailType: undefined,
     item: undefined,
     imageType: undefined,
+    imageId: undefined,
     quantity: 1,
     modifiers: [],
     price: defaultPrice(),
@@ -134,7 +146,8 @@ export const defaultItem = (): Item => {
     regDate: undefined,
     startDate: undefined,
     progressTime: 60,
-    addProgressTime: 0
+    addProgressTime: 0,
+    show: false
   }
 }
 
@@ -149,7 +162,7 @@ export const defaultPrice = (): Price => {
   }
 }
 
-export const separator = /%d|%i|%s/gi
+export const separator = /\-%d|%\+d|%d|%i|%s/gi
 export const lowRate = 0.5
 export const midRate = 0.6
 export const highRate = 0.7
