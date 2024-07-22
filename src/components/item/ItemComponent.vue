@@ -1,24 +1,28 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import type { Item } from 'src/types/item'
 import { randImage } from 'src/types/item'
 import { useItemAddStore } from 'stores/item-add-store'
-
 import ModifierComponent from 'components/item/ModifierComponent.vue'
 import CurrencyComponent from 'components/item/CurrencyComponent.vue'
 
-const props = defineProps<{
+type Props = {
   data: Item
   editable?: boolean
-}>()
+  loading?: boolean
+  width?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  editable: false,
+  loading: false,
+  width: 360
+})
 
 const emit = defineEmits(['update-image'])
 
 // store
 const ias = useItemAddStore()
-
-// variable
-const expanded = ref<boolean>(false)
 
 // computed
 const quality = computed(() => props.data.quality)
@@ -47,6 +51,8 @@ const findItem = computed(() =>
     ? ias.runewords().find((rw) => rw.value === item.value)
     : category.value === 'misc'
     ? ias.misc.find((m) => m.value === item.value)
+    : quality.value === 'normal'
+    ? undefined
     : category.value === 'weapons'
     ? ias
         .weapons(itemType.value, classType.value)
@@ -82,7 +88,7 @@ const runewordsRecipe = computed(() =>
 )
 const imgSrc = computed(() => (num?: number) => {
   const paths: Array<string | number | undefined> = []
-  paths.push('', 'images', 'items')
+  paths.push('/images', 'items')
   if (
     quality.value === 'unique' &&
     category.value === 'charms' &&
@@ -109,25 +115,19 @@ const updateImage = (val: number) => {
 
 <template>
   <div>
-    <q-card bordered class="item" style="letter-spacing: 1px">
+    <q-card v-if="!loading" bordered class="item" :style="`width:${width}px`">
       <q-card-section class="bg-brighten">
         <div
           class="text-h6 text-center column"
           :style="`color:var(--quality-${data.quality})`"
         >
-          <div
-            :style="`color:var(--${
-              (data.quality === 'normal' && data.socket > 0) || data.ethereal
-                ? 'sockoreth'
-                : ''
-            })`"
-          >
+          <div>
             {{ name }}
           </div>
           <div
-            v-show="data.quality !== 'normal'"
             :style="`color:var(--${
-              data.quality === 'normal' && (data.socket > 0 || data.ethereal)
+              ['normal', 'runewords'].includes(data.quality as string) &&
+              (data.socket > 0 || data.ethereal)
                 ? 'sockoreth'
                 : ''
             })`"
@@ -137,18 +137,6 @@ const updateImage = (val: number) => {
         </div>
       </q-card-section>
       <q-card-section :class="{ 'cursor-pointer': editable }">
-        <div
-          v-if="data.quality === 'runewords'"
-          class="row justify-center items-center q-gutter-xs"
-        >
-          <CurrencyComponent
-            v-for="(rune, idx) in runewordsRecipe"
-            :key="idx"
-            category="runes"
-            :item="rune"
-            class="text-caption"
-          />
-        </div>
         <template
           v-if="editable && Object.keys(randImage).includes(category as string)"
         >
@@ -179,47 +167,36 @@ const updateImage = (val: number) => {
         <div class="row justify-center">
           <img :src="imgSrc()" class="item-image" loading="lazy" />
         </div>
-        <div
-          v-if="!editable && data.modifiers.length > 0"
-          class="absolute-bottom-right q-pr-md"
-        >
-          <q-btn
-            color="grey"
-            round
-            flat
-            dense
-            :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-            @click="expanded = !expanded"
-          />
+      </q-card-section>
+      <q-card-section v-if="data.quality === 'runewords'" class="q-pt-none">
+        <div class="row justify-center items-center">
+          <div class="runewords-recipe row q-gutter-x-xs">
+            <CurrencyComponent
+              v-for="(rune, idx) in runewordsRecipe"
+              :key="idx"
+              category="runes"
+              :item="rune"
+              class="text-caption"
+              style="max-width: 38px"
+            />
+          </div>
         </div>
       </q-card-section>
-      <q-separator inset />
-      <q-slide-transition class="modifiers">
-        <div v-show="expanded || editable">
-          <q-card-section>
-            <ModifierComponent
-              v-for="m in data.modifiers"
-              :key="m.order"
-              :data="m"
-              :options="[...ias.modifiers, ...ias.skills]"
-              :class="`m_${m.id}`"
-            />
-          </q-card-section>
-          <q-separator inset />
-        </div>
-      </q-slide-transition>
-      <!-- <q-card-section v-if="data.modifiers.length > 0" class="modifiers">
-        <ModifierComponent
-          v-for="m in data.modifiers"
-          :key="m.order"
-          :data="m"
-          :options="[...ias.modifiers, ...ias.skills]"
-          :class="`m_${m.id}`"
-        />
-      </q-card-section> -->
-
+      <template v-if="data.modifiers.length > 0">
+        <q-separator inset />
+        <q-card-section v-if="data.modifiers.length > 0" class="modifiers">
+          <ModifierComponent
+            v-for="m in data.modifiers"
+            :key="m.order"
+            :data="m"
+            :options="[...ias.modifiers, ...ias.skills]"
+            :class="`m_${m.id}`"
+          />
+        </q-card-section>
+      </template>
+      <q-separator />
       <q-card-section>
-        <div class="row justify-center">
+        <div class="row justify-center items-center">
           <CurrencyComponent
             :category="data.price.category"
             :item="data.price.item"
@@ -227,6 +204,27 @@ const updateImage = (val: number) => {
             show-name
           />
         </div>
+        <div class="absolute-right">
+          <slot name="actions"></slot>
+        </div>
+      </q-card-section>
+    </q-card>
+    <q-card v-else bordered class="item" :style="`width:${width}px`">
+      <q-card-section class="bg-brighten row justify-center">
+        <q-skeleton type="text" width="50%" height="48px" />
+      </q-card-section>
+      <q-card-section class="row justify-center">
+        <q-skeleton type="QAvatar" width="100px" height="100px" />
+      </q-card-section>
+      <q-separator inset />
+      <q-card-section class="column items-center">
+        <q-skeleton type="text" width="50%" />
+        <q-skeleton type="text" width="50%" />
+        <q-skeleton type="text" width="50%" />
+      </q-card-section>
+      <q-separator />
+      <q-card-section class="column items-center">
+        <q-skeleton type="text" width="40%" height="60px" />
       </q-card-section>
     </q-card>
   </div>
@@ -234,7 +232,7 @@ const updateImage = (val: number) => {
 
 <style lang="scss" scoped>
 .item {
-  width: 360px;
+  letter-spacing: 1px;
   max-width: 80vw;
   box-shadow: 1px 1px 1px 1px var(--q-dark-page);
   border-radius: 20px;
@@ -246,6 +244,20 @@ const updateImage = (val: number) => {
 
 .select-image-area {
   width: 350px;
+}
+
+.runewords-recipe {
+  opacity: 0.6;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .runewords-recipe:hover {
+    opacity: 1;
+  }
 }
 
 .modifiers {

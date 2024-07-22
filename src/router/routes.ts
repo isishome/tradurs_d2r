@@ -5,11 +5,24 @@ const routes: RouteRecordRaw[] = [
     path: '/:lang([^/]{2})?',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
+      {
+        name: 'main',
+        path: '',
+        component: () => import('pages/IndexPage.vue')
+      },
       {
         name: 'add',
         path: 'add/:id([0-9]{1,})?',
         component: () => import('pages/AddPage.vue'),
+        meta: {
+          requireAuth: true
+        },
+        props: true
+      },
+      {
+        name: 'item',
+        path: 'item/:id([0-9]{1,})',
+        component: () => import('pages/ItemPage.vue'),
         props: true
       },
       {
@@ -23,8 +36,14 @@ const routes: RouteRecordRaw[] = [
   // Always leave this as last one,
   // but you can also remove it
   {
+    name: 'pnf',
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
+    component: () => import('pages/PageNotFound.vue')
+  },
+  {
+    name: 'ftc',
+    path: '/:catchAll(.*)*',
+    component: () => import('pages/FailedToConnection.vue')
   }
 ]
 

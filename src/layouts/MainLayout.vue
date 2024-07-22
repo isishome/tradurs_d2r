@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 import { useGlobalStore } from 'src/stores/global-store'
 
+import LanguageComponent from 'components/UI/LanguageComponent.vue'
+import SignComponent from 'components/UI/SignComponent.vue'
+
 const $q = useQuasar()
+
+const { t } = useI18n({ useScope: 'global' })
 const gs = useGlobalStore()
 const ltmd = computed(() => gs.ltmd)
 const ltmdDrawer = computed(() => $q.screen.width < 1880)
@@ -32,12 +38,11 @@ const rightDrawer = ref<boolean>(false)
             />
           </div>
           <div class="q-px-md text-primary text-h6 text-weight-bold">
-            Tradurs Diablo II:레저렉션
+            {{ t('title') }}
           </div>
           <div v-show="!ltmd" class="row justify-end q-gutter-x-xs">
-            <q-btn flat round dense icon="person" />
-            <q-btn flat round dense icon="person" />
-            <q-btn flat round dense icon="person" />
+            <LanguageComponent />
+            <SignComponent />
           </div>
           <div v-show="ltmd">
             <q-btn
@@ -61,6 +66,31 @@ const rightDrawer = ref<boolean>(false)
           <div class="top"></div>
         </div>
         <router-view :class="padding" />
+
+        <div class="q-py-xl"></div>
+        <q-separator />
+        <div class="q-pt-lg q-pb-xl">
+          <div
+            class="row justify-center items-center q-gutter-xs text-caption bottom"
+          >
+            <div>Copyright</div>
+            <div>@</div>
+            <div>2024</div>
+            <q-btn
+              class="no-hover"
+              no-caps
+              flat
+              dense
+              aria-label="Serasome Home Button"
+              padding="0"
+              :ripple="false"
+              href="https://serasome.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >SeraSome</q-btn
+            >
+          </div>
+        </div>
       </q-page>
       <aside v-show="!ltmdDrawer" class="bg-transparent col">
         <div class="aside"></div>
@@ -100,6 +130,7 @@ const rightDrawer = ref<boolean>(false)
 }
 
 .global-loading {
+  position: fixed;
   z-index: 9999;
   width: 100%;
   height: 100%;

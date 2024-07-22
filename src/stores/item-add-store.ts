@@ -512,7 +512,6 @@ export const useItemAddStore = defineStore('item-add', () => {
     return new Promise<void>((resolve, reject) => {
       const error: unknown = null
       if (base.request === 0) {
-        console.log('request')
         base.request++
         base.loading = true
         api

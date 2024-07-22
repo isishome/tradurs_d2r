@@ -14,3 +14,9 @@ export type HttpRequestStore<T> = {
   loading: boolean
   data: T
 }
+
+export type Page = {
+  rows: number
+  over: boolean
+  more: boolean
+}

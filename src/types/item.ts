@@ -119,6 +119,7 @@ export type Item = Similarity & {
   progressTime?: number
   addProgressTime?: number
   show: boolean
+  loading: boolean
 }
 
 export const defaultItem = (): Item => {
@@ -147,7 +148,8 @@ export const defaultItem = (): Item => {
     startDate: undefined,
     progressTime: 60,
     addProgressTime: 0,
-    show: false
+    show: false,
+    loading: false
   }
 }
 

@@ -11,6 +11,14 @@
   --border-color: #ffffff15;
 }
 
+.bg-dark-page {
+  background-color: var(--q-dark-page);
+}
+
+.text-dark-page {
+  color: var(--q-dark-page);
+}
+
 .bg-brighten {
   background-color: var(--border-color);
 }
@@ -68,4 +76,12 @@ body::-webkit-scrollbar-thumb:hover {
 
 .q-btn--outline:before {
   border-color: var(--border-color);
+}
+
+.no-hover .q-focus-helper {
+  display: none;
+}
+
+.q-btn.disabled {
+  opacity: 0.3 !important;
 }

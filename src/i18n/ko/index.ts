@@ -3,5 +3,6 @@
 
 export default {
   failed: 'Action failed',
-  success: 'Action was successful'
-};
+  success: 'Action was successful',
+  title: '트레이더스 디아블로 II : 리저렉션'
+}

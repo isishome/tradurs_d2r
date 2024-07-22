@@ -1,12 +1,16 @@
-import { route } from 'quasar/wrappers';
+import { route } from 'quasar/wrappers'
 import {
   createMemoryHistory,
   createRouter,
   createWebHashHistory,
-  createWebHistory,
-} from 'vue-router';
-
-import routes from './routes';
+  createWebHistory
+} from 'vue-router'
+import { api } from 'boot/axios'
+import routes from './routes'
+import { Lang } from 'src/types/global'
+import { useGlobalStore } from 'src/stores/global-store'
+import { useAccountStore } from 'src/stores/account-store'
+import { initMessenger } from 'src/sockets/messenger'
 
 /*
  * If not building with SSR mode, you can
@@ -17,20 +21,64 @@ import routes from './routes';
  * with the Router instance.
  */
 
-export default route(function (/* { store, ssrContext } */) {
+export default route(function ({ store }) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
-    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory);
+    : process.env.VUE_ROUTER_MODE === 'history'
+    ? createWebHistory
+    : createWebHashHistory
 
   const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
+    scrollBehavior: (to, from, savedPosition) => {
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        return { left: 0, top: 0 }
+      }
+    },
     routes,
 
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
-    history: createHistory(process.env.VUE_ROUTER_BASE),
-  });
+    history: createHistory(process.env.VUE_ROUTER_BASE)
+  })
 
-  return Router;
-});
+  Router.beforeEach(async (to, from, next) => {
+    const lang = to.params.lang || 'ko'
+    api.defaults.headers.common['Accept-Language'] = lang
+
+    const gs = useGlobalStore(store)
+    const as = useAccountStore(store)
+    gs.lang = lang as Lang
+    const requireAuth = !!to.matched.some((m) => m.meta.requireAuth)
+
+    if (process.env.SERVER) return next()
+
+    if (!['pnf', 'ftc'].includes(to.name as string)) {
+      try {
+        await gs.checkHealth()
+      } catch {
+        return next({ name: 'ftc' })
+      }
+    }
+
+    if (requireAuth && !!!as.info.id)
+      return next({ name: 'main', params: { lang } })
+
+    if (
+      !!as.info.id &&
+      !!!as.messenger &&
+      !['pnf', 'ftc'].includes(to.name as string)
+    ) {
+      try {
+        await initMessenger()
+      } catch {
+        return next({ name: 'ftc' })
+      }
+    }
+
+    return next()
+  })
+  return Router
+})
