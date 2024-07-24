@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { date } from 'quasar'
 import type { Item } from 'src/types/item'
 import { randImage } from 'src/types/item'
 import { useItemAddStore } from 'stores/item-add-store'
+import { useItemStore } from 'stores/item-store'
 import ModifierComponent from 'components/item/ModifierComponent.vue'
 import CurrencyComponent from 'components/item/CurrencyComponent.vue'
 
@@ -19,10 +21,14 @@ const props = withDefaults(defineProps<Props>(), {
   width: 360
 })
 
-const emit = defineEmits(['update-image'])
+const emit = defineEmits(['started', 'update-image'])
 
 // store
 const ias = useItemAddStore()
+const is = useItemStore()
+
+// variable
+let timer: ReturnType<typeof setInterval>
 
 // computed
 const quality = computed(() => props.data.quality)
@@ -106,11 +112,78 @@ const imgSrc = computed(() => (num?: number) => {
 
   return `${paths.filter((p) => !!p).join('/')}.webp`
 })
+const imageSwappable = computed(
+  () =>
+    props.editable && Object.keys(randImage).includes(category.value as string)
+)
+
+const exceptSwappable = computed(
+  () =>
+    !(
+      quality.value === 'unique' &&
+      category.value === 'charms' &&
+      item.value !== 21576
+    )
+)
+const now = ref<Date>(new Date())
+const expireDateTime = computed(() =>
+  date.addToDate(new Date(props.data.startDate as string), {
+    minutes: (props.data.progressTime ?? 0) + (props.data.addProgressTime ?? 0)
+  })
+)
+const remainTime = computed(() =>
+  date.getDateDiff(expireDateTime.value, now.value, 'seconds')
+)
+
+const hours = computed(() =>
+  Math.floor(Math.max(remainTime.value / 3600, 0))
+    .toString()
+    .padStart(2, '0')
+)
+const minutes = computed(() =>
+  Math.floor(Math.max((remainTime.value % 3600) / 60, 0))
+    .toString()
+    .padStart(2, '0')
+)
+
+const seconds = computed(() =>
+  Math.floor(Math.max((remainTime.value % 3600) % 60, 0))
+    .toString()
+    .padStart(2, '0')
+)
 
 // func
 const updateImage = (val: number) => {
   emit('update-image', val)
 }
+
+const start = () => {
+  is.startAuction(props.data.id as number).then(() => {
+    emit('started', props.data.id)
+  })
+}
+
+const onTimer = () => {
+  timer = setInterval(() => {
+    if (props.editable || remainTime.value <= 0) clearInterval(timer)
+    else now.value = new Date()
+  }, 1000)
+}
+
+watch(
+  () => props.data.startDate,
+  (val, old) => {
+    if (val !== old) onTimer()
+  }
+)
+
+onMounted(() => {
+  onTimer()
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
 </script>
 
 <template>
@@ -125,6 +198,7 @@ const updateImage = (val: number) => {
             {{ name }}
           </div>
           <div
+            v-if="data.category !== 'misc'"
             :style="`color:var(--${
               ['normal', 'runewords'].includes(data.quality as string) &&
               (data.socket > 0 || data.ethereal)
@@ -135,14 +209,69 @@ const updateImage = (val: number) => {
             {{ detailName }}
           </div>
         </div>
-      </q-card-section>
-      <q-card-section :class="{ 'cursor-pointer': editable }">
-        <template
-          v-if="editable && Object.keys(randImage).includes(category as string)"
+        <div
+          v-if="!editable"
+          class="more no-hover absolute-right row items-center"
         >
+          <q-btn
+            dense
+            flat
+            icon="more_vert"
+            :style="`color:var(--quality-${data.quality})`"
+            :ripple="false"
+            @click.stop="() => {}"
+          >
+            <q-menu
+              auto-close
+              class="no-shadow"
+              cover
+              anchor="top right"
+              self="bottom start"
+            >
+              <template v-if="data.user?.owner && data.statusCode === '002'">
+                <q-item
+                  clickable
+                  :to="{ name: 'add', params: { id: data.id } }"
+                >
+                  <q-item-section side>
+                    <q-icon name="edit" />
+                  </q-item-section>
+                  <q-item-section>수정</q-item-section>
+                </q-item>
+                <q-item clickable @click="start">
+                  <q-item-section side>
+                    <q-icon name="play_circle" />
+                  </q-item-section>
+                  <q-item-section>경매 시작</q-item-section>
+                </q-item>
+              </template>
+              <q-item clickable>
+                <q-item-section side>
+                  <q-icon name="favorite" />
+                </q-item-section>
+                <q-item-section>즐겨찾기</q-item-section>
+              </q-item>
+              <q-item clickable>
+                <q-item-section side>
+                  <q-icon name="content_copy" />
+                </q-item-section>
+                <q-item-section>복사</q-item-section>
+              </q-item>
+              <q-item clickable>
+                <q-item-section side>
+                  <q-icon name="share" />
+                </q-item-section>
+                <q-item-section>공유</q-item-section>
+              </q-item>
+            </q-menu>
+          </q-btn>
+        </div>
+      </q-card-section>
+      <q-card-section>
+        <template v-if="imageSwappable && exceptSwappable">
           <q-menu cover anchor="top end" fit>
             <div
-              class="row justify-around items-center select-image-area q-py-md"
+              class="row justify-evenly items-center select-image-area q-py-md"
             >
               <q-btn
                 v-for="(c, idx) in imageCount"
@@ -154,7 +283,7 @@ const updateImage = (val: number) => {
                 v-close-popup
                 @click="updateImage(c)"
               >
-                <img :src="imgSrc(c)" loading="lazy" />
+                <img :src="imgSrc(c)" class="item-image" loading="lazy" />
               </q-btn>
             </div>
           </q-menu>
@@ -196,7 +325,22 @@ const updateImage = (val: number) => {
       </template>
       <q-separator />
       <q-card-section>
-        <div class="row justify-center items-center">
+        <div class="row justify-evenly items-center">
+          <div
+            v-if="!editable"
+            class="row justify-center items-center q-gutter-x-sm d2r-chip bg-blue-grey-9"
+          >
+            <div class="q-ml-none">
+              {{
+                remainTime <= 0 && data.statusCode === '000'
+                  ? '경매 종료 처리 중'
+                  : ias.status(data.statusCode)?.[0]?.label
+              }}
+            </div>
+            <div v-if="remainTime > 0">
+              {{ hours }}:{{ minutes }}:{{ seconds }}
+            </div>
+          </div>
           <CurrencyComponent
             :category="data.price.category"
             :item="data.price.item"
@@ -236,6 +380,10 @@ const updateImage = (val: number) => {
   max-width: 80vw;
   box-shadow: 1px 1px 1px 1px var(--q-dark-page);
   border-radius: 20px;
+  &:deep(.more) {
+    visibility: hidden;
+    right: 4px;
+  }
 }
 
 .item-image {
@@ -257,6 +405,10 @@ const updateImage = (val: number) => {
 @media (hover: hover) {
   .runewords-recipe:hover {
     opacity: 1;
+  }
+
+  .item:hover:deep(.more) {
+    visibility: visible;
   }
 }
 

@@ -45,6 +45,8 @@ export const useAccountStore = defineStore('account', () => {
         .then(() => {
           signed.value = false
           Object.assign(info, defaultUser())
+          messenger.value?.disconnect()
+          messenger.value = undefined
           resolve(false)
         })
         .catch((e) => {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import type { Size } from 'src/types/global'
 import type { Item } from 'src/types/item'
 import { defaultItem } from 'src/types/item'
 import { useItemStore } from 'stores/item-store'
@@ -14,10 +15,10 @@ const is = useItemStore()
 const as = useAccountStore()
 
 // variable
+const refresh = computed(() => is.refresh)
 const itemWidth = 360
-const wrap = ref<HTMLDivElement>()
 const colGroup = reactive<Array<Array<Item>>>([])
-const items = reactive<Array<Item>>(
+const items = ref<Array<Item>>(
   Array.from({ length: 3 }, () => defaultItem()).map((i) => ({
     ...i,
     loading: true
@@ -29,24 +30,26 @@ const page = ref<number>(
 const over = computed(() => is.itemPage.over)
 const more = computed(() => is.itemPage.more)
 const barWidth = computed(() => colGroup.length * (itemWidth + 24) - 40)
+const size = reactive<Size>({} as Size)
+const limit = computed(() =>
+  Math.floor(size.width / (itemWidth + 24)) > 0
+    ? Math.floor(size.width / (itemWidth + 24))
+    : 1
+)
 
-const getItems = async () => {
-  items.splice(0, items.length)
-  const result = await is.getItems(page.value)
-  items.push(...result)
-  alignItems()
+const getItems = () => {
+  is.getItems(page.value).then((result) => {
+    items.value = result
+    alignItems()
+  })
 }
 
 const alignItems = () => {
-  if (items.length === 0) return
-  const cloneItems = JSON.parse(JSON.stringify(items))
+  const cloneItems = JSON.parse(JSON.stringify(items.value))
   colGroup.splice(0, colGroup.length)
-  const limit =
-    Math.floor((wrap.value?.clientWidth ?? 0) / (itemWidth + 24)) > 0
-      ? Math.floor((wrap.value?.clientWidth ?? 0) / (itemWidth + 24))
-      : 1
+
   let i = 0
-  while (i < limit) {
+  while (i < limit.value) {
     colGroup.push([])
     i++
   }
@@ -69,6 +72,12 @@ const move = (val: number) => {
   })
 }
 
+const startedAuction = (item: Item) => {
+  is.getItems(1, item.id).then((result) => {
+    Object.assign(item, result[0])
+  })
+}
+
 watch(
   () => route.query.page,
   (val, old) => {
@@ -79,14 +88,31 @@ watch(
   }
 )
 
+watch(limit, (val, old) => {
+  if (val !== old) {
+    alignItems()
+  }
+})
+
+watch(refresh, (val, old) => {
+  if (val !== old) {
+    router.push({ name: 'main', params: { page: undefined }, replace: true })
+    page.value = 1
+    getItems()
+  }
+})
+
 onMounted(async () => {
-  await getItems()
+  getItems()
 })
 </script>
 
 <template>
-  <div ref="wrap">
-    <q-resize-observer :debounce="400" @resize="alignItems" />
+  <div>
+    <q-resize-observer
+      :debounce="400"
+      @resize="(val:Size) => {Object.assign(size,val)}"
+    />
     <div class="row justify-center q-col-gutter-lg item-list">
       <div
         v-for="(cg, idx) in colGroup"
@@ -95,11 +121,12 @@ onMounted(async () => {
       >
         <div v-for="item in cg" :key="item.id">
           <ItemComponent
-            class="cursor-pointer"
+            :class="[item.loading ? 'no-pointer-events' : 'cursor-pointer']"
             @click="goItem(item.id as number)"
             :data="item"
             :width="itemWidth"
             :loading="item.loading"
+            @started="startedAuction(item)"
           />
         </div>
       </div>

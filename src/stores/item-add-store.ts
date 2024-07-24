@@ -38,10 +38,7 @@ type BaseData = {
   uniques: MappingId[]
   setItems: MappingId[]
   misc: MappingId[]
-  // uniqueMappingWeapon: MappingId[]
-  // uniqueMappingArmor: MappingId[]
-  // setItemMappingWeapon: MappingId[]
-  // setItemMappingArmor: MappingId[]
+  status: Label[]
 }
 
 const cos = stringComparison.cosine
@@ -70,11 +67,8 @@ export const useItemAddStore = defineStore('item-add', () => {
       runewordMappingRune: [],
       uniques: [],
       setItems: [],
-      misc: []
-      // uniqueMappingWeapon: [],
-      // uniqueMappingArmor: [],
-      // setItemMappingWeapon: [],
-      // setItemMappingArmor: []
+      misc: [],
+      status: []
     }
   })
 
@@ -389,6 +383,11 @@ export const useItemAddStore = defineStore('item-add', () => {
       })) as Array<ItemTypeLabel>
   )
 
+  const status = computed(
+    () => (code?: string) =>
+      code ? base.data.status.filter((s) => s.value === code) : base.data.status
+  )
+
   const removeMatchWords = (str: string, targetStr?: string) => {
     if (!!!targetStr) return str
 
@@ -484,30 +483,6 @@ export const useItemAddStore = defineStore('item-add', () => {
     return children
   }
 
-  // const saveFile = (str: string, fname: string) => {
-  //   const link = document.createElement('a')
-  //   link.download = `${fname}.txt`
-  //   const blob = new Blob([str], { type: 'text/plain' })
-  //   link.href = window.URL.createObjectURL(blob)
-  //   link.click()
-  // }
-
-  // function chunk(data: string[], size = 1) {
-  //   const arr = []
-
-  //   for (let i = 0; i < data.length; i += size) {
-  //     arr.push(data.slice(i, i + size))
-  //   }
-
-  //   return arr
-  // }
-
-  // const sleep = (ms: number) => {
-  //   return new Promise((resolve) => {
-  //     setTimeout(resolve, ms)
-  //   })
-  // }
-
   const getBase = (options?: AxiosRequestConfig) => {
     return new Promise<void>((resolve, reject) => {
       const error: unknown = null
@@ -542,22 +517,9 @@ export const useItemAddStore = defineStore('item-add', () => {
               ...response.data.runewordMappingRune
             )
             base.data.uniques.push(...response.data.uniques)
-
             base.data.setItems.push(...response.data.setItems)
-
             base.data.misc.push(...response.data.misc)
-            // base.data.uniqueMappingWeapon.push(
-            //   ...response.data.uniqueMappingWeapon
-            // )
-            // base.data.uniqueMappingArmor.push(
-            //   ...response.data.uniqueMappingArmor
-            // )
-            // base.data.setItemMappingWeapon.push(
-            //   ...response.data.setItemMappingWeapon
-            // )
-            // base.data.setItemMappingArmor.push(
-            //   ...response.data.setItemMappingArmor
-            // )
+            base.data.status.push(...response.data.status)
           })
           .catch((e) => {
             console.log(e)
@@ -596,6 +558,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     uniques,
     setItems,
     misc,
+    status,
     getBase,
     findChildren
   }

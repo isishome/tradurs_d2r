@@ -6,11 +6,17 @@ import { useRoute } from 'vue-router'
 import { api } from 'boot/axios'
 import { Lang } from 'src/types/global'
 import type { Page } from 'src/types/global'
-import { Item } from 'src/types/item'
+import { Bid, Item } from 'src/types/item'
 import { useGlobalStore } from './global-store'
 
 type ItemPage = Page & {
   newItems: number
+}
+
+type Notify = {
+  request: number
+  itemId?: number
+  complete: boolean
 }
 
 export const useItemStore = defineStore('item', () => {
@@ -20,6 +26,7 @@ export const useItemStore = defineStore('item', () => {
   const lang: Lang = (route.params.lang as Lang) || 'ko'
   const ltmd = computed(() => $q.screen.width < 1280)
   const locale: 'enUS' | 'koKR' = lang === 'en' ? 'enUS' : 'koKR'
+  const refresh = ref<number>(0)
   const itemPage = reactive<ItemPage>({
     rows: 10,
     over: false,
@@ -27,6 +34,11 @@ export const useItemStore = defineStore('item', () => {
     newItems: 0
   })
   const detailItem = ref<Item>()
+  const notify = ref<Notify>({
+    request: 0,
+    itemId: undefined,
+    complete: false
+  })
 
   const getItems = (
     page: number,
@@ -55,12 +67,63 @@ export const useItemStore = defineStore('item', () => {
   }
 
   const upsertItem = (item: Item, withStart = false) => {
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       gs.loading = true
       api
         .post('/d2/item/upsert', { item, withStart })
+        .then((response) => {
+          resolve(response.data.id)
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.loading = false
+        })
+    })
+  }
+
+  const startAuction = (itemId: number) => {
+    return new Promise<void>((resolve, reject) => {
+      gs.loading = true
+      api
+        .post('/d2/item/start', { itemId })
         .then(() => {
           resolve()
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.loading = false
+        })
+    })
+  }
+
+  const getBids = (itemId: number, overBidId?: number) => {
+    return new Promise<Array<Bid>>((resolve, reject) => {
+      gs.loading = true
+      api
+        .get('/d2/item/bids', { params: { itemId, overBidId } })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.loading = false
+        })
+    })
+  }
+
+  const addBid = (bid: Bid) => {
+    return new Promise<boolean>((resolve, reject) => {
+      gs.loading = true
+      api
+        .post('/d2/item/bid/add', { bid })
+        .then((response) => {
+          resolve(response.data)
         })
         .catch((e) => {
           reject(e)
@@ -75,9 +138,14 @@ export const useItemStore = defineStore('item', () => {
     ltmd,
     lang,
     locale,
+    refresh,
     itemPage,
     detailItem,
+    notify,
     getItems,
-    upsertItem
+    upsertItem,
+    startAuction,
+    getBids,
+    addBid
   }
 })

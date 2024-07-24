@@ -20,3 +20,8 @@ export type Page = {
   over: boolean
   more: boolean
 }
+
+export type Size = {
+  width: number
+  height: number
+}

@@ -19,6 +19,18 @@
   color: var(--q-dark-page);
 }
 
+.bg-darkless {
+  background-color: #121218;
+}
+
+.text-darkless {
+  color: #19191f;
+}
+
+.text-brighten {
+  color: var(--border-color);
+}
+
 .bg-brighten {
   background-color: var(--border-color);
 }
@@ -84,4 +96,13 @@ body::-webkit-scrollbar-thumb:hover {
 
 .q-btn.disabled {
   opacity: 0.3 !important;
+}
+
+.d2r-chip {
+  padding: 8px 10px;
+  z-index: 1;
+  border-radius: 10px;
+  letter-spacing: 0;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.6), 0 2px 0 0 rgba(255, 255, 255, 0.1),
+    0 -2px 0 0 rgba(0, 0, 0, 0.1), 0 -1px 0 0 rgba(255, 255, 255, 0.3);
 }

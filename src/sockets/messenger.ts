@@ -85,10 +85,17 @@ export const initMessenger = async () => {
     sound.play()
   }
 
-  as.messenger.on('newItems', () => {
-    notify()
-    if (as.info.notifyNew) is.itemPage.newItems++
-  })
+  as.messenger.on(
+    'updateBids',
+    ({ itemId, complete }: { itemId: number; complete: boolean }) => {
+      if (is.detailItem?.id === itemId) {
+        notify()
+        is.notify.itemId = itemId
+        is.notify.complete = complete
+        is.notify.request++
+      }
+    }
+  )
 
   // as.messenger.on('newOffer', (offerInfo: OfferInfo) => {
   //   notify()

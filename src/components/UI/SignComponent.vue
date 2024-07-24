@@ -14,11 +14,12 @@ const sign = () => {
     as.signOut()
       .then((result: boolean) => {
         if (!result) {
-          if (route.name === 'main') router.go(0)
-          else
+          if (route.matched.some((m) => m.meta.requireAuth))
             router.push({
-              name: 'main'
+              name: 'main',
+              replace: true
             })
+          else router.go(0)
         }
       })
       .catch(() => {

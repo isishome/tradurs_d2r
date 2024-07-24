@@ -1,26 +1,43 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useQuasar } from 'quasar'
+import { useQuasar, debounce } from 'quasar'
 import { useI18n } from 'vue-i18n'
+import { useRoute, useRouter } from 'vue-router'
+import type { Size } from 'src/types/global'
 import { useGlobalStore } from 'src/stores/global-store'
+import { useAccountStore } from 'src/stores/account-store'
+import { useItemStore } from 'src/stores/item-store'
 
 import LanguageComponent from 'components/UI/LanguageComponent.vue'
 import SignComponent from 'components/UI/SignComponent.vue'
 
 const $q = useQuasar()
-
 const { t } = useI18n({ useScope: 'global' })
+const route = useRoute()
+const router = useRouter()
+
 const gs = useGlobalStore()
+const as = useAccountStore()
+const is = useItemStore()
 const ltmd = computed(() => gs.ltmd)
 const ltmdDrawer = computed(() => $q.screen.width < 1880)
 const padding = computed(() => (ltmdDrawer.value ? 'q-px-md' : 'q-px-lg'))
 
 const leftDrawer = ref<boolean>(false)
 const rightDrawer = ref<boolean>(false)
+
+const goHome = () => {
+  if (route.name !== 'main') router.push({ name: 'main' })
+  else is.refresh++
+}
+
+const resize = debounce((size: Size) => {
+  Object.assign(gs.size, size)
+}, 400)
 </script>
 
 <template>
-  <q-layout view="lHh Lpr lff">
+  <q-layout view="lHh Lpr lff" @resize="resize">
     <q-inner-loading class="global-loading" :showing="gs.loading">
       <q-spinner size="50px" color="primary" />
     </q-inner-loading>
@@ -37,10 +54,17 @@ const rightDrawer = ref<boolean>(false)
               @click="leftDrawer = !leftDrawer"
             />
           </div>
-          <div class="q-px-md text-primary text-h6 text-weight-bold">
+          <div
+            class="q-px-md text-primary text-h6 text-weight-bold cursor-pointer"
+            @click="goHome"
+          >
             {{ t('title') }}
           </div>
-          <div v-show="!ltmd" class="row justify-end q-gutter-x-xs">
+          <div
+            v-show="!ltmd"
+            class="row justify-end items-center q-gutter-x-xs"
+          >
+            <div>{{ as.info.battleTag }}</div>
             <LanguageComponent />
             <SignComponent />
           </div>

@@ -3,7 +3,7 @@ import { ref, reactive, computed } from 'vue'
 import { useQuasar } from 'quasar'
 import { api } from 'src/boot/axios'
 import { Lang } from 'src/types/global'
-import type { Label } from 'src/types/global'
+import type { Label, Size } from 'src/types/global'
 
 export const useGlobalStore = defineStore('global', () => {
   const $q = useQuasar()
@@ -16,6 +16,10 @@ export const useGlobalStore = defineStore('global', () => {
   const ltmd = computed(() => $q.screen.width < 1280)
 
   const loading = ref<boolean>(false)
+  const size = reactive<Size>({
+    width: 0,
+    height: 0
+  })
 
   const checkHealth = () => {
     return new Promise<void>((resolve, reject) => {
@@ -36,6 +40,7 @@ export const useGlobalStore = defineStore('global', () => {
     locale,
     localeOptions,
     loading,
+    size,
     checkHealth
   }
 })

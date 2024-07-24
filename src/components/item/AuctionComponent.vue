@@ -27,6 +27,17 @@ const minutes = computed(() =>
   _progressTime.value % 60 > 0 ? _progressTime.value % 60 : undefined
 )
 
+const progressTimeRules = (val: number) => {
+  let message
+
+  if (!!!val) message = '경매 진행 시간을 입력하세요'
+  else if (val < 5 || val > 720)
+    message =
+      '경매 진행 시간은 최소 5분에서 최대 720분(24시간)까지 지정 가능합니다.'
+
+  return !!!message || message
+}
+
 const update = () => {
   _price.value.instantAmount = _price.value.instantAmount || undefined
   emit('update', _price.value, _progressTime.value)
@@ -156,7 +167,7 @@ defineExpose({ validate })
         reverse-fill-mask
         label="경매 진행 시간(분)"
         @update:model-value="update"
-        :rules="[(val) => !!val || '경매 진행 시간을 입력하세요']"
+        :rules="[progressTimeRules]"
       >
         <template #hint>
           <div class="row q-gutter-xs items-center">

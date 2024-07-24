@@ -12,6 +12,7 @@ const props = defineProps<{
   category?: string
   item?: number
   quantity?: number
+  title?: string
   showName?: boolean
 }>()
 
@@ -30,6 +31,9 @@ const name = computed(() =>
 
 <template>
   <div>
+    <div v-if="!!title" class="row justify-center text-body2">
+      {{ title }}
+    </div>
     <div class="row justify-center items-center q-gutter-sm">
       <img
         :src="`/images/items/${category}/${item}.webp`"

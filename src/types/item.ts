@@ -78,14 +78,17 @@ export type Price = {
 
 export type Bid = {
   id?: number
-  item_id?: number
+  itemId?: number
   amount: number
-  user: User
+  user?: User
+  regDate?: string
+  won: boolean
+  rate?: number
 }
 
 export type Modifier = Similarity & {
   order: number
-  item_id?: number
+  itemId?: number
   type: ModifierType
   signed?: boolean
   id?: number
@@ -118,7 +121,8 @@ export type Item = Similarity & {
   startDate?: string
   progressTime?: number
   addProgressTime?: number
-  show: boolean
+  statusCode?: string
+  rate?: number
   loading: boolean
 }
 
@@ -148,7 +152,8 @@ export const defaultItem = (): Item => {
     startDate: undefined,
     progressTime: 60,
     addProgressTime: 0,
-    show: false,
+    statusCode: undefined,
+    rate: undefined,
     loading: false
   }
 }
@@ -161,6 +166,17 @@ export const defaultPrice = (): Price => {
     unitAmount: 1,
     startAmount: 1,
     instantAmount: undefined
+  }
+}
+
+export const defaultBid = (): Bid => {
+  return {
+    id: undefined,
+    itemId: undefined,
+    amount: 1,
+    user: undefined,
+    regDate: undefined,
+    won: false
   }
 }
 

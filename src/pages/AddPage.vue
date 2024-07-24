@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
 import { QStepper, QSelect } from 'quasar'
-import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 import type { Item, Price, Modifier } from 'src/types/item'
 import { separator, ModifierType, defaultItem } from 'src/types/item'
@@ -17,6 +18,7 @@ const props = defineProps<{
   id?: string
 }>()
 
+const router = useRouter()
 const ias = useItemAddStore()
 const is = useItemStore()
 
@@ -24,151 +26,7 @@ const stepper = ref<QStepper>()
 const step = ref<number>(1)
 const baseRef = ref<typeof BaseComponent>()
 const auctionRef = ref<typeof AuctionComponent>()
-defaultItem
 const _item = ref<Item>(defaultItem())
-// const _item = ref<Item>({
-//   region: 'asia',
-//   ladder: true,
-//   hardcore: false,
-//   ethereal: false,
-//   socket: 0,
-//   quality: 'unique',
-//   category: 'armor',
-//   itemType: 'clas',
-//   classType: 'barb',
-//   detailType: 'baa',
-//   item: 21744,
-//   quantity: 1,
-//   modifiers: [
-//     {
-//       type: 'string',
-//       id: 3461,
-//       children: [
-//         { order: 0, type: 'decimal', value: 327 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 0
-//     },
-//     {
-//       type: 'string',
-//       id: 3457,
-//       children: [
-//         { order: 0, type: 'integer', value: 53 },
-//         { order: 1, type: 'integer', value: 55 },
-//         { order: 2, type: 'connect' }
-//       ],
-//       order: 1
-//     },
-//     {
-//       type: 'string',
-//       id: 10921,
-//       children: [{ order: 0, type: 'connect' }],
-//       order: 2
-//     },
-//     {
-//       type: 'string',
-//       id: 3458,
-//       children: [
-//         { order: 0, type: 'decimal', value: 118 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 3
-//     },
-//     {
-//       type: 'string',
-//       id: 3469,
-//       children: [
-//         { order: 0, type: 'decimal', value: 42 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 4
-//     },
-//     {
-//       type: 'string',
-//       id: 10059,
-//       children: [
-//         { order: 0, type: 'decimal', value: 2 },
-//         { order: 1, type: 'connect', id: 10921 }
-//       ],
-//       order: 5
-//     },
-//     {
-//       type: 'string',
-//       id: 3529,
-//       children: [
-//         { order: 0, type: 'decimal', value: 2 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 6
-//     },
-//     {
-//       type: 'string',
-//       id: 3564,
-//       children: [
-//         { order: 0, type: 'decimal', value: 30 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 7
-//     },
-//     {
-//       type: 'string',
-//       id: 11035,
-//       children: [
-//         { order: 0, type: 'decimal', value: 20 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 8
-//     },
-//     {
-//       type: 'string',
-//       id: 3524,
-//       children: [
-//         { order: 0, type: 'decimal', value: 5 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 9
-//     },
-//     {
-//       type: 'string',
-//       id: 3520,
-//       children: [
-//         { order: 0, type: 'decimal', value: 71 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 10
-//     },
-//     {
-//       type: 'string',
-//       id: 3473,
-//       children: [
-//         { order: 0, type: 'decimal', value: 20 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 11
-//     },
-//     {
-//       type: 'string',
-//       id: 3474,
-//       children: [
-//         { order: 0, type: 'decimal', value: 20 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 12
-//     },
-//     {
-//       type: 'string',
-//       id: 10024,
-//       children: [
-//         { order: 0, type: 'decimal', value: 30 },
-//         { order: 1, type: 'connect' }
-//       ],
-//       order: 13
-//     }
-//   ],
-//   price: { category: 'runes', item: 10906, unitAmount: 1, startAmount: 1 },
-//   progressTime: 60,
-//   addProgressTime: 0
-// } as Item)
 const itemId = ref<number | undefined>(
   !!props.id && !isNaN(Number(props.id)) ? Number(props.id) : undefined
 )
@@ -270,6 +128,22 @@ const selectModifier = (val: number): void => {
     modifierNeedle.value = undefined
   }
 }
+
+const upsert = (item: Item, withStart = false) => {
+  is.upsertItem(item, withStart).then((id) => {
+    router.push({
+      name: withStart ? 'main' : 'item',
+      params: { id: withStart ? undefined : id }
+    })
+  })
+}
+
+onMounted(() => {
+  if (!!props.id)
+    is.getItems(1, Number(props.id)).then((result) => {
+      _item.value = result[0]
+    })
+})
 </script>
 
 <template>
@@ -406,18 +280,16 @@ const selectModifier = (val: number): void => {
                 label="완료"
               >
                 <q-list>
-                  <q-item clickable v-close-popup @click="is.upsertItem(_item)">
+                  <q-item clickable v-close-popup @click="upsert(_item)">
                     <q-item-section>
-                      <q-item-label>등록</q-item-label>
+                      <q-item-label>{{ !!id ? '수정' : '등록' }}</q-item-label>
                     </q-item-section>
                   </q-item>
-                  <q-item
-                    clickable
-                    v-close-popup
-                    @click="is.upsertItem(_item, true)"
-                  >
+                  <q-item clickable v-close-popup @click="upsert(_item, true)">
                     <q-item-section>
-                      <q-item-label>등록 및 경매 시작</q-item-label>
+                      <q-item-label
+                        >{{ !!id ? '수정' : '등록' }} 및 경매 시작</q-item-label
+                      >
                     </q-item-section>
                   </q-item>
                 </q-list>

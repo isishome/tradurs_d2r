@@ -1,86 +1,198 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, computed, watch, nextTick } from 'vue'
+import { QCardSection, QForm, QInput, date } from 'quasar'
+import type { Bid, Item } from 'src/types/item'
+import { useGlobalStore } from 'stores/global-store'
+import { useAccountStore } from 'stores/account-store'
+
+import CurrencyComponent from 'components/item/CurrencyComponent.vue'
+
+type Props = {
+  data?: Array<Bid>
+  item: Item
+}
+
+const props = withDefaults(defineProps<Props>(), {})
+const emit = defineEmits(['add'])
+
+const gs = useGlobalStore()
+const as = useAccountStore()
+const loading = computed(() => gs.loading)
+const _amount = ref<number>(0)
+const bidRef = ref<QCardSection>()
+const bidFormRef = ref<QForm>()
+const amountRef = ref<QInput>()
+const minAmount = computed(() => props.item.price.startAmount)
+const maxAmount = computed(() =>
+  props.data && props.data.length > 0
+    ? Math.max(...props.data?.map((b) => b.amount))
+    : 0
+)
+
+const biddingRules = (val: number) => {
+  let message
+  if (val < minAmount.value) message = '입찰 금액은 최소 금액보다 커야 합니다.'
+  else if (
+    !!props.item.price.instantAmount &&
+    val > props.item.price.instantAmount
+  )
+    message = '입찰 금액은 즉구가보다 클 수 없습니다.'
+  else if (val <= maxAmount.value)
+    message = '입찰 금액은 마지막 입찰가보다 커야 합니다.'
+
+  return !!message ? false || message : true || ''
+}
+
+const add = () => {
+  emit('add', _amount.value)
+  setTimeout(() => {
+    amountRef.value?.focus()
+  }, 0)
+}
+
+watch(
+  () => props.data,
+  () => {
+    nextTick(() => {
+      window.requestAnimationFrame(() => {
+        const el = bidRef.value?.$el
+        if (el) el.scrollTop = el.scrollHeight as number
+      })
+    })
+  },
+  { deep: true }
+)
+</script>
 
 <template>
-  <q-card flat bordered class="bids">
-    <q-card-section>
-      <q-chat-message
-        name="me"
-        avatar="https://cdn.quasar.dev/img/avatar3.jpg"
-        :text="['hey, how are you?']"
-        stamp="7 minutes ago"
-        sent
-      />
-      <q-chat-message
-        name="Jane"
-        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
-        :text="[
-          'doing fine, how r you?',
-          'I just feel like typing a really, really, REALLY long message to annoy you...'
-        ]"
-        size="6"
-        stamp="4 minutes ago"
-      />
-      <q-chat-message
-        name="Jane"
-        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
-        :text="['Did it work?']"
-        stamp="1 minutes ago"
-        size="8"
-      />
-      <q-chat-message
-        name="me"
-        avatar="https://cdn.quasar.dev/img/avatar3.jpg"
-        :text="['hey, how are you?']"
-        stamp="7 minutes ago"
-        sent
-      />
-      <q-chat-message
-        name="Jane"
-        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
-        :text="[
-          'doing fine, how r you?',
-          'I just feel like typing a really, really, REALLY long message to annoy you...'
-        ]"
-        size="6"
-        stamp="4 minutes ago"
-      />
-      <q-chat-message
-        name="Jane"
-        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
-        :text="['Did it work?']"
-        stamp="1 minutes ago"
-        size="8"
-      />
-      <q-chat-message
-        name="me"
-        avatar="https://cdn.quasar.dev/img/avatar3.jpg"
-        :text="['hey, how are you?']"
-        stamp="7 minutes ago"
-        sent
-      />
-      <q-chat-message
-        name="Jane"
-        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
-        :text="[
-          'doing fine, how r you?',
-          'I just feel like typing a really, really, REALLY long message to annoy you...'
-        ]"
-        size="6"
-        stamp="4 minutes ago"
-      />
-      <q-chat-message
-        name="Jane"
-        avatar="https://cdn.quasar.dev/img/avatar5.jpg"
-        :text="['Did it work?']"
-        stamp="1 minutes ago"
-        size="8"
-      />
+  <q-card flat bordered class="bids column">
+    <q-toolbar class="bg-brighten q-py-sm">
+      <div class="col">
+        <CurrencyComponent
+          :category="item.price.category"
+          :item="item.price.item"
+          :quantity="item.price.startAmount"
+          title="시작 수량"
+          style="max-height: 30px"
+        />
+      </div>
+      <q-separator vertical />
+      <div class="col">
+        <CurrencyComponent
+          :category="item.price.category"
+          :item="item.price.item"
+          :quantity="item.price.unitAmount"
+          title="단위 수량"
+          style="max-height: 30px"
+        />
+      </div>
+      <template v-if="!!item.price.instantAmount">
+        <q-separator vertical />
+        <div class="col">
+          <CurrencyComponent
+            :category="item.price.category"
+            :item="item.price.item"
+            :quantity="item.price.instantAmount"
+            title="즉시 구매 수량"
+            style="max-height: 30px"
+          />
+        </div>
+      </template>
+    </q-toolbar>
+    <q-card-section ref="bidRef" class="scroll col">
+      <div
+        v-if="!!data && data.length === 0"
+        class="fit row justify-center items-center"
+      >
+        입찰 내역이 없습니다.
+      </div>
+      <div v-else class="column q-gutter-y-md">
+        <q-chat-message
+          v-for="b in data"
+          :key="b.id"
+          :avatar="`/images/avatar/${b.user?.avatar}.webp`"
+          :bg-color="b.won ? 'primary' : 'brighten'"
+          :text-color="b.won ? 'dark' : 'white'"
+          :sent="b.user?.owner"
+        >
+          <template #default>
+            <div class="row justify-start">
+              <CurrencyComponent
+                :category="item.price.category"
+                :item="item.price.item"
+                :quantity="b.amount"
+              />
+            </div>
+          </template>
+          <template #stamp>
+            <div>
+              <div>
+                {{ date.formatDate(b.regDate, 'YYYY.MM.DD') }}
+              </div>
+              <div>
+                {{
+                  new Date(
+                    parseInt(date.formatDate(b.regDate, 'x'))
+                  ).toLocaleTimeString()
+                }}
+              </div>
+            </div>
+          </template>
+        </q-chat-message>
+      </div>
     </q-card-section>
+    <template
+      v-if="
+        !item.user?.owner && as.signed && item.statusCode === '000' && !!data
+      "
+    >
+      <q-separator />
+      <q-card-section>
+        <q-form
+          ref="bidFormRef"
+          class="row justify-end items-center q-gutter-md"
+          @submit="add"
+        >
+          <q-input
+            ref="amountRef"
+            class="col q-pt-md"
+            :disable="loading"
+            outlined
+            no-error-icon
+            v-model="_amount"
+            type="tel"
+            mask="#"
+            fill-mask="0"
+            reverse-fill-mask
+            label="입찰 수량(금액)"
+            :rules="[biddingRules]"
+          />
+          <q-btn
+            :disable="loading"
+            class="text-weight-bold"
+            color="primary"
+            text-color="dark"
+            label="입찰"
+            type="submit"
+          />
+        </q-form>
+      </q-card-section>
+    </template>
   </q-card>
 </template>
 
 <style lang="scss" scoped>
 .bids {
   border-radius: 20px;
+}
+
+.bids {
+  &:deep(.q-message-text--sent) {
+    border-radius: 16px 16px 0 16px;
+  }
+
+  &:deep(.q-message-text--received) {
+    border-radius: 16px 16px 16px 0;
+  }
 }
 </style>
