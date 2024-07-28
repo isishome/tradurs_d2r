@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { QForm } from 'quasar'
+import { useI18n } from 'vue-i18n'
 import type { Price } from 'src/types/item'
 import { useItemAddStore } from 'stores/item-add-store'
 
@@ -11,6 +12,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['update'])
 
+const { t } = useI18n({ useScope: 'global' })
 const ias = useItemAddStore()
 const categoryOptions = computed(() =>
   ias.category('normal').filter((c) => c.currency)
@@ -30,10 +32,8 @@ const minutes = computed(() =>
 const progressTimeRules = (val: number) => {
   let message
 
-  if (!!!val) message = '경매 진행 시간을 입력하세요'
-  else if (val < 5 || val > 720)
-    message =
-      '경매 진행 시간은 최소 5분에서 최대 720분(24시간)까지 지정 가능합니다.'
+  if (!!!val) message = t('auction.requireProgressTime')
+  else if (val < 5 || val > 60) message = t('auction.allowProgressTime')
 
   return !!!message || message
 }
@@ -74,13 +74,13 @@ defineExpose({ validate })
         filled
         v-model="_price.category"
         :options="categoryOptions"
-        label="카테고리"
+        :label="t('auction.category')"
         map-options
         emit-value
         no-error-icon
         hide-bottom-space
         @update:model-value="updateCategory"
-        :rules="[(val) => !!val || '카테고리를 선택하세요']"
+        :rules="[(val) => !!val || t('auction.selectCategory')]"
       />
     </div>
     <div>
@@ -98,17 +98,17 @@ defineExpose({ validate })
         "
         :label="
           _price.category === 'runes'
-            ? '룬'
+            ? t('auction.runes')
             : _price.category === 'gems'
-            ? '보석'
-            : '아이템 명'
+            ? t('auction.gems')
+            : t('auction.itemName')
         "
         map-options
         emit-value
         no-error-icon
         hide-bottom-space
         @update:model-value="updateItem"
-        :rules="[(val) => !!val || '아이템명을 선택하세요']"
+        :rules="[(val) => !!val || t('auction.selectItemName')]"
       />
     </div>
     <div>
@@ -117,13 +117,14 @@ defineExpose({ validate })
         no-error-icon
         hide-bottom-space
         v-model.number="_price.unitAmount"
+        maxlength="9"
         type="tel"
         mask="#"
         fill-mask="0"
         reverse-fill-mask
-        label="최소 단위"
+        :label="t('auction.unitAmount')"
         @update:model-value="update"
-        :rules="[(val) => !!val || '경매 최소 단위를 입력하세요']"
+        :rules="[(val) => !!val || t('auction.insertUnitAmount')]"
       />
     </div>
     <div>
@@ -132,13 +133,14 @@ defineExpose({ validate })
         no-error-icon
         hide-bottom-space
         v-model.number="_price.startAmount"
+        maxlength="9"
         type="tel"
         mask="#"
         fill-mask="0"
         reverse-fill-mask
-        label="시작 수량(금액)"
+        :label="t('auction.startAmount')"
         @update:model-value="update"
-        :rules="[(val) => !!val || '경매 시작 수량을 입력하세요']"
+        :rules="[(val) => !!val || t('auction.insertStartAmount')]"
       />
     </div>
     <div>
@@ -147,10 +149,11 @@ defineExpose({ validate })
         no-error-icon
         hide-bottom-space
         v-model.number="_price.instantAmount"
+        maxlength="9"
         type="tel"
         mask="#"
         reverse-fill-mask
-        label="즉시 구입 수량(금액)"
+        :label="t('auction.instantAmount')"
         @update:model-value="update"
       />
     </div>
@@ -160,19 +163,19 @@ defineExpose({ validate })
         no-error-icon
         hide-bottom-space
         v-model.number="_progressTime"
-        maxlength="4"
+        maxlength="2"
         type="tel"
         mask="#"
         fill-mask="0"
         reverse-fill-mask
-        label="경매 진행 시간(분)"
+        :label="t('auction.progressTime')"
         @update:model-value="update"
         :rules="[progressTimeRules]"
       >
         <template #hint>
           <div class="row q-gutter-xs items-center">
-            <div v-show="hours">{{ hours }}시간</div>
-            <div v-show="minutes">{{ minutes }}분</div>
+            <div v-show="hours">{{ hours }}{{ t('auction.hour') }}</div>
+            <div v-show="minutes">{{ minutes }}{{ t('auction.minutes') }}</div>
           </div>
         </template>
       </q-input>

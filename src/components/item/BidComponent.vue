@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { QCardSection, QForm, QInput, date } from 'quasar'
 import type { Bid, Item } from 'src/types/item'
 import { useGlobalStore } from 'stores/global-store'
@@ -9,20 +10,21 @@ import CurrencyComponent from 'components/item/CurrencyComponent.vue'
 
 type Props = {
   data?: Array<Bid>
-  item: Item
+  item?: Item
 }
 
 const props = withDefaults(defineProps<Props>(), {})
 const emit = defineEmits(['add'])
 
+const { t } = useI18n({ useScope: 'global' })
 const gs = useGlobalStore()
 const as = useAccountStore()
-const loading = computed(() => gs.loading)
+const loadingCount = computed(() => gs.loadingCount)
 const _amount = ref<number>(0)
 const bidRef = ref<QCardSection>()
 const bidFormRef = ref<QForm>()
 const amountRef = ref<QInput>()
-const minAmount = computed(() => props.item.price.startAmount)
+const minAmount = computed(() => props.item?.price.startAmount ?? 1)
 const maxAmount = computed(() =>
   props.data && props.data.length > 0
     ? Math.max(...props.data?.map((b) => b.amount))
@@ -31,14 +33,15 @@ const maxAmount = computed(() =>
 
 const biddingRules = (val: number) => {
   let message
-  if (val < minAmount.value) message = '입찰 금액은 최소 금액보다 커야 합니다.'
+  if (val < minAmount.value) message = t('bid.startAmountRule')
+  else if (val % (props.item?.price.unitAmount ?? 1) !== 0)
+    message = t('bid.bidAmountRule')
   else if (
-    !!props.item.price.instantAmount &&
-    val > props.item.price.instantAmount
+    !!props.item?.price.instantAmount &&
+    val > props.item?.price.instantAmount
   )
-    message = '입찰 금액은 즉구가보다 클 수 없습니다.'
-  else if (val <= maxAmount.value)
-    message = '입찰 금액은 마지막 입찰가보다 커야 합니다.'
+    message = t('bid.instantAmountRule')
+  else if (val <= maxAmount.value) message = t('bid.lastBidAmountRule')
 
   return !!message ? false || message : true || ''
 }
@@ -69,31 +72,31 @@ watch(
     <q-toolbar class="bg-brighten q-py-sm">
       <div class="col">
         <CurrencyComponent
-          :category="item.price.category"
-          :item="item.price.item"
-          :quantity="item.price.startAmount"
-          title="시작 수량"
+          :category="item?.price.category"
+          :item="item?.price.item"
+          :quantity="item?.price.startAmount"
+          :title="t('auction.startAmount')"
           style="max-height: 30px"
         />
       </div>
       <q-separator vertical />
       <div class="col">
         <CurrencyComponent
-          :category="item.price.category"
-          :item="item.price.item"
-          :quantity="item.price.unitAmount"
-          title="단위 수량"
+          :category="item?.price.category"
+          :item="item?.price.item"
+          :quantity="item?.price.unitAmount"
+          :title="t('auction.unitAmount')"
           style="max-height: 30px"
         />
       </div>
-      <template v-if="!!item.price.instantAmount">
+      <template v-if="!!item?.price.instantAmount">
         <q-separator vertical />
         <div class="col">
           <CurrencyComponent
             :category="item.price.category"
             :item="item.price.item"
             :quantity="item.price.instantAmount"
-            title="즉시 구매 수량"
+            :title="t('auction.instantAmount')"
             style="max-height: 30px"
           />
         </div>
@@ -104,7 +107,7 @@ watch(
         v-if="!!data && data.length === 0"
         class="fit row justify-center items-center"
       >
-        입찰 내역이 없습니다.
+        {{ !!item?.startDate ? t('bid.noBids') : t('bid.waitAuction') }}
       </div>
       <div v-else class="column q-gutter-y-md">
         <q-chat-message
@@ -118,8 +121,8 @@ watch(
           <template #default>
             <div class="row justify-start">
               <CurrencyComponent
-                :category="item.price.category"
-                :item="item.price.item"
+                :category="item?.price.category"
+                :item="item?.price.item"
                 :quantity="b.amount"
               />
             </div>
@@ -143,7 +146,7 @@ watch(
     </q-card-section>
     <template
       v-if="
-        !item.user?.owner && as.signed && item.statusCode === '000' && !!data
+        !item?.user?.owner && as.signed && item?.statusCode === '000' && !!data
       "
     >
       <q-separator />
@@ -156,23 +159,24 @@ watch(
           <q-input
             ref="amountRef"
             class="col q-pt-md"
-            :disable="loading"
+            :disable="loadingCount > 0"
             outlined
             no-error-icon
-            v-model="_amount"
+            v-model.number="_amount"
+            maxlength="9"
             type="tel"
             mask="#"
             fill-mask="0"
             reverse-fill-mask
-            label="입찰 수량(금액)"
+            :label="t('bid.bidAmount')"
             :rules="[biddingRules]"
           />
           <q-btn
-            :disable="loading"
+            :disable="loadingCount > 0"
             class="text-weight-bold"
             color="primary"
             text-color="dark"
-            label="입찰"
+            :label="t('bid.bidding')"
             type="submit"
           />
         </q-form>

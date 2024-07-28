@@ -1,20 +1,28 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { QForm, QSelect } from 'quasar'
 import type { Item } from 'src/types/item'
-import { defaultItem } from 'src/types/item'
+import { BaseType, defaultItem, allLabel } from 'src/types/item'
 import { useItemAddStore } from 'src/stores/item-add-store'
 
-const props = defineProps<{
+type Props = {
   data?: Item
-}>()
+  type?: BaseType
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  type: BaseType.Default
+})
 
 const emit = defineEmits(['update'])
 
+const { t } = useI18n({ useScope: 'global' })
 const ias = useItemAddStore()
 
 const formRef = ref<QForm>()
 const _item = ref<Item>(defaultItem())
+
 const chainingName = computed(
   () =>
     [...ias.nameAffixes, ...ias.names]
@@ -23,7 +31,6 @@ const chainingName = computed(
       .join(' ')
       .trim() || undefined
 )
-//const _item = ref<string | undefined>(props.data?.item)
 
 const update = () => {
   emit('update', _item.value)
@@ -135,7 +142,9 @@ const detailTypeOptions = computed(() =>
     : []
   ).filter(
     (dt) =>
-      dt.label.indexOf(detailTypeNeedle.value as string) !==
+      dt.label
+        .toLowerCase()
+        .indexOf((detailTypeNeedle.value ?? '').toLowerCase()) !==
       (!!detailTypeNeedle.value ? -1 : -2)
   )
 )
@@ -172,7 +181,7 @@ const itemOptions = computed(() =>
     : []
   ).filter(
     (dt) =>
-      dt.label.indexOf(itemNeedle.value as string) !==
+      dt.label.toLowerCase().indexOf((itemNeedle.value ?? '').toLowerCase()) !==
       (!!itemNeedle.value ? -1 : -2)
   )
 )
@@ -203,25 +212,27 @@ watch(
 defineExpose({ validate })
 </script>
 <template>
-  <q-form ref="formRef" class="column q-gutter-y-sm">
+  <q-form ref="formRef" class="full-width column q-gutter-y-sm">
     <div>
       <q-select
         filled
         v-model="_item.region"
-        :options="ias.regions"
-        label="지역"
+        :options="
+          type === BaseType.Filter ? [allLabel(), ...ias.regions] : ias.regions
+        "
+        :label="t('base.region')"
         map-options
         emit-value
         no-error-icon
         hide-bottom-space
         @update:model-value="update"
-        :rules="[(val) => !!val || '지역을 선택하세요']"
+        :rules="[(val) => !!val || t('base.selectRegion')]"
       />
     </div>
     <div class="q-pl-sm">
       <q-checkbox
         v-model="_item.ladder"
-        label="래더"
+        :label="t('base.ladder')"
         left-label
         size="sm"
         @update:model-value="update"
@@ -230,7 +241,7 @@ defineExpose({ validate })
     <div class="q-pl-sm">
       <q-checkbox
         v-model="_item.hardcore"
-        label="하드코어"
+        :label="t('base.hardcore')"
         left-label
         size="sm"
         @update:model-value="update"
@@ -258,20 +269,23 @@ defineExpose({ validate })
         :label="ias.ethereal.label"
         left-label
         size="sm"
+        :toggle-indeterminate="type === BaseType.Filter"
         @update:model-value="update"
       />
     </div>
     <q-select
       filled
       v-model="_item.quality"
-      :options="ias.quality"
-      label="품질"
+      :options="
+        type === BaseType.Filter ? [allLabel(), ...ias.quality] : ias.quality
+      "
+      :label="t('base.quality')"
       map-options
       emit-value
       no-error-icon
       hide-bottom-space
       @update:model-value="updateQuality"
-      :rules="[(val) => !!val || '품질을 선택하세요']"
+      :rules="[(val) => !!val || t('base.selectQuality')]"
     >
       <template #option="scope">
         <q-item v-bind="scope.itemProps">
@@ -284,17 +298,17 @@ defineExpose({ validate })
       </template>
     </q-select>
     <q-select
-      :disable="!!!_item.quality"
+      :disable="!!!_item.quality || _item.quality === 'all'"
       filled
       v-model="_item.category"
       :options="ias.category(_item.quality)"
-      label="카테고리"
+      :label="t('base.category')"
       map-options
       emit-value
       no-error-icon
       hide-bottom-space
       @update:model-value="updateCategory"
-      :rules="[(val) => !!val || '카테고리를 선택하세요']"
+      :rules="[(val) => !!val || t('base.selectCategory')]"
     />
     <template
       v-if="!['unique', 'set'].includes(_item.quality as string) && ['weapons', 'armor', 'charms'].includes(_item.category as string)"
@@ -313,11 +327,11 @@ defineExpose({ validate })
         "
         :label="
           _item.category === 'weapons'
-            ? '무기 유형'
+            ? t('base.weaponType')
             : _item.category === 'armor'
-            ? '방어구 유형'
+            ? t('base.armorType')
             : _item.category === 'charms'
-            ? '부적 유형'
+            ? t('base.charmType')
             : ''
         "
         map-options
@@ -331,20 +345,20 @@ defineExpose({ validate })
         filled
         v-model="_item.classType"
         :options="ias.classes(_item.quality, _item.category)"
-        label="직업"
+        :label="t('base.classType')"
         map-options
         emit-value
         no-error-icon
         hide-bottom-space
         @update:model-value="updateClassType"
-        :rules="[(val) => !!val || '직업을 선택하세요']"
+        :rules="[(val) => !!val || t('base.selectClass')]"
       />
       <q-select
         v-if="_item.category !== 'charms' && !!_item.itemType"
         ref="detailTypeRef"
         v-model="_item.detailType"
         :options="detailTypeOptions"
-        label="상세 유형"
+        :label="t('base.detailType')"
         filled
         map-options
         emit-value
@@ -354,11 +368,11 @@ defineExpose({ validate })
         @input.stop="filterDetailType"
         @blur="() => (detailTypeNeedle = undefined)"
         @update:model-value="selectDetailType"
-        :rules="[(val) => !!val || '상세 유형을 선택하세요']"
+        :rules="[(val) => !!val || t('base.selectDetailType')]"
       >
         <template #no-option>
           <q-item>
-            <q-item-section>상세 유형을 찾을 수 없습니다.</q-item-section>
+            <q-item-section>{{ t('base.detailTypeNotFound') }}</q-item-section>
           </q-item>
         </template>
       </q-select>
@@ -380,13 +394,13 @@ defineExpose({ validate })
             _item.classType
           )
         "
-        label="룬어"
+        :label="t('base.runeword')"
         map-options
         emit-value
         no-error-icon
         hide-bottom-space
         @update:model-value="update"
-        :rules="[(val) => !!val || '룬어를 선택하세요']"
+        :rules="[(val) => !!val || t('base.selectRuneword')]"
       />
     </template>
     <q-select
@@ -396,10 +410,10 @@ defineExpose({ validate })
       :options="itemOptions"
       :label="
         _item.category === 'runes'
-          ? '룬'
+          ? t('base.runes')
           : _item.category === 'gems'
-          ? '보석'
-          : '아이템'
+          ? t('base.gems')
+          : t('base.item')
       "
       filled
       map-options
@@ -410,38 +424,40 @@ defineExpose({ validate })
       @input.stop="filterItem"
       @blur="() => (itemNeedle = undefined)"
       @update:model-value="selectItem"
-      :rules="[(val) => !!val || '아이템을 선택하세요']"
+      :rules="[(val) => !!val || t('base.selectItem')]"
     >
       <template #no-option>
         <q-item>
-          <q-item-section>아이템을 찾을 수 없습니다.</q-item-section>
+          <q-item-section>{{ t('base.itemNotFound') }}</q-item-section>
         </q-item>
       </template>
     </q-select>
     <q-input
-      v-if="['magic', 'rare','crafted'].includes(_item.quality as string)"
+      v-if="['magic', 'rare','crafted'].includes(_item.quality as string) && type!==BaseType.Filter"
       filled
       no-error-icon
       hide-bottom-space
       v-model="_item.name"
-      :placeholder="chainingName ?? '아이템명'"
+      :placeholder="chainingName ?? t('base.itemName')"
       maxlength="256"
       @update:model-value="update"
-      :rules="[(val) => !!chainingName || !!val || '아이템명을 입력하세요']"
+      :rules="[(val) => !!chainingName || !!val || t('base.insertItemName')]"
     />
-    <q-separator />
-    <q-input
-      filled
-      no-error-icon
-      hide-bottom-space
-      v-model.number="_item.quantity"
-      type="tel"
-      mask="#"
-      fill-mask="0"
-      reverse-fill-mask
-      label="수량"
-      @update:model-value="update"
-      :rules="[(val) => !!val || '수량을 입력하세요']"
-    />
+    <template v-if="type === 'default'">
+      <q-separator />
+      <q-input
+        filled
+        no-error-icon
+        hide-bottom-space
+        v-model.number="_item.quantity"
+        type="tel"
+        mask="#"
+        fill-mask="0"
+        reverse-fill-mask
+        :label="t('base.quantity')"
+        @update:model-value="update"
+        :rules="[(val) => !!val || t('base.insertQuantity')]"
+      />
+    </template>
   </q-form>
 </template>

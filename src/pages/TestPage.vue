@@ -45,7 +45,7 @@ filtered2
 
 <template>
   <div>
-    <textarea class="fit"></textarea>
+    <textarea class="fit" rows="100"> </textarea>
     <div>
       {{
         ias.base.data.runewordMappingWeapon

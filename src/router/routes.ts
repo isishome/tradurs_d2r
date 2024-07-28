@@ -20,9 +20,24 @@ const routes: RouteRecordRaw[] = [
         props: true
       },
       {
+        name: 'clone',
+        path: 'clone/:id([0-9]{1,})',
+        component: () => import('pages/AddPage.vue'),
+        meta: {
+          requireAuth: true
+        },
+        props: true
+      },
+      {
         name: 'item',
         path: 'item/:id([0-9]{1,})',
         component: () => import('pages/ItemPage.vue'),
+        props: true
+      },
+      {
+        name: 'help',
+        path: 'help/:category([a-z]{1,})?',
+        component: () => import('pages/HelpPage.vue'),
         props: true
       },
       {

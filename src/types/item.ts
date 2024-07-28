@@ -1,12 +1,18 @@
 import { Lang } from './global'
 import type { Label } from './global'
 import { User } from './user'
+import { i18n } from 'src/boot/i18n'
 
 export enum ModifierType {
   String = 'string',
   Decimal = 'decimal',
   Integer = 'integer',
   Connect = 'connect'
+}
+
+export enum BaseType {
+  Default = 'default',
+  Filter = 'filter'
 }
 
 type LangString = Record<Lang, string>
@@ -89,7 +95,7 @@ export type Bid = {
 export type Modifier = Similarity & {
   order: number
   itemId?: number
-  type: ModifierType
+  type?: ModifierType
   signed?: boolean
   id?: number
   value?: number
@@ -100,7 +106,7 @@ export type Item = Similarity & {
   region?: string
   ladder: boolean
   hardcore: boolean
-  ethereal: boolean
+  ethereal: boolean | null
   socket: number
   id?: number
   name?: string
@@ -122,8 +128,26 @@ export type Item = Similarity & {
   progressTime?: number
   addProgressTime?: number
   statusCode?: string
+  favorite: boolean
   rate?: number
   loading: boolean
+}
+
+export type ModifierGroup = {
+  value?: number
+  groups: Array<Modifier>
+}
+
+export type Filter = Item & {
+  mine?: string
+  modifierGroups?: Array<ModifierGroup>
+}
+
+export const allLabel = (): Label => {
+  return {
+    value: 'all',
+    label: i18n.global.t('global.all')
+  }
 }
 
 export const defaultItem = (): Item => {
@@ -153,6 +177,7 @@ export const defaultItem = (): Item => {
     progressTime: 60,
     addProgressTime: 0,
     statusCode: undefined,
+    favorite: false,
     rate: undefined,
     loading: false
   }
@@ -161,8 +186,8 @@ export const defaultItem = (): Item => {
 export const defaultPrice = (): Price => {
   return {
     item_id: undefined,
-    category: 'runes',
-    item: 10906,
+    category: undefined,
+    item: undefined,
     unitAmount: 1,
     startAmount: 1,
     instantAmount: undefined
@@ -177,6 +202,18 @@ export const defaultBid = (): Bid => {
     user: undefined,
     regDate: undefined,
     won: false
+  }
+}
+
+export const defaultFilter = (): Filter => {
+  return {
+    ...defaultItem(),
+    region: 'all',
+    ethereal: null,
+    quality: 'all',
+    statusCode: 'all',
+    mine: undefined,
+    modifierGroups: []
   }
 }
 

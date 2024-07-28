@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { QFile, useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 import stringComparison from 'string-comparison'
 import { createWorker, ImageLike } from 'tesseract.js'
 import { useGlobalStore } from 'src/stores/global-store'
@@ -33,6 +34,7 @@ const prod = import.meta.env.PROD
 const emit = defineEmits(['start', 'end', 'failed'])
 
 const $q = useQuasar()
+const { t } = useI18n({ useScope: 'global' })
 const gs = useGlobalStore()
 const ias = useItemAddStore()
 
@@ -59,7 +61,9 @@ const recognize = async (image: ImageLike, lang: string) => {
   const worker = await createWorker(locale, 1, {
     workerPath:
       'https://cdn.jsdelivr.net/npm/tesseract.js@v5.1.0/dist/worker.min.js',
-    langPath: '/tessdata/best', //'https://cdn.jsdelivr.net/gh/seraMint/tessdata', //'https://tessdata.projectnaptha.com/4.0.0',
+    langPath: prod
+      ? 'https://cdn.jsdelivr.net/gh/seraMint/tessdata'
+      : '/tessdata/best', //'https://cdn.jsdelivr.net/gh/seraMint/tessdata', //'https://tessdata.projectnaptha.com/4.0.0',
     corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@v5.1.0',
     cacheMethod: prod ? 'write' : 'none'
   })
@@ -279,6 +283,11 @@ const analyze = (text: string) => {
     )
     .split(/\n/gi)
     .map((iia) => iia.replace(/\*/gi, '+').trim())
+    .filter(
+      (iia) =>
+        (iia.match(/[\s]{1}/gi)?.length ?? 0) <=
+        (iia.match(/[^\s]{1}/gi)?.length ?? 0)
+    )
 
   console.log(itemInfoArray.join('\n'))
 
@@ -375,7 +384,7 @@ const fileCheckAndScanStart = (f?: File) => {
       icon: 'img:/images/icons/alert.svg',
       color: 'negative',
       classes: '',
-      message: '에러'
+      message: t('analyze.notImageFormat')
     })
   }
 }
@@ -416,7 +425,7 @@ const beforeHideDropBox = () => {
         </feComponentTransfer>
       </filter>
     </svg>
-    <q-btn label="이미지 분석" color="indigo" @click="click" />
+    <q-btn :label="t('btn.analyze')" color="indigo" @click="click" />
     <q-file
       v-show="false"
       ref="fileRef"
@@ -430,17 +439,33 @@ const beforeHideDropBox = () => {
       @show="showDropBox"
       @before-hide="beforeHideDropBox"
     >
-      <q-card style="width: 600px; height: 600px">
+      <q-card flat bordered class="drop-area-wrap">
         <q-card-section class="fit">
           <div
             ref="dropArea"
-            class="drop-area fit"
+            class="drop-area fit column justify-center items-center text-h5 q-pa-md"
             :class="{ enter: dropBox.enter > 0 }"
             @dragenter.prevent="dropBox.enter++"
             @dragleave.prevent="dropBox.enter--"
             @dragover.prevent
             @click="fileRef?.pickFiles"
-          ></div>
+          >
+            <div
+              class="col column justify-center items-center q-gutter-y-sm text-uppercase"
+            >
+              <q-icon name="image" size="50px" />
+              <div>{{ t('analyze.dragAndDrop') }}</div>
+              <div class="row q-gutter-x-sm items-baseline">
+                <div>{{ t('analyze.or') }}</div>
+                <div class="text-primary text-underline">
+                  {{ t('analyze.browse') }}
+                </div>
+              </div>
+            </div>
+            <div class="col-3 row items-end text-caption">
+              {{ t('analyze.dragMessage') }}
+            </div>
+          </div>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -451,7 +476,10 @@ const beforeHideDropBox = () => {
         style="height: 200px; max-height: 50vh; width: 400px; max-width: 50vw"
       >
         <q-card-section class="fit row justify-center items-center">
-          <div class="text-h6">분석 중...</div>
+          <div class="text-h6 row items-center q-gutter-sm">
+            <div>{{ t('analyze.analyzingImage') }}</div>
+            <q-spinner-dots size="sm" />
+          </div>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -471,13 +499,22 @@ const beforeHideDropBox = () => {
   }
 }
 
+.drop-area-wrap {
+  width: 600px;
+  height: 400px;
+  max-width: 80vw;
+  max-height: 50vh;
+}
+
 .drop-area {
-  border: dashed 2px currentColor;
-  border-radius: 10px;
+  border: dashed 4px var(--border-color);
+  border-radius: 0;
   cursor: pointer;
+  word-break: break-all;
+  letter-spacing: 2px;
 
   &.enter {
-    background-color: var(--q-red);
+    background-color: var(--q-dark-page);
   }
 }
 </style>

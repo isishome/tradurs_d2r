@@ -2,12 +2,13 @@ import { defineStore } from 'pinia'
 import { ref, reactive, computed } from 'vue'
 import type { AxiosRequestConfig } from 'axios'
 import { useQuasar } from 'quasar'
-import { useRoute } from 'vue-router'
 import { api } from 'boot/axios'
 import { Lang } from 'src/types/global'
 import type { Page } from 'src/types/global'
-import { Bid, Item } from 'src/types/item'
+import type { Bid, Item, Filter } from 'src/types/item'
+import { defaultFilter } from 'src/types/item'
 import { useGlobalStore } from './global-store'
+import { sleep } from 'src/composables/common'
 
 type ItemPage = Page & {
   newItems: number
@@ -16,19 +17,18 @@ type ItemPage = Page & {
 type Notify = {
   request: number
   itemId?: number
-  complete: boolean
 }
 
 export const useItemStore = defineStore('item', () => {
   const $q = useQuasar()
-  const route = useRoute()
   const gs = useGlobalStore()
-  const lang: Lang = (route.params.lang as Lang) || 'ko'
+  const lang: Lang = gs.lang
   const ltmd = computed(() => $q.screen.width < 1280)
-  const locale: 'enUS' | 'koKR' = lang === 'en' ? 'enUS' : 'koKR'
+  const locale = gs.locale
   const refresh = ref<number>(0)
+  const itemWidth = ref<number>(360)
   const itemPage = reactive<ItemPage>({
-    rows: 10,
+    rows: 20,
     over: false,
     more: false,
     newItems: 0
@@ -36,19 +36,36 @@ export const useItemStore = defineStore('item', () => {
   const detailItem = ref<Item>()
   const notify = ref<Notify>({
     request: 0,
-    itemId: undefined,
-    complete: false
+    itemId: undefined
   })
+
+  const filter = ref<Filter>(defaultFilter())
+
+  const resetFilter = () => {
+    filter.value = defaultFilter()
+  }
 
   const getItems = (
     page: number,
     id?: number,
     options?: AxiosRequestConfig
   ) => {
-    return new Promise<Array<Item>>((resolve, reject) => {
-      gs.loading = true
+    return new Promise<Array<Item>>(async (resolve, reject) => {
+      gs.showLoading()
+
+      await sleep(400)
+
       api
-        .post('/d2/item', { page, rows: itemPage.rows, id }, options)
+        .post(
+          '/d2/item',
+          {
+            page,
+            rows: itemPage.rows,
+            id,
+            filter: !!id ? undefined : filter.value
+          },
+          options
+        )
         .then((response) => {
           if (!!!id) {
             itemPage.over = page > 1
@@ -61,14 +78,14 @@ export const useItemStore = defineStore('item', () => {
           reject(e)
         })
         .finally(() => {
-          gs.loading = false
+          gs.hideLoading()
         })
     })
   }
 
   const upsertItem = (item: Item, withStart = false) => {
     return new Promise<string>((resolve, reject) => {
-      gs.loading = true
+      gs.showLoading()
       api
         .post('/d2/item/upsert', { item, withStart })
         .then((response) => {
@@ -78,14 +95,31 @@ export const useItemStore = defineStore('item', () => {
           reject(e)
         })
         .finally(() => {
-          gs.loading = false
+          gs.hideLoading()
+        })
+    })
+  }
+
+  const deleteItem = (itemId: number) => {
+    return new Promise<void>((resolve, reject) => {
+      gs.showLoading()
+      api
+        .post('/d2/item/delete', { itemId })
+        .then(() => {
+          resolve()
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.hideLoading()
         })
     })
   }
 
   const startAuction = (itemId: number) => {
     return new Promise<void>((resolve, reject) => {
-      gs.loading = true
+      gs.showLoading()
       api
         .post('/d2/item/start', { itemId })
         .then(() => {
@@ -95,14 +129,31 @@ export const useItemStore = defineStore('item', () => {
           reject(e)
         })
         .finally(() => {
-          gs.loading = false
+          gs.hideLoading()
+        })
+    })
+  }
+
+  const favorite = (itemId: number, status: boolean) => {
+    return new Promise<boolean>((resolve, reject) => {
+      gs.showLoading()
+      api
+        .post('/d2/item/favorite', { itemId, status })
+        .then((response) => {
+          resolve(response.data)
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.hideLoading()
         })
     })
   }
 
   const getBids = (itemId: number, overBidId?: number) => {
     return new Promise<Array<Bid>>((resolve, reject) => {
-      gs.loading = true
+      gs.showLoading()
       api
         .get('/d2/item/bids', { params: { itemId, overBidId } })
         .then((response) => {
@@ -112,24 +163,58 @@ export const useItemStore = defineStore('item', () => {
           reject(e)
         })
         .finally(() => {
-          gs.loading = false
+          gs.hideLoading()
         })
     })
   }
 
   const addBid = (bid: Bid) => {
-    return new Promise<boolean>((resolve, reject) => {
-      gs.loading = true
+    return new Promise<void>((resolve, reject) => {
+      gs.showLoading()
       api
         .post('/d2/item/bid/add', { bid })
-        .then((response) => {
-          resolve(response.data)
+        .then(() => {
+          resolve()
         })
         .catch((e) => {
           reject(e)
         })
         .finally(() => {
-          gs.loading = false
+          gs.hideLoading()
+        })
+    })
+  }
+
+  const updateSellerRate = (itemId: number, rate: number) => {
+    return new Promise<void>((resolve, reject) => {
+      gs.showLoading()
+      api
+        .post('/d2/item/rate/update', { itemId, rate })
+        .then(() => {
+          resolve()
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.hideLoading()
+        })
+    })
+  }
+
+  const updateBidderRate = (bidId: number, rate: number) => {
+    return new Promise<void>((resolve, reject) => {
+      gs.showLoading()
+      api
+        .post('/d2/item/bid/rate/update', { bidId, rate })
+        .then(() => {
+          resolve()
+        })
+        .catch((e) => {
+          reject(e)
+        })
+        .finally(() => {
+          gs.hideLoading()
         })
     })
   }
@@ -139,13 +224,20 @@ export const useItemStore = defineStore('item', () => {
     lang,
     locale,
     refresh,
+    itemWidth,
     itemPage,
     detailItem,
     notify,
+    filter,
+    resetFilter,
     getItems,
     upsertItem,
+    deleteItem,
     startAuction,
+    favorite,
     getBids,
-    addBid
+    addBid,
+    updateSellerRate,
+    updateBidderRate
   }
 })

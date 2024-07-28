@@ -7,21 +7,14 @@ import type { User } from 'src/types/user'
 import { defaultUser } from 'src/types/user'
 import type { Page } from 'src/types/global'
 
-type MessagePage = Page & {
-  newMessage: boolean
-  unread: number
-}
-
 export const useAccountStore = defineStore('account', () => {
   const signed = ref<boolean>(false)
   const info = reactive<User>(defaultUser())
   const messenger = ref<Socket>()
-  const messagePage = reactive<MessagePage>({
+  const messagePage = reactive<Page>({
     rows: 20,
     over: false,
-    more: false,
-    newMessage: false,
-    unread: 0
+    more: false
   })
 
   const checkSign = (options?: AxiosRequestConfig) => {

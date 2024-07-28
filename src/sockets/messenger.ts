@@ -22,17 +22,14 @@ export const initMessenger = async () => {
 
   const reconnect = (message = i18n.global.t('socket.disconnect')) => {
     Notify.create({
-      icon: 'img:/images/icons/warning.svg',
-      classes: 'no-invert',
+      icon: 'warning',
       color: 'warning',
       textColor: 'dark',
       multiLine: true,
       message,
-      progress: true,
-      timeout: 10000,
+      timeout: 0,
       actions: [
         {
-          noCaps: true,
           dense: true,
           class: 'no-hover text-underline',
           label: i18n.global.t('btn.reConnect'),
@@ -63,63 +60,19 @@ export const initMessenger = async () => {
 
   as.messenger.on('error', (data: string) => {
     Notify.create({
-      position: 'top',
-      icon: 'img:/images/icons/alert.svg',
-      color: 'negative',
-      classes: '',
+      icon: 'error',
+      type: 'negative',
       message: i18n.global.t(`socket.${data}`)
     })
   })
 
-  as.messenger.on('message', (data: string) => {
-    Notify.create({
-      position: 'top',
-      message: data
-    })
+  as.messenger.on('updateBids', ({ itemId }: { itemId: number }) => {
+    is.notify.itemId = itemId
+    is.notify.request++
   })
+}
 
-  const notify = () => {
-    as.messagePage.newMessage = true
-    as.messagePage.unread++
-    const sound = new Audio('/sounds/notify.wav')
-    sound.play()
-  }
-
-  as.messenger.on(
-    'updateBids',
-    ({ itemId, complete }: { itemId: number; complete: boolean }) => {
-      if (is.detailItem?.id === itemId) {
-        notify()
-        is.notify.itemId = itemId
-        is.notify.complete = complete
-        is.notify.request++
-      }
-    }
-  )
-
-  // as.messenger.on('newOffer', (offerInfo: OfferInfo) => {
-  //   notify()
-  //   if (as.info.notifyPrivate) is.socket.newOffer = offerInfo
-  // })
-
-  // as.messenger.on('acceptedOffer', (offerInfo: OfferInfo) => {
-  //   notify()
-  //   if (as.info.notifyPrivate) is.socket.acceptedOffer = offerInfo
-  // })
-
-  // as.messenger.on('retractedOffer', (offerInfo: OfferInfo) => {
-  //   notify()
-  //   if (as.info.notifyPrivate) is.socket.retractedOffer = offerInfo
-  // })
-
-  // as.messenger.on('turnedDownOffer', (offerInfo: OfferInfo) => {
-  //   notify()
-  //   if (as.info.notifyPrivate) is.socket.turnedDownOffer = offerInfo
-  // })
-
-  // as.messenger.on('complete', async (offerInfo: OfferInfo) => {
-  //   notify()
-  //   await as.checkSign()
-  //   if (as.info.notifyPrivate) is.socket.complete = offerInfo
-  // })
+export const sound = () => {
+  const audio = new Audio('/sounds/notify.wav')
+  audio.play()
 }

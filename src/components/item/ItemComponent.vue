@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { useQuasar } from 'quasar'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { date } from 'quasar'
 import type { Item } from 'src/types/item'
 import { randImage } from 'src/types/item'
+import { useGlobalStore } from 'stores/global-store'
 import { useItemAddStore } from 'stores/item-add-store'
 import { useItemStore } from 'stores/item-store'
+import { useAccountStore } from 'stores/account-store'
 import ModifierComponent from 'components/item/ModifierComponent.vue'
 import CurrencyComponent from 'components/item/CurrencyComponent.vue'
+import { clipboard } from 'src/composables/common'
 
 type Props = {
   data: Item
@@ -21,11 +27,22 @@ const props = withDefaults(defineProps<Props>(), {
   width: 360
 })
 
-const emit = defineEmits(['started', 'update-image'])
+const emit = defineEmits([
+  'update-item',
+  'delete-item',
+  'update-favorite',
+  'update-image'
+])
+
+const $q = useQuasar()
+const router = useRouter()
+const { t } = useI18n({ useScope: 'global' })
 
 // store
+const gs = useGlobalStore()
 const ias = useItemAddStore()
 const is = useItemStore()
+const as = useAccountStore()
 
 // variable
 let timer: ReturnType<typeof setInterval>
@@ -159,8 +176,48 @@ const updateImage = (val: number) => {
 
 const start = () => {
   is.startAuction(props.data.id as number).then(() => {
-    emit('started', props.data.id)
+    emit('update-item', props.data.id, t('item.auctionStarted'))
   })
+}
+
+const del = () => {
+  $q.dialog({
+    title: t('item.deleteItem'),
+    message: t('item.confirmDeleteItem'),
+    cancel: { label: t('btn.cancel'), color: 'grey', textColor: 'dark' },
+    ok: { label: t('btn.delete'), color: 'red-10' },
+    class: 'no-shadow',
+    persistent: true
+  })
+    .onOk(() => {
+      emit('delete-item', props.data.id)
+    })
+    .onCancel(() => {
+      // console.log('>>>> Cancel')
+    })
+}
+
+const refresh = () => {
+  emit('update-item', props.data.id)
+}
+
+const favorite = () => {
+  is.favorite(props.data.id as number, !props.data.favorite).then(
+    (status: boolean) => {
+      emit('update-favorite', status)
+    }
+  )
+}
+
+const clone = () => {
+  router.push({ name: 'clone', params: { id: props.data.id?.toString() } })
+}
+
+const shareItem = () => {
+  const link = [document.location.origin, gs.lang, 'item', props.data.id].join(
+    '/'
+  )
+  clipboard(link, t('item.itemLinkURL'))
 }
 
 const onTimer = () => {
@@ -171,9 +228,9 @@ const onTimer = () => {
 }
 
 watch(
-  () => props.data.startDate,
-  (val, old) => {
-    if (val !== old) onTimer()
+  () => [props.data.startDate, props.data.addProgressTime],
+  ([val1, val2], [old1, old2]) => {
+    if ((!!val1 && val1 !== old1) || (!!val2 && val2 !== old2)) onTimer()
   }
 )
 
@@ -228,40 +285,52 @@ onUnmounted(() => {
               anchor="top right"
               self="bottom start"
             >
-              <template v-if="data.user?.owner && data.statusCode === '002'">
-                <q-item
-                  clickable
-                  :to="{ name: 'add', params: { id: data.id } }"
-                >
+              <template v-if="as.signed">
+                <template v-if="data.user?.owner && data.statusCode === '002'">
+                  <q-item
+                    clickable
+                    :to="{ name: 'add', params: { id: data.id } }"
+                  >
+                    <q-item-section side>
+                      <q-icon name="edit" />
+                    </q-item-section>
+                    <q-item-section>{{ t('item.edit') }}</q-item-section>
+                  </q-item>
+                  <q-item clickable @click="start">
+                    <q-item-section side>
+                      <q-icon name="play_circle" />
+                    </q-item-section>
+                    <q-item-section>{{
+                      t('item.auctionStart')
+                    }}</q-item-section>
+                  </q-item>
+                  <q-item clickable @click="del">
+                    <q-item-section side>
+                      <q-icon name="delete" />
+                    </q-item-section>
+                    <q-item-section>{{ t('item.delete') }}</q-item-section>
+                  </q-item>
+                </template>
+                <q-item v-if="!data.user?.owner" clickable @click="favorite">
                   <q-item-section side>
-                    <q-icon name="edit" />
+                    <q-icon name="favorite" />
                   </q-item-section>
-                  <q-item-section>수정</q-item-section>
+                  <q-item-section>{{
+                    data.favorite ? t('item.unFavorite') : t('item.favorite')
+                  }}</q-item-section>
                 </q-item>
-                <q-item clickable @click="start">
+                <q-item clickable @click="clone">
                   <q-item-section side>
-                    <q-icon name="play_circle" />
+                    <q-icon name="content_copy" />
                   </q-item-section>
-                  <q-item-section>경매 시작</q-item-section>
+                  <q-item-section>{{ t('item.clone') }}</q-item-section>
                 </q-item>
               </template>
-              <q-item clickable>
-                <q-item-section side>
-                  <q-icon name="favorite" />
-                </q-item-section>
-                <q-item-section>즐겨찾기</q-item-section>
-              </q-item>
-              <q-item clickable>
-                <q-item-section side>
-                  <q-icon name="content_copy" />
-                </q-item-section>
-                <q-item-section>복사</q-item-section>
-              </q-item>
-              <q-item clickable>
+              <q-item clickable @click="shareItem">
                 <q-item-section side>
                   <q-icon name="share" />
                 </q-item-section>
-                <q-item-section>공유</q-item-section>
+                <q-item-section>{{ t('item.share') }}</q-item-section>
               </q-item>
             </q-menu>
           </q-btn>
@@ -330,14 +399,23 @@ onUnmounted(() => {
             v-if="!editable"
             class="row justify-center items-center q-gutter-x-sm d2r-chip bg-blue-grey-9"
           >
-            <div class="q-ml-none">
-              {{
-                remainTime <= 0 && data.statusCode === '000'
-                  ? '경매 종료 처리 중'
-                  : ias.status(data.statusCode)?.[0]?.label
-              }}
+            <div class="q-ml-none row items-center">
+              <template v-if="remainTime <= 0 && data.statusCode === '000'">
+                <div>{{ t('item.processingAuctionEnd') }}</div>
+                <q-btn
+                  flat
+                  dense
+                  class="no-hover"
+                  :ripple="false"
+                  icon="refresh"
+                  @click.stop="refresh"
+                />
+              </template>
+              <div v-else>
+                {{ ias.status(data.statusCode)?.[0]?.label }}
+              </div>
             </div>
-            <div v-if="remainTime > 0">
+            <div v-if="remainTime > 0 && data.statusCode === '000'">
               {{ hours }}:{{ minutes }}:{{ seconds }}
             </div>
           </div>
@@ -382,7 +460,9 @@ onUnmounted(() => {
   border-radius: 20px;
   &:deep(.more) {
     visibility: hidden;
-    right: 4px;
+  }
+  &:deep(.more .q-btn) {
+    padding: 10px;
   }
 }
 

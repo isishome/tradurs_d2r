@@ -25,3 +25,17 @@ export type Size = {
   width: number
   height: number
 }
+
+type AdsensePosition = {
+  timeStamp: number
+  adKey: number
+}
+
+export type Adsense = {
+  reloadAdKey: number
+  timeLimit: number
+  top: AdsensePosition
+  bottom: AdsensePosition
+  left: AdsensePosition
+  right: AdsensePosition
+}

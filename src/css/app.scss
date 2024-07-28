@@ -1,6 +1,7 @@
 // app global css in SCSS form
 :root {
   color-scheme: dark;
+  --q-dark-back: #181826;
   --quality-magic: rgb(105, 105, 255);
   --quality-rare: #ffff00;
   --quality-unique: #a59263;
@@ -9,6 +10,7 @@
   --quality-runewords: #a59263;
   --sockoreth: #777777;
   --border-color: #ffffff15;
+  --container-width: 1180px;
 }
 
 .bg-dark-page {
@@ -68,6 +70,14 @@ body::-webkit-scrollbar-thumb:hover {
   border-color: var(--border-color);
 }
 
+.q-list--dark.q-list--separator > .q-item-type + .q-item-type,
+.q-list--dark.q-list--separator
+  > .q-virtual-scroll__content
+  > .q-item-type
+  + .q-item-type {
+  border-top-color: var(--border-color);
+}
+
 .q-menu--dark {
   box-shadow: none;
   border: solid 1px var(--border-color);
@@ -105,4 +115,26 @@ body::-webkit-scrollbar-thumb:hover {
   letter-spacing: 0;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.6), 0 2px 0 0 rgba(255, 255, 255, 0.1),
     0 -2px 0 0 rgba(0, 0, 0, 0.1), 0 -1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.text-underline {
+  text-decoration: underline;
+  text-underline-offset: 20%;
+}
+
+.q-menu--dark,
+.q-select__dialog {
+  background: var(--q-dark-back);
+}
+
+.bottom-bar {
+  position: sticky;
+  bottom: 20px;
+  z-index: 2;
+  margin: 0 auto;
+  pointer-events: none;
+
+  & .q-btn {
+    pointer-events: auto;
+  }
 }

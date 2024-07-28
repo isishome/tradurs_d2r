@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { QStepper, QSelect } from 'quasar'
-import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useRoute, useRouter } from 'vue-router'
 
 import type { Item, Price, Modifier } from 'src/types/item'
-import { separator, ModifierType, defaultItem } from 'src/types/item'
+import {
+  separator,
+  ModifierType,
+  defaultItem,
+  defaultPrice
+} from 'src/types/item'
 import { useItemAddStore } from 'src/stores/item-add-store'
 import { useItemStore } from 'src/stores/item-store'
+import { useAccountStore } from 'src/stores/account-store'
 
 import AnalysisComponent from 'components/item/AnalysisComponent.vue'
 import BaseComponent from 'components/item/BaseComponent.vue'
@@ -18,20 +25,19 @@ const props = defineProps<{
   id?: string
 }>()
 
+const { t } = useI18n({ useScope: 'global' })
+const route = useRoute()
 const router = useRouter()
 const ias = useItemAddStore()
 const is = useItemStore()
+const as = useAccountStore()
 
 const stepper = ref<QStepper>()
 const step = ref<number>(1)
 const baseRef = ref<typeof BaseComponent>()
 const auctionRef = ref<typeof AuctionComponent>()
 const _item = ref<Item>(defaultItem())
-const itemId = ref<number | undefined>(
-  !!props.id && !isNaN(Number(props.id)) ? Number(props.id) : undefined
-)
 const modifier = ref<number>()
-itemId
 const endAnalysis = (i: Item) => {
   _item.value.socket = i.socket
   _item.value.ethereal = i.ethereal
@@ -85,6 +91,17 @@ const updateModifier = (val: Modifier) => {
   if (findModifier) Object.assign(findModifier, val)
 }
 
+const replaceModifier = (order: number, move: number) => {
+  const findModifierIndex = _item.value.modifiers.findIndex(
+    (m) => m.order === order
+  )
+
+  if (findModifierIndex !== -1) {
+    const moveTarget = _item.value.modifiers.splice(findModifierIndex, 1)
+    _item.value.modifiers.splice(findModifierIndex + move, 0, ...moveTarget)
+  }
+}
+
 const updateImage = (val: number) => {
   _item.value.imageId = val
 }
@@ -109,7 +126,9 @@ const modifierNeedle = ref<string>()
 const modifierOptions = computed(() =>
   [...ias.modifiers, ...ias.skills].filter(
     (mf) =>
-      mf.label.indexOf(modifierNeedle.value as string) !==
+      mf.label
+        .toLowerCase()
+        .indexOf((modifierNeedle.value ?? '').toLowerCase()) !==
       (!!modifierNeedle.value ? -1 : -2)
   )
 )
@@ -131,6 +150,8 @@ const selectModifier = (val: number): void => {
 
 const upsert = (item: Item, withStart = false) => {
   is.upsertItem(item, withStart).then((id) => {
+    if (withStart) is.resetFilter()
+    as.checkSign()
     router.push({
       name: withStart ? 'main' : 'item',
       params: { id: withStart ? undefined : id }
@@ -141,6 +162,22 @@ const upsert = (item: Item, withStart = false) => {
 onMounted(() => {
   if (!!props.id)
     is.getItems(1, Number(props.id)).then((result) => {
+      if (route.name === 'clone') {
+        result[0].id = undefined
+        result[0].region = undefined
+        result[0].ladder = true
+        result[0].hardcore = false
+        result[0].id = undefined
+        result[0].price = defaultPrice()
+        result[0].user = undefined
+        result[0].regDate = undefined
+        result[0].startDate = undefined
+        result[0].addProgressTime = 0
+        result[0].statusCode = undefined
+        result[0].favorite = false
+        result[0].rate = undefined
+        result[0].loading = false
+      }
       _item.value = result[0]
     })
 })
@@ -148,11 +185,11 @@ onMounted(() => {
 
 <template>
   <div class="row justify-center q-gutter-sm">
-    <div class="col-12">
+    <!-- <div class="col-12">
       <q-card flat bordered>
         <q-card-section>
           <div class="row q-gutter-y-sm q-gutter-md">
-            <div>아이팀 아이디 : {{ itemId }}</div>
+            <div>아이팀 아이디 : {{ id }}</div>
             <div>지역 : {{ _item.region }}</div>
             <div>래더 : {{ _item.ladder }}</div>
             <div>하드코어 : {{ _item.hardcore }}</div>
@@ -168,11 +205,11 @@ onMounted(() => {
             <div>아이템 명 : {{ _item.names }}</div>
             <div>경매 시간 : {{ _item.progressTime }}</div>
             <div>가격 : {{ _item.price }}</div>
-            <!-- <div>속성 : {{ _item.modifiers }}</div> -->
+            <div>속성 : {{ _item.modifiers }}</div>
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
     <q-stepper
       bordered
       flat
@@ -180,39 +217,73 @@ onMounted(() => {
       ref="stepper"
       class="col-12"
       animated
-      :vertical="$q.screen.lt.sm"
       done-color="positive"
     >
       <q-step
         :name="1"
-        title="기본 설정"
+        :title="t('add.baseSetting')"
         icon="settings"
         :done="step > 1"
         class="no-padding"
       >
         <BaseComponent ref="baseRef" :data="_item" @update="updateItem" />
       </q-step>
-      <q-step :name="2" title="속성 설정" icon="list" :done="step > 2">
+      <q-step
+        :name="2"
+        :title="t('add.affixSetting')"
+        icon="list"
+        :done="step > 2"
+      >
         <q-list bordered separator>
           <ModifierComponent
-            v-for="m in _item.modifiers"
+            v-for="(m, idx) in _item.modifiers"
             :key="m.order"
             :data="m"
             :options="[...ias.modifiers, ...ias.skills]"
             editable
             @remove="removeModifier"
             @update="updateModifier"
-          />
+          >
+            <template #front-side>
+              <q-item-section side>
+                <q-item-label>
+                  <q-btn
+                    color="blue-grey-8"
+                    :disable="idx === 0"
+                    icon="keyboard_arrow_up"
+                    unelevated
+                    dense
+                    @click="replaceModifier(m.order, -1)"
+                  />
+                </q-item-label>
+                <q-item-label>
+                  <q-btn
+                    color="blue-grey-9"
+                    :disable="idx + 1 === _item.modifiers.length"
+                    icon="keyboard_arrow_down"
+                    unelevated
+                    dense
+                    @click="replaceModifier(m.order, 1)"
+                  />
+                </q-item-label>
+              </q-item-section>
+            </template>
+          </ModifierComponent>
           <q-item v-show="_item.modifiers.length === 0">
             <q-item-section>
               <q-item-label class="text-center q-py-xl">
-                속성을 추가해주세요
+                {{ t('add.requireAffix') }}
               </q-item-label>
             </q-item-section>
           </q-item>
         </q-list>
       </q-step>
-      <q-step :name="3" title="경매 설정" icon="attach_money" :done="step > 3">
+      <q-step
+        :name="3"
+        :title="t('add.auctionSetting')"
+        icon="attach_money"
+        :done="step > 3"
+      >
         <AuctionComponent
           ref="auctionRef"
           :data="_item.price"
@@ -220,7 +291,7 @@ onMounted(() => {
           @update="updatePrice"
         />
       </q-step>
-      <q-step :name="4" title="확인" icon="play_arrow">
+      <q-step :name="4" :title="t('add.finalConfirm')" icon="play_arrow">
         <div class="row justify-center">
           <ItemComponent :data="_item" editable @update-image="updateImage" />
         </div>
@@ -239,7 +310,7 @@ onMounted(() => {
               standout
               input-class="text-white"
               dense
-              label="속성 추가"
+              :label="t('add.addAffix')"
               bg-color="secondary"
               style="min-width: 200px"
               use-input
@@ -250,18 +321,18 @@ onMounted(() => {
             >
               <template #no-option>
                 <q-item>
-                  <q-item-section> 속성을 찾을 수 없습니다. </q-item-section>
+                  <q-item-section> {{ t('add.noAffixData') }}</q-item-section>
                 </q-item>
               </template>
             </q-select>
           </div>
-          <div class="col-12 col-sm-6 row justify-end">
+          <div class="row justify-end">
             <q-btn
               v-if="step > 1"
               color="grey"
               text-color="dark"
               @click="stepper?.previous()"
-              label="뒤로"
+              :label="t('btn.back')"
               class="q-ml-sm"
             />
             <q-btn
@@ -269,7 +340,7 @@ onMounted(() => {
               @click="checkValidate"
               color="primary"
               text-color="dark"
-              label="계속"
+              :label="t('btn.continue')"
               class="q-ml-sm"
             />
             <template v-else>
@@ -277,19 +348,25 @@ onMounted(() => {
                 color="positive"
                 text-color="dark"
                 class="q-ml-sm text-weight-bold"
-                label="완료"
+                :label="t('btn.complete')"
               >
                 <q-list>
                   <q-item clickable v-close-popup @click="upsert(_item)">
                     <q-item-section>
-                      <q-item-label>{{ !!id ? '수정' : '등록' }}</q-item-label>
+                      <q-item-label>{{
+                        !!_item.id ? t('btn.edit') : t('btn.register')
+                      }}</q-item-label>
                     </q-item-section>
                   </q-item>
                   <q-item clickable v-close-popup @click="upsert(_item, true)">
                     <q-item-section>
                       <q-item-label
-                        >{{ !!id ? '수정' : '등록' }} 및 경매 시작</q-item-label
-                      >
+                        >{{
+                          t('add.auction', {
+                            t: !!_item.id ? t('btn.edit') : t('btn.register')
+                          })
+                        }}
+                      </q-item-label>
                     </q-item-section>
                   </q-item>
                 </q-list>

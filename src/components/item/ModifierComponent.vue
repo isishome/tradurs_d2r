@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { QSelect } from 'quasar'
 import { ref, computed, onMounted } from 'vue'
-import {} from 'src/types/global'
+import { useI18n } from 'vue-i18n'
 import type { Label } from 'src/types/global'
 import type { Modifier } from 'src/types/item'
+import { BaseType } from 'src/types/item'
+
 import { separator, ModifierType } from 'src/types/item'
 
 enum ModifierSplitType {
@@ -19,16 +21,20 @@ type ModifierSplit = {
 }
 
 interface IProps {
+  type?: BaseType
   data: Modifier
   options: Array<Label>
   editable?: boolean
 }
 
 const props = withDefaults(defineProps<IProps>(), {
+  type: BaseType.Default,
   editable: false
 })
 
-const emit = defineEmits(['remove', 'update'])
+const emit = defineEmits(['remove', 'update', 'place-modifier'])
+
+const { t } = useI18n({ useScope: 'global' })
 
 const filterOptions = computed(() => [
   ...props.options.filter(
@@ -74,7 +80,9 @@ const connectNeedle = ref<string>()
 const connectOptions = computed(() =>
   filterOptions.value.filter(
     (cf) =>
-      cf.label.indexOf(connectNeedle.value as string) !==
+      cf.label
+        .toLowerCase()
+        .indexOf((connectNeedle.value ?? '').toLowerCase()) !==
       (!!connectNeedle.value ? -1 : -2)
   )
 )
@@ -114,6 +122,7 @@ onMounted(() => {
 <template>
   <q-item class="modifier" :dense="!editable" :class="{ plain: !editable }">
     <template v-if="editable">
+      <slot v-if="!!$slots['front-side']" name="front-side"></slot>
       <q-item-section no-wrap>
         <q-item-label class="row justify-between q-gutter-sm items-center">
           <div class="row q-gutter-sm items-center">
@@ -125,11 +134,9 @@ onMounted(() => {
                 v-else-if="ms.type === ModifierSplitType.Value"
                 v-model.number="ms.value"
                 dense
-                map-options
-                emit-value
                 standout
-                maxlength="5"
                 type="number"
+                :debounce="500"
                 @update:model-value="update"
               />
               <D2Search
@@ -139,15 +146,15 @@ onMounted(() => {
                 dense
                 standout
                 @update:model-value="(val:number) => updateModifier(ms, val)"
-                noData="추가 속성을 찾을 수 없습니다"
+                :noData="t('modifier.noAddData')"
               />
             </template>
           </div>
           <q-select
-            v-if="_modifierConnect"
+            v-if="_modifierConnect && type === BaseType.Default"
             :options="connectOptions"
             ref="connectRef"
-            label="연결 속성 선택"
+            :label="t('modifier.selectConnect')"
             v-model="_modifierConnect.id"
             dense
             clearable
@@ -161,7 +168,9 @@ onMounted(() => {
           >
             <template #no-option>
               <q-item>
-                <q-item-section> 연결 속성을 찾을 수 없습니다. </q-item-section>
+                <q-item-section>
+                  {{ t('modifier.noConnectData') }}
+                </q-item-section>
               </q-item>
             </template>
           </q-select>
@@ -209,7 +218,7 @@ onMounted(() => {
 
   &:deep(.q-select) {
     width: 200px;
-    max-width: 80vh;
+    max-width: 100%;
   }
 
   &.plain {

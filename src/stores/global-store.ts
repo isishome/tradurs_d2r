@@ -1,25 +1,50 @@
 import { defineStore } from 'pinia'
 import { ref, reactive, computed } from 'vue'
-import { useQuasar } from 'quasar'
 import { api } from 'src/boot/axios'
+import type { Adsense } from 'src/types/global'
 import { Lang } from 'src/types/global'
 import type { Label, Size } from 'src/types/global'
 
 export const useGlobalStore = defineStore('global', () => {
-  const $q = useQuasar()
   const lang = ref<Lang>(Lang.KO)
   const locale = computed(() => (lang.value === 'en' ? 'enUS' : 'koKR'))
   const localeOptions = reactive<Array<Label>>([
     { value: 'ko', label: '한국어' },
     { value: 'en', label: 'English' }
   ])
-  const ltmd = computed(() => $q.screen.width < 1280)
-
-  const loading = ref<boolean>(false)
+  const loadingCount = ref<number>(0)
+  const adsense = ref<Adsense>({
+    timeLimit: 0,
+    top: {
+      timeStamp: Date.now(),
+      adKey: 0
+    },
+    bottom: {
+      timeStamp: Date.now(),
+      adKey: 0
+    },
+    left: {
+      timeStamp: Date.now(),
+      adKey: 0
+    },
+    right: {
+      timeStamp: Date.now(),
+      adKey: 0
+    },
+    reloadAdKey: 0
+  })
   const size = reactive<Size>({
     width: 0,
     height: 0
   })
+
+  const showLoading = () => {
+    loadingCount.value++
+  }
+
+  const hideLoading = () => {
+    loadingCount.value = loadingCount.value - 1 < 0 ? 0 : loadingCount.value - 1
+  }
 
   const checkHealth = () => {
     return new Promise<void>((resolve, reject) => {
@@ -35,12 +60,14 @@ export const useGlobalStore = defineStore('global', () => {
   }
 
   return {
-    ltmd,
     lang,
     locale,
     localeOptions,
-    loading,
+    loadingCount,
+    adsense,
     size,
+    showLoading,
+    hideLoading,
     checkHealth
   }
 })
