@@ -48,6 +48,9 @@ const as = useAccountStore()
 let timer: ReturnType<typeof setInterval>
 
 // computed
+const owner = computed(
+  () => as.signed && props.data.user?.owner && props.data.statusCode === '002'
+)
 const quality = computed(() => props.data.quality)
 const category = computed(() => props.data.category)
 const itemType = computed(() => props.data.itemType)
@@ -271,6 +274,7 @@ onUnmounted(() => {
           class="more no-hover absolute-right row items-center"
         >
           <q-btn
+            aria-label="Tradurs More Button"
             dense
             flat
             icon="more_vert"
@@ -285,52 +289,50 @@ onUnmounted(() => {
               anchor="top right"
               self="bottom start"
             >
-              <template v-if="as.signed">
-                <template v-if="data.user?.owner && data.statusCode === '002'">
-                  <q-item
-                    clickable
-                    :to="{ name: 'add', params: { id: data.id } }"
-                  >
-                    <q-item-section side>
-                      <q-icon name="edit" />
-                    </q-item-section>
-                    <q-item-section>{{ t('item.edit') }}</q-item-section>
-                  </q-item>
-                  <q-item clickable @click="start">
-                    <q-item-section side>
-                      <q-icon name="play_circle" />
-                    </q-item-section>
-                    <q-item-section>{{
-                      t('item.auctionStart')
-                    }}</q-item-section>
-                  </q-item>
-                  <q-item clickable @click="del">
-                    <q-item-section side>
-                      <q-icon name="delete" />
-                    </q-item-section>
-                    <q-item-section>{{ t('item.delete') }}</q-item-section>
-                  </q-item>
-                </template>
-                <q-item v-if="!data.user?.owner" clickable @click="favorite">
-                  <q-item-section side>
-                    <q-icon name="favorite" />
-                  </q-item-section>
-                  <q-item-section>{{
-                    data.favorite ? t('item.unFavorite') : t('item.favorite')
-                  }}</q-item-section>
-                </q-item>
-                <q-item clickable @click="clone">
-                  <q-item-section side>
-                    <q-icon name="content_copy" />
-                  </q-item-section>
-                  <q-item-section>{{ t('item.clone') }}</q-item-section>
-                </q-item>
-              </template>
+              <q-item
+                v-if="owner"
+                clickable
+                :to="{ name: 'add', params: { id: data.id } }"
+              >
+                <q-item-section side>
+                  <q-icon name="edit" />
+                </q-item-section>
+                <q-item-section>{{ t('item.edit') }}</q-item-section>
+              </q-item>
+              <q-item v-if="owner" clickable @click="start">
+                <q-item-section side>
+                  <q-icon name="play_circle" />
+                </q-item-section>
+                <q-item-section>{{ t('item.auctionStart') }}</q-item-section>
+              </q-item>
+              <q-item v-if="!data.user?.owner" clickable @click="favorite">
+                <q-item-section side>
+                  <q-icon name="favorite" />
+                </q-item-section>
+                <q-item-section>{{
+                  data.favorite ? t('item.unFavorite') : t('item.favorite')
+                }}</q-item-section>
+              </q-item>
+              <q-item v-if="as.signed" clickable @click="clone">
+                <q-item-section side>
+                  <q-icon name="content_copy" />
+                </q-item-section>
+                <q-item-section>{{ t('item.clone') }}</q-item-section>
+              </q-item>
+
               <q-item clickable @click="shareItem">
                 <q-item-section side>
                   <q-icon name="share" />
                 </q-item-section>
                 <q-item-section>{{ t('item.share') }}</q-item-section>
+              </q-item>
+              <q-item v-if="owner" clickable @click="del">
+                <q-item-section side>
+                  <q-icon color="negative" name="delete" />
+                </q-item-section>
+                <q-item-section class="text-negative">{{
+                  t('item.delete')
+                }}</q-item-section>
               </q-item>
             </q-menu>
           </q-btn>
@@ -345,6 +347,7 @@ onUnmounted(() => {
               <q-btn
                 v-for="(c, idx) in imageCount"
                 :key="idx"
+                aria-label="Tradurs Update Image Button"
                 dense
                 flat
                 outline
@@ -352,7 +355,12 @@ onUnmounted(() => {
                 v-close-popup
                 @click="updateImage(c)"
               >
-                <img :src="imgSrc(c)" class="item-image" loading="lazy" />
+                <img
+                  :src="imgSrc(c)"
+                  class="item-image"
+                  loading="lazy"
+                  alt="Tradurs Item Image"
+                />
               </q-btn>
             </div>
           </q-menu>
@@ -363,7 +371,12 @@ onUnmounted(() => {
           />
         </template>
         <div class="row justify-center">
-          <img :src="imgSrc()" class="item-image" loading="lazy" />
+          <img
+            :src="imgSrc()"
+            class="item-image"
+            loading="lazy"
+            alt="Tradurs Item Image"
+          />
         </div>
       </q-card-section>
       <q-card-section v-if="data.quality === 'runewords'" class="q-pt-none">
@@ -403,6 +416,7 @@ onUnmounted(() => {
               <template v-if="remainTime <= 0 && data.statusCode === '000'">
                 <div>{{ t('item.processingAuctionEnd') }}</div>
                 <q-btn
+                  aria-label="Tradurs Refresh Button"
                   flat
                   dense
                   class="no-hover"
@@ -422,7 +436,7 @@ onUnmounted(() => {
           <CurrencyComponent
             :category="data.price.category"
             :item="data.price.item"
-            :quantity="data.price?.startAmount"
+            :quantity="data.price?.winAmount ?? data.price?.startAmount"
             show-name
           />
         </div>

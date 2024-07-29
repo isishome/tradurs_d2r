@@ -2,14 +2,30 @@
 // so you can safely delete all default props below
 
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful',
-  title: 'Diablo II : Resurrected',
-  global:{
-    language:'Language',
-    set:'set',
-    removed:'removed',
-    all:'All'
+  meta: {
+    title: "Diablo® II: Resurrected {'|'} Tradurs",
+    description:
+      'Trade various items used in Diablo® II: Resurrected on the Tradurs',
+    keywords:
+      'dia2, dia 2, diablo2, diablo 2, dia, diablo, trade, trading, trade site, trade web, auction, auction web'
+  },
+  page: {
+    main: 'Main',
+    item: 'Item',
+    add: 'Add Item',
+    clone: 'Clone Item',
+    help: 'Help',
+    pnf: 'Page not found',
+    ftc: 'A problem has occurred with the data server'
+  },
+  notFound: {
+    gotoMain: 'Go to main page'
+  },
+  global: {
+    language: 'Language',
+    set: 'set',
+    removed: 'removed',
+    all: 'All'
   },
   btn: {
     move: 'Move',
@@ -17,15 +33,15 @@ export default {
     confirm: 'Confirm',
     analyze: 'Analysis',
     allow: 'How to allow ads',
-    cancel:'Cancel',
-    delete:'Delete',
-    help:'Help',
-    discord:'Discord',
-    back:'Back',
-    continue:'Continue',
-    complete:'Complete',
-    edit:'Edit',
-    register:'Register'
+    cancel: 'Cancel',
+    delete: 'Delete',
+    help: 'Help',
+    discord: 'Discord',
+    back: 'Back',
+    continue: 'Continue',
+    complete: 'Complete',
+    edit: 'Edit',
+    register: 'Register'
   },
   analyze: {
     title: 'Analyzing item image',
@@ -62,8 +78,8 @@ export default {
       'The auction progress time can be set from a minimum of 5 minutes to a maximum of 60 minutes (1 hour).',
     hour: 'hours',
     minutes: 'minutes',
-    auctioneer:'Auctioneer',
-    winningBidder:'Winning Bidder'
+    auctioneer: 'Auctioneer',
+    winningBidder: 'Winning Bidder'
   },
   base: {
     region: 'Region',
@@ -114,52 +130,61 @@ export default {
     favorited: 'Favorite items',
     status: 'Item status',
     addAffixGroup: 'Add affix group',
-    addAffixFilter:'Add affix filter',
-    noAffixData:'Affix not found'
+    addAffixFilter: 'Add affix filter',
+    noAffixData: 'Affix not found'
   },
-  item:{
-    auctionStarted:'Item auction has started',
-    deleteItem:'Delete item',
-    confirmDeleteItem:'Delete item?',
-    itemLinkURL:'Item link URL',
-    edit:'Edit',
-    auctionStart:'Auction start',
-    delete:'Delete',
-    unFavorite:'Unfavorite',
-    favorite:'Favorite',
-    clone:'Duplicate',
-    share:'Share',
-    processingAuctionEnd:'Processing auction end'
+  item: {
+    auctionStarted: 'Item auction has started',
+    deleteItem: 'Delete item',
+    confirmDeleteItem: 'Delete item?',
+    itemLinkURL: 'Item link URL',
+    edit: 'Edit',
+    auctionStart: 'Start auction',
+    delete: 'Delete',
+    unFavorite: 'Unfavorite',
+    favorite: 'Favorite',
+    clone: 'Duplicate',
+    share: 'Share',
+    processingAuctionEnd: 'Processing auction end'
   },
-  modifier:{
-    noAddData:'No additional affixes found',
-    selectConnect:'Select connection affix',
-    noConnectData:'No connection affixes found'
+  modifier: {
+    noAddData: 'No additional affixes found',
+    selectConnect: 'Select connection affix',
+    noConnectData: 'No connection affixes found'
   },
-  sign:{
-    signIn:'Sign in',
-    signOut:'Sign out'
+  sign: {
+    signIn: 'Sign in',
+    signOut: 'Sign out'
   },
-  add:{
-    baseSetting:'Basic settings',
-    affixSetting:'Affix settings',
-    requireAffix:'Please add affix',
-    auctionSetting:'Auction settings',
-    finalConfirm:'Final confirmation',
-    addAffix:'Add affixes',
-    noAffixData:'Affixes not found',
-    auction:'{t} and start auction'
+  add: {
+    baseSetting: 'Basic settings',
+    affixSetting: 'Affix settings',
+    requireAffix: 'Please add affix',
+    auctionSetting: 'Auction settings',
+    finalConfirm: 'Final confirmation',
+    addAffix: 'Add affixes',
+    noAffixData: 'Affixes not found',
+    auction: '{t} and start auction'
   },
   messages: {
     clipboard: 'The {t} has been copied to the clipboard',
-    itemDeleted:'Item has been deleted',
-    favorite:'Favorites have been {t}',
-    noItemcriteria:'There are no search results matching the criteria',
-    checkItemFilter:'Check the item filter',
-    noItem:'Item does not exist'
+    itemDeleted: 'Item has been deleted',
+    favorite: 'Favorites have been {t}',
+    noItemcriteria: 'There are no search results matching the criteria',
+    checkItemFilter: 'Check the item filter',
+    noItem: 'Item does not exist'
   },
-  user:{
-    battleTag:'Battle Tag'
+  user: {
+    battleTag: 'Battle Tag'
+  },
+  help: {
+    basic: 'Basic Info',
+    join: 'Sign Up',
+    add: 'Register Item',
+    auction: 'Bidding and Trade',
+    filter: 'Filter Item',
+    yolk: 'Yolk',
+    allow: 'Allow AD'
   },
   socket: {
     disconnect:

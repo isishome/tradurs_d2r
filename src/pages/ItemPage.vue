@@ -67,8 +67,6 @@ const showTradeInfo = computed(
     (!!is.detailItem.user?.owner ||
       (as.info.battleTag ?? '1') === (wonUser.value?.battleTag ?? '2'))
 )
-const barWidth = computed(() => 3 * (is.itemWidth + 28) - 40)
-
 const getBids = (overBidId?: number) => {
   is.getBids(itemId.value as number, overBidId).then((data) => {
     bids.value = !!overBidId ? [...bids.value, ...data] : data
@@ -255,20 +253,23 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="q-py-md"></div>
-    <div class="row items-center bottom-bar" :style="`max-width:${barWidth}px`">
-      <div class="row items-center">
-        <q-btn
-          v-if="as.signed"
-          color="primary"
-          size="md"
-          padding="sm"
-          icon="dashboard"
-          round
-          class="area-shadow"
-          :to="{ name: 'main' }"
-        />
+    <div class="bottom-bar row justify-center items-center">
+      <div class="full-width row justify-between items-center">
+        <div class="row items-center">
+          <q-btn
+            aria-label="Tradurs Item List Button"
+            color="grey-9"
+            size="md"
+            padding="sm"
+            icon="dashboard"
+            round
+            unelevated
+            class="area-shadow"
+            :to="{ name: 'main' }"
+          />
+        </div>
+        <div></div>
       </div>
-      <div></div>
     </div>
   </div>
 </template>

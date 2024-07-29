@@ -126,6 +126,7 @@ watch(
 <template>
   <div class="filter-wrap column q-gutter-y-sm items-end" :class="{ disable }">
     <q-btn
+      aria-label="Tradurs Reset Button"
       outline
       class="full-width"
       :label="t('filter.reset')"
@@ -190,6 +191,7 @@ watch(
       @update:model-value="updateFilter()"
     />
     <q-btn
+      aria-label="Tradurs Add Affix Group Button"
       :disable="(_filter.modifierGroups?.length ?? 0) > 2"
       class="full-width"
       color="primary"
@@ -215,7 +217,13 @@ watch(
           </q-item-label>
         </q-item-section>
         <q-item-section side>
-          <q-btn icon="close" dense flat @click="removeModifierGroup(idx)" />
+          <q-btn
+            aria-label="Tradurs Remove Button"
+            icon="close"
+            dense
+            flat
+            @click="removeModifierGroup(idx)"
+          />
         </q-item-section>
         <q-list> </q-list>
       </q-item>

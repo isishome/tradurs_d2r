@@ -30,10 +30,11 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, reactive, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useQuasar } from 'quasar'
+import { useQuasar, useMeta } from 'quasar'
+import type { Meta } from 'src/types/global'
 
 import { useGlobalStore } from 'stores/global-store'
 import { useItemStore } from 'stores/item-store'
@@ -44,15 +45,66 @@ import { sound } from 'src/sockets/messenger'
 const route = useRoute()
 const router = useRouter()
 const { t, locale } = useI18n({ useScope: 'global' })
-locale.value = (route.params.lang as string) || 'ko'
+
 const $q = useQuasar()
 const gs = useGlobalStore()
 const is = useItemStore()
 const { check } = useAdBlock()
 
+const brLang = gs.localeOptions
+  .map((lo) => lo.value)
+  .includes($q.lang.getLocale()?.substring(0, 2) as string)
+  ? ($q.lang.getLocale()?.substring(0, 2) as string)
+  : 'ko'
+locale.value =
+  (route.params.lang as string) ||
+  (['pnf', 'ftc'].includes(route.name as string) ? brLang : 'ko')
+
 const showView = ref<boolean>(false)
 const requestNotify = computed(() => is.notify.request)
 const reloadAdKey = computed(() => gs.adsense.reloadAdKey)
+
+const meta = reactive<Meta>({
+  title: t('meta.title'),
+  description: t('meta.description'),
+  keywords: t('meta.keywords')
+})
+
+useMeta(() => {
+  return {
+    title: meta.title,
+    meta: {
+      description: { name: 'description', content: meta.description },
+      keywords: { name: 'keywords', content: meta.keywords },
+      equiv: {
+        'http-equiv': 'Content-Type',
+        content: 'text/html; charset=UTF-8'
+      },
+      ogTitle: { property: 'og:title', content: meta.title },
+      ogDescription: {
+        property: 'og:description',
+        content: meta.description
+      },
+      ogUrl: { property: 'og:url', content: 'https://d2r.tradurs.com' },
+      ogType: { property: 'og:type', content: 'website' },
+      ogImage: {
+        property: 'og:image',
+        content: 'https://d2r.tradurs.com/images/og.png'
+      },
+      twitterCard: { name: 'twitter:card', content: 'summary' },
+      twitterTitle: { name: 'twitter:title', content: meta.title },
+      twitterDescription: {
+        name: 'twitter:description',
+        content: meta.description
+      },
+      twitterUrl: { name: 'twitter:url', content: 'https://d2r.tradurs.com' },
+      twitterImage: {
+        name: 'twitter:image',
+        content: 'https://d2r.tradurs.com/images/og.png'
+      }
+    }
+  }
+})
 
 watch(requestNotify, (val, old) => {
   if (!!val && val !== old && is.notify.itemId !== is.detailItem?.id) {

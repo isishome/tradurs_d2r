@@ -172,6 +172,7 @@ watch(
             :rules="[biddingRules]"
           />
           <q-btn
+            aria-label="Tradurs Bidding Button"
             :disable="loadingCount > 0"
             class="text-weight-bold"
             color="primary"

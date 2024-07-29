@@ -20,6 +20,7 @@ const url = computed(() =>
 <template>
   <div class="row justify-evenly" :class="{ 'full-width': !compact }">
     <q-btn
+      aria-label="Tradurs Avatar Button"
       flat
       dense
       square
@@ -32,7 +33,10 @@ const url = computed(() =>
     >
       <div class="row items-center q-gutter-x-xs">
         <q-avatar size="sm">
-          <q-img :src="`/images/avatar/${as.info.avatar}.webp`" />
+          <q-img
+            :src="`/images/avatar/${as.info.avatar}.webp`"
+            alt="Tradurs Avatart Image"
+          />
         </q-avatar>
         <div>{{ as.info.battleTag }}</div>
       </div>

@@ -1,0 +1,11 @@
+.quasar
+.vscode
+node_modules
+src-ssr
+.dockerignore
+.editorconfig
+.env.deveopment
+.gitignore
+.prettierrc
+Dockerfile
+*.md

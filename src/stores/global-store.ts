@@ -12,7 +12,10 @@ export const useGlobalStore = defineStore('global', () => {
     { value: 'ko', label: '한국어' },
     { value: 'en', label: 'English' }
   ])
+
   const loadingCount = ref<number>(0)
+  const leftDrawer = ref<boolean>(false)
+  const rightDrawer = ref<boolean>(false)
   const adsense = ref<Adsense>({
     timeLimit: 0,
     top: {
@@ -64,6 +67,8 @@ export const useGlobalStore = defineStore('global', () => {
     locale,
     localeOptions,
     loadingCount,
+    leftDrawer,
+    rightDrawer,
     adsense,
     size,
     showLoading,

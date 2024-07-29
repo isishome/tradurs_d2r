@@ -3,6 +3,12 @@ export enum Lang {
   EN = 'en'
 }
 
+export type Meta = {
+  title: string
+  description: string
+  keywords: string
+}
+
 export type Label = {
   value: string | number
   label: string

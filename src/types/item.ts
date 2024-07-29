@@ -80,6 +80,7 @@ export type Price = {
   unitAmount: number
   startAmount: number
   instantAmount?: number
+  winAmount?: number
 }
 
 export type Bid = {
@@ -190,7 +191,8 @@ export const defaultPrice = (): Price => {
     item: undefined,
     unitAmount: 1,
     startAmount: 1,
-    instantAmount: undefined
+    instantAmount: undefined,
+    winAmount: undefined
   }
 }
 

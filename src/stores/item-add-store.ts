@@ -492,34 +492,36 @@ export const useItemAddStore = defineStore('item-add', () => {
         api
           .get<BaseData>('/d2/item/base', options)
           .then((response) => {
-            base.data.regions.push(...response.data.regions)
-            base.data.classes.push(...response.data.classes)
-            base.data.quality.push(...response.data.quality)
-            base.data.category.push(...response.data.category)
-            base.data.qualityMappingCategory.push(
-              ...response.data.qualityMappingCategory
-            )
-            base.data.weaponTypes.push(...response.data.weaponTypes)
-            base.data.weapons.push(...response.data.weapons)
-            base.data.armorTypes.push(...response.data.armorTypes)
-            base.data.armor.push(...response.data.armor)
-            base.data.charmTypes.push(...response.data.charmTypes)
-            base.data.runes.push(...response.data.runes)
-            base.data.gems.push(...response.data.gems)
-            base.data.runewords.push(...response.data.runewords)
-            base.data.runewordMappingWeapon.push(
-              ...response.data.runewordMappingWeapon
-            )
-            base.data.runewordMappingArmor.push(
-              ...response.data.runewordMappingArmor
-            )
-            base.data.runewordMappingRune.push(
-              ...response.data.runewordMappingRune
-            )
-            base.data.uniques.push(...response.data.uniques)
-            base.data.setItems.push(...response.data.setItems)
-            base.data.misc.push(...response.data.misc)
-            base.data.status.push(...response.data.status)
+            if (response?.data) {
+              base.data.regions.push(...response.data.regions)
+              base.data.classes.push(...response.data.classes)
+              base.data.quality.push(...response.data.quality)
+              base.data.category.push(...response.data.category)
+              base.data.qualityMappingCategory.push(
+                ...response.data.qualityMappingCategory
+              )
+              base.data.weaponTypes.push(...response.data.weaponTypes)
+              base.data.weapons.push(...response.data.weapons)
+              base.data.armorTypes.push(...response.data.armorTypes)
+              base.data.armor.push(...response.data.armor)
+              base.data.charmTypes.push(...response.data.charmTypes)
+              base.data.runes.push(...response.data.runes)
+              base.data.gems.push(...response.data.gems)
+              base.data.runewords.push(...response.data.runewords)
+              base.data.runewordMappingWeapon.push(
+                ...response.data.runewordMappingWeapon
+              )
+              base.data.runewordMappingArmor.push(
+                ...response.data.runewordMappingArmor
+              )
+              base.data.runewordMappingRune.push(
+                ...response.data.runewordMappingRune
+              )
+              base.data.uniques.push(...response.data.uniques)
+              base.data.setItems.push(...response.data.setItems)
+              base.data.misc.push(...response.data.misc)
+              base.data.status.push(...response.data.status)
+            }
           })
           .catch((e) => {
             console.log(e)

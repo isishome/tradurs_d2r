@@ -36,14 +36,9 @@ const routes: RouteRecordRaw[] = [
       },
       {
         name: 'help',
-        path: 'help/:category([a-z]{1,})?',
+        path: 'help/:category([a-z]{1,})',
         component: () => import('pages/HelpPage.vue'),
         props: true
-      },
-      {
-        name: 'test',
-        path: 'test',
-        component: () => import('pages/TestPage.vue')
       }
     ]
   },

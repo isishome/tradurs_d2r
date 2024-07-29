@@ -178,6 +178,7 @@ onMounted(() => {
       </q-item-section>
       <q-item-section side>
         <q-btn
+          aria-label="Tradurs Close Button"
           icon="close"
           dense
           flat

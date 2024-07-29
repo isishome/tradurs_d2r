@@ -1,27 +1,31 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useQuasar } from 'quasar'
-import { useGlobalStore } from 'src/stores/global-store'
 import Logo from '/images/logo.webp'
-import LogoLight from '/images/logo_light.webp'
 
-const $q = useQuasar()
-const { t, locale } = useI18n({ useScope: 'global' })
-const gs = useGlobalStore()
-const brLoc = gs.localeOptions.map(lo => lo.value).includes($q.lang.getLocale()?.substring(0, 2) || '') ? $q.lang.getLocale()?.substring(0, 2) || 'ko' : 'ko'
-locale.value = brLoc
+const { t } = useI18n({ useScope: 'global' })
 </script>
 
 <template>
   <div class="absolute-center column items-center q-gutter-sm full-width">
     <div class="row justify-center items-center q-gutter-sm">
-      <img class="logo" :src="$q.dark.isActive ? Logo : LogoLight" width="48" height="48" alt="Tradurs Logo Image" />
+      <img
+        class="logo"
+        :src="Logo"
+        width="48"
+        height="48"
+        alt="Tradurs Logo Image"
+      />
       <div class="letter text-secondary">Tradurs</div>
     </div>
-    <div class="text-h6">{{ t('page.pnf') }}
-    </div>
+    <div class="text-h6">{{ t('page.pnf') }}</div>
     <div class="q-mt-lg">
-      <D4Btn class="bw" :label="t('notFound.gotoMain')" :to="{ name: 'tradeList', params: { lang: brLoc } }" />
+      <q-btn
+        aria-label="Tradurs Main Page Button"
+        color="primary"
+        class="bw"
+        :label="t('notFound.gotoMain')"
+        :to="{ name: 'main' }"
+      />
     </div>
   </div>
 </template>
@@ -32,8 +36,8 @@ locale.value = brLoc
 }
 
 .letter {
-  transition: fill .3s ease;
-  animation: slidein .3s ease-out .3s forwards;
+  transition: fill 0.3s ease;
+  animation: slidein 0.3s ease-out 0.3s forwards;
   opacity: 0;
   font-size: 40px;
   font-weight: bold;

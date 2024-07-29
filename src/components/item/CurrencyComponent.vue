@@ -36,6 +36,7 @@ const name = computed(() =>
     </div>
     <div class="row justify-center items-center q-gutter-sm">
       <img
+        alt="Tradurs Item Image"
         :src="`/images/items/${category}/${item}.webp`"
         class="price-image"
         loading="lazy"

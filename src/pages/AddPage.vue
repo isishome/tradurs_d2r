@@ -248,6 +248,7 @@ onMounted(() => {
               <q-item-section side>
                 <q-item-label>
                   <q-btn
+                    aria-label="Tradurs Move Up Button"
                     color="blue-grey-8"
                     :disable="idx === 0"
                     icon="keyboard_arrow_up"
@@ -258,6 +259,7 @@ onMounted(() => {
                 </q-item-label>
                 <q-item-label>
                   <q-btn
+                    aria-label="Tradurs Move Down Button"
                     color="blue-grey-9"
                     :disable="idx + 1 === _item.modifiers.length"
                     icon="keyboard_arrow_down"
@@ -329,6 +331,7 @@ onMounted(() => {
           <div class="row justify-end">
             <q-btn
               v-if="step > 1"
+              aria-label="Tradurs Previous Button"
               color="grey"
               text-color="dark"
               @click="stepper?.previous()"
@@ -338,6 +341,7 @@ onMounted(() => {
             <q-btn
               v-if="step !== 4"
               @click="checkValidate"
+              aria-label="Tradurs Continue Button"
               color="primary"
               text-color="dark"
               :label="t('btn.continue')"
@@ -345,6 +349,7 @@ onMounted(() => {
             />
             <template v-else>
               <q-btn-dropdown
+                aria-label="Tradurs Complete Button"
                 color="positive"
                 text-color="dark"
                 class="q-ml-sm text-weight-bold"

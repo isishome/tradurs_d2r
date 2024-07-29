@@ -289,7 +289,7 @@ const analyze = (text: string) => {
         (iia.match(/[^\s]{1}/gi)?.length ?? 0)
     )
 
-  console.log(itemInfoArray.join('\n'))
+  //console.log(itemInfoArray.join('\n'))
 
   // find item info
   const names: Array<Names> = []
@@ -425,7 +425,12 @@ const beforeHideDropBox = () => {
         </feComponentTransfer>
       </filter>
     </svg>
-    <q-btn :label="t('btn.analyze')" color="indigo" @click="click" />
+    <q-btn
+      aria-label="Tradurs Analyze Button"
+      :label="t('btn.analyze')"
+      color="indigo"
+      @click="click"
+    />
     <q-file
       v-show="false"
       ref="fileRef"

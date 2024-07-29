@@ -29,8 +29,6 @@ const ltmdDrawer = computed(() => $q.screen.width < 1540)
 const padding = computed(() => (ltmdDrawer.value ? 'q-px-md' : 'q-px-lg'))
 
 const _offset = ref<number>(0)
-const leftDrawer = ref<boolean>(false)
-const rightDrawer = ref<boolean>(false)
 
 // about adsense
 const topAdRef = ref<InstanceType<typeof Adsense>>()
@@ -137,32 +135,48 @@ watch(
           class="container-width row justify-between items-center"
           :class="{ 'q-px-md': !ltmdDrawer }"
         >
-          <div v-if="route.name === 'main'" class="col-1">
-            <q-btn
-              flat
-              round
-              dense
-              icon="filter_alt"
-              @click="leftDrawer = !leftDrawer"
-            />
-          </div>
-          <div class="col" :class="{ 'row justify-center': ltmdDrawer }">
-            <div
-              class="inline-block text-primary text-h6 text-weight-bold cursor-pointer"
-              @click="goHome"
-            >
-              {{ t('title') }}
+          <div v-show="ltmdDrawer" class="col"></div>
+          <div
+            class="col row items-center q-pl-md"
+            :class="{ 'justify-center': ltmdDrawer }"
+          >
+            <div class="cursor-pointer" @click="goHome">
+              <h1 class="h1 row items-center q-gutter-x-sm">
+                <img
+                  v-show="$q.dark.isActive"
+                  src="/images/logo.webp"
+                  width="36"
+                  height="36"
+                  alt="Tradurs D2R Logo Image"
+                />
+                <img
+                  v-show="$q.dark.isActive"
+                  src="/images/tradurs_text.svg"
+                  height="24"
+                  class="q-mt-xs"
+                  alt="Tradurs D2R Text Image"
+                />
+                <span class="blind">{{ t('meta.title') }}</span>
+              </h1>
             </div>
           </div>
           <div
             v-show="!ltmdDrawer"
-            class="row justify-end items-center q-gutter-x-xs"
+            class="col row justify-end items-center q-gutter-x-xs"
           >
             <BattleTagComponent v-if="as.signed" compact />
             <SignComponent compact />
             <q-separator inset vertical />
-            <q-btn flat dense round icon="help" :to="{ name: 'help' }" />
             <q-btn
+              aria-label="Tradurs Help Link Button"
+              flat
+              dense
+              round
+              icon="help"
+              :to="{ name: 'help', params: { category: 'basic' } }"
+            />
+            <q-btn
+              aria-label="Tradurs Discord Link Button"
               flat
               dense
               round
@@ -175,13 +189,14 @@ watch(
 
             <LanguageComponent compact />
           </div>
-          <div v-show="ltmdDrawer">
+          <div v-show="ltmdDrawer" class="col row justify-end">
             <q-btn
+              aria-label="Tradurs Menu Button"
               flat
               round
               dense
               icon="menu"
-              @click="rightDrawer = !rightDrawer"
+              @click="gs.rightDrawer = !gs.rightDrawer"
             />
           </div>
         </div>
@@ -202,7 +217,7 @@ watch(
         </div>
         <router-view :class="padding" />
         <div v-if="!ltmdDrawer" class="aside right">
-          <div class="sticky" :style="`top:190px;`">
+          <div class="sticky" style="top: 190px">
             <Adsense
               ref="rightAdRef"
               style="display: inline-block; width: 160px; height: 600px"
@@ -249,7 +264,7 @@ watch(
         </div>
       </q-page>
     </q-page-container>
-    <q-dialog full-height v-model="leftDrawer" position="left">
+    <q-dialog full-height v-model="gs.leftDrawer" position="left">
       <q-card style="width: 80vw" flat>
         <q-card-section>
           <FilterComponent
@@ -260,7 +275,7 @@ watch(
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog full-height v-model="rightDrawer" position="right">
+    <q-dialog full-height v-model="gs.rightDrawer" position="right">
       <q-card style="width: 80vw" flat>
         <q-card-section class="bg-primary text-dark">
           <div class="row justify-center">
@@ -271,7 +286,7 @@ watch(
         <q-card-section>
           <q-list separator padding>
             <SignComponent />
-            <q-item :to="{ name: 'help' }">
+            <q-item :to="{ name: 'help', params: { category: 'basic' } }">
               <q-item-section avatar>
                 <q-icon name="help" />
               </q-item-section>
@@ -298,6 +313,22 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+.h1 {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
 .container-width {
   width: 100%;
   max-width: var(--container-width);
@@ -310,7 +341,8 @@ watch(
 
   &.left {
     left: 0;
-    transform: translateX(-100%);
+    transform: translate(40px, -44px);
+    z-index: 3;
   }
 
   &.right {

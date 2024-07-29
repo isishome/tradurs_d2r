@@ -5,6 +5,8 @@ import { useI18n } from 'vue-i18n'
 import type { Size } from 'src/types/global'
 import type { Item } from 'src/types/item'
 import { defaultItem } from 'src/types/item'
+
+import { useGlobalStore } from 'stores/global-store'
 import { useItemStore } from 'stores/item-store'
 import { useAccountStore } from 'stores/account-store'
 import { notify } from 'src/composables/common'
@@ -15,13 +17,14 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n({ useScope: 'global' })
 
+const gs = useGlobalStore()
 const is = useItemStore()
 const as = useAccountStore()
 
 // variable
 const refresh = computed(() => is.refresh)
 const colGroup = reactive<Array<Array<Item>>>([])
-const blankItems = Array.from({ length: 3 }, () => defaultItem()).map((i) => ({
+const blankItems = Array.from({ length: 6 }, () => defaultItem()).map((i) => ({
   ...i,
   loading: true
 }))
@@ -31,7 +34,6 @@ const page = ref<number>(
 )
 const over = computed(() => is.itemPage.over)
 const more = computed(() => is.itemPage.more)
-const barWidth = computed(() => colGroup.length * (is.itemWidth + 28) - 40)
 const size = reactive<Size>({} as Size)
 const limit = computed(() =>
   Math.floor(size.width / (is.itemWidth + 28)) > 0
@@ -161,43 +163,53 @@ onMounted(async () => {
       </div>
     </div>
     <div class="q-py-md"></div>
-    <div
-      class="row justify-between items-center bottom-bar"
-      :style="`max-width:${barWidth}px`"
-    >
-      <div class="row items-center">
-        <q-btn
-          v-if="as.signed"
-          color="secondary"
-          size="md"
-          padding="sm"
-          icon="add"
-          round
-          class="area-shadow"
-          :to="{ name: 'add' }"
-        />
-      </div>
-      <div class="row justify-end items-center q-gutter-sm">
-        <q-btn
-          :disable="!over"
-          color="dark-page"
-          size="md"
-          padding="sm"
-          icon="chevron_left"
-          round
-          class="area-shadow"
-          @click="move(-1)"
-        />
-        <q-btn
-          :disable="!more"
-          color="dark-page"
-          size="md"
-          padding="sm"
-          icon="chevron_right"
-          round
-          class="area-shadow"
-          @click="move(1)"
-        />
+    <div class="bottom-bar row justify-center items-center">
+      <div class="full-width row justify-between items-center">
+        <div class="row q-gutter-x-sm items-center">
+          <q-btn
+            v-if="as.signed"
+            aria-label="Tradurs Add Item Button"
+            unelevated
+            color="secondary"
+            size="md"
+            padding="sm"
+            icon="add"
+            round
+            :to="{ name: 'add' }"
+          />
+          <q-btn
+            unelevated
+            aria-label="Tradurs Filter Item Button"
+            color="brighten"
+            size="md"
+            padding="sm"
+            icon="filter_alt"
+            round
+            @click="gs.leftDrawer = !gs.leftDrawer"
+          />
+        </div>
+        <div class="row justify-end items-center q-gutter-sm">
+          <q-btn
+            :disable="!over"
+            aria-label="Tradurs Previous Page Button"
+            unelevated
+            size="md"
+            padding="sm"
+            icon="chevron_left"
+            round
+            @click="move(-1)"
+          />
+          <q-btn
+            :disable="!more"
+            aria-label="Tradurs Next Page Button"
+            unelevated
+            size="md"
+            padding="sm"
+            icon="chevron_right"
+            round
+            @click="move(1)"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -208,11 +220,6 @@ onMounted(async () => {
   .item-list:deep(.item:hover) {
     filter: brightness(120%);
   }
-}
-
-.area-shadow {
-  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.4),
-    0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.32);
 }
 
 .no-data {

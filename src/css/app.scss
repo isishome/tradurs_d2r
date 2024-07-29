@@ -129,10 +129,22 @@ body::-webkit-scrollbar-thumb:hover {
 
 .bottom-bar {
   position: sticky;
-  bottom: 20px;
+  bottom: 0;
   z-index: 2;
   margin: 0 auto;
-  pointer-events: none;
+  padding: 10px 0 20px 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: var(--q-dark-page);
+    opacity: 0.8;
+  }
 
   & .q-btn {
     pointer-events: auto;
