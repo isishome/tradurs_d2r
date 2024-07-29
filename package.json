@@ -9,7 +9,7 @@
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
-    "dev": "npx quasar dev -m ssr --debug -p 6092",
+    "dev": "npx quasar dev -m ssr -p 6092",
     "build": "npx quasar build -m ssr"
   },
   "dependencies": {
