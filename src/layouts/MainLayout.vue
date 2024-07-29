@@ -135,7 +135,7 @@ watch(
           class="container-width row justify-between items-center"
           :class="{ 'q-px-md': !ltmdDrawer }"
         >
-          <div v-show="ltmdDrawer" class="col"></div>
+          <div v-show="ltmdDrawer" class="col-2"></div>
           <div
             class="col row items-center q-pl-md"
             :class="{ 'justify-center': ltmdDrawer }"
@@ -189,7 +189,7 @@ watch(
 
             <LanguageComponent compact />
           </div>
-          <div v-show="ltmdDrawer" class="col row justify-end">
+          <div v-show="ltmdDrawer" class="col-2 row justify-end">
             <q-btn
               aria-label="Tradurs Menu Button"
               flat
