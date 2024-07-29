@@ -223,6 +223,6 @@ onMounted(async () => {
 }
 
 .no-data {
-  height: 50vh;
+  height: 51vh;
 }
 </style>
