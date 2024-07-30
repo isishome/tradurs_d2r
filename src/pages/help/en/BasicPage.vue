@@ -35,7 +35,7 @@
         </q-item-label>
         <q-item-label>
           <a
-            href="https://observatory.mozilla.org/analyze/d4.tradurs.com"
+            href="https://observatory.mozilla.org/analyze/d2r.tradurs.com"
             target="_blank"
             rel="noopener noreferrer"
             >Mozilla Observatory - D2R Tradurs</a
@@ -49,7 +49,7 @@
         </q-item-label>
         <q-item-label>
           <a
-            href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fd4.tradurs.com%2F"
+            href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fd2r.tradurs.com%2F"
             target="_blank"
             rel="noopener noreferrer"
             >W3 C Markup Validation - D2R Tradurs</a

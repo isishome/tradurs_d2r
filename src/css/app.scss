@@ -13,6 +13,10 @@
   --container-width: 1180px;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .bg-dark-page {
   background-color: var(--q-dark-page);
 }

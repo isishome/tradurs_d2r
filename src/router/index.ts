@@ -30,11 +30,7 @@ export default route(function ({ store }) {
 
   const Router = createRouter({
     scrollBehavior: (to, from, savedPosition) => {
-      if (savedPosition) {
-        return savedPosition
-      } else {
-        return { left: 0, top: 0 }
-      }
+      return savedPosition || { left: 0, top: 0 }
     },
     routes,
 
