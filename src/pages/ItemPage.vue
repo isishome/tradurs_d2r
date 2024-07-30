@@ -281,7 +281,8 @@ onUnmounted(() => {
 }
 
 .bid {
-  min-width: 360px;
+  width: 360px;
+  max-width: 80vw;
   min-height: 50vh;
   max-height: 80vh;
 }

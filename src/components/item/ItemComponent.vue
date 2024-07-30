@@ -249,11 +249,14 @@ onUnmounted(() => {
 <template>
   <div>
     <q-card v-if="!loading" bordered class="item" :style="`width:${width}px`">
-      <q-card-section class="bg-brighten">
+      <q-card-section class="bg-brighten q-pa-sm">
         <div
           class="text-h6 text-center column"
           :style="`color:var(--quality-${data.quality})`"
         >
+          <div class="text-overline">
+            {{ ias.regions.find((r) => r.value === data.region)?.label }}
+          </div>
           <div>
             {{ name }}
           </div>
@@ -338,13 +341,6 @@ onUnmounted(() => {
         </div>
       </q-card-section>
       <q-card-section>
-        <div class="region row items-center">
-          <q-chip icon="public">
-            {{
-              ias.regions.find((r) => r.value === data.region)?.label
-            }}</q-chip
-          >
-        </div>
         <template v-if="imageSwappable && exceptSwappable">
           <q-menu cover anchor="top end" fit>
             <div
@@ -416,7 +412,7 @@ onUnmounted(() => {
         <div class="row justify-evenly items-center">
           <div
             v-if="!editable"
-            class="row justify-center items-center q-gutter-x-sm d2r-chip bg-blue-grey-9"
+            class="row justify-start items-center q-gutter-x-sm d2r-chip bg-blue-grey-9"
           >
             <div class="q-ml-none row items-center">
               <template v-if="remainTime <= 0 && data.statusCode === '000'">
@@ -452,8 +448,12 @@ onUnmounted(() => {
       </q-card-section>
     </q-card>
     <q-card v-else bordered class="item" :style="`width:${width}px`">
-      <q-card-section class="bg-brighten row justify-center">
-        <q-skeleton type="text" width="50%" height="48px" />
+      <q-card-section class="bg-brighten q-pa-md">
+        <div class="column items-center q-gutter-y-sm">
+          <q-skeleton type="rect" width="14%" height="12px" />
+          <q-skeleton type="rect" width="50%" height="24px" />
+          <q-skeleton type="rect" width="50%" height="24px" />
+        </div>
       </q-card-section>
       <q-card-section class="row justify-center">
         <q-skeleton type="QAvatar" width="100px" height="100px" />
@@ -483,18 +483,6 @@ onUnmounted(() => {
   }
   &:deep(.more .q-btn) {
     padding: 10px;
-  }
-}
-
-.region {
-  z-index: 1;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(-4px, -50%);
-
-  &:deep(.q-chip) {
-    border: solid 1px var(--border-color);
   }
 }
 
