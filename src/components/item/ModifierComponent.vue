@@ -59,10 +59,10 @@ const update = () => {
     [ModifierSplitType.Value, ModifierSplitType.Modifier].includes(ms.type)
   )
   _modifier.value.children?.forEach((c, idx) => {
-    if (c.type === ModifierType.String) c.id = values[idx]?.value as number
+    if (c.type === ModifierType.String) c.value = values[idx]?.value as number
     else if (c.type !== ModifierType.Connect)
       c.value = (values[idx]?.value as number) || 0
-    else c.id = _modifierConnect.value?.id ?? undefined
+    else c.value = _modifierConnect.value?.value ?? undefined
   })
 
   emit('update', _modifier.value)
@@ -114,7 +114,7 @@ onMounted(() => {
     _modifierSplit.value.splice(i * 2 + 1, 0, {
       type: s === '%s' ? ModifierSplitType.Modifier : ModifierSplitType.Value,
       sign: children?.[i]?.signed && (children?.[i]?.value ?? 0) > 0 ? '+' : '',
-      value: s === '%s' ? children?.[i]?.id : children?.[i]?.value
+      value: children?.[i]?.value
     })
   })
 })
@@ -155,7 +155,7 @@ onMounted(() => {
             :options="connectOptions"
             ref="connectRef"
             :label="t('modifier.selectConnect')"
-            v-model="_modifierConnect.id"
+            v-model="_modifierConnect.value"
             dense
             clearable
             map-options
@@ -202,8 +202,8 @@ onMounted(() => {
                 : `${ms.sign}${ms.value}`
             }}
           </span>
-          <span v-if="!!_modifierConnect">
-            {{ findModifier(_modifierConnect.id as number) }}
+          <span v-if="!!_modifierConnect && !!_modifierConnect.value">
+            ({{ findModifier(_modifierConnect.value as number) }})
           </span>
         </div>
       </q-item-label>
