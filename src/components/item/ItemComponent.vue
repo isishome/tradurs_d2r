@@ -319,7 +319,6 @@ onUnmounted(() => {
                 </q-item-section>
                 <q-item-section>{{ t('item.clone') }}</q-item-section>
               </q-item>
-
               <q-item clickable @click="shareItem">
                 <q-item-section side>
                   <q-icon name="share" />
@@ -339,6 +338,13 @@ onUnmounted(() => {
         </div>
       </q-card-section>
       <q-card-section>
+        <div class="region row items-center">
+          <q-chip icon="public">
+            {{
+              ias.regions.find((r) => r.value === data.region)?.label
+            }}</q-chip
+          >
+        </div>
         <template v-if="imageSwappable && exceptSwappable">
           <q-menu cover anchor="top end" fit>
             <div
@@ -477,6 +483,18 @@ onUnmounted(() => {
   }
   &:deep(.more .q-btn) {
     padding: 10px;
+  }
+}
+
+.region {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-4px, -50%);
+
+  &:deep(.q-chip) {
+    border: solid 1px var(--border-color);
   }
 }
 

@@ -135,11 +135,7 @@ watch(
           class="container-width row justify-between items-center"
           :class="{ 'q-px-md': !ltmdDrawer }"
         >
-          <div v-show="ltmdDrawer" class="col-2"></div>
-          <div
-            class="col row items-center q-pl-md"
-            :class="{ 'justify-center': ltmdDrawer }"
-          >
+          <div class="col row items-center q-pl-md">
             <div class="cursor-pointer" @click="goHome">
               <h1 class="h1 row items-center q-gutter-x-sm">
                 <img
