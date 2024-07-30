@@ -89,7 +89,12 @@ const comp = computed(
         transition-prev="fade"
         transition-next="fade"
       >
-        <q-tab-panel v-for="t in tabs" :key="t.value" :name="t.value">
+        <q-tab-panel
+          v-for="t in tabs"
+          :key="t.value"
+          :name="t.value"
+          class="no-scroll"
+        >
           <component :is="comp(t.name)" />
         </q-tab-panel>
       </q-tab-panels>

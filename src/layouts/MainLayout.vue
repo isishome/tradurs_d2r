@@ -124,7 +124,7 @@ watch(
 </script>
 
 <template>
-  <q-layout view="lHh Lpr lff" @resize="resize">
+  <q-layout view="lHh Lpr lff" @resize="resize" style="overflow-y: scroll">
     <q-inner-loading class="global-loading" :showing="gs.loadingCount > 0">
       <q-spinner size="50px" color="primary" />
     </q-inner-loading>
@@ -199,7 +199,7 @@ watch(
         <div class="col"></div>
       </q-toolbar>
     </q-header>
-    <q-page-container class="row justify-center">
+    <q-page-container class="row justify-center" style="height: 100vh">
       <q-page class="container-width" :style-fn="tweak">
         <div class="q-py-lg row justify-center">
           <Adsense
@@ -211,7 +211,7 @@ watch(
             :key="gs.adsense.top.adKey"
           />
         </div>
-        <router-view :class="padding" />
+        <router-view class="viewport" :class="padding" />
         <div v-if="!ltmdDrawer" class="aside right">
           <div class="sticky" style="top: 190px">
             <Adsense
@@ -362,5 +362,9 @@ watch(
   z-index: 9999;
   width: 100%;
   height: 100%;
+}
+
+.viewport {
+  min-height: 600px;
 }
 </style>
