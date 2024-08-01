@@ -45,3 +45,15 @@ export type Adsense = {
   left: AdsensePosition
   right: AdsensePosition
 }
+
+type Queue = {
+  itemId?: number
+  bidId?: number
+  completed?: boolean
+  temperature?: number
+}
+
+export type Notify = {
+  request: number
+  queues: Array<Queue>
+}

@@ -66,10 +66,31 @@ export const initMessenger = async () => {
     })
   })
 
-  as.messenger.on('updateBids', ({ itemId }: { itemId: number }) => {
-    is.notify.itemId = itemId
-    is.notify.request++
-  })
+  as.messenger.on(
+    'updateBids',
+    ({ itemId, completed }: { itemId: number; completed: boolean }) => {
+      is.notify.queues.push({ itemId, completed })
+      is.notify.request++
+    }
+  )
+
+  as.messenger.on(
+    'riseTemperature',
+    ({
+      bidId,
+      itemId,
+      temperature
+    }: {
+      bidId?: number
+      itemId: number
+      temperature: number
+    }) => {
+      as.checkSign().then(() => {
+        is.notify.queues.push({ bidId, itemId, temperature })
+        is.notify.request++
+      })
+    }
+  )
 }
 
 export const sound = () => {

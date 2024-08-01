@@ -33,9 +33,13 @@
         <q-item-label>
           <img src="~assets/help/auction/05.webp" alt="Tradurs Help Image" />
         </q-item-label>
-        <q-item-label class="line-space q-mb-xl">
+        <q-item-label class="line-space">
           5. 경매가 완료되면 최종 낙찰된 항목이 활성 색상으로 표시되며 경매자와
           낙찰자의 배틀 태그가 좌측 하단에 추가됩니다.
+        </q-item-label>
+        <q-item-label class="line-space q-pl-sm q-mb-xl">
+          경매 종료 시간이 1분 미만 남은 시점에 새 입찰이 있을 경우
+          <span class="text-red">경매 진행 시간이 1분 추가</span>됩니다.
         </q-item-label>
         <q-item-label>
           <img src="~assets/help/auction/06.webp" alt="Tradurs Help Image" />
@@ -57,15 +61,15 @@
           <img src="~assets/help/auction/08.webp" alt="Tradurs Help Image" />
         </q-item-label>
         <q-item-label class="line-space q-mb-xl">
-          8. 평가와 상관없이 낙찰이 된 시점에 경매는 완료되며 아이템 카드에는
-          최종 낙찰가가 표시됩니다.
+          8. 평가와 상관없이 낙찰이 된 시점에 경매 진행은 완료되며 아이템
+          카드에는 최종 낙찰가가 표시됩니다.
         </q-item-label>
         <q-item-label>
           <img src="~assets/help/auction/09.webp" alt="Tradurs Help Image" />
         </q-item-label>
         <q-item-label class="line-space q-mb-xl">
           9. 만약 실제 거래가 성사되지 않았을 경우
-          <span class="text-red">복제</span> 기능을 이용하여 아이템을 편하게
+          <span class="text-red">복제</span> 기능을 이용하여 간편하게 아이템을
           다시 등록할 수 있습니다.
         </q-item-label>
       </q-item-section>

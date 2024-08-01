@@ -114,9 +114,10 @@ watch(
           v-for="b in data"
           :key="b.id"
           :avatar="`/images/avatar/${b.user?.avatar}.webp`"
-          :bg-color="b.won ? 'primary' : 'brighten'"
-          :text-color="b.won ? 'dark' : 'white'"
+          :bg-color="b.won ? 'primary' : b.user?.owner ? '' : 'brighten'"
+          :text-color="b.won ? 'dark' : b.user?.owner ? '' : 'white'"
           :sent="b.user?.owner"
+          :name="b.user?.owner ? t('auction.me') : t('auction.bidder')"
         >
           <template #default>
             <div class="row justify-start">

@@ -1,6 +1,5 @@
 // app global css in SCSS form
 :root {
-  color-scheme: dark;
   --q-dark-back: #181826;
   --quality-magic: rgb(105, 105, 255);
   --quality-rare: #ffff00;
@@ -9,7 +8,7 @@
   --quality-crafted: #ffa500;
   --quality-runewords: #a59263;
   --sockoreth: #777777;
-  --border-color: #ffffff15;
+  --border-color: #ffffff20;
   --container-width: 1180px;
 }
 
@@ -70,7 +69,14 @@ body::-webkit-scrollbar-thumb:hover {
 .q-list--bordered,
 .q-stepper--dark.q-stepper--bordered,
 .q-stepper--dark .q-stepper__header--border,
-.q-card--bordered {
+.q-card--bordered,
+.q-table--dark .q-table__bottom,
+.q-table--dark thead,
+.q-table--dark tr,
+.q-table--dark th,
+.q-table--dark td,
+.q-table__card--dark,
+.q-table--dark {
   border-color: var(--border-color);
 }
 
@@ -95,7 +101,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .q-separator--dark {
   background: var(--border-color);
-  box-shadow: 0 -1px 1px var(--q-dark-page);
+  box-shadow: 0 -1px 1px var(--q-dark-page), -1px 0 1px var(--q-dark-page);
   position: relative;
   z-index: 1;
 }
@@ -152,5 +158,11 @@ body::-webkit-scrollbar-thumb:hover {
 
   & .q-btn {
     pointer-events: auto;
+  }
+}
+
+.drawer {
+  & .q-dialog__inner--minimized {
+    padding: 0;
   }
 }

@@ -79,7 +79,9 @@ export default {
     hour: 'hours',
     minutes: 'minutes',
     auctioneer: 'Auctioneer',
-    winningBidder: 'Winning Bidder'
+    bidder: 'Bidder',
+    winningBidder: 'Winning Bidder',
+    me: 'Me'
   },
   base: {
     region: 'Region',
@@ -172,7 +174,12 @@ export default {
     favorite: 'Favorites have been {t}',
     noItemcriteria: 'There are no search results matching the criteria',
     checkItemFilter: 'Check the item filter',
-    noItem: 'Item does not exist'
+    noItem: 'Item does not exist',
+    newBid: 'There is a new bid on your item or an item you are bidding on',
+    auctionCompleted:
+      "The auction for my item or the item I'm bidding on has ended.",
+    riseTemperature:
+      'Manner temperature has increased by {t} due to the evaluation of the trading partner.'
   },
   user: {
     battleTag: 'Battle Tag'

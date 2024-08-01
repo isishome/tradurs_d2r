@@ -260,8 +260,13 @@ watch(
         </div>
       </q-page>
     </q-page-container>
-    <q-dialog full-height v-model="gs.leftDrawer" position="left">
-      <q-card style="width: 80vw" flat>
+    <q-dialog
+      class="drawer"
+      full-height
+      v-model="gs.leftDrawer"
+      position="left"
+    >
+      <q-card square style="width: 80vw" flat>
         <q-card-section>
           <FilterComponent
             :data="is.filter"
@@ -271,8 +276,13 @@ watch(
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog full-height v-model="gs.rightDrawer" position="right">
-      <q-card style="width: 80vw" flat>
+    <q-dialog
+      class="drawer"
+      full-height
+      v-model="gs.rightDrawer"
+      position="right"
+    >
+      <q-card square style="width: 80vw" flat>
         <q-card-section class="bg-primary text-dark">
           <div class="row justify-center">
             <BattleTagComponent v-if="as.signed" />

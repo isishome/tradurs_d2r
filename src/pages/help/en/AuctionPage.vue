@@ -12,9 +12,9 @@
           <img src="~assets/help/auction/02.webp" alt="Tradurs Help Image" />
         </q-item-label>
         <q-item-label class="line-space q-mb-xl">
-          2. Enter the desired bid amount in the bid quantity (amount) field and
-          click the <span class="text-primary">Bidding</span> button to
-          participate in the auction.
+          2. You can participate in the auction by entering the desired bid
+          amount in the Bid Quantity (Amount) field and clicking the
+          <span class="text-primary">Bid</span> button.
         </q-item-label>
         <q-item-label>
           <img src="~assets/help/auction/03.webp" alt="Tradurs Help Image" />
@@ -32,10 +32,17 @@
         <q-item-label>
           <img src="~assets/help/auction/05.webp" alt="Tradurs Help Image" />
         </q-item-label>
-        <q-item-label class="line-space q-mb-xl">
+        <q-item-label class="line-space">
           5. When the auction is complete, the final winning item will be marked
-          in an active color and the auctioneer and winning bidder's battle tags
-          will be added to the bottom left.
+          in an active color, and the auctioneer and winning bidder's battle
+          tags will be added to the bottom left.
+        </q-item-label>
+        <q-item-label class="line-space q-pl-sm q-mb-xl">
+          If a new bid is placed with less than 1 minute remaining in the
+          auction,
+          <span class="text-red"
+            >an additional minute will be added to the auction time</span
+          >.
         </q-item-label>
         <q-item-label>
           <img src="~assets/help/auction/06.webp" alt="Tradurs Help Image" />

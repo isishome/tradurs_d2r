@@ -107,25 +107,41 @@ useMeta(() => {
 })
 
 watch(requestNotify, (val, old) => {
-  if (!!val && val !== old && is.notify.itemId !== is.detailItem?.id) {
-    sound()
-    $q.notify({
-      type: 'primary',
-      message: '내 아이템 또는 경매 참여 중인 아이템에 새 입찰이 있습니다.',
-      multiLine: true,
-      progress: true,
-      timeout: 5000,
-      actions: [
-        {
-          dense: true,
-          class: 'no-hover text-underline',
-          label: t('btn.confirm'),
-          handler: () => {
-            router.push({ name: 'item', params: { id: is.notify.itemId } })
+  if (!!val && val !== old && route.name !== 'item') {
+    let cnt = 0
+    while (is.notify.queues.length) {
+      cnt++
+      const queue = is.notify.queues.pop()
+
+      if (cnt > 10) break
+      if (is.detailItem?.id === queue?.itemId) continue
+
+      sound()
+
+      $q.notify({
+        message: !!queue?.completed
+          ? t('messages.auctionCompleted')
+          : !!queue?.temperature
+          ? t('messages.riseTemperature', { t: queue?.temperature })
+          : t('messages.newBid'),
+        multiLine: true,
+        progress: true,
+        timeout: 5000,
+        actions: [
+          {
+            dense: true,
+            class: 'no-hover text-underline',
+            label: t('btn.confirm'),
+            handler: () => {
+              router.push({
+                name: 'item',
+                params: { id: queue?.itemId }
+              })
+            }
           }
-        }
-      ]
-    })
+        ]
+      })
+    }
   }
 })
 

@@ -467,7 +467,7 @@ const beforeHideDropBox = () => {
                 </div>
               </div>
             </div>
-            <div class="col-3 row items-end text-caption">
+            <div class="col-3 row items-center text-caption">
               {{ t('analyze.dragMessage') }}
             </div>
           </div>

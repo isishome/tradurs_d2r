@@ -79,7 +79,9 @@ export default {
     hour: '시간',
     minutes: '분',
     auctioneer: '경매자',
-    winningBidder: '낙찰자'
+    bidder: '입찰자',
+    winningBidder: '낙찰자',
+    me: '나'
   },
   base: {
     region: '지역',
@@ -171,7 +173,11 @@ export default {
     favorite: '즐겨찾기가 {t} 되었습니다',
     noItemcriteria: '조건에 맞는 검색 결과가 없습니다',
     checkItemFilter: '아이템 필터를 확인해 보세요',
-    noItem: '아이템이 존재하지 않습니다'
+    noItem: '아이템이 존재하지 않습니다',
+    newBid: '내 아이템 또는 경매 참여 중인 아이템에 새 입찰이 있습니다.',
+    auctionCompleted:
+      '내 아이템 또는 경매 참여 중인 아이템의 경매가 종료되었습니다.',
+    riseTemperature: "거래 상대 평가에 의해 매너 온도가 {t}{'℃'} 상승했습니다."
   },
   user: {
     battleTag: '배틀 태그'

@@ -4,7 +4,7 @@ import type { AxiosRequestConfig } from 'axios'
 import { useQuasar } from 'quasar'
 import { api } from 'boot/axios'
 import { Lang } from 'src/types/global'
-import type { Page } from 'src/types/global'
+import type { Page, Notify } from 'src/types/global'
 import type { Bid, Item, Filter } from 'src/types/item'
 import { defaultFilter } from 'src/types/item'
 import { useGlobalStore } from './global-store'
@@ -12,11 +12,6 @@ import { sleep } from 'src/composables/common'
 
 type ItemPage = Page & {
   newItems: number
-}
-
-type Notify = {
-  request: number
-  itemId?: number
 }
 
 export const useItemStore = defineStore('item', () => {
@@ -36,7 +31,7 @@ export const useItemStore = defineStore('item', () => {
   const detailItem = ref<Item>()
   const notify = ref<Notify>({
     request: 0,
-    itemId: undefined
+    queues: []
   })
 
   const filter = ref<Filter>(defaultFilter())
@@ -185,7 +180,7 @@ export const useItemStore = defineStore('item', () => {
     })
   }
 
-  const updateSellerRate = (itemId: number, rate: number) => {
+  const updateAuctioneerRate = (itemId: number, rate: number) => {
     return new Promise<void>((resolve, reject) => {
       gs.showLoading()
       api
@@ -237,7 +232,7 @@ export const useItemStore = defineStore('item', () => {
     favorite,
     getBids,
     addBid,
-    updateSellerRate,
+    updateAuctioneerRate,
     updateBidderRate
   }
 })
