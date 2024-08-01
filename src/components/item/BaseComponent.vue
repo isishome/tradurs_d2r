@@ -25,9 +25,11 @@ const _item = ref<Item>(defaultItem())
 
 const chainingName = computed(
   () =>
-    [...ias.nameAffixes, ...ias.names]
-      .filter((ns) => _item.value.names.includes(ns.id))
-      .map((ns) => ns.label)
+    _item.value.names
+      .map(
+        (n) =>
+          [...ias.nameAffixes, ...ias.names].find((ns) => ns.id === n)?.label
+      )
       .join(' ')
       .trim() || undefined
 )

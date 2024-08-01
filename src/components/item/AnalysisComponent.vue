@@ -92,9 +92,9 @@ const makePlainText = (str: string, addStr = '') => {
     .trim()
 }
 
-// const distance = (a: string, b: string) => {
-//   return Math.abs(a.length - b.length)
-// }
+const distance = (a: string, b: string) => {
+  return Math.abs(a.length - b.length)
+}
 
 const findModifier = (str: string): Modifier => {
   const strArray = str.split(/[\-ㅡ\(].(?!.*[0-9]).*/i)
@@ -146,23 +146,37 @@ const findModifier = (str: string): Modifier => {
   return findTargets[0]
 }
 
-const filterNames = (str: string) => {
+const filterNames = (
+  str: string,
+  withDistance?: boolean,
+  customRate?: number
+) => {
   const plainText = makePlainText(str)
 
   if (!!!plainText) return []
 
   const names = [...ias.nameAffixes, ...ias.names]
     .filter(
-      (name) => !!plainText && cos.similarity(plainText, name.label) > midRate
+      (name) =>
+        !!plainText &&
+        cos.similarity(plainText, name.label.padEnd(plainText.length, 'X')) >
+          (customRate ?? midRate)
     )
     .map((name) => ({
       id: name.id,
       Key: name.value,
       text: name.label,
-      similarity: cos.similarity(plainText, name.label)
+      similarity: cos.similarity(
+        plainText,
+        name.label.padEnd(plainText.length, 'X')
+      ),
+      distance: withDistance ? distance(plainText, name.label) : 0
     }))
 
-  names.sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
+  names.sort(
+    (a, b) =>
+      (b.similarity ?? 0) - (a.similarity ?? 0) || a.distance - b.distance
+  )
 
   return names
 }
@@ -252,12 +266,12 @@ const findItemInfo = (
           category: findCategory[0]?.value
         } as Item)
       }
+    }
 
-      // 이름 검색
-      for (const pt of plainText.split(' ')) {
-        const fn = filterNames(pt)
-        if (fn.length > 0) nameInfos.push(fn[0])
-      }
+    // 이름 검색
+    for (const pt of plainText.split(' ')) {
+      const fn = filterNames(pt, true, 0.4)
+      if (fn.length > 0) nameInfos.push(fn[0])
     }
   }
 
@@ -289,7 +303,7 @@ const analyze = (text: string) => {
         (iia.match(/[^\s]{1}/gi)?.length ?? 0)
     )
 
-  //console.log(itemInfoArray.join('\n'))
+  // console.log(itemInfoArray.join('\n'))
 
   // find item info
   const names: Array<Names> = []
@@ -297,9 +311,8 @@ const analyze = (text: string) => {
     const itemInfo = findItemInfo(itemInfoArray[i], names)
 
     if (itemInfo) {
-      if (!!itemInfo[0].category) {
+      if (!!itemInfo[0]?.category) {
         if (names.length > 0) {
-          names.sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
           names.splice(2, names.length)
           item.quality = item.quality ?? 'rare'
           item.names = names.map((n) => n.id)
@@ -308,7 +321,7 @@ const analyze = (text: string) => {
         Object.assign(item, itemInfo[0])
         itemInfoArray = itemInfoArray.slice(i + 2)
         break
-      } else if (!!itemInfo[0].quality) Object.assign(item, itemInfo[0])
+      } else if (!!itemInfo[0]?.quality) Object.assign(item, itemInfo[0])
 
       names.push(...itemInfo[1])
     }

@@ -202,8 +202,11 @@ onMounted(() => {
                 : `${ms.sign}${ms.value}`
             }}
           </span>
-          <span v-if="!!_modifierConnect && !!_modifierConnect.value">
-            ({{ findModifier(_modifierConnect.value as number) }})
+          <span
+            v-if="!!_modifierConnect && !!_modifierConnect.value"
+            class="q-ml-sm"
+          >
+            {{ findModifier(_modifierConnect.value as number) }}
           </span>
         </div>
       </q-item-label>

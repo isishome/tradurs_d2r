@@ -447,7 +447,7 @@ export const useItemAddStore = defineStore('item-add', () => {
         children.push({
           order: i,
           type: ModifierType.String,
-          id: modifierOrSkill[0]?.id
+          value: modifierOrSkill[0]?.id
         })
       } else {
         let value = undefined
@@ -473,7 +473,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     children.push({
       order: children.length,
       type: ModifierType.Connect,
-      id: ![targetId, ...children.map((c) => c.id)].includes(
+      value: ![targetId, ...children.map((c) => c.value)].includes(
         modifierOrSkill2[0]?.id
       )
         ? modifierOrSkill2[0]?.id

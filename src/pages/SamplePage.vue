@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { QStepper, QSelect } from 'quasar'
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
 
 import type { Item, Price, Modifier } from 'src/types/item'
-import {
-  separator,
-  ModifierType,
-  defaultItem,
-  defaultPrice
-} from 'src/types/item'
+import { separator, ModifierType, defaultItem } from 'src/types/item'
 import { useItemAddStore } from 'src/stores/item-add-store'
-import { useItemStore } from 'src/stores/item-store'
-import { useAccountStore } from 'src/stores/account-store'
 
 import AnalysisComponent from 'components/item/AnalysisComponent.vue'
 import BaseComponent from 'components/item/BaseComponent.vue'
@@ -21,16 +13,8 @@ import ModifierComponent from 'components/item/ModifierComponent.vue'
 import AuctionComponent from 'components/item/AuctionComponent.vue'
 import ItemComponent from 'components/item/ItemComponent.vue'
 
-const props = defineProps<{
-  id?: string
-}>()
-
 const { t } = useI18n({ useScope: 'global' })
-const route = useRoute()
-const router = useRouter()
 const ias = useItemAddStore()
-const is = useItemStore()
-const as = useAccountStore()
 
 const stepper = ref<QStepper>()
 const step = ref<number>(1)
@@ -147,40 +131,6 @@ const selectModifier = (val: number): void => {
     modifierNeedle.value = undefined
   }
 }
-
-const upsert = (item: Item, withStart = false) => {
-  is.upsertItem(item, withStart).then((id) => {
-    if (withStart) is.resetFilter()
-    as.checkSign()
-    router.push({
-      name: withStart ? 'main' : 'item',
-      params: { id: withStart ? undefined : id }
-    })
-  })
-}
-
-onMounted(() => {
-  if (!!props.id)
-    is.getItems(1, Number(props.id)).then((result) => {
-      if (route.name === 'clone') {
-        result[0].id = undefined
-        result[0].region = undefined
-        result[0].ladder = true
-        result[0].hardcore = false
-        result[0].id = undefined
-        result[0].price = defaultPrice()
-        result[0].user = undefined
-        result[0].regDate = undefined
-        result[0].startDate = undefined
-        result[0].addProgressTime = 0
-        result[0].statusCode = undefined
-        result[0].favorite = false
-        result[0].rate = undefined
-        result[0].loading = false
-      }
-      _item.value = result[0]
-    })
-})
 </script>
 
 <template>
@@ -347,36 +297,6 @@ onMounted(() => {
               :label="t('btn.continue')"
               class="q-ml-sm"
             />
-            <template v-else>
-              <q-btn-dropdown
-                aria-label="Tradurs Complete Button"
-                color="positive"
-                text-color="dark"
-                class="q-ml-sm text-weight-bold"
-                :label="t('btn.complete')"
-              >
-                <q-list>
-                  <q-item clickable v-close-popup @click="upsert(_item)">
-                    <q-item-section>
-                      <q-item-label>{{
-                        !!_item.id ? t('btn.edit') : t('btn.register')
-                      }}</q-item-label>
-                    </q-item-section>
-                  </q-item>
-                  <q-item clickable v-close-popup @click="upsert(_item, true)">
-                    <q-item-section>
-                      <q-item-label
-                        >{{
-                          t('add.auction', {
-                            t: !!_item.id ? t('btn.edit') : t('btn.register')
-                          })
-                        }}
-                      </q-item-label>
-                    </q-item-section>
-                  </q-item>
-                </q-list>
-              </q-btn-dropdown>
-            </template>
           </div>
         </q-stepper-navigation>
       </template>
