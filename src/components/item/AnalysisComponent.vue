@@ -303,7 +303,7 @@ const analyze = (text: string) => {
         (iia.match(/[^\s]{1}/gi)?.length ?? 0)
     )
 
-  // console.log(itemInfoArray.join('\n'))
+  //console.log(itemInfoArray.join('\n'))
 
   // find item info
   const names: Array<Names> = []
