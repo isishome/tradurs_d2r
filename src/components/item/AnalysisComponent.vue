@@ -62,7 +62,7 @@ const recognize = async (image: ImageLike, lang: string) => {
     workerPath:
       'https://cdn.jsdelivr.net/npm/tesseract.js@v5.1.0/dist/worker.min.js',
     langPath: prod
-      ? 'https://cdn.jsdelivr.net/gh/seraMint/tessdata'
+      ? 'https://cdn.jsdelivr.net/gh/seraMint/tessdata/'
       : '/tessdata/best', //'https://cdn.jsdelivr.net/gh/seraMint/tessdata', //'https://tessdata.projectnaptha.com/4.0.0',
     corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@v5.1.0',
     cacheMethod: prod ? 'write' : 'none'
