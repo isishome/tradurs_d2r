@@ -135,7 +135,21 @@ watch(
           class="container-width row justify-between items-center"
           :class="{ 'q-px-md': !ltmdDrawer }"
         >
-          <div class="col row items-center q-pl-md">
+          <div v-show="ltmdDrawer" class="col-2">
+            <q-btn
+              v-if="route.name === 'main'"
+              aria-label="Tradurs Filter Button"
+              flat
+              round
+              dense
+              icon="filter_alt"
+              @click="gs.leftDrawer = !gs.leftDrawer"
+            />
+          </div>
+          <div
+            class="col row items-center"
+            :class="[ltmdDrawer ? 'justify-center' : 'q-pl-sm']"
+          >
             <div class="cursor-pointer" @click="goHome">
               <h1 class="h1 row items-center q-gutter-x-sm">
                 <img
@@ -210,6 +224,21 @@ watch(
             :data-adtest="!prod"
             :key="gs.adsense.top.adKey"
           />
+        </div>
+        <div v-if="!ltmdDrawer" class="aside left">
+          <div class="sticky" style="top: 220px">
+            <q-btn
+              v-if="route.name === 'main'"
+              aria-label="Tradurs Filter Button"
+              outline
+              dense
+              icon="filter_alt"
+              stack
+              @click="gs.leftDrawer = !gs.leftDrawer"
+            >
+              <div class="text-vert">{{ t('btn.filter') }}</div>
+            </q-btn>
+          </div>
         </div>
         <router-view class="viewport" :class="padding" />
         <div v-if="!ltmdDrawer" class="aside right">
@@ -347,13 +376,13 @@ watch(
 
   &.left {
     left: 0;
-    transform: translate(40px, -44px);
+    transform: translateX(-100%);
     z-index: 3;
   }
 
   &.right {
     right: 0;
-    transform: translate(100%);
+    transform: translateX(100%);
   }
 
   &:deep(.sticky) {
@@ -376,5 +405,11 @@ watch(
 
 .viewport {
   min-height: 600px;
+}
+
+.text-vert {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  padding: 6px 2px 0 0;
 }
 </style>

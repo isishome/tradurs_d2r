@@ -41,7 +41,8 @@ export default {
     continue: 'Continue',
     complete: 'Complete',
     edit: 'Edit',
-    register: 'Register'
+    register: 'Register',
+    filter: 'Filter'
   },
   analyze: {
     title: 'Analyzing item image',
@@ -87,6 +88,7 @@ export default {
     region: 'Region',
     selectRegion: 'Choose a region',
     ladder: 'Ladder',
+    softcore: 'Softcore',
     hardcore: 'Hardcore',
     quality: 'Quality',
     selectQuality: 'Choose a quality',

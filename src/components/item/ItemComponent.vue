@@ -254,8 +254,25 @@ onUnmounted(() => {
           class="text-h6 text-center column"
           :style="`color:var(--quality-${data.quality})`"
         >
-          <div class="text-overline">
-            {{ ias.regions.find((r) => r.value === data.region)?.label }}
+          <div
+            class="text-overline row justify-center items-center q-gutter-x-xs"
+          >
+            <div>
+              {{ ias.regions.find((r) => r.value === data.region)?.label }}
+            </div>
+            <template v-if="data.ladder">
+              <div>:</div>
+              <div class="text-positive">
+                {{ t('base.ladder') }}
+              </div>
+            </template>
+            <div>:</div>
+            <div v-if="data.hardcore" class="text-red">
+              {{ t('base.hardcore') }}
+            </div>
+            <div v-else class="text-blue">
+              {{ t('base.softcore') }}
+            </div>
           </div>
           <div>
             {{ name }}

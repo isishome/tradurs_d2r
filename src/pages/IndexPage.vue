@@ -6,7 +6,6 @@ import type { Size } from 'src/types/global'
 import type { Item } from 'src/types/item'
 import { defaultItem } from 'src/types/item'
 
-import { useGlobalStore } from 'stores/global-store'
 import { useItemStore } from 'stores/item-store'
 import { useAccountStore } from 'stores/account-store'
 import { notify } from 'src/composables/common'
@@ -17,7 +16,6 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n({ useScope: 'global' })
 
-const gs = useGlobalStore()
 const is = useItemStore()
 const as = useAccountStore()
 
@@ -176,16 +174,6 @@ onMounted(async () => {
             icon="add"
             round
             :to="{ name: 'add' }"
-          />
-          <q-btn
-            unelevated
-            aria-label="Tradurs Filter Item Button"
-            color="brighten"
-            size="md"
-            padding="sm"
-            icon="filter_alt"
-            round
-            @click="gs.leftDrawer = !gs.leftDrawer"
           />
         </div>
         <div class="row justify-end items-center q-gutter-sm">

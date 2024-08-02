@@ -41,7 +41,8 @@ export default {
     continue: '계속',
     complete: '완료',
     edit: '수정',
-    register: '등록'
+    register: '등록',
+    filter: '필터'
   },
   analyze: {
     title: '아이템 이미지 분석',
@@ -87,6 +88,7 @@ export default {
     region: '지역',
     selectRegion: '지역을 선택하세요',
     ladder: '래더',
+    softcore: '소프트코어',
     hardcore: '하드코어',
     quality: '품질',
     selectQuality: '품질을 선택하세요',
