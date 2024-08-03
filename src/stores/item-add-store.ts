@@ -19,6 +19,7 @@ import itemRunes from 'src/assets/items/item-runes.json'
 import itemSkills from 'src/assets/items/item-skills.json'
 
 type BaseData = {
+  platforms: Label[]
   regions: Label[]
   classes: Label[]
   quality: Label[]
@@ -49,6 +50,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     request: 0,
     loading: false,
     data: {
+      platforms: [],
       regions: [],
       classes: [],
       quality: [],
@@ -101,6 +103,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     }))
   )
 
+  const platforms = computed(() => base.data.platforms)
   const regions = computed(() => base.data.regions)
   const ethereal = computed(() => ({
     value: 22745,
@@ -493,6 +496,7 @@ export const useItemAddStore = defineStore('item-add', () => {
           .get<BaseData>('/d2/item/base', options)
           .then((response) => {
             if (response?.data) {
+              base.data.platforms.push(...response.data.platforms)
               base.data.regions.push(...response.data.regions)
               base.data.classes.push(...response.data.classes)
               base.data.quality.push(...response.data.quality)
@@ -542,6 +546,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     skills,
     names,
     nameAffixes,
+    platforms,
     regions,
     ethereal,
     socket,

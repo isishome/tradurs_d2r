@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, defineAsyncComponent } from 'vue'
 import { QStepper, QSelect } from 'quasar'
 import { useI18n } from 'vue-i18n'
 
@@ -7,11 +7,21 @@ import type { Item, Price, Modifier } from 'src/types/item'
 import { separator, ModifierType, defaultItem } from 'src/types/item'
 import { useItemAddStore } from 'src/stores/item-add-store'
 
-import AnalysisComponent from 'components/item/AnalysisComponent.vue'
-import BaseComponent from 'components/item/BaseComponent.vue'
-import ModifierComponent from 'components/item/ModifierComponent.vue'
-import AuctionComponent from 'components/item/AuctionComponent.vue'
-import ItemComponent from 'components/item/ItemComponent.vue'
+const AnalysisComponent = defineAsyncComponent(
+  () => import('components/item/AnalysisComponent.vue')
+)
+const BaseComponent = defineAsyncComponent(
+  () => import('components/item/BaseComponent.vue')
+)
+const ModifierComponent = defineAsyncComponent(
+  () => import('components/item/ModifierComponent.vue')
+)
+const AuctionComponent = defineAsyncComponent(
+  () => import('components/item/AuctionComponent.vue')
+)
+const ItemComponent = defineAsyncComponent(
+  () => import('components/item/ItemComponent.vue')
+)
 
 const { t } = useI18n({ useScope: 'global' })
 const ias = useItemAddStore()

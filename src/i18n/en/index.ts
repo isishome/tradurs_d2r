@@ -85,6 +85,8 @@ export default {
     me: 'Me'
   },
   base: {
+    platform: 'Platform',
+    selectPlatform: 'Choose a platform',
     region: 'Region',
     selectRegion: 'Choose a region',
     ladder: 'Ladder',

@@ -230,8 +230,9 @@ watch(
             <q-btn
               v-if="route.name === 'main'"
               aria-label="Tradurs Filter Button"
-              outline
               dense
+              color="blue-grey-2"
+              text-color="dark"
               icon="filter_alt"
               stack
               @click="gs.leftDrawer = !gs.leftDrawer"

@@ -104,6 +104,7 @@ export type Modifier = Similarity & {
 }
 
 export type Item = Similarity & {
+  platform?: string
   region?: string
   ladder: boolean
   hardcore: boolean
@@ -153,6 +154,7 @@ export const allLabel = (): Label => {
 
 export const defaultItem = (): Item => {
   return {
+    platform: undefined,
     region: undefined,
     ladder: true,
     hardcore: false,
@@ -210,6 +212,7 @@ export const defaultBid = (): Bid => {
 export const defaultFilter = (): Filter => {
   return {
     ...defaultItem(),
+    platform: 'all',
     region: 'all',
     ethereal: null,
     quality: 'all',

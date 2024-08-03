@@ -257,7 +257,11 @@ onUnmounted(() => {
           <div
             class="text-overline row justify-center items-center q-gutter-x-xs"
           >
-            <div>
+            <div class="text-white">
+              {{ ias.platforms.find((p) => p.value === data.platform)?.label }}
+            </div>
+            <div>:</div>
+            <div class="text-indigo-4">
               {{ ias.regions.find((r) => r.value === data.region)?.label }}
             </div>
             <template v-if="data.ladder">

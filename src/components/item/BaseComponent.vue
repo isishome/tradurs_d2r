@@ -218,6 +218,24 @@ defineExpose({ validate })
     <div>
       <q-select
         filled
+        v-model="_item.platform"
+        :options="
+          type === BaseType.Filter
+            ? [allLabel(), ...ias.platforms]
+            : ias.platforms
+        "
+        :label="t('base.platform')"
+        map-options
+        emit-value
+        no-error-icon
+        hide-bottom-space
+        @update:model-value="update"
+        :rules="[(val) => !!val || t('base.selectPlatform')]"
+      />
+    </div>
+    <div>
+      <q-select
+        filled
         v-model="_item.region"
         :options="
           type === BaseType.Filter ? [allLabel(), ...ias.regions] : ias.regions

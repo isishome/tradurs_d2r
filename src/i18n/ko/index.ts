@@ -85,6 +85,8 @@ export default {
     me: '나'
   },
   base: {
+    platform: '플랫폼',
+    selectPlatform: '플랫폼을 선택하세요',
     region: '지역',
     selectRegion: '지역을 선택하세요',
     ladder: '래더',
