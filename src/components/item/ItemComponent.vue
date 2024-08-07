@@ -19,12 +19,14 @@ type Props = {
   editable?: boolean
   loading?: boolean
   width?: number
+  noMore?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   editable: false,
   loading: false,
-  width: 360
+  width: 360,
+  noMore: false
 })
 
 const emit = defineEmits([
@@ -294,7 +296,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div
-          v-if="!editable"
+          v-if="!editable && !noMore"
           class="more no-hover absolute-right row items-center"
         >
           <q-btn

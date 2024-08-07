@@ -43,7 +43,7 @@ const getItems = () => {
   items.value = blankItems
   alignItems()
   is.getItems(page.value).then((result) => {
-    items.value = result
+    items.value = result.items
     alignItems()
   })
 }
@@ -78,7 +78,7 @@ const move = (val: number) => {
 
 const updateItem = (item: Item, message?: string) => {
   is.getItems(1, item.id).then((result) => {
-    Object.assign(item, result[0])
+    Object.assign(item, result.items[0])
     if (message) notify(message)
   })
 }

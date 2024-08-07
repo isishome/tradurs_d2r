@@ -145,6 +145,11 @@ export type Filter = Item & {
   modifierGroups?: Array<ModifierGroup>
 }
 
+export type ItemInfo = {
+  items: Array<Item>
+  userItems: Array<Item>
+}
+
 export const allLabel = (): Label => {
   return {
     value: 'all',

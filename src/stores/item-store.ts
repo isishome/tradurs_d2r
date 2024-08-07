@@ -5,7 +5,7 @@ import { useQuasar } from 'quasar'
 import { api } from 'boot/axios'
 import { Lang } from 'src/types/global'
 import type { Page, Notify } from 'src/types/global'
-import type { Bid, Item, Filter } from 'src/types/item'
+import type { Bid, Item, ItemInfo, Filter } from 'src/types/item'
 import { defaultFilter } from 'src/types/item'
 import { useGlobalStore } from './global-store'
 import { sleep } from 'src/composables/common'
@@ -29,6 +29,7 @@ export const useItemStore = defineStore('item', () => {
     newItems: 0
   })
   const detailItem = ref<Item>()
+  const userItems = ref<Array<Item>>([])
   const notify = ref<Notify>({
     request: 0,
     queues: []
@@ -45,7 +46,7 @@ export const useItemStore = defineStore('item', () => {
     id?: number,
     options?: AxiosRequestConfig
   ) => {
-    return new Promise<Array<Item>>(async (resolve, reject) => {
+    return new Promise<ItemInfo>(async (resolve, reject) => {
       gs.showLoading()
 
       await sleep(400)
@@ -65,7 +66,7 @@ export const useItemStore = defineStore('item', () => {
           if (!!!id) {
             itemPage.over = page > 1
             itemPage.more = response.data.length > itemPage.rows
-            response.data.splice(itemPage.rows, 1)
+            response.data.items.splice(itemPage.rows, 1)
           }
           resolve(response.data)
         })
@@ -222,6 +223,7 @@ export const useItemStore = defineStore('item', () => {
     itemWidth,
     itemPage,
     detailItem,
+    userItems,
     notify,
     filter,
     resetFilter,

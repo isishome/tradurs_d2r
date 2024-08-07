@@ -17,7 +17,8 @@ export default {
     return is
       .getItems(1, parseInt(currentRoute.params.id as string), options)
       .then((result) => {
-        is.detailItem = result[0]
+        is.detailItem = result.items[0]
+        is.userItems = result.userItems
       })
       .catch(() => {
         is.detailItem = undefined
@@ -30,7 +31,8 @@ export default {
 import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import type { Bid } from 'src/types/item'
+import type { Size } from 'src/types/global'
+import type { Bid, Item } from 'src/types/item'
 import { defaultBid } from 'src/types/item'
 import { useAccountStore } from 'stores/account-store'
 import { sound } from 'src/sockets/messenger'
@@ -52,6 +54,15 @@ const as = useAccountStore()
 
 const bids = ref<Array<Bid>>([])
 const _bid = reactive<Bid>(defaultBid())
+const colGroup = reactive<Array<Array<Item>>>([])
+const size = reactive<Size>({} as Size)
+const _slide = ref<number>(0)
+
+const limit = computed(() =>
+  Math.floor(size.width / (is.itemWidth + 128)) > 0
+    ? Math.floor(size.width / (is.itemWidth + 128))
+    : 1
+)
 
 const itemId = computed(() =>
   !!props.id && !isNaN(Number(props.id)) ? Number(props.id) : undefined
@@ -63,6 +74,22 @@ const getBids = (overBidId?: number) => {
   is.getBids(itemId.value as number, overBidId).then((data) => {
     bids.value = !!overBidId ? [...bids.value, ...data] : data
   })
+}
+
+const alignUserItems = () => {
+  const cloneItems = JSON.parse(JSON.stringify(is.userItems))
+  colGroup.splice(0, colGroup.length)
+  _slide.value = 0
+
+  while (cloneItems.length > 0) {
+    let cnt = 0
+    const cols = []
+    while (cnt < limit.value) {
+      cols.push(cloneItems.shift())
+      cnt++
+    }
+    colGroup.push(cols)
+  }
 }
 
 const addBid = (val: number) => {
@@ -77,7 +104,7 @@ const addBid = (val: number) => {
     })
     .then(() => {
       is.getItems(1, parseInt(props.id as string)).then((result) => {
-        is.detailItem = result[0]
+        is.detailItem = result.items[0]
       })
       getBids()
     })
@@ -85,7 +112,7 @@ const addBid = (val: number) => {
 
 const updateItem = (val: number, message?: string) => {
   is.getItems(1, val).then((result) => {
-    is.detailItem = result[0]
+    is.detailItem = result.items[0]
     getBids()
 
     if (message) notify(message)
@@ -114,7 +141,7 @@ const updateAuctioneerRate = (
   is.updateAuctioneerRate(itemId.value as number, val)
     .then(() => {
       is.getItems(1, parseInt(props.id as string)).then((result) => {
-        is.detailItem = result[0]
+        is.detailItem = result.items[0]
       })
     })
     .catch(() => {
@@ -132,6 +159,16 @@ const updateBidderRate = (val: number, failed: (before: number) => void) => {
     })
 }
 
+const goItem = async (id: number) => {
+  await router.push({ name: 'item', params: { id } })
+}
+
+watch(limit, (val, old) => {
+  if (val && val !== old) {
+    alignUserItems()
+  }
+})
+
 watch(requestUpdate, (val, old) => {
   if (!!val && val !== old) {
     let cnt = 0
@@ -144,7 +181,7 @@ watch(requestUpdate, (val, old) => {
       sound()
 
       is.getItems(1, parseInt(props.id as string)).then((result) => {
-        is.detailItem = result[0]
+        is.detailItem = result.items[0]
       })
       getBids(
         !!!queue?.completed && !!!queue?.bidId && bids.value.length > 0
@@ -156,15 +193,20 @@ watch(requestUpdate, (val, old) => {
 })
 
 watch(itemId, (val, old) => {
-  if (!!val && val !== old) getBids()
+  if (!!val && val !== old) {
+    alignUserItems()
+    getBids()
+  }
 })
 
 onMounted(() => {
+  alignUserItems()
   getBids()
 })
 
 onUnmounted(() => {
   is.detailItem = undefined
+  is.userItems = []
 })
 </script>
 <template>
@@ -196,6 +238,7 @@ onUnmounted(() => {
         <div>{{ t('messages.noItem') }}</div>
       </div>
     </div>
+
     <div class="q-py-md"></div>
     <div class="bottom-bar row justify-center items-center">
       <div class="full-width row justify-between items-center">
@@ -215,6 +258,42 @@ onUnmounted(() => {
         <div></div>
       </div>
     </div>
+    <q-resize-observer
+      :debounce="400"
+      @resize="(val:Size) => {Object.assign(size, val)}"
+    />
+    <template v-if="colGroup.length > 0">
+      <q-separator class="q-my-xl" />
+      <div class="text-h6 q-mb-lg text-center">
+        {{ t('item.inProgressUserItems') }}
+      </div>
+      <q-carousel
+        v-model="_slide"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        swipeable
+        animated
+        arrows
+        padding
+        height="101%"
+        class="full-width bg-transparent"
+      >
+        <q-carousel-slide :name="idx" v-for="(col, idx) in colGroup" :key="idx">
+          <div class="row justify-around q-gutter-x-lg no-wrap">
+            <ItemComponent
+              v-for="userItem in col"
+              :key="userItem.id"
+              :class="[
+                userItem.loading ? 'no-pointer-events' : 'cursor-pointer'
+              ]"
+              @click="goItem(userItem.id as number)"
+              :data="userItem"
+              no-more
+            />
+          </div>
+        </q-carousel-slide>
+      </q-carousel>
+    </template>
   </div>
 </template>
 

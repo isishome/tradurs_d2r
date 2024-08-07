@@ -150,7 +150,8 @@ export default {
     favorite: '즐겨찾기',
     clone: '복제',
     share: '공유',
-    processingAuctionEnd: '경매 종료 처리 중'
+    processingAuctionEnd: '경매 종료 처리 중',
+    inProgressUserItems: '사용자가 경매 중인 아이템 목록'
   },
   modifier: {
     noAddData: '추가 속성을 찾을 수 없습니다',

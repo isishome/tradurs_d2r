@@ -163,22 +163,22 @@ onMounted(() => {
   if (!!props.id)
     is.getItems(1, Number(props.id)).then((result) => {
       if (route.name === 'clone') {
-        result[0].id = undefined
-        result[0].region = undefined
-        result[0].ladder = true
-        result[0].hardcore = false
-        result[0].id = undefined
-        result[0].price = defaultPrice()
-        result[0].user = undefined
-        result[0].regDate = undefined
-        result[0].startDate = undefined
-        result[0].addProgressTime = 0
-        result[0].statusCode = undefined
-        result[0].favorite = false
-        result[0].rate = undefined
-        result[0].loading = false
+        result.items[0].id = undefined
+        result.items[0].region = undefined
+        result.items[0].ladder = true
+        result.items[0].hardcore = false
+        result.items[0].id = undefined
+        result.items[0].price = defaultPrice()
+        result.items[0].user = undefined
+        result.items[0].regDate = undefined
+        result.items[0].startDate = undefined
+        result.items[0].addProgressTime = 0
+        result.items[0].statusCode = undefined
+        result.items[0].favorite = false
+        result.items[0].rate = undefined
+        result.items[0].loading = false
       }
-      _item.value = result[0]
+      _item.value = result.items[0]
     })
 })
 </script>

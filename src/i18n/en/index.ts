@@ -151,7 +151,8 @@ export default {
     favorite: 'Favorite',
     clone: 'Duplicate',
     share: 'Share',
-    processingAuctionEnd: 'Processing auction end'
+    processingAuctionEnd: 'Processing auction end',
+    inProgressUserItems: 'A list of items that the user is auctioning'
   },
   modifier: {
     noAddData: 'No additional affixes found',
