@@ -3,14 +3,13 @@
 
 export default {
   meta: {
-    title: "Diablo® II: Resurrected {'|'} Tradurs",
+    title: "{p}Diablo® II: Resurrected {'|'} Tradurs",
     description:
       'Trade various items used in Diablo® II: Resurrected on the Tradurs',
     keywords:
       'dia2, dia 2, diablo2, diablo 2, dia, diablo, trade, trading, trade site, trade web, auction, auction web'
   },
   page: {
-    main: 'Main',
     item: 'Item',
     add: 'Add Item',
     clone: 'Clone Item',

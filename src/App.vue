@@ -30,11 +30,10 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useQuasar, useMeta } from 'quasar'
-import type { Meta } from 'src/types/global'
 
 import { useGlobalStore } from 'stores/global-store'
 import { useItemStore } from 'stores/item-store'
@@ -44,7 +43,7 @@ import { sound } from 'src/sockets/messenger'
 
 const route = useRoute()
 const router = useRouter()
-const { t, locale } = useI18n({ useScope: 'global' })
+const { t, te, locale } = useI18n({ useScope: 'global' })
 
 const $q = useQuasar()
 const gs = useGlobalStore()
@@ -64,26 +63,28 @@ const showView = ref<boolean>(false)
 const requestNotify = computed(() => is.notify.request)
 const reloadAdKey = computed(() => gs.adsense.reloadAdKey)
 
-const meta = reactive<Meta>({
-  title: t('meta.title'),
-  description: t('meta.description'),
-  keywords: t('meta.keywords')
-})
+gs.meta.title = computed(() =>
+  te(`page.${route.name as string}`)
+    ? t('meta.title', { p: `${t(`page.${route.name as string}`)} - ` })
+    : t('meta.title')
+)
+gs.meta.description = t('meta.description')
+gs.meta.keywords = t('meta.keywords')
 
 useMeta(() => {
   return {
-    title: meta.title,
+    title: gs.meta.title,
     meta: {
-      description: { name: 'description', content: meta.description },
-      keywords: { name: 'keywords', content: meta.keywords },
+      description: { name: 'description', content: gs.meta.description },
+      keywords: { name: 'keywords', content: gs.meta.keywords },
       equiv: {
         'http-equiv': 'Content-Type',
         content: 'text/html; charset=UTF-8'
       },
-      ogTitle: { property: 'og:title', content: meta.title },
+      ogTitle: { property: 'og:title', content: gs.meta.title },
       ogDescription: {
         property: 'og:description',
-        content: meta.description
+        content: gs.meta.description
       },
       ogUrl: { property: 'og:url', content: 'https://d2r.tradurs.com' },
       ogType: { property: 'og:type', content: 'website' },
@@ -92,10 +93,10 @@ useMeta(() => {
         content: 'https://d2r.tradurs.com/images/og.png'
       },
       twitterCard: { name: 'twitter:card', content: 'summary' },
-      twitterTitle: { name: 'twitter:title', content: meta.title },
+      twitterTitle: { name: 'twitter:title', content: gs.meta.title },
       twitterDescription: {
         name: 'twitter:description',
-        content: meta.description
+        content: gs.meta.description
       },
       twitterUrl: { name: 'twitter:url', content: 'https://d2r.tradurs.com' },
       twitterImage: {

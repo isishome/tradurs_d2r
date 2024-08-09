@@ -1,8 +1,4 @@
 User-agent: *
-Disallow: /item/
-Disallow: /en/item/
-
-User-agent: *
 Allow: /
 
 Sitemap: https://d2r.tradurs.com/sitemap.xml

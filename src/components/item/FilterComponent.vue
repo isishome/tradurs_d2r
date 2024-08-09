@@ -178,6 +178,7 @@ watch(
       :type="BaseType.Filter"
       @update="updateFilter"
     />
+    <q-separator class="full-width q-mt-md q-mb-sm" />
     <q-select
       filled
       class="full-width"
@@ -190,6 +191,7 @@ watch(
       hide-bottom-space
       @update:model-value="updateFilter()"
     />
+    <q-separator class="full-width q-mt-md q-mb-sm" />
     <q-btn
       aria-label="Tradurs Add Affix Group Button"
       :disable="(_filter.modifierGroups?.length ?? 0) > 2"

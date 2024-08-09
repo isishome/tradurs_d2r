@@ -3,7 +3,7 @@ import { ref, reactive, computed } from 'vue'
 import { api } from 'src/boot/axios'
 import type { Adsense } from 'src/types/global'
 import { Lang } from 'src/types/global'
-import type { Label, Size } from 'src/types/global'
+import type { Meta, Label, Size } from 'src/types/global'
 
 export const useGlobalStore = defineStore('global', () => {
   const lang = ref<Lang>(Lang.KO)
@@ -12,6 +12,8 @@ export const useGlobalStore = defineStore('global', () => {
     { value: 'ko', label: '한국어' },
     { value: 'en', label: 'English' }
   ])
+
+  const meta = reactive<Meta>({} as Meta)
 
   const loadingCount = ref<number>(0)
   const leftDrawer = ref<boolean>(false)
@@ -65,6 +67,7 @@ export const useGlobalStore = defineStore('global', () => {
   return {
     lang,
     locale,
+    meta,
     localeOptions,
     loadingCount,
     leftDrawer,

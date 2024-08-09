@@ -1,10 +1,12 @@
+import { ComputedRef } from 'vue'
+
 export enum Lang {
   KO = 'ko',
   EN = 'en'
 }
 
 export type Meta = {
-  title: string
+  title: ComputedRef
   description: string
   keywords: string
 }

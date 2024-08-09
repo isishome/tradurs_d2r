@@ -535,6 +535,12 @@ onUnmounted(() => {
   }
 }
 
+@media (max-width: 600px) {
+  .item:deep(.more) {
+    visibility: visible !important;
+  }
+}
+
 .modifiers {
   &:deep(> div) {
     color: var(--quality-magic);
