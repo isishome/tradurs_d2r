@@ -125,8 +125,8 @@ const imgSrc = computed(() => (num?: number) => {
     paths.push(item.value)
   } else {
     paths.push(category.value)
-    paths.push(findItem.value?.itemType)
-    paths.push(findItem.value?.classType)
+    paths.push(findItem.value?.itemType ?? itemType.value)
+    paths.push(findItem.value?.classType ?? classType.value)
     paths.push(num ?? imageId.value ?? imageType.value ?? item.value)
   }
 
