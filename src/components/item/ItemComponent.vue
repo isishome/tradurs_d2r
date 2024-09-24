@@ -79,8 +79,6 @@ const findItem = computed(() =>
     ? ias.runewords().find((rw) => rw.value === item.value)
     : category.value === 'misc'
     ? ias.misc.find((m) => m.value === item.value)
-    : quality.value === 'normal'
-    ? undefined
     : category.value === 'weapons'
     ? ias
         .weapons(itemType.value, classType.value)
@@ -127,8 +125,8 @@ const imgSrc = computed(() => (num?: number) => {
     paths.push(item.value)
   } else {
     paths.push(category.value)
-    paths.push(itemType.value)
-    paths.push(classType.value)
+    paths.push(findItem.value?.itemType)
+    paths.push(findItem.value?.classType)
     paths.push(num ?? imageId.value ?? imageType.value ?? item.value)
   }
 
@@ -198,7 +196,7 @@ const del = () => {
       emit('delete-item', props.data.id)
     })
     .onCancel(() => {
-      // console.log('>>>> Cancel')
+      //
     })
 }
 
@@ -280,7 +278,7 @@ onUnmounted(() => {
               {{ t('base.softcore') }}
             </div>
           </div>
-          <div>
+          <div v-if="data.quality !== 'normal'">
             {{ name }}
           </div>
           <div
