@@ -19,7 +19,7 @@ export const useGlobalStore = defineStore('global', () => {
   const leftDrawer = ref<boolean>(false)
   const rightDrawer = ref<boolean>(false)
   const adsense = ref<Adsense>({
-    timeLimit: 0,
+    timeLimit: 60000,
     top: {
       timeStamp: Date.now(),
       adKey: 0
