@@ -5,11 +5,13 @@ import {
   createWebHashHistory,
   createWebHistory
 } from 'vue-router'
+import { LocalStorage } from 'quasar'
 import { api } from 'boot/axios'
 import routes from './routes'
 import { Lang } from 'src/types/global'
 import { useGlobalStore } from 'src/stores/global-store'
 import { useAccountStore } from 'src/stores/account-store'
+import { useItemAddStore } from 'src/stores/item-add-store'
 import { initMessenger } from 'src/sockets/messenger'
 
 /*
@@ -20,6 +22,10 @@ import { initMessenger } from 'src/sockets/messenger'
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
+
+export const clearLocalStorage = () => {
+  LocalStorage.removeItem('base')
+}
 
 export default route(function ({ store }) {
   const createHistory = process.env.SERVER
@@ -46,6 +52,7 @@ export default route(function ({ store }) {
 
     const gs = useGlobalStore(store)
     const as = useAccountStore(store)
+    const ias = useItemAddStore(store)
     gs.lang = lang as Lang
     const requireAuth = !!to.matched.some((m) => m.meta.requireAuth)
 
@@ -53,7 +60,19 @@ export default route(function ({ store }) {
 
     if (!['pnf', 'ftc'].includes(to.name as string)) {
       try {
-        await gs.checkHealth()
+        const appVersion = LocalStorage.getItem<string>('APP_VERSION')
+        const locale = LocalStorage.getItem<string>('lang')
+
+        if (
+          appVersion !== import.meta.env.VITE_APP_VERSION ||
+          locale !== lang
+        ) {
+          clearLocalStorage()
+          LocalStorage.setItem('APP_VERSION', import.meta.env.VITE_APP_VERSION)
+          LocalStorage.setItem('lang', lang)
+        }
+
+        await Promise.all([gs.checkHealth(), ias.getBase()])
       } catch {
         return next({ name: 'ftc' })
       }

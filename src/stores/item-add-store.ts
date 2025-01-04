@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { api } from 'boot/axios'
-import { AxiosRequestConfig } from 'axios'
-import { reactive, computed } from 'vue'
+import { computed } from 'vue'
+import { LocalStorage } from 'quasar'
 import stringComparison from 'string-comparison'
 import type { Label, HttpRequestStore } from 'src/types/global'
 import type {
@@ -46,7 +46,7 @@ const cos = stringComparison.cosine
 
 export const useItemAddStore = defineStore('item-add', () => {
   const gs = useGlobalStore()
-  const base = reactive<HttpRequestStore<BaseData>>({
+  const base: HttpRequestStore<BaseData> = {
     request: 0,
     loading: false,
     data: {
@@ -72,7 +72,7 @@ export const useItemAddStore = defineStore('item-add', () => {
       misc: [],
       status: []
     }
-  })
+  }
 
   const modifiers = computed(() =>
     itemModifiers.map((im) => ({
@@ -486,45 +486,54 @@ export const useItemAddStore = defineStore('item-add', () => {
     return children
   }
 
-  const getBase = (options?: AxiosRequestConfig) => {
+  const getBase = () => {
     return new Promise<void>((resolve, reject) => {
       const error: unknown = null
-      if (base.request === 0) {
+      const data = LocalStorage.getItem<string>('base') ?? ''
+      if (!!data && base.request === 0) {
+        base.request++
+        base.data = JSON.parse(data)
+        //Object.assign(base.data, JSON.parse(data))
+        resolve()
+      } else if (base.request === 0) {
         base.request++
         base.loading = true
         api
-          .get<BaseData>('/d2/item/base', options)
+          .get<BaseData>('/d2/item/base')
           .then((response) => {
             if (response?.data) {
-              base.data.platforms.push(...response.data.platforms)
-              base.data.regions.push(...response.data.regions)
-              base.data.classes.push(...response.data.classes)
-              base.data.quality.push(...response.data.quality)
-              base.data.category.push(...response.data.category)
-              base.data.qualityMappingCategory.push(
-                ...response.data.qualityMappingCategory
-              )
-              base.data.weaponTypes.push(...response.data.weaponTypes)
-              base.data.weapons.push(...response.data.weapons)
-              base.data.armorTypes.push(...response.data.armorTypes)
-              base.data.armor.push(...response.data.armor)
-              base.data.charmTypes.push(...response.data.charmTypes)
-              base.data.runes.push(...response.data.runes)
-              base.data.gems.push(...response.data.gems)
-              base.data.runewords.push(...response.data.runewords)
-              base.data.runewordMappingWeapon.push(
-                ...response.data.runewordMappingWeapon
-              )
-              base.data.runewordMappingArmor.push(
-                ...response.data.runewordMappingArmor
-              )
-              base.data.runewordMappingRune.push(
-                ...response.data.runewordMappingRune
-              )
-              base.data.uniques.push(...response.data.uniques)
-              base.data.setItems.push(...response.data.setItems)
-              base.data.misc.push(...response.data.misc)
-              base.data.status.push(...response.data.status)
+              LocalStorage.setItem('base', JSON.stringify(response.data))
+              base.data = response.data
+              //Object.assign(base.data, response.data)
+              // base.data.platforms.push(...response.data.platforms)
+              // base.data.regions.push(...response.data.regions)
+              // base.data.classes.push(...response.data.classes)
+              // base.data.quality.push(...response.data.quality)
+              // base.data.category.push(...response.data.category)
+              // base.data.qualityMappingCategory.push(
+              //   ...response.data.qualityMappingCategory
+              // )
+              // base.data.weaponTypes.push(...response.data.weaponTypes)
+              // base.data.weapons.push(...response.data.weapons)
+              // base.data.armorTypes.push(...response.data.armorTypes)
+              // base.data.armor.push(...response.data.armor)
+              // base.data.charmTypes.push(...response.data.charmTypes)
+              // base.data.runes.push(...response.data.runes)
+              // base.data.gems.push(...response.data.gems)
+              // base.data.runewords.push(...response.data.runewords)
+              // base.data.runewordMappingWeapon.push(
+              //   ...response.data.runewordMappingWeapon
+              // )
+              // base.data.runewordMappingArmor.push(
+              //   ...response.data.runewordMappingArmor
+              // )
+              // base.data.runewordMappingRune.push(
+              //   ...response.data.runewordMappingRune
+              // )
+              // base.data.uniques.push(...response.data.uniques)
+              // base.data.setItems.push(...response.data.setItems)
+              // base.data.misc.push(...response.data.misc)
+              // base.data.status.push(...response.data.status)
             }
           })
           .catch((e) => {

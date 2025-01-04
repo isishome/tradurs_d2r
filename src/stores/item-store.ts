@@ -8,7 +8,6 @@ import type { Page, Notify } from 'src/types/global'
 import type { Bid, Item, ItemInfo, Filter } from 'src/types/item'
 import { defaultFilter } from 'src/types/item'
 import { useGlobalStore } from './global-store'
-import { sleep } from 'src/composables/common'
 
 type ItemPage = Page & {
   newItems: number
@@ -48,8 +47,6 @@ export const useItemStore = defineStore('item', () => {
   ) => {
     return new Promise<ItemInfo>(async (resolve, reject) => {
       gs.showLoading()
-
-      await sleep(400)
 
       api
         .post(

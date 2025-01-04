@@ -1,10 +1,8 @@
 <script lang="ts">
-import { useItemAddStore } from 'stores/item-add-store'
 import { useAccountStore } from 'stores/account-store'
 
 export default {
   async preFetch({ store, ssrContext, currentRoute }) {
-    const ias = useItemAddStore(store)
     const as = useAccountStore(store)
     const lang = (currentRoute.params.lang as string) || 'ko'
 
@@ -16,9 +14,9 @@ export default {
           }
         }
       : undefined
-    const promises = [ias.getBase(options), as.checkSign(options)]
 
-    return Promise.all(promises)
+    return as
+      .checkSign(options)
       .then(() => {
         //
       })

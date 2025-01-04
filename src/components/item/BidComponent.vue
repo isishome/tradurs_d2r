@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, nextTick } from 'vue'
+import { ref, computed, watch, nextTick, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { QCardSection, QForm, QInput, date } from 'quasar'
 import type { Bid, Item } from 'src/types/item'
@@ -30,6 +30,7 @@ const maxAmount = computed(() =>
     ? Math.max(...props.data?.map((b) => b.amount))
     : 0
 )
+let addTimer: ReturnType<typeof setInterval>
 
 const biddingRules = (val: number) => {
   let message
@@ -48,7 +49,7 @@ const biddingRules = (val: number) => {
 
 const add = () => {
   emit('add', _amount.value)
-  setTimeout(() => {
+  addTimer = setTimeout(() => {
     amountRef.value?.focus()
   }, 0)
 }
@@ -65,6 +66,10 @@ watch(
   },
   { deep: true }
 )
+
+onUnmounted(() => {
+  clearTimeout(addTimer)
+})
 </script>
 
 <template>
