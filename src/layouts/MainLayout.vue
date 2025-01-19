@@ -256,7 +256,7 @@ watch(
           </div>
         </div>
         <div class="q-py-xl"></div>
-        <div v-show="ltmdDrawer" class="q-py-lg row justify-center">
+        <div v-if="ltmdDrawer" class="q-py-lg row justify-center">
           <Adsense
             ref="bottomAdRef"
             :style="sizeBottom"
