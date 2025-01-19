@@ -219,9 +219,10 @@ watch(
           <Adsense
             ref="topAdRef"
             :style="size"
-            data-ad-client="ca-pub-5110777286519562"
             data-ad-slot="9661979705"
             :data-adtest="!prod"
+            data-ad-format="horizontal"
+            data-full-width-responsive="false"
             :key="gs.adsense.top.adKey"
           />
         </div>
@@ -247,9 +248,10 @@ watch(
             <Adsense
               ref="rightAdRef"
               style="display: inline-block; width: 160px; height: 600px"
-              data-ad-client="ca-pub-5110777286519562"
               data-ad-slot="2839584311"
               :data-adtest="!prod"
+              data-ad-format="vertical"
+              data-full-width-responsive="false"
               :key="gs.adsense.right.adKey"
             />
           </div>
@@ -259,9 +261,10 @@ watch(
           <Adsense
             ref="bottomAdRef"
             :style="sizeBottom"
-            data-ad-client="ca-pub-5110777286519562"
             data-ad-slot="3038631536"
             :data-adtest="!prod"
+            data-ad-format="horizontal"
+            data-full-width-responsive="true"
             :key="gs.adsense.bottom.adKey"
           />
         </div>
