@@ -315,9 +315,9 @@ watch(
       position="right"
     >
       <q-card square style="width: 80vw" flat>
-        <q-card-section class="bg-primary text-dark">
+        <q-card-section v-if="as.signed" class="bg-primary text-dark">
           <div class="row justify-center">
-            <BattleTagComponent v-if="as.signed" />
+            <BattleTagComponent />
           </div>
         </q-card-section>
         <q-separator />

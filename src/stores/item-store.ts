@@ -62,7 +62,7 @@ export const useItemStore = defineStore('item', () => {
         .then((response) => {
           if (!!!id) {
             itemPage.over = page > 1
-            itemPage.more = response.data.length > itemPage.rows
+            itemPage.more = response.data.items.length > itemPage.rows
             response.data.items.splice(itemPage.rows, 1)
           }
           resolve(response.data)
