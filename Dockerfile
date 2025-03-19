@@ -1,5 +1,5 @@
-# alpine 20 버전 기반 빌더
-FROM node:20-alpine AS builder
+# alpine 18 버전 기반 빌더
+FROM node:18-alpine AS builder
 
 # 작업 디렉토리
 WORKDIR /d2r-proj
@@ -14,8 +14,8 @@ RUN npm install && npx quasar build -m ssr && npm cache clean --force
 WORKDIR /d2r-proj/dist/ssr
 RUN npm install && npm cache clean --force
 
-# alpine 20 버전 기반
-FROM node:20-alpine
+# alpine 18 버전 기반
+FROM node:18-alpine
 
 # 작업 디렉토리
 WORKDIR /d2r
