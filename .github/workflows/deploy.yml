@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            cd /home/ec2-user/tradurs.d2r
+            cd /home/ec2-user/tradurs.d2r/dist/ssr
             sudo docker build --no-cache -t tradurs:d2r .
             sudo docker stop "tradurs.d2r" || true
             sudo docker rm -f "tradurs.d2r" || true
