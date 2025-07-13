@@ -44,7 +44,7 @@ jobs:
 
       - name: Save Docker image as tarball
         run: |
-          docker save tradurs:d2r -o tradurs_d2r.tar
+          docker save tradurs:d2r -o ./dist/ssr/tradurs_d2r.tar
 
       - name: Upload image to Lightsail server
         uses: appleboy/scp-action@v0.1.7
