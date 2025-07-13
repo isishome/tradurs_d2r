@@ -41,8 +41,8 @@ jobs:
           port: ${{ secrets.LIGHTSAIL_PORT }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-          source: './dist/ssr/'
-          target: '/home/ec2-user/tradurs.d2r'
+          source: './dist/ssr/**'
+          target: '/home/ec2-user/tradurs.d2r/'
 
       - name: SSH into Lightsail and run container
         uses: appleboy/ssh-action@v1.0.3
