@@ -53,11 +53,11 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
             cd /home/ec2-user/tradurs.d2r
-            sudo docker build -t tradurs:d2r .
+            sudo docker build --no-cache -t tradurs:d2r .
             sudo docker stop "tradurs.d2r" || true
             sudo docker rm -f "tradurs.d2r" || true
             sudo docker run -d --restart always --cpuset-cpus="0" --cpu-shares=25000 \
               --cpu-period=100000 --memory="768mb" --publish 6092:6092 \
-              --name "tradurs.d2r" tradurs:d2r
+              --name tradurs.d2r tradurs:d2r
             sudo docker system prune -f
             sudo docker buildx prune -f
