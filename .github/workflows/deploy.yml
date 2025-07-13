@@ -50,15 +50,17 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
+          port: ${{ secrets.LIGHTSAIL_PORT }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           source: './dist/ssr/tradurs_d2r.tar'
-          target: '~/'
+          target: '/tmp/'
 
       - name: SSH into Lightsail and run container
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
+          port: ${{ secrets.LIGHTSAIL_PORT }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
