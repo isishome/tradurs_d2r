@@ -358,6 +358,11 @@ defineExpose({ validate })
         emit-value
         no-error-icon
         hide-bottom-space
+        :rules="
+          _item.quality === 'magic' && _item.category === 'charms'
+            ? [(val) => !!val || '선택']
+            : undefined
+        "
         @update:model-value="updateItemType"
       />
       <q-select

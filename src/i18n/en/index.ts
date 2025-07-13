@@ -75,7 +75,7 @@ export default {
     progressTime: 'Auction progress time (minutes)',
     requireProgressTime: 'Enter the auction progress time',
     allowProgressTime:
-      'The auction progress time can be set from a minimum of 5 minutes to a maximum of 60 minutes (1 hour).',
+      'The auction progress time can be set from a minimum of 5 minutes to a maximum of 1440 minutes (1 day).',
     hour: 'hours',
     minutes: 'minutes',
     auctioneer: 'Auctioneer',

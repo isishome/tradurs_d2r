@@ -75,7 +75,7 @@ export default {
     progressTime: '경매 진행 시간(분)',
     requireProgressTime: '경매 진행 시간을 입력하세요',
     allowProgressTime:
-      '경매 진행 시간은 최소 5분에서 최대 60분(1시간)까지 지정 가능합니다.',
+      '경매 진행 시간은 최소 5분에서 최대 1440분(24시간)까지 지정 가능합니다.',
     hour: '시간',
     minutes: '분',
     auctioneer: '경매자',

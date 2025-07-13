@@ -33,7 +33,7 @@ const progressTimeRules = (val: number) => {
   let message
 
   if (!!!val) message = t('auction.requireProgressTime')
-  else if (val < 5 || val > 60) message = t('auction.allowProgressTime')
+  else if (val < 5 || val > 1440) message = t('auction.allowProgressTime')
 
   return !!!message || message
 }
@@ -163,7 +163,7 @@ defineExpose({ validate })
         no-error-icon
         hide-bottom-space
         v-model.number="_progressTime"
-        maxlength="2"
+        maxlength="4"
         type="tel"
         mask="#"
         fill-mask="0"

@@ -1,0 +1,67 @@
+name: Deploy to Lightsail
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: aws_cicd
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Copy Dockerfile
+        run: |
+          cp Dockerfile ./dist/ssr/
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          cd ./dist/ssr
+          docker build -t tradurs:d2r .
+
+      - name: Save Docker image as tarball
+        run: |
+          docker save tradurs:d2r -o tradurs_d2r.tar
+
+      - name: Upload image to Lightsail server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          source: './dist/ssr/tradurs_d2r.tar'
+          target: '~/'
+
+      - name: SSH into Lightsail and run container
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          script: |
+            sudo docker stop "tradurs.d2r" || true
+            sudo docker rm -f "tradurs.d2r" || true
+            sudo docker load -i ~/tradurs_d2r.tar
+            sudo docker run -d --restart always --cpuset-cpus="0" --cpu-shares=25000 \
+              --cpu-period=100000 --memory="768mb" --publish 6092:6092 \
+              --name "tradurs.d2r" tradurs:d2r
+            sudo docker system prune -f
+            sudo docker buildx prune -f
