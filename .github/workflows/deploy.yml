@@ -34,7 +34,7 @@ jobs:
         run: |
           cp Dockerfile ./dist/ssr/
 
-      - name: Upload image to Lightsail server
+      - name: Upload file to Lightsail server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.LIGHTSAIL_HOST }}
