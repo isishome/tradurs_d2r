@@ -28,7 +28,7 @@ jobs:
           VITE_APP_BACKEND: ${{ secrets.VITE_APP_BACKEND }}
           VITE_APP_SOCKET: ${{ secrets.VITE_APP_SOCKET }}
           VITE_APP_TRADURS: ${{ secrets.VITE_APP_TRADURS }}
-          VITE_APP_VERSION: 0.0.6
+          VITE_APP_VERSION: 0.0.7
 
       - name: Copy Dockerfile
         run: |
@@ -43,7 +43,6 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           source: './dist/ssr/'
           target: '/home/ec2-user/tradurs.d2r/'
-          strip_components: 2
 
       - name: SSH into Lightsail and run container
         uses: appleboy/ssh-action@v1.0.3
@@ -53,7 +52,7 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            cd /home/ec2-user/tradurs.d2r
+            cd /home/ec2-user/tradurs.d2r/dist/ssr
             sudo docker build -t tradurs:d2r .
             sudo docker stop "tradurs.d2r" || true
             sudo docker rm -f "tradurs.d2r" || true
