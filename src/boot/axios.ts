@@ -1,6 +1,6 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
-import { Notify } from 'quasar'
+import { Notify, QNotifyUpdateOptions } from 'quasar'
 import { i18n } from './i18n'
 import { defaultUser } from 'src/types/user'
 import { useGlobalStore } from 'stores/global-store'
@@ -10,6 +10,12 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_APP_BACKEND,
   withCredentials: true
 })
+let dismiss:
+  | undefined
+  | {
+      (props?: QNotifyUpdateOptions): void
+      (props?: QNotifyUpdateOptions): void
+    }
 
 export default boot(({ app, store }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
@@ -26,7 +32,7 @@ export default boot(({ app, store }) => {
       const caption = (typeof message === 'object' && message.caption) || ''
       message = (typeof message === 'object' && message.body) || message
 
-      if (process.env.SERVER) return
+      if (process.env.SERVER || dismiss) return
 
       if ([401, 403].includes(status)) {
         as.signed = false
@@ -59,7 +65,10 @@ export default boot(({ app, store }) => {
                 document.location.replace(url.join('/'))
               }
             }
-          ]
+          ],
+          onDismiss: () => {
+            dismiss = undefined
+          }
         })
       } else {
         let message = (error.response && error.response.data) || error.message
@@ -71,7 +80,10 @@ export default boot(({ app, store }) => {
           color: 'red-8',
           message,
           caption,
-          timeout: 3000
+          timeout: 3000,
+          onDismiss: () => {
+            dismiss = undefined
+          }
         })
       }
 
