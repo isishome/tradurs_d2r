@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, nextTick, onUnmounted } from 'vue'
 
 interface IProps {
   dataAdClient?: string
@@ -7,51 +7,34 @@ interface IProps {
   dataAdFormat?: string
   dataAdtest?: boolean
   dataFullWidthResponsive?: string
-  repeat?: number
 }
 
-const props = withDefaults(defineProps<IProps>(), {
+withDefaults(defineProps<IProps>(), {
   dataAdClient: 'ca-pub-5110777286519562',
   dataAdFormat: undefined,
   dataAdtest: undefined,
-  dataFullWidthResponsive: undefined,
-  repeat: 5
+  dataFullWidthResponsive: undefined
 })
 
 const prod: boolean = import.meta.env.PROD
-let timer: NodeJS.Timeout
-const currentRepeat = ref(0)
 
-const render = () => {
-  currentRepeat.value++
-  if (currentRepeat.value > props.repeat) clearTimeout(timer)
-  else if (!!window?.adsbygoogle) (window.adsbygoogle || []).push({})
-  else timer = setTimeout(render, 400)
+const pushAdsense = () => {
+  ;(window.adsbygoogle = window.adsbygoogle || []).push({})
 }
 
-const load = () => {
-  const adURL = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${props.dataAdClient}`
-  const script = document.createElement('script')
-  script.src = adURL
-
-  script.async = true
-  script.crossOrigin = 'anonymous'
-
-  if (!document.head.querySelector(`script[src="${adURL}"]`)) {
-    script.onload = () => {
-      render()
-    }
-
-    document.head.appendChild(script)
-  } else render()
+const render = () => {
+  void nextTick(() => {
+    if (window.adsenseLoaded) pushAdsense()
+    else window.addEventListener('adsense-loaded', pushAdsense)
+  })
 }
 
 onMounted(() => {
-  if (prod) load()
+  if (prod) render()
 })
 
 onUnmounted(() => {
-  clearTimeout(timer)
+  window.removeEventListener('adsense-loaded', pushAdsense)
 })
 </script>
 

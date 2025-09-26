@@ -37,23 +37,12 @@ const rightAdRef = ref<InstanceType<typeof Adsense>>()
 
 const size = computed(() =>
   $q.screen.width < 320
-    ? 'width:300px;max-height:100px;'
+    ? 'width:300px;max-height:50px;'
     : $q.screen.width < 468
-    ? 'width:320px;max-height:100px;'
+    ? 'width:300px;max-height:100px;'
     : $q.screen.width < 728
     ? 'width:468px;height:60px;'
     : 'width:728px;height:90px;'
-)
-const sizeBottom = computed(() =>
-  $q.screen.width < 300
-    ? 'display:inline-block;width:250px;height:250px;'
-    : $q.screen.width < 336
-    ? 'display:inline-block;width:300px;height:250px;'
-    : $q.screen.width < 468
-    ? 'display:inline-block;width:336px;height:280px;'
-    : $q.screen.width < 728
-    ? 'display:inline-block;width:468px;height:60px;'
-    : 'display:inline-block;width:728px;height:90px;'
 )
 
 const goHome = () => {
@@ -79,19 +68,16 @@ const tweak = (headerHeight: number) => {
   _offset.value = headerHeight
 }
 
-watch(
-  [size, sizeBottom, ltmdDrawer],
-  ([val1, val2, val3], [old1, old2, old3]) => {
-    if (val1 !== old1 || val2 !== old2 || val3 !== old3) {
-      gs.adsense.top.adKey++
-      gs.adsense.bottom.adKey++
-      gs.adsense.right.adKey++
-      gs.adsense.top.timeStamp = Date.now()
-      gs.adsense.bottom.timeStamp = Date.now()
-      gs.adsense.right.timeStamp = Date.now()
-    }
+watch([size, ltmdDrawer], ([val1, val2], [old1, old2]) => {
+  if (val1 !== old1 || val2 !== old2) {
+    gs.adsense.top.adKey++
+    gs.adsense.bottom.adKey++
+    gs.adsense.right.adKey++
+    gs.adsense.top.timeStamp = Date.now()
+    gs.adsense.bottom.timeStamp = Date.now()
+    gs.adsense.right.timeStamp = Date.now()
   }
-)
+})
 
 watch(
   () => gs.adsense.reloadAdKey,
@@ -218,11 +204,9 @@ watch(
         <div class="q-py-lg row justify-center">
           <Adsense
             ref="topAdRef"
-            :style="size"
+            :style="`display:inline-block;${size}`"
             data-ad-slot="9661979705"
             :data-adtest="!prod"
-            data-ad-format="horizontal"
-            data-full-width-responsive="false"
             :key="gs.adsense.top.adKey"
           />
         </div>
@@ -250,7 +234,6 @@ watch(
               style="display: inline-block; width: 160px; height: 600px"
               data-ad-slot="2839584311"
               :data-adtest="!prod"
-              data-full-width-responsive="false"
               :key="gs.adsense.right.adKey"
             />
           </div>
@@ -259,10 +242,9 @@ watch(
         <div v-if="ltmdDrawer" class="q-py-lg row justify-center">
           <Adsense
             ref="bottomAdRef"
-            :style="sizeBottom"
             data-ad-slot="3038631536"
             :data-adtest="!prod"
-            data-ad-format="horizontal"
+            data-ad-format="auto"
             data-full-width-responsive="true"
             :key="gs.adsense.bottom.adKey"
           />
