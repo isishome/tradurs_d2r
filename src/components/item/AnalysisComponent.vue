@@ -392,7 +392,7 @@ const fileCheckAndScanStart = (f?: File) => {
   if (f && f.type.indexOf('image') !== -1) scan(f)
   else {
     $q.notify({
-      icon: 'img:/images/icons/alert.svg',
+      icon: 'alert',
       color: 'negative',
       classes: '',
       message: t('analyze.notImageFormat')
