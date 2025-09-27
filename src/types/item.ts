@@ -182,7 +182,7 @@ export const defaultItem = (): Item => {
     user: undefined,
     regDate: undefined,
     startDate: undefined,
-    progressTime: 120,
+    progressTime: 1440,
     addProgressTime: 0,
     statusCode: undefined,
     favorite: false,
