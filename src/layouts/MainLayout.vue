@@ -242,6 +242,7 @@ watch(
         <div v-if="ltmdDrawer" class="q-py-lg row justify-center">
           <Adsense
             ref="bottomAdRef"
+            style="display: block; width: 100%"
             data-ad-slot="3038631536"
             :data-adtest="!prod"
             data-ad-format="auto"
