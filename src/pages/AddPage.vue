@@ -359,7 +359,9 @@ onMounted(() => {
                   <q-item clickable v-close-popup @click="upsert(_item)">
                     <q-item-section>
                       <q-item-label>{{
-                        !!_item.id ? t('btn.edit') : t('btn.register')
+                        t('add.standby', {
+                          t: !!_item.id ? t('btn.edit') : t('btn.register')
+                        })
                       }}</q-item-label>
                     </q-item-section>
                   </q-item>

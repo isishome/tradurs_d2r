@@ -170,7 +170,8 @@ export default {
     finalConfirm: 'Final confirmation',
     addAffix: 'Add affixes',
     noAffixData: 'Affixes not found',
-    auction: '{t} and start auction'
+    auction: '{t} and start auction',
+    standby: '{t} and auction standby'
   },
   messages: {
     clipboard: 'The {t} has been copied to the clipboard',

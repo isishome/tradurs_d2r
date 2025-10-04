@@ -169,7 +169,8 @@ export default {
     finalConfirm: '최종 확인',
     addAffix: '속성 추가',
     noAffixData: '속성을 찾을 수 없습니다',
-    auction: '{t} 및 경매 시작'
+    auction: '{t} 및 경매 시작',
+    standby: '{t} 및 경매 대기'
   },
   messages: {
     clipboard: '{t}이(가) 클립보드로 복사되었습니다',
