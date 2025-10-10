@@ -36,10 +36,8 @@ const bottomAdRef = ref<InstanceType<typeof Adsense>>()
 const rightAdRef = ref<InstanceType<typeof Adsense>>()
 
 const size = computed(() =>
-  $q.screen.width < 320
-    ? 'width:300px;max-height:50px;'
-    : $q.screen.width < 468
-    ? 'width:300px;max-height:100px;'
+  $q.screen.width < 468
+    ? 'width:320px;max-height:100px;'
     : $q.screen.width < 728
     ? 'width:468px;height:60px;'
     : 'width:728px;height:90px;'
@@ -242,7 +240,12 @@ watch(
         <div v-if="ltmdDrawer" class="q-py-lg row justify-center">
           <Adsense
             ref="bottomAdRef"
-            style="display: block; width: 100%"
+            style="
+              display: block;
+              width: 100%;
+              max-width: 100%;
+              overflow: hidden;
+            "
             data-ad-slot="3038631536"
             :data-adtest="!prod"
             data-ad-format="auto"
