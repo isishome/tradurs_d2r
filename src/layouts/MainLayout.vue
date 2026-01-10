@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useQuasar, debounce } from 'quasar'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
@@ -27,13 +27,13 @@ const as = useAccountStore()
 const is = useItemStore()
 const ltmdDrawer = computed(() => $q.screen.width < 1540)
 const padding = computed(() => (ltmdDrawer.value ? 'q-px-md' : 'q-px-lg'))
-
 const _offset = ref<number>(0)
 
 // about adsense
 const topAdRef = ref<InstanceType<typeof Adsense>>()
 const bottomAdRef = ref<InstanceType<typeof Adsense>>()
 const rightAdRef = ref<InstanceType<typeof Adsense>>()
+const showAd = ref(true)
 
 const size = computed(() =>
   $q.screen.width < 468
@@ -66,20 +66,30 @@ const tweak = (headerHeight: number) => {
   _offset.value = headerHeight
 }
 
-watch([size, ltmdDrawer], ([val1, val2], [old1, old2]) => {
+watch([size, ltmdDrawer], async ([val1, val2], [old1, old2]) => {
   if (val1 !== old1 || val2 !== old2) {
+    showAd.value = false
+
+    await nextTick()
+
     gs.adsense.top.adKey++
     gs.adsense.bottom.adKey++
     gs.adsense.right.adKey++
     gs.adsense.top.timeStamp = Date.now()
     gs.adsense.bottom.timeStamp = Date.now()
     gs.adsense.right.timeStamp = Date.now()
+
+    showAd.value = true
   }
 })
 
 watch(
   () => gs.adsense.reloadAdKey,
-  () => {
+  async () => {
+    showAd.value = false
+
+    await nextTick()
+
     if (
       Date.now() - gs.adsense.top.timeStamp > gs.adsense.timeLimit ||
       topAdRef.value?.$el.getAttribute('data-ad-status') === 'unfilled'
@@ -103,6 +113,8 @@ watch(
       gs.adsense.right.adKey++
       gs.adsense.right.timeStamp = Date.now()
     }
+
+    showAd.value = true
   }
 )
 </script>
@@ -201,6 +213,7 @@ watch(
       <q-page class="container-width" :style-fn="tweak">
         <div class="q-py-lg row justify-center">
           <Adsense
+            v-if="showAd"
             ref="topAdRef"
             :style="`display:inline-block;${size}`"
             data-ad-slot="9661979705"
@@ -228,6 +241,7 @@ watch(
         <div v-if="!ltmdDrawer" class="aside right">
           <div class="sticky" style="top: 190px">
             <Adsense
+              v-if="showAd"
               ref="rightAdRef"
               style="display: inline-block; width: 160px; height: 600px"
               data-ad-slot="2839584311"
@@ -239,6 +253,7 @@ watch(
         <div class="q-py-xl"></div>
         <div v-if="ltmdDrawer" class="q-py-lg row justify-center">
           <Adsense
+            v-if="showAd"
             ref="bottomAdRef"
             style="
               display: block;
