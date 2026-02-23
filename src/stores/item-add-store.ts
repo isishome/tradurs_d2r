@@ -74,20 +74,49 @@ export const useItemAddStore = defineStore('item-add', () => {
     }
   }
 
-  const modifiers = computed(() =>
-    itemModifiers.map((im) => ({
-      value: im.id,
-      label: im[gs.locale].replace(/[%]{1,}/gi, '%')
-    }))
-  )
-  const skills = computed(() =>
-    itemSkills.map((s) => ({
+  const skills = computed(() => {
+    const map = new Map<
+      string,
+      { id: number; Key: string; koKR: string; enUS: string }
+    >()
+
+    for (const item of itemSkills) {
+      const key = `${item.koKR}||${item.enUS}`
+
+      if (!map.has(key)) map.set(key, item)
+    }
+
+    return Array.from(map.values()).map((s) => ({
       value: s.id,
       label: `${
         s.Key.indexOf('skillname') !== -1 ? skillPrefix[gs.lang] : ''
       }${s[gs.locale].replace(/[%]{1,}/gi, '%')}`
     }))
-  )
+  })
+  const modifiers = computed(() => {
+    const map = new Map<
+      string,
+      { id: number; Key: string; koKR: string; enUS: string }
+    >()
+
+    for (const item of itemModifiers) {
+      const key = `${item.koKR}||${item.enUS}`
+
+      if (!map.has(key)) map.set(key, item)
+    }
+
+    const skillModifiers =
+      gs.locale === 'koKR'
+        ? skills.value.map((s) => ({ ...s, label: `+%d ${s.label}` }))
+        : skills.value.map((s) => ({ ...s, label: `${s.label} +%d` }))
+    return [
+      ...Array.from(map.values()).map((im) => ({
+        value: im.id,
+        label: im[gs.locale].replace(/[%]{1,}/gi, '%')
+      })),
+      ...skillModifiers
+    ]
+  })
   const names = computed(() =>
     itemNames.map((ins) => ({
       value: ins.Key,

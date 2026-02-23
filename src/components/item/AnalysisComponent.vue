@@ -364,6 +364,7 @@ const filtering = (f: File) => {
 
         recognize(canvas, gs.lang)
           .then((text) => {
+            console.log(text)
             analyze(text)
           })
           .catch((e) => {

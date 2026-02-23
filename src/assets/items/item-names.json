@@ -9216,9 +9216,471 @@
     "enUS": "Black Cleft"
   },
   {
+    "id": 27387,
+    "Key": "Warlord's Glory",
+    "koKR": "군장의 영예",
+    "enUS": "Warlord's Glory"
+  },
+  {
+    "id": 27388,
+    "Key": "Warlord's Lust",
+    "koKR": "군장의 욕정",
+    "enUS": "Warlord's Lust"
+  },
+  {
+    "id": 27389,
+    "Key": "Warlord's Conquest",
+    "koKR": "군장의 정복",
+    "enUS": "Warlord's Conquest"
+  },
+  {
+    "id": 27390,
+    "Key": "Warlord's Mantle",
+    "koKR": "군장의 책임",
+    "enUS": "Warlord's Mantle"
+  },
+  {
+    "id": 27391,
+    "Key": "Warlord's Crushers",
+    "koKR": "군장의 분쇄자",
+    "enUS": "Warlord's Crushers"
+  },
+  {
+    "id": 27392,
+    "Key": "Warlord's Authority",
+    "koKR": "군장의 권위",
+    "enUS": "Warlord's Authority"
+  },
+  {
+    "id": 27587,
+    "Key": "wa1",
+    "koKR": "오래된 책",
+    "enUS": "Old Book"
+  },
+  {
+    "id": 27588,
+    "Key": "wa2",
+    "koKR": "고서",
+    "enUS": "Tome"
+  },
+  {
+    "id": 27589,
+    "Key": "wa3",
+    "koKR": "고문서",
+    "enUS": "Codex"
+  },
+  {
+    "id": 27590,
+    "Key": "wa4",
+    "koKR": "전서",
+    "enUS": "Compendium"
+  },
+  {
+    "id": 27591,
+    "Key": "wa5",
+    "koKR": "마법서",
+    "enUS": "Grimoire"
+  },
+  {
+    "id": 27592,
+    "Key": "wa6",
+    "koKR": "불탄 문헌",
+    "enUS": "Burnt Text"
+  },
+  {
+    "id": 27593,
+    "Key": "wa7",
+    "koKR": "어두운 고서",
+    "enUS": "Dark Tome"
+  },
+  {
+    "id": 27594,
+    "Key": "wa8",
+    "koKR": "어두운 고문서",
+    "enUS": "Dark Codex"
+  },
+  {
+    "id": 27595,
+    "Key": "wa9",
+    "koKR": "빙의된 전서",
+    "enUS": "Possessed Compendium"
+  },
+  {
+    "id": 27596,
+    "Key": "waa",
+    "koKR": "빙의된 마법서",
+    "enUS": "Possessed Grimoire"
+  },
+  {
+    "id": 27597,
+    "Key": "wab",
+    "koKR": "잊힌 책자",
+    "enUS": "Forgotten Volume"
+  },
+  {
+    "id": 27598,
+    "Key": "wac",
+    "koKR": "비술 고서",
+    "enUS": "Occult Tome"
+  },
+  {
+    "id": 27599,
+    "Key": "wad",
+    "koKR": "비술 고문서",
+    "enUS": "Occult Codex"
+  },
+  {
+    "id": 27600,
+    "Key": "wae",
+    "koKR": "신성모독 전서",
+    "enUS": "Blasphemous Compendium"
+  },
+  {
+    "id": 27601,
+    "Key": "waf",
+    "koKR": "신성모독 마법서",
+    "enUS": "Blasphemous Grimoire"
+  },
+  {
+    "id": 27609,
+    "Key": "ua1",
+    "koKR": "탈릭의 고뇌",
+    "enUS": "Talic's Anguish"
+  },
+  {
+    "id": 27610,
+    "Key": "ua2",
+    "koKR": "콜릭의 고통",
+    "enUS": "Korlic's Pain"
+  },
+  {
+    "id": 27611,
+    "Key": "ua3",
+    "koKR": "마도크의 분노",
+    "enUS": "Madawc's Ire"
+  },
+  {
+    "id": 27612,
+    "Key": "ua4",
+    "koKR": "불카토스의 악몽",
+    "enUS": "Bul-Kathos' Nightmare"
+  },
+  {
+    "id": 27613,
+    "Key": "ua5",
+    "koKR": "워루스크의 끝",
+    "enUS": "Worusk's End"
+  },
+  {
     "id": 30000,
     "Key": "svl",
     "koKR": "판매 가격",
     "enUS": "Sell Value"
+  },
+  {
+    "id": 27619,
+    "Key": "um2",
+    "koKR": "수호자의 역정",
+    "enUS": "Defender's Bile"
+  },
+  {
+    "id": 27617,
+    "Key": "um1",
+    "koKR": "수호자의 불",
+    "enUS": "Defender's Fire"
+  },
+  {
+    "id": 27615,
+    "Key": "um6",
+    "koKR": "감시자의 빛",
+    "enUS": "Guardian's Light"
+  },
+  {
+    "id": 27616,
+    "Key": "um5",
+    "koKR": "감시자의 천둥",
+    "enUS": "Guardian's Thunder"
+  },
+  {
+    "id": 27618,
+    "Key": "um4",
+    "koKR": "보호자의 돌",
+    "enUS": "Protector's Stone"
+  },
+  {
+    "id": 27614,
+    "Key": "um3",
+    "koKR": "보호자의 서리",
+    "enUS": "Protector's Frost"
+  },
+  {
+    "id": 27628,
+    "Key": "Ars Al'Diablolos",
+    "enUS": "Ars Al'Diabolos",
+    "koKR": "아르스 알디아볼로스"
+  },
+  {
+    "id": 27629,
+    "Key": "Ars Tor'Baalos",
+    "enUS": "Ars Tor'Baalos",
+    "koKR": "아르스 토르바알로스"
+  },
+  {
+    "id": 27630,
+    "Key": "Ars Dul'Mephistos",
+    "enUS": "Ars Dul'Mephistos",
+    "koKR": "아르스 둘메피스토스"
+  },
+  {
+    "id": 27631,
+    "Key": "Measured Wrath",
+    "enUS": "Measured Wrath",
+    "koKR": "신중한 진노"
+  },
+  {
+    "id": 27632,
+    "Key": "Dreadfang",
+    "enUS": "Dreadfang",
+    "koKR": "공포송곳니"
+  },
+  {
+    "id": 27633,
+    "Key": "Wraithstep",
+    "enUS": "Wraithstep",
+    "koKR": "망령걸음"
+  },
+  {
+    "id": 27634,
+    "Key": "Bloodpact Shard",
+    "enUS": "Bloodpact Shard",
+    "koKR": "피의 맹약 파편"
+  },
+  {
+    "id": 27635,
+    "Key": "Sling",
+    "enUS": "Sling",
+    "koKR": "새총"
+  },
+  {
+    "id": 27636,
+    "Key": "Opalvein",
+    "enUS": "Opalvein",
+    "koKR": "오팔맥"
+  },
+  {
+    "id": 27637,
+    "Key": "Entropy Locket",
+    "enUS": "Entropy Locket",
+    "koKR": "엔트로피 로켓"
+  },
+  {
+    "id": 27638,
+    "Key": "Gheed's Wager",
+    "enUS": "Gheed's Wager",
+    "koKR": "기드의 내기"
+  },
+  {
+    "id": 27639,
+    "Key": "Unique Warlock Helm",
+    "enUS": "Hellwarden's Will",
+    "koKR": "지옥파수꾼의 의지"
+  },
+  {
+    "id": 27906,
+    "Key": "Defender's Bile",
+    "enUS": "Defender's Bile",
+    "koKR": "수호자의 역정"
+  },
+  {
+    "id": 27907,
+    "Key": "Guardian's Thunder",
+    "enUS": "Guardian's Thunder",
+    "koKR": "감시자의 천둥"
+  },
+  {
+    "id": 27908,
+    "Key": "Protector's Frost",
+    "enUS": "Protector's Frost",
+    "koKR": "보호자의 서리"
+  },
+  {
+    "id": 27909,
+    "Key": "Defender's Fire",
+    "enUS": "Defender's Fire",
+    "koKR": "수호자의 불"
+  },
+  {
+    "id": 27910,
+    "Key": "Protector's Stone",
+    "enUS": "Protector's Stone",
+    "koKR": "보호자의 돌"
+  },
+  {
+    "id": 27911,
+    "Key": "Guardian's Light",
+    "enUS": "Guardian's Light",
+    "koKR": "감시자의 빛"
+  },
+  {
+    "id": 28035,
+    "Key": "PreCrafted Cold Rupture",
+    "enUS": "Latent Cold Rupture",
+    "koKR": "잠복하는 추위의 파열"
+  },
+  {
+    "id": 28036,
+    "Key": "Crafted Cold Rupture",
+    "enUS": "Renewed Cold Rupture",
+    "koKR": "새로워진 추위의 파열"
+  },
+  {
+    "id": 28037,
+    "Key": "PreCrafted Flame Rift",
+    "enUS": "Latent Flame Rift",
+    "koKR": "잠복하는 불길의 균열"
+  },
+  {
+    "id": 28038,
+    "Key": "Crafted Flame Rift",
+    "enUS": "Renewed Flame Rift",
+    "koKR": "새로워진 불길의 균열"
+  },
+  {
+    "id": 28039,
+    "Key": "PreCrafted Crack of the Heavens",
+    "enUS": "Latent Crack of the Heavens",
+    "koKR": "잠복하는 천상의 틈"
+  },
+  {
+    "id": 28040,
+    "Key": "Crafted Crack of the Heavens",
+    "enUS": "Renewed Crack of the Heavens",
+    "koKR": "새로워진 천상의 틈"
+  },
+  {
+    "id": 28041,
+    "Key": "PreCrafted Rotting Fissure",
+    "enUS": "Latent Rotting Fissure",
+    "koKR": "잠복하는 부패의 분열"
+  },
+  {
+    "id": 28042,
+    "Key": "Crafted Rotting Fissure",
+    "enUS": "Renewed Rotting Fissure",
+    "koKR": "새로워진 부패의 분열"
+  },
+  {
+    "id": 28043,
+    "Key": "PreCrafted Bone Break",
+    "enUS": "Latent Bone Break",
+    "koKR": "잠복하는 뼈의 분쇄"
+  },
+  {
+    "id": 28044,
+    "Key": "Crafted Bone Break",
+    "enUS": "Renewed Bone Break",
+    "koKR": "새로워진 뼈의 분쇄"
+  },
+  {
+    "id": 28045,
+    "Key": "PreCrafted Black Cleft",
+    "enUS": "Latent Black Cleft",
+    "koKR": "잠복하는 칠흑의 천공"
+  },
+  {
+    "id": 28046,
+    "Key": "Crafted Black Cleft",
+    "enUS": "Renewed Black Cleft",
+    "koKR": "새로워진 칠흑의 천공"
+  },
+  {
+    "id": 27641,
+    "Key": "Bane's Oathmaker",
+    "koKR": "재앙의 맹약자",
+    "enUS": "Bane's Oathmaker"
+  },
+  {
+    "id": 27642,
+    "Key": "Bane's Wraithskin",
+    "koKR": "재앙의 망령껍질",
+    "enUS": "Bane's Wraithskin"
+  },
+  {
+    "id": 27643,
+    "Key": "Bane's Authority",
+    "koKR": "재앙의 권위",
+    "enUS": "Bane's Authority"
+  },
+  {
+    "id": 27644,
+    "Key": "Horazon's Countenance",
+    "koKR": "호라존의 표정",
+    "enUS": "Horazon's Countenance"
+  },
+  {
+    "id": 27645,
+    "Key": "Horazon's Dominion",
+    "koKR": "호라존의 지배",
+    "enUS": "Horazon's Dominion"
+  },
+  {
+    "id": 27646,
+    "Key": "Horazon's Hold",
+    "koKR": "호라존의 장악",
+    "enUS": "Horazon's Hold"
+  },
+  {
+    "id": 27647,
+    "Key": "Horazon's Legacy",
+    "koKR": "호라존의 유산",
+    "enUS": "Horazon's Legacy"
+  },
+  {
+    "id": 27648,
+    "Key": "Horazon's Secrets",
+    "koKR": "호라존의 비밀",
+    "enUS": "Horazon's Secrets"
+  },
+  {
+    "id": 27649,
+    "Key": "Horazon's Splendor",
+    "koKR": "호라존의 광채",
+    "enUS": "Horazon's Splendor"
+  },
+  {
+    "id": 27653,
+    "Key": "Bane's Garments",
+    "koKR": "재앙의 복장",
+    "enUS": "Bane's Garments"
+  },
+  {
+    "id": 27579,
+    "Key": "xa1",
+    "koKR": "서부 세계석 조각",
+    "enUS": "Western Worldstone Shard"
+  },
+  {
+    "id": 27580,
+    "Key": "xa2",
+    "koKR": "동부 세계석 조각",
+    "enUS": "Eastern Worldstone Shard"
+  },
+  {
+    "id": 27581,
+    "Key": "xa3",
+    "koKR": "남부 세계석 조각",
+    "enUS": "Southern Worldstone Shard"
+  },
+  {
+    "id": 27582,
+    "Key": "xa4",
+    "koKR": "깊은 세계석 조각",
+    "enUS": "Deep Worldstone Shard"
+  },
+  {
+    "id": 27583,
+    "Key": "xa5",
+    "koKR": "북부 세계석 조각",
+    "enUS": "Northern Worldstone Shard"
   }
 ]

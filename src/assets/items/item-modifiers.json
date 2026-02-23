@@ -2032,5 +2032,149 @@
     "Key": "ModStr6l",
     "koKR": "공격 속도 %+d%%",
     "enUS": "%+d%% Attack Speed"
+  },
+  {
+    "id": 27574,
+    "Key": "UseTerrorTokenAct1",
+    "koKR": "오른쪽 클릭으로 1막에 공포의 마수 뻗기",
+    "enUS": "Right Click to terrorize Act 1"
+  },
+  {
+    "id": 27575,
+    "Key": "UseTerrorTokenAct2",
+    "koKR": "오른쪽 클릭으로 2막에 공포의 마수 뻗기",
+    "enUS": "Right Click to terrorize Act 2"
+  },
+  {
+    "id": 27576,
+    "Key": "UseTerrorTokenAct3",
+    "koKR": "오른쪽 클릭으로 3막에 공포의 마수 뻗기",
+    "enUS": "Right Click to terrorize Act 3"
+  },
+  {
+    "id": 27577,
+    "Key": "UseTerrorTokenAct4",
+    "koKR": "오른쪽 클릭으로 4막에 공포의 마수 뻗기",
+    "enUS": "Right Click to terrorize Act 4"
+  },
+  {
+    "id": 27578,
+    "Key": "UseTerrorTokenAct5",
+    "koKR": "오른쪽 클릭으로 5막에 공포의 마수 뻗기",
+    "enUS": "Right Click to terrorize Act 5"
+  },
+  {
+    "id": 27579,
+    "Key": "xa1",
+    "koKR": "서부 세계석 조각",
+    "enUS": "Western Worldstone Shard"
+  },
+  {
+    "id": 27580,
+    "Key": "xa2",
+    "koKR": "동부 세계석 조각",
+    "enUS": "Eastern Worldstone Shard"
+  },
+  {
+    "id": 27581,
+    "Key": "xa3",
+    "koKR": "남부 세계석 조각",
+    "enUS": "Southern Worldstone Shard"
+  },
+  {
+    "id": 27582,
+    "Key": "xa4",
+    "koKR": "깊은 세계석 조각",
+    "enUS": "Deep Worldstone Shard"
+  },
+  {
+    "id": 27583,
+    "Key": "xa5",
+    "koKR": "북부 세계석 조각",
+    "enUS": "Northern Worldstone Shard"
+  },
+  {
+    "id": 27602,
+    "Key": "WarOnly",
+    "koKR": "(악마술사 전용)",
+    "enUS": "(Warlock Only)"
+  },
+  {
+    "id": 27678,
+    "Key": "ModStrMagMastery",
+    "koKR": "마법 기술 피해 %+d%%",
+    "enUS": "%+d%% to Magic Skill Damage"
+  },
+  {
+    "id": 27679,
+    "Key": "ModStrMagPierce",
+    "koKR": "적 마법 저항 -%d%%",
+    "enUS": "-%d%% to Enemy Magic Resistance"
+  },
+  {
+    "id": 27865,
+    "Key": "MaxMagDmgPerLvl",
+    "koKR": "최대 마법 피해 %+d",
+    "enUS": "%+d to Maximum Magic Damage"
+  },
+  {
+    "id": 27866,
+    "Key": "ModStrDamPierce",
+    "koKR": "적 물리 피해 저항 -%d%%",
+    "enUS": "-%d%% to Enemy Physical Damage Resistance"
+  },
+  {
+    "id": 27888,
+    "Key": "StrSklTabItem24",
+    "koKR": "악마 기술 +%d",
+    "enUS": "+%d to Demon Skills"
+  },
+  {
+    "id": 27889,
+    "Key": "StrSklTabItem22",
+    "koKR": "기괴 기술 +%d",
+    "enUS": "+%d to Eldritch Skills"
+  },
+  {
+    "id": 27890,
+    "Key": "StrSklTabItem23",
+    "koKR": "혼돈 기술 +%d",
+    "enUS": "+%d to Chaos Skills"
+  },
+  {
+    "id": 27891,
+    "Key": "ModStrge9",
+    "koKR": "악마술사 기술 +%d",
+    "enUS": "+%d to Warlock Skills"
+  },
+  {
+    "id": 27979,
+    "Key": "ChronicleModifierRange",
+    "koKR": "ÿcU(%s-%s)ÿc3",
+    "enUS": "ÿcU(%s-%s)ÿc3"
+  },
+  {
+    "id": 27998,
+    "Key": "ItemStats1hRange",
+    "koKR": "방어력: ÿcU(%d-%d)ÿc3",
+    "enUS": "Defense: ÿcU(%d-%d)ÿc3"
+  },
+  {
+    "id": 28014,
+    "Key": "ChronicleRandomClassSkillLevel",
+    "koKR": "무작위 직업의 기술 레벨 %+d",
+    "enUS": "%+d to a Random Class' Skill Levels"
+  },
+  {
+    "id": 28015,
+    "Key": "ChronicleItemModifierClassSkillRandom",
+    "koKR": "무작위 %s 기술 %s %+d",
+    "enUS": "%+d to a random %s Skill %s"
+  },
+  {
+    "id": 28017,
+    "Key": "ChroniclePropertyGroupListHeader",
+    "koKR": "다음의 %s:",
+    "enUS": "%s of the following:"
   }
 ]

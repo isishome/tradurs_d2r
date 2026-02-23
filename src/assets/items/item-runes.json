@@ -1418,14 +1418,14 @@
   {
     "id": 27360,
     "Key": "Runeword171",
-    "koKR": "투지",
-    "enUS": "Hustle"
+    "koKR": "발작",
+    "enUS": "Hysteria"
   },
   {
     "id": 27361,
     "Key": "Runeword172",
-    "koKR": "투지",
-    "enUS": "Hustle"
+    "koKR": "광기",
+    "enUS": "Mania"
   },
   {
     "id": 27362,
@@ -1468,5 +1468,36 @@
     "Key": "Runeword179",
     "koKR": "방벽",
     "enUS": "Bulwark"
+  },
+
+  {
+    "id": 20509,
+    "Key": "Runeword3",
+    "koKR": "권위",
+    "enUS": "Authority"
+  },
+  {
+    "id": 27650,
+    "Key": "Runeword180",
+    "koKR": "마녀단",
+    "enUS": "Coven"
+  },
+  {
+    "id": 20662,
+    "Key": "Runeword157",
+    "koKR": "공허",
+    "enUS": "Void"
+  },
+  {
+    "id": 27651,
+    "Key": "Runeword181",
+    "koKR": "경계",
+    "enUS": "Vigilance"
+  },
+  {
+    "id": 27652,
+    "Key": "Runeword182",
+    "koKR": "의식",
+    "enUS": "Ritual"
   }
 ]
