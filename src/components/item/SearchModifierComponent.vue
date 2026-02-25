@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { QSelect } from 'quasar'
-import { useI18n } from 'vue-i18n'
+import { modifiers } from 'src/domain/static/data'
 
-import { useItemAddStore } from 'src/stores/item-add-store'
+import { useI18n } from 'vue-i18n'
 
 interface IProps {
   modelValue?: number
@@ -18,13 +18,12 @@ const props = withDefaults(defineProps<IProps>(), {
 const emit = defineEmits(['update:model-value'])
 
 const { t } = useI18n({ useScope: 'global' })
-const ias = useItemAddStore()
 
 const searchRef = ref<QSelect | null>()
 const search = ref<number | undefined>(props.modelValue)
 const searchNeedle = ref<string>()
 const searchOptions = computed(() =>
-  [...ias.modifiers, ...ias.skills].filter(
+  modifiers.filter(
     (mf) =>
       mf.label
         .toLowerCase()

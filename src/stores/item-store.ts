@@ -1,13 +1,17 @@
 import { defineStore } from 'pinia'
 import { ref, reactive, computed } from 'vue'
 import type { AxiosRequestConfig } from 'axios'
+
 import { useQuasar } from 'quasar'
+import { useGlobalStore } from './global-store'
+import { useCookies } from 'src/composables/useCookies'
+
 import { api } from 'boot/axios'
 import { Lang } from 'src/types/global'
 import type { Page, Notify } from 'src/types/global'
 import type { Bid, Item, ItemInfo, Filter } from 'src/types/item'
 import { defaultFilter } from 'src/types/item'
-import { useGlobalStore } from './global-store'
+import { TR_D2R_PLATFORM, TR_D2R_REGION } from 'src/domain/keys'
 
 type ItemPage = Page & {
   newItems: number
@@ -16,6 +20,8 @@ type ItemPage = Page & {
 export const useItemStore = defineStore('item', () => {
   const $q = useQuasar()
   const gs = useGlobalStore()
+  const cookies = useCookies()
+
   const lang: Lang = gs.lang
   const ltmd = computed(() => $q.screen.width < 1280)
   const locale = gs.locale
@@ -35,9 +41,20 @@ export const useItemStore = defineStore('item', () => {
   })
 
   const filter = ref<Filter>(defaultFilter())
+  const platform = cookies.has(TR_D2R_PLATFORM)
+    ? (cookies.get(TR_D2R_PLATFORM) as string)
+    : 'all'
+  filter.value.platform = platform
+
+  const region = cookies.has(TR_D2R_REGION)
+    ? (cookies.get(TR_D2R_REGION) as string)
+    : 'all'
+  filter.value.region = region
 
   const resetFilter = () => {
     filter.value = defaultFilter()
+    cookies.remove(TR_D2R_PLATFORM)
+    cookies.remove(TR_D2R_REGION)
   }
 
   const getItems = (

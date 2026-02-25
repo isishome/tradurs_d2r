@@ -8,7 +8,7 @@ import { defaultItem } from 'src/types/item'
 
 import { useItemStore } from 'stores/item-store'
 import { useAccountStore } from 'stores/account-store'
-import { notify } from 'src/composables/common'
+import { notify } from 'src/assets/utils/common'
 
 import ItemComponent from 'components/item/ItemComponent.vue'
 

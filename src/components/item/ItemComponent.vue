@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { date } from 'quasar'
+import { modifiers, nameAffixes, names, skills } from 'src/domain/static/data'
+import { clipboard } from 'src/assets/utils/common'
+
 import { useQuasar } from 'quasar'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { date } from 'quasar'
-import type { Item } from 'src/types/item'
-import { randImage } from 'src/types/item'
 import { useGlobalStore } from 'stores/global-store'
 import { useItemAddStore } from 'stores/item-add-store'
 import { useItemStore } from 'stores/item-store'
 import { useAccountStore } from 'stores/account-store'
+
+import type { Item } from 'src/types/item'
+import { randImage } from 'src/types/item'
+
 import ModifierComponent from 'components/item/ModifierComponent.vue'
 import CurrencyComponent from 'components/item/CurrencyComponent.vue'
-import { clipboard } from 'src/composables/common'
 
 type Props = {
   data: Item
@@ -92,8 +96,8 @@ const findItem = computed(() =>
 const name = computed(
   () =>
     props.data.name ||
-    [...ias.nameAffixes, ...ias.names]
-      .filter((ns) => props.data.names?.includes(ns.id))
+    [...nameAffixes, ...names]
+      .filter((ns) => props.data.names?.includes(ns.id as number))
       .map((ns) => ns.label)
       .join(' ')
       .trim() ||
@@ -101,8 +105,8 @@ const name = computed(
 )
 const detailName = computed(
   () =>
-    ias.names.find((n) => n.value === detailType.value)?.label ??
-    ias.names.find((n) => n.value === itemType.value)?.label ??
+    names.find((n) => n.value === detailType.value)?.label ??
+    names.find((n) => n.value === itemType.value)?.label ??
     ias.category().find((n) => n.value === category.value)?.label
 )
 const runewordsRecipe = computed(() =>
@@ -171,6 +175,12 @@ const seconds = computed(() =>
     .toString()
     .padStart(2, '0')
 )
+const qualityStyle = computed(() => ({
+  color:
+    category.value === 'misc'
+      ? 'var(--miscellaneous)'
+      : `var(--quality-${quality.value})`
+}))
 
 // func
 const updateImage = (val: number) => {
@@ -250,10 +260,7 @@ onUnmounted(() => {
   <div>
     <q-card v-if="!loading" bordered class="item" :style="`width:${width}px`">
       <q-card-section class="bg-brighten q-pa-sm">
-        <div
-          class="text-h6 text-center column"
-          :style="`color:var(--quality-${data.quality})`"
-        >
+        <div class="text-h6 text-center column" :style="qualityStyle">
           <div
             class="text-overline row justify-center items-center q-gutter-x-xs"
           >
@@ -278,19 +285,25 @@ onUnmounted(() => {
               {{ t('base.softcore') }}
             </div>
           </div>
-          <div v-if="data.quality !== 'normal'">
-            {{ name }}
-          </div>
           <div
-            v-if="data.category !== 'misc'"
-            :style="`color:var(--${
+            :class="
+              data.quality === 'magic' ? 'row justify-center q-gutter-x-sm' : ''
+            "
+          >
+            <div v-if="data.quality !== 'normal' || data.category === 'misc'">
+              {{ name }}
+            </div>
+            <div
+              v-if="data.category !== 'misc'"
+              :style="`color:var(--${
               ['normal', 'runewords'].includes(data.quality as string) &&
               (data.socket > 0 || data.ethereal)
                 ? 'sockoreth'
                 : ''
             })`"
-          >
-            {{ detailName }}
+            >
+              {{ detailName }}
+            </div>
           </div>
         </div>
         <div
@@ -423,7 +436,8 @@ onUnmounted(() => {
             v-for="m in data.modifiers"
             :key="m.order"
             :data="m"
-            :options="[...ias.modifiers, ...ias.skills]"
+            :options="modifiers"
+            :skills="skills"
             :class="`m_${m.id}`"
           />
         </q-card-section>

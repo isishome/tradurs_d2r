@@ -8,12 +8,14 @@ import type { Filter } from 'src/types/item'
 import { useGlobalStore } from 'src/stores/global-store'
 import { useAccountStore } from 'src/stores/account-store'
 import { useItemStore } from 'src/stores/item-store'
+import { useCookies } from 'src/composables/useCookies'
 
 import BattleTagComponent from 'components/UI/BattleTagComponent.vue'
 import LanguageComponent from 'components/UI/LanguageComponent.vue'
 import SignComponent from 'components/UI/SignComponent.vue'
 import FilterComponent from 'components/item/FilterComponent.vue'
 import Adsense from 'components/global/AdsenseComponent.vue'
+import { TR_D2R_PLATFORM, TR_D2R_REGION } from 'src/domain/keys'
 
 const prod: boolean = import.meta.env.PROD
 
@@ -21,13 +23,13 @@ const $q = useQuasar()
 const { t } = useI18n({ useScope: 'global' })
 const route = useRoute()
 const router = useRouter()
-
 const gs = useGlobalStore()
 const as = useAccountStore()
 const is = useItemStore()
+const cookies = useCookies()
+
 const ltmdDrawer = computed(() => $q.screen.width < 1540)
 const padding = computed(() => (ltmdDrawer.value ? 'q-px-md' : 'q-px-lg'))
-const _offset = ref<number>(0)
 
 // about adsense
 const topAdRef = ref<InstanceType<typeof Adsense>>()
@@ -45,11 +47,13 @@ const size = computed(() =>
 
 const goHome = () => {
   if (route.name !== 'main') router.push({ name: 'main' })
-  else is.refresh++
+  else resetFilter()
 }
 
 const updateFilter = (val: Filter) => {
   is.filter = val
+  cookies.set(TR_D2R_PLATFORM, val.platform ?? 'all', { expires: 365 })
+  cookies.set(TR_D2R_REGION, val.region ?? 'all', { expires: 365 })
   is.refresh++
 }
 
@@ -63,7 +67,7 @@ const resize = debounce((size: Size) => {
 }, 400)
 
 const tweak = (headerHeight: number) => {
-  _offset.value = headerHeight
+  gs.headerHeight = headerHeight
 }
 
 watch([size, ltmdDrawer], async ([val1, val2], [old1, old2]) => {

@@ -36,7 +36,7 @@ import type { Bid, Item } from 'src/types/item'
 import { defaultBid } from 'src/types/item'
 import { useAccountStore } from 'stores/account-store'
 import { sound } from 'src/sockets/messenger'
-import { notify } from 'src/composables/common'
+import { notify } from 'src/assets/utils/common'
 
 import ItemComponent from 'components/item/ItemComponent.vue'
 import BidComponent from 'components/item/BidComponent.vue'

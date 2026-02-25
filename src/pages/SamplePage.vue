@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent } from 'vue'
 import { QStepper, QSelect } from 'quasar'
+import { modifiers, skills } from 'src/domain/static/data'
+
 import { useI18n } from 'vue-i18n'
+import { useItemAddStore } from 'src/stores/item-add-store'
 
 import type { Item, Price, Modifier } from 'src/types/item'
 import { separator, ModifierType, defaultItem } from 'src/types/item'
-import { useItemAddStore } from 'src/stores/item-add-store'
 
 const AnalysisComponent = defineAsyncComponent(
   () => import('components/item/AnalysisComponent.vue')
@@ -57,8 +59,7 @@ const updatePrice = (price: Price, progressTime: number) => {
 }
 
 const addModifier = (val: number) => {
-  const text =
-    [...ias.modifiers, ...ias.skills].find((m) => m.value === val)?.label ?? ''
+  const text = modifiers.find((m) => m.value === val)?.label ?? ''
 
   const addingModifier = {
     order: _item.value.modifiers.length,
@@ -118,7 +119,7 @@ const checkValidate = async () => {
 const modifierRef = ref<QSelect | null>(null)
 const modifierNeedle = ref<string>()
 const modifierOptions = computed(() =>
-  [...ias.modifiers, ...ias.skills].filter(
+  modifiers.filter(
     (mf) =>
       mf.label
         .toLowerCase()
@@ -199,7 +200,8 @@ const selectModifier = (val: number): void => {
             v-for="(m, idx) in _item.modifiers"
             :key="m.order"
             :data="m"
-            :options="[...ias.modifiers, ...ias.skills]"
+            :options="modifiers"
+            :skills="skills"
             editable
             @remove="removeModifier"
             @update="updateModifier"

@@ -65,7 +65,7 @@ const setLang = async (val: string) => {
         :key="l.value"
         :clickable="lang !== l.value"
         :active="lang === l.value"
-        @click="setLang(l.value as string)"
+        @click="() => setLang(l.value as string)"
       >
         <q-item-section>
           {{ l.label }}

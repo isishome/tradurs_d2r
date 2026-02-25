@@ -5,6 +5,8 @@ export enum Lang {
   EN = 'en'
 }
 
+export type Locale = 'enUS' | 'koKR'
+
 export type Meta = {
   title: ComputedRef
   description: string

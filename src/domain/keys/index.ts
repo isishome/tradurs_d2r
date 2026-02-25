@@ -1,0 +1,2 @@
+export const TR_D2R_PLATFORM = 'TR_D2R_PLATFORM'
+export const TR_D2R_REGION = 'TR_D2R_REGION'

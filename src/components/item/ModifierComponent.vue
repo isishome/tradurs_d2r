@@ -10,7 +10,7 @@ import { separator, ModifierType } from 'src/types/item'
 
 enum ModifierSplitType {
   Text = 'text',
-  Modifier = 'modifier',
+  Skill = 'skill',
   Value = 'value'
 }
 
@@ -24,6 +24,7 @@ interface IProps {
   type?: BaseType
   data: Modifier
   options: Array<Label>
+  skills: Array<Label>
   editable?: boolean
 }
 
@@ -36,9 +37,14 @@ const emit = defineEmits(['remove', 'update', 'place-modifier'])
 
 const { t } = useI18n({ useScope: 'global' })
 
-const filterOptions = computed(() => [
+const filterModifierOptions = computed(() => [
   ...props.options.filter(
-    (m) => m.value !== props.data.id && !!!m.label.match(separator)
+    (m) => m.value !== props.data.id && m.label.match(separator) === null
+  )
+])
+const filterSkillOptions = computed(() => [
+  ...props.skills.filter(
+    (s) => s.value !== props.data.id && s.label.match(separator) === null
   )
 ])
 const _modifier = ref<Modifier>(
@@ -56,7 +62,7 @@ const updateModifier = (ms: ModifierSplit, val?: number | string) => {
 
 const update = () => {
   const values = _modifierSplit.value.filter((ms) =>
-    [ModifierSplitType.Value, ModifierSplitType.Modifier].includes(ms.type)
+    [ModifierSplitType.Value, ModifierSplitType.Skill].includes(ms.type)
   )
   _modifier.value.children?.forEach((c, idx) => {
     if (c.type === ModifierType.String) c.value = values[idx]?.value as number
@@ -68,8 +74,8 @@ const update = () => {
   emit('update', _modifier.value)
 }
 
-const findModifier = (id: number) => {
-  return props.options
+const findModifierOrSkill = (type: 'modifier' | 'skill', id: number) => {
+  return (type === 'modifier' ? props.options : props.skills)
     .find((o) => o.value === id)
     ?.label.replace(/[%]{1,}/gi, '%')
 }
@@ -78,7 +84,7 @@ const findModifier = (id: number) => {
 const connectRef = ref<QSelect | null>(null)
 const connectNeedle = ref<string>()
 const connectOptions = computed(() =>
-  filterOptions.value.filter(
+  filterModifierOptions.value.filter(
     (cf) =>
       cf.label
         .toLowerCase()
@@ -101,7 +107,7 @@ const selectConnect = (): void => {
 }
 
 onMounted(() => {
-  const fm = findModifier(_modifier.value.id as number)
+  const fm = findModifierOrSkill('modifier', _modifier.value.id as number)
   const children = _modifier.value.children
 
   _modifierSplit.value.push(
@@ -112,7 +118,7 @@ onMounted(() => {
 
   fm?.match(separator)?.forEach((s, i) => {
     _modifierSplit.value.splice(i * 2 + 1, 0, {
-      type: s === '%s' ? ModifierSplitType.Modifier : ModifierSplitType.Value,
+      type: s === '%s' ? ModifierSplitType.Skill : ModifierSplitType.Value,
       sign: children?.[i]?.signed && (children?.[i]?.value ?? 0) > 0 ? '+' : '',
       value: children?.[i]?.value
     })
@@ -140,8 +146,8 @@ onMounted(() => {
                 @update:model-value="update"
               />
               <D2Search
-                v-else-if="ms.type === ModifierSplitType.Modifier"
-                :options="connectOptions"
+                v-else-if="ms.type === ModifierSplitType.Skill"
+                :options="filterSkillOptions"
                 v-model="ms.value"
                 dense
                 standout
@@ -197,8 +203,8 @@ onMounted(() => {
             }"
           >
             {{
-              ms.type === ModifierSplitType.Modifier
-                ? findModifier(ms.value as number)
+              ms.type === ModifierSplitType.Skill
+                ? findModifierOrSkill('skill', ms.value as number)
                 : `${ms.sign}${ms.value}`
             }}
           </span>
@@ -206,7 +212,9 @@ onMounted(() => {
             v-if="!!_modifierConnect && !!_modifierConnect.value"
             class="q-ml-sm"
           >
-            {{ findModifier(_modifierConnect.value as number) }}
+            {{
+              findModifierOrSkill('modifier', _modifierConnect.value as number)
+            }}
           </span>
         </div>
       </q-item-label>

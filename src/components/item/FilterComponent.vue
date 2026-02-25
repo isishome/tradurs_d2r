@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref, reactive, watch } from 'vue'
+import { modifiers, skills } from 'src/domain/static/data'
+
 import { useI18n } from 'vue-i18n'
-import type { Modifier, Filter } from 'src/types/item'
-import { separator, ModifierType, BaseType, allLabel } from 'src/types/item'
 import { useItemAddStore } from 'stores/item-add-store'
 import { useAccountStore } from 'stores/account-store'
+
+import type { Modifier, Filter } from 'src/types/item'
+import { separator, ModifierType, BaseType, allLabel } from 'src/types/item'
 
 import BaseComponent from 'components/item/BaseComponent.vue'
 import SearchComponent from 'components/item/SearchModifierComponent.vue'
@@ -68,8 +71,7 @@ const removeModifierGroup = (groupIdx: number) => {
 }
 
 const addModifier = (groupIdx: number, val: number) => {
-  const text =
-    [...ias.modifiers, ...ias.skills].find((m) => m.value === val)?.label ?? ''
+  const text = modifiers.find((m) => m.value === val)?.label ?? ''
 
   const addingModifier = {
     order: _filter.value.modifierGroups?.[groupIdx].groups.length,
@@ -117,6 +119,9 @@ watch(
   (val, old) => {
     if (!!val && val !== old) {
       _filter.value = val
+      Object.keys(_mine).forEach((k) => {
+        _mine[k as keyof typeof _mine] = 'none'
+      })
       _mine[val.mine as keyof typeof _mine] = val.mine ?? 'none'
     }
   },
@@ -234,7 +239,8 @@ watch(
         :key="m.order"
         :type="BaseType.Filter"
         :data="m"
-        :options="[...ias.modifiers, ...ias.skills]"
+        :options="modifiers"
+        :skills="skills"
         editable
         @remove="(val) => removeModifier(idx, val)"
         @update="(val) => updateModifier(idx, val)"

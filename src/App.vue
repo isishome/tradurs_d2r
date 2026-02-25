@@ -36,7 +36,7 @@ import { useQuasar, useMeta } from 'quasar'
 import { useGlobalStore } from 'stores/global-store'
 import { useItemStore } from 'stores/item-store'
 
-import { useAdBlock } from 'src/composables/adblock'
+import { useAdBlock } from 'src/composables/useAdblock'
 import { sound } from 'src/sockets/messenger'
 
 const route = useRoute()

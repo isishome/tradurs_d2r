@@ -42,6 +42,7 @@ export const useGlobalStore = defineStore('global', () => {
     width: 0,
     height: 0
   })
+  const headerHeight = ref(0)
 
   const showLoading = () => {
     loadingCount.value++
@@ -74,6 +75,7 @@ export const useGlobalStore = defineStore('global', () => {
     rightDrawer,
     adsense,
     size,
+    headerHeight,
     showLoading,
     hideLoading,
     checkHealth

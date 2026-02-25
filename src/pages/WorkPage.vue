@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useItemAddStore } from 'stores/item-add-store'
+import { modifiers, skills } from 'src/domain/static/data'
 
-const ias = useItemAddStore()
-
-const duplicateModifier = computed(() => [...ias.skills, ...ias.modifiers])
+const duplicateModifier = computed(() => [...skills, ...modifiers])
 </script>
 <template>
   <div class="fit">

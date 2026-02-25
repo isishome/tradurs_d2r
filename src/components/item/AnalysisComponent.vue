@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { QFile, useQuasar } from 'quasar'
+import { modifiers, nameAffixes, names } from 'src/domain/static/data'
+
 import { useI18n } from 'vue-i18n'
-import stringComparison from 'string-comparison'
-import { createWorker, ImageLike } from 'tesseract.js'
 import { useGlobalStore } from 'src/stores/global-store'
-import { useItemAddStore } from 'src/stores/item-add-store'
+import { similarity, useItemAddStore } from 'src/stores/item-add-store'
+
+import { createWorker, ImageLike } from 'tesseract.js'
 import type { Modifier, DropBox, Item, Similarity } from 'src/types/item'
 import {
   ModifierType,
   langStr,
   defaultItem,
-  lowRate,
+  //lowRate,
   midRate,
   highRate
 } from 'src/types/item'
@@ -31,18 +33,17 @@ withDefaults(defineProps<IProps>(), {
 })
 
 const prod = import.meta.env.PROD
-const emit = defineEmits(['start', 'end', 'failed'])
+const emit = defineEmits(['start', 'complete', 'failed'])
 
 const $q = useQuasar()
 const { t } = useI18n({ useScope: 'global' })
 const gs = useGlobalStore()
 const ias = useItemAddStore()
 
-const cos = stringComparison.cosine
-
 const progress = ref<boolean>(false)
 const fileRef = ref<QFile>()
 const file = ref()
+let image: HTMLImageElement
 
 const beforeHide = () => {
   file.value = undefined
@@ -56,15 +57,14 @@ const scan = (f: File) => {
 }
 
 const recognize = async (image: ImageLike, lang: string) => {
-  const locale = lang === 'ko' ? ['kor', 'kodia'] : 'eng'
-  //const worker = await createWorker(locale)
+  const locale = lang === 'ko' ? 'kor' : 'eng'
   const worker = await createWorker(locale, 1, {
-    workerPath:
-      'https://cdn.jsdelivr.net/npm/tesseract.js@v5.1.0/dist/worker.min.js',
-    langPath: prod
-      ? 'https://cdn.jsdelivr.net/gh/seraMint/tessdata/'
-      : '/tessdata/best', //'https://cdn.jsdelivr.net/gh/seraMint/tessdata', //'https://tessdata.projectnaptha.com/4.0.0',
-    corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@v5.1.0',
+    // workerPath:
+    //   'https://cdn.jsdelivr.net/npm/tesseract.js@v5.1.0/dist/worker.min.js',
+    // langPath: prod
+    //   ? 'https://cdn.jsdelivr.net/gh/seraMint/tessdata/'
+    //   : '/tessdata/best', //'https://cdn.jsdelivr.net/gh/seraMint/tessdata', //'https://tessdata.projectnaptha.com/4.0.0',
+    // corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@v5.1.0',
     cacheMethod: prod ? 'write' : 'none'
   })
   await worker.setParameters({
@@ -73,9 +73,20 @@ const recognize = async (image: ImageLike, lang: string) => {
 
   try {
     const {
-      data: { text }
-    } = await worker.recognize(image)
-    return text
+      data: { blocks }
+    } = await worker.recognize(image, undefined, {
+      text: false,
+      blocks: true
+    })
+
+    const cleanText =
+      blocks?.[0]?.paragraphs
+        .flatMap((p) => p.lines)
+        .filter((l) => l.confidence > 50)
+        .map((l) => l.text.replace(/\n+/g, '\n'))
+        .join('') ?? ''
+
+    return cleanText
   } catch (e) {
     emit('failed', e)
     return ''
@@ -102,18 +113,18 @@ const findModifier = (str: string): Modifier => {
 
   if (!!str && !!!plainStr) plainStr = makePlainText(str, '\\(\\)\\+%')
 
-  const findTargets = [...ias.modifiers, ...ias.skills]
+  const findTargets = modifiers
     .filter(
       (im) =>
         im.value !== 26333 &&
         !!plainStr &&
-        cos.similarity(
+        similarity(
           plainStr,
           makePlainText(
             im.label.replace(/%d|%i|%s/gi, '').replace(/%\+d/gi, '+'),
             '\\+%'
           )
-        ) > lowRate
+        ) > highRate
     )
     .map(
       (im) =>
@@ -121,7 +132,7 @@ const findModifier = (str: string): Modifier => {
           type: ModifierType.String,
           id: im.value,
           text: im.label,
-          similarity: cos.similarity(
+          similarity: similarity(
             plainStr,
             makePlainText(
               im.label.replace(/%d|%i|%s/gi, '').replace(/%\+d/gi, '+'),
@@ -139,8 +150,8 @@ const findModifier = (str: string): Modifier => {
       findTargets[0].text as string,
       findTargets[0].id
     )
-    delete findTargets[0].text
-    delete findTargets[0].similarity
+    //delete findTargets[0].text
+    //delete findTargets[0].similarity
   }
 
   return findTargets[0]
@@ -155,30 +166,30 @@ const filterNames = (
 
   if (!!!plainText) return []
 
-  const names = [...ias.nameAffixes, ...ias.names]
+  const nameAffixesWithnames = [...nameAffixes, ...names]
     .filter(
       (name) =>
         !!plainText &&
-        cos.similarity(plainText, name.label.padEnd(plainText.length, 'X')) >
+        similarity(plainText, name.label.padEnd(plainText.length, 'X')) >
           (customRate ?? midRate)
     )
     .map((name) => ({
-      id: name.id,
+      id: name.id as number,
       Key: name.value,
       text: name.label,
-      similarity: cos.similarity(
+      similarity: similarity(
         plainText,
         name.label.padEnd(plainText.length, 'X')
       ),
       distance: withDistance ? distance(plainText, name.label) : 0
     }))
 
-  names.sort(
+  nameAffixesWithnames.sort(
     (a, b) =>
       (b.similarity ?? 0) - (a.similarity ?? 0) || a.distance - b.distance
   )
 
-  return names
+  return nameAffixesWithnames
 }
 
 const findItemInfo = (
@@ -206,8 +217,7 @@ const findItemInfo = (
         ...f.func
           .filter(
             (v) =>
-              !!plainText &&
-              cos.similarity(plainText, v.label as string) > highRate
+              !!plainText && similarity(plainText, v.label as string) > highRate
           )
           .map(
             (v) =>
@@ -223,7 +233,7 @@ const findItemInfo = (
                 imageType: !['misc', 'runewords'].includes(f.name)
                   ? v.imageType
                   : undefined,
-                similarity: cos.similarity(plainText, v.label as string)
+                similarity: similarity(plainText, v.label as string)
               } as Item)
           )
       )
@@ -258,8 +268,7 @@ const findItemInfo = (
           .category()
           .filter(
             (c) =>
-              !!plainText &&
-              cos.similarity(plainText, c.label as string) > highRate
+              !!plainText && similarity(plainText, c.label as string) > highRate
           )
 
         itemInfos.push({
@@ -296,12 +305,7 @@ const analyze = (text: string) => {
       ''
     )
     .split(/\n/gi)
-    .map((iia) => iia.replace(/\*/gi, '+').trim())
-    .filter(
-      (iia) =>
-        (iia.match(/[\s]{1}/gi)?.length ?? 0) <=
-        (iia.match(/[^\s]{1}/gi)?.length ?? 0)
-    )
+    .map((iia) => iia.replace(/\*/gi, '+').replace(/\s+/g, ' ').trim())
 
   // find item info
   const names: Array<Names> = []
@@ -341,7 +345,7 @@ const analyze = (text: string) => {
     item.modifiers.find((m) => [3453, 23049].includes(m.id as number))
       ?.children?.[0]?.value ?? 0
 
-  emit('end', item)
+  emit('complete', { item, data: image.src })
 }
 
 const filtering = (f: File) => {
@@ -352,28 +356,29 @@ const filtering = (f: File) => {
   fr.readAsDataURL(f)
 
   fr.onload = () => {
-    const image = new Image()
+    image = new Image()
     image.src = fr.result as string
     image.onload = () => {
-      canvas.width = image.width
-      canvas.height = image.height
-      if (ctx) {
-        ctx.filter =
-          'brightness(120%) contrast(200%) saturate(300%) sepia(100%) invert(100%) url(#svgThreshold)'
-        ctx.drawImage(image, 0, 0)
+      const scale = Math.round((700 / image.width) * 1000) / 1000
+      canvas.width = image.width * scale
+      canvas.height = image.height * scale
 
-        recognize(canvas, gs.lang)
-          .then((text) => {
-            console.log(text)
-            analyze(text)
-          })
-          .catch((e) => {
-            emit('failed', e)
-          })
-          .finally(() => {
-            progress.value = false
-          })
-      } else progress.value = false
+      if (!ctx) return (progress.value = false)
+
+      ctx.filter =
+        'brightness(120%) contrast(200%) saturate(300%) sepia(100%) invert(100%) url(#svgThreshold)'
+      ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+
+      recognize(canvas, gs.lang)
+        .then((text) => {
+          analyze(text)
+        })
+        .catch((e) => {
+          emit('failed', e)
+        })
+        .finally(() => {
+          progress.value = false
+        })
     }
   }
 }

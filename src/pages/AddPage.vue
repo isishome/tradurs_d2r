@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onBeforeMount } from 'vue'
 import { QStepper, QSelect } from 'quasar'
+import { modifiers, skills } from 'src/domain/static/data'
+
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { useItemAddStore } from 'src/stores/item-add-store'
+import { useItemStore } from 'src/stores/item-store'
+import { useAccountStore } from 'src/stores/account-store'
+import { useCookies } from 'src/composables/useCookies'
 
 import type { Item, Price, Modifier } from 'src/types/item'
 import {
@@ -11,15 +17,14 @@ import {
   defaultItem,
   defaultPrice
 } from 'src/types/item'
-import { useItemAddStore } from 'src/stores/item-add-store'
-import { useItemStore } from 'src/stores/item-store'
-import { useAccountStore } from 'src/stores/account-store'
 
 import AnalysisComponent from 'components/item/AnalysisComponent.vue'
 import BaseComponent from 'components/item/BaseComponent.vue'
 import ModifierComponent from 'components/item/ModifierComponent.vue'
 import AuctionComponent from 'components/item/AuctionComponent.vue'
 import ItemComponent from 'components/item/ItemComponent.vue'
+import PreviewComponent from 'components/item/PreviewComponent.vue'
+import { TR_D2R_PLATFORM, TR_D2R_REGION } from 'src/domain/keys'
 
 const props = defineProps<{
   id?: string
@@ -31,6 +36,7 @@ const router = useRouter()
 const ias = useItemAddStore()
 const is = useItemStore()
 const as = useAccountStore()
+const cookies = useCookies()
 
 const stepper = ref<QStepper>()
 const step = ref<number>(1)
@@ -38,20 +44,22 @@ const baseRef = ref<typeof BaseComponent>()
 const auctionRef = ref<typeof AuctionComponent>()
 const _item = ref<Item>(defaultItem())
 const modifier = ref<number>()
-const endAnalysis = (i: Item) => {
-  _item.value.socket = i.socket
-  _item.value.ethereal = i.ethereal
-  _item.value.quality = i.quality
-  _item.value.category = i.category
-  _item.value.itemType = i.itemType
-  _item.value.classType = i.classType
-  _item.value.detailType = i.detailType
-  _item.value.item = i.item
-  _item.value.imageType = i.imageType
-  _item.value.names = i.names
-  _item.value.name = i.name
-  _item.value.modifiers = i.modifiers
+const endAnalysis = ({ item, data }: { item: Item; data: string }) => {
+  _item.value.socket = item.socket
+  _item.value.ethereal = item.ethereal
+  _item.value.quality = item.quality
+  _item.value.category = item.category
+  _item.value.itemType = item.itemType
+  _item.value.classType = item.classType
+  _item.value.detailType = item.detailType
+  _item.value.item = item.item
+  _item.value.imageType = item.imageType
+  _item.value.names = item.names
+  _item.value.name = item.name
+  _item.value.modifiers = item.modifiers
+  imageSrc.value = data
 }
+const imageSrc = ref()
 
 const updateItem = (item: Item) => {
   Object.assign(_item.value, item)
@@ -63,8 +71,7 @@ const updatePrice = (price: Price, progressTime: number) => {
 }
 
 const addModifier = (val: number) => {
-  const text =
-    [...ias.modifiers, ...ias.skills].find((m) => m.value === val)?.label ?? ''
+  const text = modifiers.find((m) => m.value === val)?.label ?? ''
 
   const addingModifier = {
     order: _item.value.modifiers.length,
@@ -124,7 +131,7 @@ const checkValidate = async () => {
 const modifierRef = ref<QSelect | null>(null)
 const modifierNeedle = ref<string>()
 const modifierOptions = computed(() =>
-  [...ias.modifiers, ...ias.skills].filter(
+  modifiers.filter(
     (mf) =>
       mf.label
         .toLowerCase()
@@ -159,6 +166,18 @@ const upsert = (item: Item, withStart = false) => {
   })
 }
 
+onBeforeMount(() => {
+  const platform = cookies.has(TR_D2R_PLATFORM)
+    ? (cookies.get(TR_D2R_PLATFORM) as string)
+    : undefined
+  _item.value.platform = platform
+
+  const region = cookies.has(TR_D2R_REGION)
+    ? (cookies.get(TR_D2R_REGION) as string)
+    : undefined
+  _item.value.region = region
+})
+
 onMounted(() => {
   if (!!props.id)
     is.getItems(1, Number(props.id)).then((result) => {
@@ -185,7 +204,7 @@ onMounted(() => {
 
 <template>
   <div class="row justify-center q-gutter-sm">
-    <!-- <div class="col-12">
+    <div v-if="false" class="col-12">
       <q-card flat bordered>
         <q-card-section>
           <div class="row q-gutter-y-sm q-gutter-md">
@@ -209,7 +228,7 @@ onMounted(() => {
           </div>
         </q-card-section>
       </q-card>
-    </div> -->
+    </div>
     <q-stepper
       bordered
       flat
@@ -226,7 +245,18 @@ onMounted(() => {
         :done="step > 1"
         class="no-padding"
       >
-        <BaseComponent ref="baseRef" :data="_item" @update="updateItem" />
+        <div class="row no-wrap justify-between q-col-gutter-x-md">
+          <template v-if="!!imageSrc || !!_item.id">
+            <PreviewComponent class="col-5 gt-md" :data="imageSrc ?? _item" />
+            <q-separator vertical class="no-padding gt-md" />
+          </template>
+          <BaseComponent
+            class="col"
+            ref="baseRef"
+            :data="_item"
+            @update="updateItem"
+          />
+        </div>
       </q-step>
       <q-step
         :name="2"
@@ -234,51 +264,58 @@ onMounted(() => {
         icon="list"
         :done="step > 2"
       >
-        <q-list bordered separator>
-          <ModifierComponent
-            v-for="(m, idx) in _item.modifiers"
-            :key="m.order"
-            :data="m"
-            :options="[...ias.modifiers, ...ias.skills]"
-            editable
-            @remove="removeModifier"
-            @update="updateModifier"
-          >
-            <template #front-side>
-              <q-item-section side>
-                <q-item-label>
-                  <q-btn
-                    aria-label="Tradurs Move Up Button"
-                    color="blue-grey-8"
-                    :disable="idx === 0"
-                    icon="keyboard_arrow_up"
-                    unelevated
-                    dense
-                    @click="replaceModifier(m.order, -1)"
-                  />
-                </q-item-label>
-                <q-item-label>
-                  <q-btn
-                    aria-label="Tradurs Move Down Button"
-                    color="blue-grey-9"
-                    :disable="idx + 1 === _item.modifiers.length"
-                    icon="keyboard_arrow_down"
-                    unelevated
-                    dense
-                    @click="replaceModifier(m.order, 1)"
-                  />
+        <div class="row no-wrap justify-between q-col-gutter-x-md">
+          <template v-if="!!imageSrc || !!_item.id">
+            <PreviewComponent class="col-5 gt-md" :data="imageSrc ?? _item" />
+            <q-separator vertical class="no-padding gt-md" />
+          </template>
+          <q-list class="col" separator>
+            <ModifierComponent
+              v-for="(m, idx) in _item.modifiers"
+              :key="m.order"
+              :data="m"
+              :options="modifiers"
+              :skills="skills"
+              editable
+              @remove="removeModifier"
+              @update="updateModifier"
+            >
+              <template #front-side>
+                <q-item-section side>
+                  <q-item-label>
+                    <q-btn
+                      aria-label="Tradurs Move Up Button"
+                      color="blue-grey-8"
+                      :disable="idx === 0"
+                      icon="keyboard_arrow_up"
+                      unelevated
+                      dense
+                      @click="replaceModifier(m.order, -1)"
+                    />
+                  </q-item-label>
+                  <q-item-label>
+                    <q-btn
+                      aria-label="Tradurs Move Down Button"
+                      color="blue-grey-9"
+                      :disable="idx + 1 === _item.modifiers.length"
+                      icon="keyboard_arrow_down"
+                      unelevated
+                      dense
+                      @click="replaceModifier(m.order, 1)"
+                    />
+                  </q-item-label>
+                </q-item-section>
+              </template>
+            </ModifierComponent>
+            <q-item v-show="_item.modifiers.length === 0">
+              <q-item-section>
+                <q-item-label class="text-center q-py-xl">
+                  {{ t('add.requireAffix') }}
                 </q-item-label>
               </q-item-section>
-            </template>
-          </ModifierComponent>
-          <q-item v-show="_item.modifiers.length === 0">
-            <q-item-section>
-              <q-item-label class="text-center q-py-xl">
-                {{ t('add.requireAffix') }}
-              </q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
+            </q-item>
+          </q-list>
+        </div>
       </q-step>
       <q-step
         :name="3"
@@ -286,99 +323,121 @@ onMounted(() => {
         icon="attach_money"
         :done="step > 3"
       >
-        <AuctionComponent
-          ref="auctionRef"
-          :data="_item.price"
-          :progress-time="(_item.progressTime as number)"
-          @update="updatePrice"
-        />
+        <div class="row no-wrap justify-between q-col-gutter-x-md">
+          <template v-if="!!imageSrc || !!_item.id">
+            <PreviewComponent class="col-5 gt-md" :data="imageSrc ?? _item" />
+            <q-separator vertical class="no-padding gt-md" />
+          </template>
+          <AuctionComponent
+            ref="auctionRef"
+            class="col"
+            :data="_item.price"
+            :progress-time="(_item.progressTime as number)"
+            @update="updatePrice"
+          />
+        </div>
       </q-step>
       <q-step :name="4" :title="t('add.finalConfirm')" icon="play_arrow">
-        <div class="row justify-center">
-          <ItemComponent :data="_item" editable @update-image="updateImage" />
+        <div class="row no-wrap justify-between q-col-gutter-x-md">
+          <template v-if="imageSrc">
+            <PreviewComponent class="col-5 gt-md" :data="imageSrc" />
+            <q-separator vertical class="no-padding gt-md" />
+          </template>
+          <div class="col row no-wrap justify-center">
+            <ItemComponent :data="_item" editable @update-image="updateImage" />
+          </div>
         </div>
       </q-step>
       <template v-slot:navigation>
-        <q-stepper-navigation class="row justify-between q-gutter-sm">
-          <div>
-            <AnalysisComponent v-if="step === 1" @end="endAnalysis" />
-            <q-select
-              v-else-if="step === 2"
-              ref="modifierRef"
-              :options="modifierOptions"
-              v-model="modifier"
-              map-options
-              emit-value
-              standout
-              input-class="text-white"
-              dense
-              :label="t('add.addAffix')"
-              bg-color="secondary"
-              style="min-width: 200px"
-              use-input
-              hide-selected
-              @blur="() => (modifierNeedle = undefined)"
-              @input.stop="filterModifier"
-              @update:model-value="selectModifier"
-            >
-              <template #no-option>
-                <q-item>
-                  <q-item-section> {{ t('add.noAffixData') }}</q-item-section>
-                </q-item>
-              </template>
-            </q-select>
-          </div>
-          <div class="row justify-end">
-            <q-btn
-              v-if="step > 1"
-              aria-label="Tradurs Previous Button"
-              color="grey"
-              text-color="dark"
-              @click="stepper?.previous()"
-              :label="t('btn.back')"
-              class="q-ml-sm"
-            />
-            <q-btn
-              v-if="step !== 4"
-              @click="checkValidate"
-              aria-label="Tradurs Continue Button"
-              color="primary"
-              text-color="dark"
-              :label="t('btn.continue')"
-              class="q-ml-sm"
-            />
-            <template v-else>
-              <q-btn-dropdown
-                aria-label="Tradurs Complete Button"
-                color="positive"
-                text-color="dark"
-                class="q-ml-sm text-weight-bold"
-                :label="t('btn.complete')"
+        <q-stepper-navigation
+          class="row no-wrap justify-between q-col-gutter-x-md"
+        >
+          <div v-if="!!imageSrc || !!_item.id" class="col-5 gt-md"></div>
+          <div class="col row no-wrap justify-between">
+            <div>
+              <AnalysisComponent v-if="step === 1" @complete="endAnalysis" />
+              <q-select
+                v-else-if="step === 2"
+                ref="modifierRef"
+                :options="modifierOptions"
+                v-model="modifier"
+                map-options
+                emit-value
+                standout
+                input-class="text-white"
+                dense
+                :label="t('add.addAffix')"
+                bg-color="secondary"
+                style="min-width: 200px"
+                use-input
+                hide-selected
+                @blur="() => (modifierNeedle = undefined)"
+                @input.stop="filterModifier"
+                @update:model-value="selectModifier"
               >
-                <q-list>
-                  <q-item clickable v-close-popup @click="upsert(_item)">
-                    <q-item-section>
-                      <q-item-label>{{
-                        t('add.standby', {
-                          t: !!_item.id ? t('btn.edit') : t('btn.register')
-                        })
-                      }}</q-item-label>
-                    </q-item-section>
+                <template #no-option>
+                  <q-item>
+                    <q-item-section> {{ t('add.noAffixData') }}</q-item-section>
                   </q-item>
-                  <q-item clickable v-close-popup @click="upsert(_item, true)">
-                    <q-item-section>
-                      <q-item-label
-                        >{{
-                          t('add.auction', {
+                </template>
+              </q-select>
+            </div>
+            <div class="row justify-end">
+              <q-btn
+                v-if="step > 1"
+                aria-label="Tradurs Previous Button"
+                color="grey"
+                text-color="dark"
+                @click="stepper?.previous()"
+                :label="t('btn.back')"
+                class="q-ml-sm"
+              />
+              <q-btn
+                v-if="step !== 4"
+                @click="checkValidate"
+                aria-label="Tradurs Continue Button"
+                color="primary"
+                text-color="dark"
+                :label="t('btn.continue')"
+                class="q-ml-sm"
+              />
+              <template v-else>
+                <q-btn-dropdown
+                  aria-label="Tradurs Complete Button"
+                  color="positive"
+                  text-color="dark"
+                  class="q-ml-sm text-weight-bold"
+                  :label="t('btn.complete')"
+                >
+                  <q-list>
+                    <q-item clickable v-close-popup @click="upsert(_item)">
+                      <q-item-section>
+                        <q-item-label>{{
+                          t('add.standby', {
                             t: !!_item.id ? t('btn.edit') : t('btn.register')
                           })
-                        }}
-                      </q-item-label>
-                    </q-item-section>
-                  </q-item>
-                </q-list>
-              </q-btn-dropdown>
-            </template>
+                        }}</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item
+                      clickable
+                      v-close-popup
+                      @click="upsert(_item, true)"
+                    >
+                      <q-item-section>
+                        <q-item-label
+                          >{{
+                            t('add.auction', {
+                              t: !!_item.id ? t('btn.edit') : t('btn.register')
+                            })
+                          }}
+                        </q-item-label>
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
+              </template>
+            </div>
           </div>
         </q-stepper-navigation>
       </template>

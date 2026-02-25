@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onBeforeMount } from 'vue'
+import { nameAffixes, names } from 'src/domain/static/data'
+
 import { useI18n } from 'vue-i18n'
-import { QForm, QSelect } from 'quasar'
-import type { Item } from 'src/types/item'
-import { BaseType, defaultItem, allLabel } from 'src/types/item'
 import { useItemAddStore } from 'src/stores/item-add-store'
+
+import type { Item } from 'src/types/item'
+import { QForm, QSelect } from 'quasar'
+import { BaseType, defaultItem, allLabel } from 'src/types/item'
+import { useCookies } from 'src/composables/useCookies'
+import { TR_D2R_PLATFORM, TR_D2R_REGION } from 'src/domain/keys'
 
 type Props = {
   data?: Item
@@ -19,17 +24,22 @@ const emit = defineEmits(['update'])
 
 const { t } = useI18n({ useScope: 'global' })
 const ias = useItemAddStore()
+const cookies = useCookies()
 
 const formRef = ref<QForm>()
 const _item = ref<Item>(defaultItem())
-
+const platformOptions = computed(() =>
+  props.type === BaseType.Filter
+    ? [allLabel(), ...ias.platforms]
+    : ias.platforms
+)
+const regionOptions = computed(() =>
+  props.type === BaseType.Filter ? [allLabel(), ...ias.regions] : ias.regions
+)
 const chainingName = computed(
   () =>
     _item.value.names
-      .map(
-        (n) =>
-          [...ias.nameAffixes, ...ias.names].find((ns) => ns.id === n)?.label
-      )
+      .map((n) => [...nameAffixes, ...names].find((ns) => ns.id === n)?.label)
       .join(' ')
       .trim() || undefined
 )
@@ -211,6 +221,26 @@ watch(
   { immediate: true, deep: true }
 )
 
+onBeforeMount(() => {
+  const platform =
+    cookies.has(TR_D2R_PLATFORM) &&
+    platformOptions.value
+      .map((po) => po.value)
+      .includes(cookies.get(TR_D2R_PLATFORM) ?? '')
+      ? (cookies.get(TR_D2R_PLATFORM) as string)
+      : undefined
+  _item.value.platform = platform
+
+  const region =
+    cookies.has(TR_D2R_REGION) &&
+    regionOptions.value
+      .map((po) => po.value)
+      .includes(cookies.get(TR_D2R_REGION) ?? '')
+      ? (cookies.get(TR_D2R_REGION) as string)
+      : undefined
+  _item.value.region = region
+})
+
 defineExpose({ validate })
 </script>
 <template>
@@ -219,11 +249,7 @@ defineExpose({ validate })
       <q-select
         filled
         v-model="_item.platform"
-        :options="
-          type === BaseType.Filter
-            ? [allLabel(), ...ias.platforms]
-            : ias.platforms
-        "
+        :options="platformOptions"
         :label="t('base.platform')"
         map-options
         emit-value
@@ -237,9 +263,7 @@ defineExpose({ validate })
       <q-select
         filled
         v-model="_item.region"
-        :options="
-          type === BaseType.Filter ? [allLabel(), ...ias.regions] : ias.regions
-        "
+        :options="regionOptions"
         :label="t('base.region')"
         map-options
         emit-value

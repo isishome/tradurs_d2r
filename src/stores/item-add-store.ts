@@ -10,13 +10,14 @@ import type {
   ItemTypeLabel,
   Modifier
 } from 'src/types/item'
-import { ModifierType, separator, midRate, skillPrefix } from 'src/types/item'
-import { useGlobalStore } from './global-store'
-import itemNames from 'src/assets/items/item-names.json'
-import itemNameAffixes from 'src/assets/items/item-nameaffixes.json'
-import itemModifiers from 'src/assets/items/item-modifiers.json'
-import itemRunes from 'src/assets/items/item-runes.json'
-import itemSkills from 'src/assets/items/item-skills.json'
+import { ModifierType, separator, midRate } from 'src/types/item'
+import {
+  modifiers,
+  nameAffixes,
+  names,
+  runes as itemRunes,
+  skills
+} from 'src/domain/static/data'
 
 type BaseData = {
   platforms: Label[]
@@ -42,10 +43,13 @@ type BaseData = {
   status: Label[]
 }
 
-const cos = stringComparison.cosine
+const comparison = stringComparison.jaroWinkler
+
+export const similarity = (s1: string, s2: string) => {
+  return comparison.similarity(s1, s2)
+}
 
 export const useItemAddStore = defineStore('item-add', () => {
-  const gs = useGlobalStore()
   const base: HttpRequestStore<BaseData> = {
     request: 0,
     loading: false,
@@ -74,73 +78,15 @@ export const useItemAddStore = defineStore('item-add', () => {
     }
   }
 
-  const skills = computed(() => {
-    const map = new Map<
-      string,
-      { id: number; Key: string; koKR: string; enUS: string }
-    >()
-
-    for (const item of itemSkills) {
-      const key = `${item.koKR}||${item.enUS}`
-
-      if (!map.has(key)) map.set(key, item)
-    }
-
-    return Array.from(map.values()).map((s) => ({
-      value: s.id,
-      label: `${
-        s.Key.indexOf('skillname') !== -1 ? skillPrefix[gs.lang] : ''
-      }${s[gs.locale].replace(/[%]{1,}/gi, '%')}`
-    }))
-  })
-  const modifiers = computed(() => {
-    const map = new Map<
-      string,
-      { id: number; Key: string; koKR: string; enUS: string }
-    >()
-
-    for (const item of itemModifiers) {
-      const key = `${item.koKR}||${item.enUS}`
-
-      if (!map.has(key)) map.set(key, item)
-    }
-
-    const skillModifiers =
-      gs.locale === 'koKR'
-        ? skills.value.map((s) => ({ ...s, label: `+%d ${s.label}` }))
-        : skills.value.map((s) => ({ ...s, label: `${s.label} +%d` }))
-    return [
-      ...Array.from(map.values()).map((im) => ({
-        value: im.id,
-        label: im[gs.locale].replace(/[%]{1,}/gi, '%')
-      })),
-      ...skillModifiers
-    ]
-  })
-  const names = computed(() =>
-    itemNames.map((ins) => ({
-      value: ins.Key,
-      label: ins[gs.locale],
-      id: ins.id
-    }))
-  )
-  const nameAffixes = computed(() =>
-    itemNameAffixes.map((ina) => ({
-      value: ina.Key,
-      label: ina[gs.locale],
-      id: ina.id
-    }))
-  )
-
   const platforms = computed(() => base.data.platforms)
   const regions = computed(() => base.data.regions)
   const ethereal = computed(() => ({
     value: 22745,
-    label: modifiers.value.find((m) => m.value === 22745)?.label
+    label: modifiers.find((m) => m.value === 22745)?.label
   }))
   const socket = computed(() => ({
     value: 3453,
-    label: modifiers.value.find((m) => m.value === 3453)?.label
+    label: modifiers.find((m) => m.value === 3453)?.label
   }))
 
   const classes = computed(() => (qualityId?: string, categoryId?: string) => {
@@ -219,9 +165,8 @@ export const useItemAddStore = defineStore('item-add', () => {
             ].map((w) => ({
               value: w.mappingId1,
               label:
-                nameAffixes.value.find((na) => na.value === w.mappingId1)
-                  ?.label ??
-                names.value.find((n) => n.value === w.mappingId1)?.label ??
+                nameAffixes.find((na) => na.value === w.mappingId1)?.label ??
+                names.find((n) => n.value === w.mappingId1)?.label ??
                 '',
               itemType: w.mappingId2,
               distanceType: w.mappingId3,
@@ -231,9 +176,8 @@ export const useItemAddStore = defineStore('item-add', () => {
           : base.data.weapons.map((w) => ({
               value: w.mappingId1,
               label:
-                nameAffixes.value.find((na) => na.value === w.mappingId1)
-                  ?.label ??
-                names.value.find((n) => n.value === w.mappingId1)?.label ??
+                nameAffixes.find((na) => na.value === w.mappingId1)?.label ??
+                names.find((n) => n.value === w.mappingId1)?.label ??
                 '',
               itemType: w.mappingId2,
               distanceType: w.mappingId3,
@@ -272,9 +216,8 @@ export const useItemAddStore = defineStore('item-add', () => {
             ].map((a) => ({
               value: a.mappingId1,
               label:
-                nameAffixes.value.find((na) => na.value === a.mappingId1)
-                  ?.label ??
-                names.value.find((n) => n.value === a.mappingId1)?.label ??
+                nameAffixes.find((na) => na.value === a.mappingId1)?.label ??
+                names.find((n) => n.value === a.mappingId1)?.label ??
                 '',
               itemType: a.mappingId2,
               classType: a.mappingId3,
@@ -283,9 +226,8 @@ export const useItemAddStore = defineStore('item-add', () => {
           : base.data.armor.map((a) => ({
               value: a.mappingId1,
               label:
-                nameAffixes.value.find((na) => na.value === a.mappingId1)
-                  ?.label ??
-                names.value.find((n) => n.value === a.mappingId1)?.label ??
+                nameAffixes.find((na) => na.value === a.mappingId1)?.label ??
+                names.find((n) => n.value === a.mappingId1)?.label ??
                 '',
               itemType: a.mappingId2,
               classType: a.mappingId3,
@@ -296,7 +238,7 @@ export const useItemAddStore = defineStore('item-add', () => {
   const charmTypes = computed(() =>
     base.data.charmTypes.map((ct) => ({
       value: ct.mappingId1,
-      label: names.value.find((n) => n.value === ct.mappingId1)?.label ?? ''
+      label: names.find((n) => n.value === ct.mappingId1)?.label ?? ''
     }))
   )
 
@@ -304,8 +246,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     () =>
       base.data.runes.map((r) => ({
         value: r.mappingId1,
-        label:
-          itemRunes.find((ir) => ir.id === r.mappingId1)?.[gs.locale] ?? '',
+        label: itemRunes.find((ir) => ir.value === r.mappingId1)?.label ?? '',
         detailType: r.mappingId1
       })) as Array<ItemTypeLabel>
   )
@@ -315,8 +256,8 @@ export const useItemAddStore = defineStore('item-add', () => {
       base.data.gems.map((g) => ({
         value: g.mappingId1,
         label:
-          nameAffixes.value.find((na) => na.id === g.mappingId1)?.label ??
-          names.value.find((n) => n.id === g.mappingId1)?.label ??
+          nameAffixes.find((na) => na.id === g.mappingId1)?.label ??
+          names.find((n) => n.id === g.mappingId1)?.label ??
           ''
       })) as Array<ItemTypeLabel>
   )
@@ -360,8 +301,7 @@ export const useItemAddStore = defineStore('item-add', () => {
           )
         ].map((rw) => ({
           value: rw.mappingId1,
-          label:
-            itemRunes.find((ir) => ir.id === rw.mappingId1)?.[gs.locale] ?? ''
+          label: itemRunes.find((ir) => ir.value === rw.mappingId1)?.label ?? ''
         }))
   )
 
@@ -377,8 +317,8 @@ export const useItemAddStore = defineStore('item-add', () => {
         .map((u) => ({
           value: u.mappingId1,
           label:
-            nameAffixes.value.find((na) => na.id === u.mappingId1)?.label ??
-            names.value.find((n) => n.id === u.mappingId1)?.label,
+            nameAffixes.find((na) => na.id === u.mappingId1)?.label ??
+            names.find((n) => n.id === u.mappingId1)?.label,
           category: u.mappingId2,
           itemType: u.mappingId11 ?? u.mappingId3 ?? u.mappingId7,
           detailType: u.mappingId4 ?? u.mappingId8,
@@ -394,8 +334,8 @@ export const useItemAddStore = defineStore('item-add', () => {
         .map((s) => ({
           value: s.mappingId1,
           label:
-            nameAffixes.value.find((na) => na.id === s.mappingId1)?.label ??
-            names.value.find((n) => n.id === s.mappingId1)?.label,
+            nameAffixes.find((na) => na.id === s.mappingId1)?.label ??
+            names.find((n) => n.id === s.mappingId1)?.label,
           category: s.mappingId2,
           itemType: s.mappingId3 ?? s.mappingId7,
           detailType: s.mappingId4 ?? s.mappingId8,
@@ -409,9 +349,9 @@ export const useItemAddStore = defineStore('item-add', () => {
       base.data.misc.map((m) => ({
         value: m.mappingId1,
         label:
-          modifiers.value.find((mf) => mf.value === m.mappingId1)?.label ??
-          nameAffixes.value.find((na) => na.id === m.mappingId1)?.label ??
-          names.value.find((n) => n.id === m.mappingId1)?.label
+          modifiers.find((mf) => mf.value === m.mappingId1)?.label ??
+          nameAffixes.find((na) => na.id === m.mappingId1)?.label ??
+          names.find((n) => n.id === m.mappingId1)?.label
       })) as Array<ItemTypeLabel>
   )
 
@@ -435,31 +375,50 @@ export const useItemAddStore = defineStore('item-add', () => {
     return plainStr.trim()
   }
 
-  const findModifierOrSkill = (
-    str: string,
-    targetId?: number,
-    targetStr?: string
-  ) => {
+  const findModifier = (str: string, targetId?: number, targetStr?: string) => {
     if (!!!str) return []
 
     const plainStr = removeMatchWords(str, targetStr)
 
-    const findMSs = [...skills.value, ...modifiers.value]
+    const findMSs = modifiers
       .filter(
         (ims) =>
           ims.value !== (targetId ?? '') &&
           !!str &&
-          cos.similarity(plainStr, ims.label) > midRate
+          similarity(plainStr, ims.label) > midRate
       )
       .map((ims) => ({
         type: ModifierType.String,
-        id: ims.value,
-        similarity: cos.similarity(plainStr, ims.label)
+        id: ims.value as number,
+        similarity: similarity(plainStr, ims.label)
       }))
 
     findMSs.sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
 
     return findMSs
+  }
+
+  const findSkill = (str: string, targetId?: number, targetStr?: string) => {
+    if (!!!str) return []
+
+    const plainStr = removeMatchWords(str, targetStr)
+
+    const findSKs = skills
+      .filter(
+        (ims) =>
+          ims.value !== (targetId ?? '') &&
+          !!str &&
+          similarity(plainStr, ims.label) > midRate
+      )
+      .map((ims) => ({
+        type: ModifierType.String,
+        id: ims.value as number,
+        similarity: similarity(plainStr, ims.label)
+      }))
+
+    findSKs.sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
+
+    return findSKs
   }
 
   const findChildren = (
@@ -474,7 +433,7 @@ export const useItemAddStore = defineStore('item-add', () => {
     let numberCnt = 0
     matchTargetStr?.forEach((mts, i) => {
       if (mts === '%s') {
-        const modifierOrSkill = findModifierOrSkill(str, targetId, targetStr)
+        const modifierOrSkill = findSkill(str, targetId, targetStr)
 
         children.push({
           order: i,
@@ -499,7 +458,7 @@ export const useItemAddStore = defineStore('item-add', () => {
 
     const modifierOrSkill2 =
       str.split(/[\-ㅡ\(].(?!.*[0-9]).*/i).length > 1
-        ? findModifierOrSkill(str.split(/[\-\ㅡ\(]/i)[1], targetId)
+        ? findModifier(str.split(/[\-\ㅡ\(]/i)[1], targetId)
         : []
 
     children.push({
@@ -580,10 +539,6 @@ export const useItemAddStore = defineStore('item-add', () => {
 
   return {
     base,
-    modifiers,
-    skills,
-    names,
-    nameAffixes,
     platforms,
     regions,
     ethereal,

@@ -1,3 +1,4 @@
+import { Locale } from 'vue-i18n'
 import { Lang } from './global'
 import type { Label } from './global'
 import { User } from './user'
@@ -16,7 +17,7 @@ export enum BaseType {
 }
 
 type LangString = Record<Lang, string>
-type SkillPrefix = Record<Lang, string>
+type SkillPrefix = Record<Locale, string>
 type RandImage = Record<string, number>
 
 export const langStr: LangString = {
@@ -25,8 +26,8 @@ export const langStr: LangString = {
 }
 
 export const skillPrefix: SkillPrefix = {
-  ko: '+%d ',
-  en: '+%d to '
+  koKR: '+%d ',
+  enUS: '+%d to '
 }
 
 export const randImage: RandImage = {
@@ -159,8 +160,8 @@ export const allLabel = (): Label => {
 
 export const defaultItem = (): Item => {
   return {
-    platform: undefined,
-    region: undefined,
+    platform: 'all',
+    region: 'all',
     ladder: true,
     hardcore: false,
     ethereal: false,

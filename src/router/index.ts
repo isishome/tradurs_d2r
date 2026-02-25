@@ -13,6 +13,7 @@ import { useGlobalStore } from 'src/stores/global-store'
 import { useAccountStore } from 'src/stores/account-store'
 import { useItemAddStore } from 'src/stores/item-add-store'
 import { initMessenger } from 'src/sockets/messenger'
+import { init } from 'src/domain/static/data'
 
 /*
  * If not building with SSR mode, you can
@@ -48,7 +49,9 @@ export default route(function ({ store }) {
 
   Router.beforeEach(async (to, from, next) => {
     const lang = to.params.lang || 'ko'
+    const locale = lang === 'ko' ? 'koKR' : 'enUS'
     api.defaults.headers.common['Accept-Language'] = lang
+    init(locale)
 
     const gs = useGlobalStore(store)
     const as = useAccountStore(store)
