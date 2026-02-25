@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { QFile, useQuasar } from 'quasar'
+import { QFile, useQuasar, LocalStorage } from 'quasar'
 import { modifiers, nameAffixes, names } from 'src/domain/static/data'
 
 import { useI18n } from 'vue-i18n'
@@ -58,6 +58,9 @@ const scan = (f: File) => {
 
 const recognize = async (image: ImageLike, lang: string) => {
   const locale = lang === 'ko' ? 'kor' : 'eng'
+  const appVersion = LocalStorage.getItem<string>('APP_VERSION')
+  const cacheMethod =
+    appVersion !== import.meta.env.VITE_APP_VERSION || !prod ? 'none' : 'write'
   const worker = await createWorker(locale, 1, {
     // workerPath:
     //   'https://cdn.jsdelivr.net/npm/tesseract.js@v5.1.0/dist/worker.min.js',
@@ -65,7 +68,7 @@ const recognize = async (image: ImageLike, lang: string) => {
     //   ? 'https://cdn.jsdelivr.net/gh/seraMint/tessdata/'
     //   : '/tessdata/best', //'https://cdn.jsdelivr.net/gh/seraMint/tessdata', //'https://tessdata.projectnaptha.com/4.0.0',
     // corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@v5.1.0',
-    cacheMethod: prod ? 'write' : 'none'
+    cacheMethod
   })
   await worker.setParameters({
     preserve_interword_spaces: '1'
