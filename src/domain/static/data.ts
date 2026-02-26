@@ -14,6 +14,7 @@ type StaticData = {
   id?: number
 }
 
+let currentLocale: Locale
 export let skills: StaticData[]
 export let modifiers: StaticData[]
 export let runes: StaticData[]
@@ -98,6 +99,9 @@ const buildNameAffixes = (locale: Locale) =>
   }))
 
 export const init = (locale: Locale) => {
+  if (currentLocale === locale) return
+
+  currentLocale = locale
   skills = buildSkills(locale)
   modifiers = buildModifiers(locale)
   runes = buildRunes(locale)
