@@ -101,6 +101,7 @@ export default {
     classType: 'Class type',
     selectClass: 'Choose a career.',
     detailType: 'Detail type',
+    selectCategoryType: 'Choose a {category}',
     selectDetailType: 'Choose a detail type',
     detailTypeNotFound: 'Detail type not found',
     runeword: 'Runeword',

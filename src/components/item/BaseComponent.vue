@@ -43,6 +43,18 @@ const chainingName = computed(
       .join(' ')
       .trim() || undefined
 )
+const categoryTypeName = computed(() =>
+  _item.value.category === 'weapons'
+    ? t('base.weaponType')
+    : _item.value.category === 'armor'
+    ? t('base.armorType')
+    : _item.value.category === 'charms'
+    ? t('base.charmType')
+    : ''
+)
+const selectCategoryType = computed(() =>
+  t('base.selectCategoryType', { category: categoryTypeName.value })
+)
 
 const update = () => {
   emit('update', _item.value)
@@ -247,6 +259,7 @@ defineExpose({ validate })
   <q-form ref="formRef" class="full-width column q-gutter-y-sm">
     <div>
       <q-select
+        tabindex="1"
         filled
         v-model="_item.platform"
         :options="platformOptions"
@@ -261,6 +274,7 @@ defineExpose({ validate })
     </div>
     <div>
       <q-select
+        tabindex="2"
         filled
         v-model="_item.region"
         :options="regionOptions"
@@ -318,6 +332,7 @@ defineExpose({ validate })
       />
     </div>
     <q-select
+      tabindex="3"
       filled
       v-model="_item.quality"
       :options="
@@ -342,6 +357,7 @@ defineExpose({ validate })
       </template>
     </q-select>
     <q-select
+      tabindex="4"
       :disable="!!!_item.quality || _item.quality === 'all'"
       filled
       v-model="_item.category"
@@ -358,6 +374,7 @@ defineExpose({ validate })
       v-if="!['unique', 'set'].includes(_item.quality as string) && ['weapons', 'armor', 'charms'].includes(_item.category as string)"
     >
       <q-select
+        tabindex="5"
         filled
         v-model="_item.itemType"
         :options="
@@ -369,27 +386,16 @@ defineExpose({ validate })
             ? ias.charmTypes
             : []
         "
-        :label="
-          _item.category === 'weapons'
-            ? t('base.weaponType')
-            : _item.category === 'armor'
-            ? t('base.armorType')
-            : _item.category === 'charms'
-            ? t('base.charmType')
-            : ''
-        "
+        :label="categoryTypeName"
         map-options
         emit-value
         no-error-icon
         hide-bottom-space
-        :rules="
-          _item.quality === 'magic' && _item.category === 'charms'
-            ? [(val) => !!val || '선택']
-            : undefined
-        "
+        :rules="[(val) => !!val || selectCategoryType]"
         @update:model-value="updateItemType"
       />
       <q-select
+        tabindex="6"
         v-if="_item.itemType === 'clas'"
         filled
         v-model="_item.classType"
@@ -403,6 +409,7 @@ defineExpose({ validate })
         :rules="[(val) => !!val || t('base.selectClass')]"
       />
       <q-select
+        tabindex="7"
         v-if="_item.category !== 'charms' && !!_item.itemType"
         ref="detailTypeRef"
         v-model="_item.detailType"
@@ -426,6 +433,7 @@ defineExpose({ validate })
         </template>
       </q-select>
       <q-select
+        tabindex="8"
         v-if="_item.quality === 'runewords'"
         :disable="
           ias.runewords(
@@ -453,6 +461,7 @@ defineExpose({ validate })
       />
     </template>
     <q-select
+      tabindex="8"
       v-else-if="['unique', 'set'].includes(_item.quality as string) || ['runes', 'gems', 'misc'].includes(_item.category as string)"
       ref="itemRef"
       v-model="_item.item"
@@ -482,6 +491,7 @@ defineExpose({ validate })
       </template>
     </q-select>
     <q-input
+      tabindex="9"
       v-if="['magic', 'rare','crafted'].includes(_item.quality as string) && type!==BaseType.Filter"
       filled
       no-error-icon
@@ -495,6 +505,7 @@ defineExpose({ validate })
     <template v-if="type === 'default'">
       <q-separator />
       <q-input
+        tabindex="10"
         filled
         no-error-icon
         hide-bottom-space

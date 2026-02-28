@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeMount } from 'vue'
-import { QStepper, QSelect } from 'quasar'
+import { ref, computed, onMounted, onBeforeMount, watch } from 'vue'
+import { QStepper, QSelect, QList } from 'quasar'
 import { modifiers, skills } from 'src/domain/static/data'
+import Sortable from 'sortablejs'
 
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
@@ -60,9 +61,12 @@ const endAnalysis = ({ item, data }: { item: Item; data: string }) => {
   imageSrc.value = data
 }
 const imageSrc = ref()
+const modifiersRef = ref<QList>()
 
 const updateItem = (item: Item) => {
   Object.assign(_item.value, item)
+  cookies.set(TR_D2R_PLATFORM, item.platform ?? 'all', { expires: 365 })
+  cookies.set(TR_D2R_REGION, item.region ?? 'all', { expires: 365 })
 }
 
 const updatePrice = (price: Price, progressTime: number) => {
@@ -96,17 +100,6 @@ const updateModifier = (val: Modifier) => {
   const findModifier = _item.value.modifiers.find((m) => m.order === val.order)
 
   if (findModifier) Object.assign(findModifier, val)
-}
-
-const replaceModifier = (order: number, move: number) => {
-  const findModifierIndex = _item.value.modifiers.findIndex(
-    (m) => m.order === order
-  )
-
-  if (findModifierIndex !== -1) {
-    const moveTarget = _item.value.modifiers.splice(findModifierIndex, 1)
-    _item.value.modifiers.splice(findModifierIndex + move, 0, ...moveTarget)
-  }
 }
 
 const updateImage = (val: number) => {
@@ -166,6 +159,38 @@ const upsert = (item: Item, withStart = false) => {
   })
 }
 
+watch(modifiersRef, (val) => {
+  if (val) {
+    new Sortable(val.$el, {
+      handle: '.handle',
+      animation: 150,
+      onEnd(evt) {
+        if (
+          evt.oldIndex === evt.newIndex ||
+          typeof evt.oldIndex !== 'number' ||
+          typeof evt.newIndex !== 'number'
+        )
+          return
+        const oldModifier = modifiersRef.value?.$el.children[
+          evt.oldIndex
+        ] as HTMLDivElement
+        const newModifier = modifiersRef.value?.$el.children[
+          evt.newIndex
+        ] as HTMLDivElement
+        const oldOrder = Number(oldModifier.dataset.order)
+        const newOrder = Number(newModifier.dataset.order)
+        const oldItem = _item.value.modifiers.find((m) => m.order === oldOrder)
+        const newItem = _item.value.modifiers.find((m) => m.order === newOrder)
+
+        if (!oldItem || !newItem) return
+
+        oldItem.order = newOrder
+        newItem.order = oldOrder
+      }
+    })
+  }
+})
+
 onBeforeMount(() => {
   const platform = cookies.has(TR_D2R_PLATFORM)
     ? (cookies.get(TR_D2R_PLATFORM) as string)
@@ -197,6 +222,7 @@ onMounted(() => {
         result.items[0].rate = undefined
         result.items[0].loading = false
       }
+
       _item.value = result.items[0]
     })
 })
@@ -269,41 +295,23 @@ onMounted(() => {
             <PreviewComponent class="col-5 gt-md" :data="imageSrc ?? _item" />
             <q-separator vertical class="no-padding gt-md" />
           </template>
-          <q-list class="col" separator>
+          <q-list ref="modifiersRef" class="col" separator>
             <ModifierComponent
-              v-for="(m, idx) in _item.modifiers"
+              v-for="m in _item.modifiers"
               :key="m.order"
               :data="m"
               :options="modifiers"
               :skills="skills"
+              :data-order="m.order"
               editable
               @remove="removeModifier"
               @update="updateModifier"
             >
               <template #front-side>
                 <q-item-section side>
-                  <q-item-label>
-                    <q-btn
-                      aria-label="Tradurs Move Up Button"
-                      color="blue-grey-8"
-                      :disable="idx === 0"
-                      icon="keyboard_arrow_up"
-                      unelevated
-                      dense
-                      @click="replaceModifier(m.order, -1)"
-                    />
-                  </q-item-label>
-                  <q-item-label>
-                    <q-btn
-                      aria-label="Tradurs Move Down Button"
-                      color="blue-grey-9"
-                      :disable="idx + 1 === _item.modifiers.length"
-                      icon="keyboard_arrow_down"
-                      unelevated
-                      dense
-                      @click="replaceModifier(m.order, 1)"
-                    />
-                  </q-item-label>
+                  <q-item dense class="row items-center no-padding">
+                    <q-icon name="drag_indicator" class="handle" />
+                  </q-item>
                 </q-item-section>
               </template>
             </ModifierComponent>
@@ -444,3 +452,9 @@ onMounted(() => {
     </q-stepper>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.handle {
+  cursor: move;
+}
+</style>

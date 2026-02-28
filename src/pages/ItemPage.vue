@@ -274,12 +274,14 @@ onUnmounted(() => {
         swipeable
         animated
         arrows
-        padding
+        control-type="regular"
+        control-color="primary"
+        control-text-color="dark"
         height="101%"
         class="full-width bg-transparent"
       >
         <q-carousel-slide :name="idx" v-for="(col, idx) in colGroup" :key="idx">
-          <div class="row justify-around q-gutter-x-lg no-wrap">
+          <div class="row justify-around q-gutter-x-lg no-wrap overflow-hidden">
             <ItemComponent
               v-for="userItem in col"
               :key="userItem.id"

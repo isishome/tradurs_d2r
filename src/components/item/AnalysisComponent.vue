@@ -366,7 +366,10 @@ const filtering = (f: File) => {
       canvas.width = image.width * scale
       canvas.height = image.height * scale
 
-      if (!ctx) return (progress.value = false)
+      if (!ctx) {
+        progress.value = false
+        return
+      }
 
       ctx.filter =
         'brightness(120%) contrast(200%) saturate(300%) sepia(100%) invert(100%) url(#svgThreshold)'

@@ -101,6 +101,7 @@ export default {
     classType: '직업 유형',
     selectClass: '직업을 선택하세요.',
     detailType: '상세 유형',
+    selectCategoryType: '{category}을(를) 선택하세요',
     selectDetailType: '상세 유형을 선택하세요',
     detailTypeNotFound: '상세 유형을 찾을 수 없습니다',
     runeword: '룬어',

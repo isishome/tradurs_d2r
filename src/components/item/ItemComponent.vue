@@ -285,11 +285,7 @@ onUnmounted(() => {
               {{ t('base.softcore') }}
             </div>
           </div>
-          <div
-            :class="
-              data.quality === 'magic' ? 'row justify-center q-gutter-x-sm' : ''
-            "
-          >
+          <div>
             <div v-if="data.quality !== 'normal' || data.category === 'misc'">
               {{ name }}
             </div>
