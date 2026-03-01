@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { nextTick, reactive, ref } from 'vue'
 import { QFile, useQuasar, LocalStorage } from 'quasar'
 import { modifiers, nameAffixes, names } from 'src/domain/static/data'
 
@@ -8,7 +8,13 @@ import { useGlobalStore } from 'src/stores/global-store'
 import { similarity, useItemAddStore } from 'src/stores/item-add-store'
 
 import { createWorker, ImageLike } from 'tesseract.js'
-import type { Modifier, DropBox, Item, Similarity } from 'src/types/item'
+import type {
+  Modifier,
+  DropBox,
+  Item,
+  Similarity,
+  CropBox
+} from 'src/types/item'
 import {
   ModifierType,
   langStr,
@@ -17,6 +23,7 @@ import {
   midRate,
   highRate
 } from 'src/types/item'
+import type Cropper from 'cropperjs'
 
 type Names = Similarity & {
   id: number
@@ -43,17 +50,75 @@ const ias = useItemAddStore()
 const progress = ref<boolean>(false)
 const fileRef = ref<QFile>()
 const file = ref()
+const dropArea = ref<HTMLDivElement>()
+const dropBox = reactive<DropBox>({
+  show: false,
+  enter: 0
+})
+const cropImage = ref<HTMLImageElement>()
+const cropBox = reactive<CropBox>({
+  show: false,
+  origin: undefined
+})
+let cropper: Cropper
 let image: HTMLImageElement
 
 const beforeHide = () => {
   file.value = undefined
 }
 
-const scan = (f: File) => {
+const scan = async (f: File) => {
   dropBox.show = false
-  emit('start')
+  cropBox.origin = URL.createObjectURL(f)
 
-  filtering(f)
+  await nextTick()
+
+  cropBox.show = true
+}
+
+const onShowCropBox = async () => {
+  const Cropper = (await import('cropperjs')).default
+
+  if (!Cropper || !cropImage.value) {
+    cropBox.show = false
+    dropBox.show = true
+
+    return
+  }
+
+  if (cropper) cropper.destroy()
+
+  cropper = new Cropper(cropImage.value, {
+    container: cropImage.value.parentElement as HTMLElement
+  })
+
+  const selection = cropper.getCropperSelection()
+
+  if (selection) {
+    selection.initialAspectRatio =
+      cropImage.value.width / cropImage.value.height
+    selection.initialCoverage = 0.98
+    selection.zoomable = false
+  }
+}
+
+const onBeforeHideCropBox = () => {
+  if (cropBox.origin) URL.revokeObjectURL(cropBox.origin)
+  file.value = undefined
+}
+
+const onStartFilter = async () => {
+  const canvas = cropper.getCropperSelection()
+
+  const realCanvas = await canvas?.$toCanvas()
+  realCanvas?.toBlob((blob) => {
+    if (blob) {
+      emit('start')
+      filtering(blob)
+    }
+
+    cropBox.show = false
+  })
 }
 
 const recognize = async (image: ImageLike, lang: string) => {
@@ -351,7 +416,7 @@ const analyze = (text: string) => {
   emit('complete', { item, data: image.src })
 }
 
-const filtering = (f: File) => {
+const filtering = (f: Blob) => {
   progress.value = true
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d', { alpha: false })
@@ -393,12 +458,6 @@ const click = () => {
   if ($q.platform.is.mobile) fileRef.value?.pickFiles()
   else dropBox.show = true
 }
-
-const dropArea = ref<HTMLDivElement>()
-const dropBox = reactive<DropBox>({
-  show: false,
-  enter: 0
-})
 
 const fileCheckAndScanStart = (f?: File) => {
   if (f && f.type.indexOf('image') !== -1) scan(f)
@@ -468,7 +527,7 @@ const beforeHideDropBox = () => {
       @before-hide="beforeHideDropBox"
     >
       <q-card flat bordered class="drop-area-wrap">
-        <q-card-section class="fit">
+        <q-card-section class="fit q-pa-lg">
           <div
             ref="dropArea"
             class="drop-area fit column justify-center items-center text-h5 q-pa-md"
@@ -495,6 +554,28 @@ const beforeHideDropBox = () => {
             </div>
           </div>
         </q-card-section>
+      </q-card>
+    </q-dialog>
+    <q-dialog
+      v-model="cropBox.show"
+      full-width
+      full-height
+      @show="onShowCropBox"
+      @before-hide="onBeforeHideCropBox"
+    >
+      <q-card flat bordered class="column no-wrap">
+        <q-card-section class="col row justify-center items-center crop-area">
+          <img ref="cropImage" :src="cropBox.origin" />
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn
+            @click="onStartFilter"
+            aria-label="Tradurs Continue Button"
+            color="primary"
+            text-color="dark"
+            :label="t('btn.continue')"
+          />
+        </q-card-actions>
       </q-card>
     </q-dialog>
     <q-dialog persistent v-model="progress" @before-hide="beforeHide">
@@ -536,13 +617,26 @@ const beforeHideDropBox = () => {
 
 .drop-area {
   border: dashed 4px var(--border-color);
-  border-radius: 0;
+  border-radius: 10px;
   cursor: pointer;
   word-break: break-all;
   letter-spacing: 2px;
 
   &.enter {
     background-color: var(--q-dark-page);
+  }
+}
+
+.crop-area {
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+    visibility: hidden;
+  }
+
+  &:deep(cropper-canvas) {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

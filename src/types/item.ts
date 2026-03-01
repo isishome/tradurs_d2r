@@ -47,6 +47,11 @@ export type DropBox = {
   enter: number
 }
 
+export type CropBox = {
+  show: boolean
+  origin?: string
+}
+
 export type MappingId = {
   mappingId1: string | number
   mappingId2: string

@@ -26,7 +26,6 @@ defineProps<Props>()
     height: auto;
     object-fit: contain;
     box-shadow: 1px 1px 1px 1px var(--q-dark-page);
-    border-radius: 20px;
   }
 }
 </style>

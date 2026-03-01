@@ -164,6 +164,7 @@ watch(modifiersRef, (val) => {
     new Sortable(val.$el, {
       handle: '.handle',
       animation: 150,
+      direction: 'vertical',
       onEnd(evt) {
         if (
           evt.oldIndex === evt.newIndex ||
@@ -295,34 +296,36 @@ onMounted(() => {
             <PreviewComponent class="col-5 gt-md" :data="imageSrc ?? _item" />
             <q-separator vertical class="no-padding gt-md" />
           </template>
-          <q-list ref="modifiersRef" class="col" separator>
-            <ModifierComponent
-              v-for="m in _item.modifiers"
-              :key="m.order"
-              :data="m"
-              :options="modifiers"
-              :skills="skills"
-              :data-order="m.order"
-              editable
-              @remove="removeModifier"
-              @update="updateModifier"
-            >
-              <template #front-side>
-                <q-item-section side>
-                  <q-item dense class="row items-center no-padding">
-                    <q-icon name="drag_indicator" class="handle" />
-                  </q-item>
+          <div class="fit">
+            <q-list ref="modifiersRef" class="col" bordered separator>
+              <ModifierComponent
+                v-for="m in _item.modifiers"
+                :key="m.order"
+                :data="m"
+                :options="modifiers"
+                :skills="skills"
+                :data-order="m.order"
+                editable
+                @remove="removeModifier"
+                @update="updateModifier"
+              >
+                <template #front-side>
+                  <q-item-section side>
+                    <q-item dense class="row items-center no-padding">
+                      <q-icon name="drag_indicator" class="handle" />
+                    </q-item>
+                  </q-item-section>
+                </template>
+              </ModifierComponent>
+              <q-item v-show="_item.modifiers.length === 0">
+                <q-item-section>
+                  <q-item-label class="text-center q-py-xl">
+                    {{ t('add.requireAffix') }}
+                  </q-item-label>
                 </q-item-section>
-              </template>
-            </ModifierComponent>
-            <q-item v-show="_item.modifiers.length === 0">
-              <q-item-section>
-                <q-item-label class="text-center q-py-xl">
-                  {{ t('add.requireAffix') }}
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
+              </q-item>
+            </q-list>
+          </div>
         </div>
       </q-step>
       <q-step
