@@ -28,13 +28,15 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, reactive, computed, watch, onMounted } from 'vue'
+import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import type { Size } from 'src/types/global'
 import type { Bid, Item } from 'src/types/item'
 import { defaultBid } from 'src/types/item'
 import { useAccountStore } from 'stores/account-store'
+import { useGlobalStore } from 'src/stores/global-store'
 import { sound } from 'src/sockets/messenger'
 import { notify } from 'src/assets/utils/common'
 
@@ -46,33 +48,52 @@ const props = defineProps<{
   id: string
 }>()
 
+const $q = useQuasar()
 const { t } = useI18n({ useScope: 'global' })
 const router = useRouter()
 
 const is = useItemStore()
 const as = useAccountStore()
+const gs = useGlobalStore()
 
 const bids = ref<Array<Bid>>([])
 const _bid = reactive<Bid>(defaultBid())
 const colGroup = reactive<Array<Array<Item>>>([])
 const size = reactive<Size>({} as Size)
 const _slide = ref<number>(0)
-
 const limit = computed(() =>
   Math.floor(size.width / (is.itemWidth + 128)) > 0
     ? Math.floor(size.width / (is.itemWidth + 128))
     : 1
 )
-
 const itemId = computed(() =>
   !!props.id && !isNaN(Number(props.id)) ? Number(props.id) : undefined
 )
 const requestUpdate = computed(() => is.notify.request)
 const wonBid = computed(() => bids.value.find((b) => b.won))
+const detailInfo = reactive<{ itemId?: number; isTransition: boolean }>({
+  itemId: undefined,
+  isTransition: false
+})
+const bidRef = ref()
 
 const getBids = (overBidId?: number) => {
   is.getBids(itemId.value as number, overBidId).then((data) => {
     bids.value = !!overBidId ? [...bids.value, ...data] : data
+
+    if ($q.platform.is.mobile && bidRef.value?.$el) {
+      const bidElement = bidRef.value?.$el as HTMLDivElement
+      const y =
+        bidElement.getBoundingClientRect().top +
+        window.scrollY -
+        gs.headerHeight -
+        24
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      })
+    }
   })
 }
 
@@ -84,7 +105,7 @@ const alignUserItems = () => {
   while (cloneItems.length > 0) {
     let cnt = 0
     const cols = []
-    while (cnt < limit.value) {
+    while (cnt < limit.value && cloneItems.length > 0) {
       cols.push(cloneItems.shift())
       cnt++
     }
@@ -159,8 +180,15 @@ const updateBidderRate = (val: number, failed: (before: number) => void) => {
     })
 }
 
-const goItem = async (id: number) => {
-  await router.push({ name: 'item', params: { id } })
+const onClickItem = (id: number) => {
+  if (!!detailInfo.itemId || detailInfo.isTransition) return
+
+  detailInfo.itemId = id
+  detailInfo.isTransition = true
+}
+
+const goDetail = async () => {
+  await router.push({ name: 'item', params: { id: detailInfo.itemId } })
 }
 
 watch(limit, (val, old) => {
@@ -194,6 +222,9 @@ watch(requestUpdate, (val, old) => {
 
 watch(itemId, (val, old) => {
   if (!!val && val !== old) {
+    detailInfo.itemId = undefined
+    detailInfo.isTransition = false
+
     alignUserItems()
     getBids()
   }
@@ -202,11 +233,6 @@ watch(itemId, (val, old) => {
 onMounted(() => {
   alignUserItems()
   getBids()
-})
-
-onUnmounted(() => {
-  is.detailItem = undefined
-  is.userItems = []
 })
 </script>
 <template>
@@ -227,6 +253,7 @@ onUnmounted(() => {
         />
       </div>
       <BidComponent
+        ref="bidRef"
         :data="bids"
         :item="is.detailItem"
         class="bid col-5 col-md"
@@ -264,7 +291,7 @@ onUnmounted(() => {
     />
     <template v-if="colGroup.length > 0">
       <q-separator class="q-my-xl" />
-      <div class="text-h6 q-mb-lg text-center">
+      <div class="text-h6 text-center">
         {{ t('item.inProgressUserItems') }}
       </div>
       <q-carousel
@@ -281,14 +308,22 @@ onUnmounted(() => {
         class="full-width bg-transparent"
       >
         <q-carousel-slide :name="idx" v-for="(col, idx) in colGroup" :key="idx">
-          <div class="row justify-around q-gutter-x-lg no-wrap overflow-hidden">
+          <div
+            class="row justify-around q-gutter-x-lg no-wrap overflow-hidden q-py-xl"
+          >
             <ItemComponent
               v-for="userItem in col"
               :key="userItem.id"
               :class="[
-                userItem.loading ? 'no-pointer-events' : 'cursor-pointer'
+                'related-item',
+                userItem.loading ? 'no-pointer-events' : 'cursor-pointer',
+                {
+                  clicked:
+                    !!detailInfo.itemId && userItem.id === detailInfo.itemId
+                }
               ]"
-              @click="goItem(userItem.id as number)"
+              @click="onClickItem(userItem.id as number)"
+              @transitionend="goDetail"
               :data="userItem"
               no-more
             />
@@ -301,7 +336,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .bid {
-  width: 360px;
+  width: 340px;
   max-width: 80vw;
   min-height: 50vh;
   max-height: 80vh;
@@ -309,5 +344,16 @@ onUnmounted(() => {
 
 .no-data {
   height: 50vh;
+}
+
+.related-item {
+  transition: transform 0.2s ease, filter 0.2s ease;
+  transform: scale(1);
+  filter: brightness();
+
+  &.clicked {
+    transform: scale(1.05);
+    filter: brightness(1.4);
+  }
 }
 </style>

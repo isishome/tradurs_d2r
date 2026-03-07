@@ -16,6 +16,7 @@ import SignComponent from 'components/UI/SignComponent.vue'
 import FilterComponent from 'components/item/FilterComponent.vue'
 import Adsense from 'components/global/AdsenseComponent.vue'
 import { TR_D2R_PLATFORM, TR_D2R_REGION } from 'src/domain/keys'
+import UsefulLinks from 'src/components/UI/UsefulLinks.vue'
 
 const prod: boolean = import.meta.env.PROD
 
@@ -252,6 +253,7 @@ watch(
               :data-adtest="!prod"
               :key="gs.adsense.right.adKey"
             />
+            <UsefulLinks class="q-mt-lg q-ml-sm" />
           </div>
         </div>
         <div class="q-py-xl"></div>
@@ -327,7 +329,7 @@ watch(
         </q-card-section>
         <q-separator />
         <q-card-section>
-          <q-list separator padding>
+          <q-list separator bordered>
             <SignComponent />
             <q-item :to="{ name: 'help', params: { category: 'basic' } }">
               <q-item-section avatar>
@@ -346,9 +348,9 @@ watch(
               </q-item-section>
               <q-item-section> {{ t('btn.discord') }} </q-item-section>
             </q-item>
-
             <LanguageComponent />
           </q-list>
+          <UsefulLinks class="q-mt-lg q-ml-sm" />
         </q-card-section>
       </q-card>
     </q-dialog>

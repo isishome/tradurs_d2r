@@ -26,7 +26,7 @@ export const useItemStore = defineStore('item', () => {
   const ltmd = computed(() => $q.screen.width < 1280)
   const locale = gs.locale
   const refresh = ref<number>(0)
-  const itemWidth = ref<number>(360)
+  const itemWidth = ref<number>(340)
   const itemPage = reactive<ItemPage>({
     rows: 20,
     over: false,

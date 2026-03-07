@@ -30,7 +30,7 @@ const name = computed(() =>
 </script>
 
 <template>
-  <div>
+  <div v-bind="$attrs">
     <div v-if="!!title" class="row justify-center text-body2">
       {{ title }}
     </div>
@@ -41,7 +41,6 @@ const name = computed(() =>
         class="price-image"
         loading="lazy"
         :title="name"
-        v-bind="$attrs"
       />
       <template v-if="!!quantity">
         <div class="text-body1">x</div>

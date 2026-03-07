@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted } from 'vue'
+import { ref, reactive, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import type { Size } from 'src/types/global'
@@ -38,6 +38,10 @@ const limit = computed(() =>
     ? Math.floor(size.width / (is.itemWidth + 28))
     : 1
 )
+const detailInfo = reactive<{ itemId?: number; isTransition: boolean }>({
+  itemId: undefined,
+  isTransition: false
+})
 
 const getItems = () => {
   items.value = blankItems
@@ -65,8 +69,15 @@ const alignItems = () => {
   }
 }
 
-const goItem = async (id: number) => {
-  await router.push({ name: 'item', params: { id } })
+const onClickItem = (id: number) => {
+  if (!!detailInfo.itemId || detailInfo.isTransition) return
+
+  detailInfo.itemId = id
+  detailInfo.isTransition = true
+}
+
+const goDetail = async () => {
+  await router.push({ name: 'item', params: { id: detailInfo.itemId } })
 }
 
 const move = (val: number) => {
@@ -124,6 +135,11 @@ watch(refresh, (val, old) => {
 onMounted(async () => {
   getItems()
 })
+
+onBeforeUnmount(() => {
+  detailInfo.itemId = undefined
+  detailInfo.isTransition = false
+})
 </script>
 
 <template>
@@ -132,17 +148,24 @@ onMounted(async () => {
       :debounce="400"
       @resize="(val:Size) => {Object.assign(size, val)}"
     />
-    <div class="row justify-center q-gutter-x-lg item-list">
+    <div class="row justify-center q-gutter-x-xl item-list">
       <template v-if="items.length > 0">
         <div
           v-for="(cg, idx) in colGroup"
           :key="idx"
-          class="column q-gutter-y-lg"
+          class="column q-gutter-y-xl"
         >
           <div v-for="item in cg" :key="item.id">
             <ItemComponent
-              :class="[item.loading ? 'no-pointer-events' : 'cursor-pointer']"
-              @click="goItem(item.id as number)"
+              :class="[
+                'index-item',
+                item.loading ? 'no-pointer-events' : 'cursor-pointer',
+                {
+                  clicked: !!detailInfo.itemId && item.id === detailInfo.itemId
+                }
+              ]"
+              @click="onClickItem(item.id as number)"
+              @transitionend="goDetail"
               :data="item"
               :width="is.itemWidth"
               :loading="item.loading"
@@ -212,5 +235,16 @@ onMounted(async () => {
 
 .no-data {
   height: 50vh;
+}
+
+.index-item {
+  transition: transform 0.2s ease, filter 0.2s ease;
+  transform: scale(1);
+  filter: brightness();
+
+  &.clicked {
+    transform: scale(1.05);
+    filter: brightness(1.4);
+  }
 }
 </style>

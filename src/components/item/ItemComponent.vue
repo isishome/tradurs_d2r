@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { date } from 'quasar'
 import { modifiers, nameAffixes, names, skills } from 'src/domain/static/data'
 import { clipboard } from 'src/assets/utils/common'
@@ -29,7 +29,7 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   editable: false,
   loading: false,
-  width: 360,
+  width: 340,
   noMore: false
 })
 
@@ -251,7 +251,7 @@ onMounted(() => {
   onTimer()
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   clearInterval(timer)
 })
 </script>
@@ -262,30 +262,28 @@ onUnmounted(() => {
       <q-card-section class="bg-brighten q-pa-sm">
         <div class="text-h6 text-center column" :style="qualityStyle">
           <div
-            class="text-overline row justify-center items-center q-gutter-x-xs"
+            class="text-overline row justify-center items-center q-gutter-x-xs text-grey-7"
           >
-            <div class="text-white">
+            <div>
               {{ ias.platforms.find((p) => p.value === data.platform)?.label }}
             </div>
             <div>:</div>
-            <div class="text-indigo-4">
+            <div>
               {{ ias.regions.find((r) => r.value === data.region)?.label }}
             </div>
-            <template v-if="data.ladder">
-              <div>:</div>
-              <div class="text-positive">
-                {{ t('base.ladder') }}
-              </div>
-            </template>
+            <div v-show="data.ladder">:</div>
+            <div v-show="data.ladder">
+              {{ t('base.ladder') }}
+            </div>
             <div>:</div>
-            <div v-if="data.hardcore" class="text-red">
+            <div v-show="data.hardcore">
               {{ t('base.hardcore') }}
             </div>
-            <div v-else class="text-blue">
+            <div v-show="!data.hardcore">
               {{ t('base.softcore') }}
             </div>
           </div>
-          <div>
+          <div class="q-px-lg">
             <div v-if="data.quality !== 'normal' || data.category === 'misc'">
               {{ name }}
             </div>
@@ -438,15 +436,14 @@ onUnmounted(() => {
           />
         </q-card-section>
       </template>
-      <q-separator />
-      <q-card-section>
-        <div class="row justify-evenly items-center">
-          <div
-            v-if="!editable"
-            class="row justify-start items-center q-gutter-x-sm d2r-chip bg-blue-grey-9"
-          >
-            <div class="q-ml-none row items-center">
-              <template v-if="remainTime <= 0 && data.statusCode === '000'">
+      <q-card-section class="bg-brighten no-padding">
+        <div class="row justify-between items-center">
+          <div class="col q-pa-md">
+            <div
+              v-if="!editable"
+              class="row justify-around items-center d2r-chip bg-blue-grey-9"
+            >
+              <div v-if="remainTime <= 0 && data.statusCode === '000'">
                 <div>{{ t('item.processingAuctionEnd') }}</div>
                 <q-btn
                   aria-label="Tradurs Refresh Button"
@@ -457,16 +454,18 @@ onUnmounted(() => {
                   icon="refresh"
                   @click.stop="refresh"
                 />
-              </template>
+              </div>
               <div v-else>
                 {{ ias.status(data.statusCode)?.[0]?.label }}
               </div>
-            </div>
-            <div v-if="remainTime > 0 && data.statusCode === '000'">
-              {{ hours }}:{{ minutes }}:{{ seconds }}
+              <div v-if="remainTime > 0 && data.statusCode === '000'">
+                {{ hours }}:{{ minutes }}:{{ seconds }}
+              </div>
             </div>
           </div>
+          <q-separator vertical />
           <CurrencyComponent
+            class="col q-pa-sm"
             :category="data.price.category"
             :item="data.price.item"
             :quantity="data.price?.winAmount ?? data.price?.startAmount"

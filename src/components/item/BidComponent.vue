@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onUnmounted } from 'vue'
+import { ref, computed, watch, nextTick, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { QCardSection, QForm, QInput, date } from 'quasar'
 import type { Bid, Item } from 'src/types/item'
@@ -67,7 +67,7 @@ watch(
   { deep: true }
 )
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   clearTimeout(addTimer)
 })
 </script>
@@ -81,7 +81,6 @@ onUnmounted(() => {
           :item="item?.price.item"
           :quantity="item?.price.startAmount"
           :title="t('auction.startAmount')"
-          style="max-height: 30px"
         />
       </div>
       <q-separator vertical />
@@ -91,7 +90,6 @@ onUnmounted(() => {
           :item="item?.price.item"
           :quantity="item?.price.unitAmount"
           :title="t('auction.unitAmount')"
-          style="max-height: 30px"
         />
       </div>
       <template v-if="!!item?.price.instantAmount">
@@ -102,7 +100,6 @@ onUnmounted(() => {
             :item="item.price.item"
             :quantity="item.price.instantAmount"
             :title="t('auction.instantAmount')"
-            style="max-height: 30px"
           />
         </div>
       </template>

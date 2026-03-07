@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, nextTick, onUnmounted } from 'vue'
+import { onMounted, nextTick, onBeforeUnmount } from 'vue'
 
 interface IProps {
   dataAdClient?: string
@@ -39,7 +39,7 @@ onMounted(() => {
   if (prod) render()
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   window.removeEventListener('adsense-loaded', pushAdsense)
 })
 </script>
