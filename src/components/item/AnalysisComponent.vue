@@ -173,6 +173,8 @@ const recognize = async (image: ImageLike, lang: string) => {
         .map((l) => l.text.replace(/\n+/g, '\n'))
         .join('') ?? ''
 
+    console.log(cleanText)
+
     return cleanText
   } catch (e) {
     emit('failed', e)

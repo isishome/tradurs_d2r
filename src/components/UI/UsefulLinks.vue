@@ -42,18 +42,22 @@ const links = [
 <style lang="scss" scoped>
 .useful {
   color: currentColor;
-}
 
-.useful a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  border-radius: 0;
-  line-height: 1rem;
-  margin-bottom: 10px;
-  opacity: 0.5;
-}
+  &:deep(.no-hover-item .q-focus-helper) {
+    display: none;
+  }
 
-.useful a:hover {
-  opacity: 1;
+  & a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    border-radius: 0;
+    line-height: 1rem;
+    margin-bottom: 10px;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeMount, watch } from 'vue'
+import { ref, computed, onMounted, onBeforeMount, watch, nextTick } from 'vue'
 import { QStepper, QSelect, QList } from 'quasar'
 import { modifiers, skills } from 'src/domain/static/data'
 import Sortable from 'sortablejs'
@@ -78,7 +78,7 @@ const addModifier = (val: number) => {
   const text = modifiers.find((m) => m.value === val)?.label ?? ''
 
   const addingModifier = {
-    order: _item.value.modifiers.length,
+    order: _item.value.modifiers.length + 1,
     type: ModifierType.String,
     id: val,
     children: ias.findChildren(text.replace(separator, '0'), text, val)
@@ -165,28 +165,30 @@ watch(modifiersRef, (val) => {
       handle: '.handle',
       animation: 150,
       direction: 'vertical',
-      onEnd(evt) {
+      async onEnd(evt) {
+        const { oldIndex, newIndex, item, from } = evt
+
         if (
-          evt.oldIndex === evt.newIndex ||
-          typeof evt.oldIndex !== 'number' ||
-          typeof evt.newIndex !== 'number'
+          oldIndex === undefined ||
+          newIndex === undefined ||
+          oldIndex === newIndex
         )
           return
-        const oldModifier = modifiersRef.value?.$el.children[
-          evt.oldIndex
-        ] as HTMLDivElement
-        const newModifier = modifiersRef.value?.$el.children[
-          evt.newIndex
-        ] as HTMLDivElement
-        const oldOrder = Number(oldModifier.dataset.order)
-        const newOrder = Number(newModifier.dataset.order)
-        const oldItem = _item.value.modifiers.find((m) => m.order === oldOrder)
-        const newItem = _item.value.modifiers.find((m) => m.order === newOrder)
 
-        if (!oldItem || !newItem) return
+        const targetBefore = from.children[oldIndex]
+        if (oldIndex > newIndex) {
+          from.insertBefore(item, from.children[oldIndex + 1])
+        } else {
+          from.insertBefore(item, targetBefore)
+        }
 
-        oldItem.order = newOrder
-        newItem.order = oldOrder
+        const list = [..._item.value.modifiers]
+        const [movedItem] = list.splice(oldIndex, 1)
+        list.splice(newIndex, 0, movedItem)
+
+        _item.value.modifiers = list
+
+        await nextTick()
       }
     })
   }
@@ -304,7 +306,6 @@ onMounted(() => {
                 :data="m"
                 :options="modifiers"
                 :skills="skills"
-                :data-order="m.order"
                 editable
                 @remove="removeModifier"
                 @update="updateModifier"
