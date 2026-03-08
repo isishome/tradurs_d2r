@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import type { Size } from 'src/types/global'
@@ -38,10 +38,6 @@ const limit = computed(() =>
     ? Math.floor(size.width / (is.itemWidth + 28))
     : 1
 )
-const detailInfo = reactive<{ itemId?: number; isTransition: boolean }>({
-  itemId: undefined,
-  isTransition: false
-})
 
 const getItems = () => {
   items.value = blankItems
@@ -69,15 +65,8 @@ const alignItems = () => {
   }
 }
 
-const onClickItem = (id: number) => {
-  if (!!detailInfo.itemId || detailInfo.isTransition) return
-
-  detailInfo.itemId = id
-  detailInfo.isTransition = true
-}
-
-const goDetail = async () => {
-  await router.push({ name: 'item', params: { id: detailInfo.itemId } })
+const goDetail = async (id: number) => {
+  await router.push({ name: 'item', params: { id } })
 }
 
 const move = (val: number) => {
@@ -135,11 +124,6 @@ watch(refresh, (val, old) => {
 onMounted(async () => {
   getItems()
 })
-
-onBeforeUnmount(() => {
-  detailInfo.itemId = undefined
-  detailInfo.isTransition = false
-})
 </script>
 
 <template>
@@ -157,15 +141,8 @@ onBeforeUnmount(() => {
         >
           <div v-for="item in cg" :key="item.id">
             <ItemComponent
-              :class="[
-                'index-item',
-                item.loading ? 'no-pointer-events' : 'cursor-pointer',
-                {
-                  clicked: !!detailInfo.itemId && item.id === detailInfo.itemId
-                }
-              ]"
-              @click="onClickItem(item.id as number)"
-              @transitionend="goDetail"
+              :class="[item.loading ? 'no-pointer-events' : 'cursor-pointer']"
+              @click="goDetail(item.id as number)"
               :data="item"
               :width="is.itemWidth"
               :loading="item.loading"
@@ -235,16 +212,5 @@ onBeforeUnmount(() => {
 
 .no-data {
   height: 50vh;
-}
-
-.index-item {
-  transition: transform 0.2s ease, filter 0.2s ease;
-  transform: scale(1);
-  filter: brightness();
-
-  &.clicked {
-    transform: scale(1.05);
-    filter: brightness(1.4);
-  }
 }
 </style>

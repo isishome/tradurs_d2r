@@ -71,10 +71,6 @@ const itemId = computed(() =>
 )
 const requestUpdate = computed(() => is.notify.request)
 const wonBid = computed(() => bids.value.find((b) => b.won))
-const detailInfo = reactive<{ itemId?: number; isTransition: boolean }>({
-  itemId: undefined,
-  isTransition: false
-})
 const bidRef = ref()
 
 const getBids = (overBidId?: number) => {
@@ -180,15 +176,8 @@ const updateBidderRate = (val: number, failed: (before: number) => void) => {
     })
 }
 
-const onClickItem = (id: number) => {
-  if (!!detailInfo.itemId || detailInfo.isTransition) return
-
-  detailInfo.itemId = id
-  detailInfo.isTransition = true
-}
-
-const goDetail = async () => {
-  await router.push({ name: 'item', params: { id: detailInfo.itemId } })
+const goDetail = async (id: number) => {
+  await router.push({ name: 'item', params: { id } })
 }
 
 watch(limit, (val, old) => {
@@ -222,9 +211,6 @@ watch(requestUpdate, (val, old) => {
 
 watch(itemId, (val, old) => {
   if (!!val && val !== old) {
-    detailInfo.itemId = undefined
-    detailInfo.isTransition = false
-
     alignUserItems()
     getBids()
   }
@@ -315,15 +301,9 @@ onMounted(() => {
               v-for="userItem in col"
               :key="userItem.id"
               :class="[
-                'related-item',
-                userItem.loading ? 'no-pointer-events' : 'cursor-pointer',
-                {
-                  clicked:
-                    !!detailInfo.itemId && userItem.id === detailInfo.itemId
-                }
+                userItem.loading ? 'no-pointer-events' : 'cursor-pointer'
               ]"
-              @click="onClickItem(userItem.id as number)"
-              @transitionend="goDetail"
+              @click="goDetail(userItem.id as number)"
               :data="userItem"
               no-more
             />
@@ -344,16 +324,5 @@ onMounted(() => {
 
 .no-data {
   height: 50vh;
-}
-
-.related-item {
-  transition: transform 0.2s ease, filter 0.2s ease;
-  transform: scale(1);
-  filter: brightness();
-
-  &.clicked {
-    transform: scale(1.05);
-    filter: brightness(1.4);
-  }
 }
 </style>
