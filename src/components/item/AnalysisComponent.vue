@@ -58,7 +58,8 @@ const dropBox = reactive<DropBox>({
 const cropImage = ref<HTMLImageElement>()
 const cropBox = reactive<CropBox>({
   show: false,
-  origin: undefined
+  origin: undefined,
+  loading: true
 })
 let cropper: Cropper
 let image: HTMLImageElement
@@ -100,17 +101,35 @@ const onShowCropBox = async () => {
     selection.initialCoverage = 0.98
     selection.zoomable = false
   }
+
+  cropBox.loading = false
 }
 
 const onBeforeHideCropBox = () => {
   if (cropBox.origin) URL.revokeObjectURL(cropBox.origin)
+  cropBox.loading = true
+  cropper.destroy()
   file.value = undefined
 }
 
 const onStartFilter = async () => {
-  const canvas = cropper.getCropperSelection()
+  const selection = cropper.getCropperSelection()
+  const cropperImage = cropper.getCropperImage()
 
-  const realCanvas = await canvas?.$toCanvas()
+  if (!selection || !cropperImage) return
+
+  const image = await cropperImage.$ready()
+
+  const imageRect = cropperImage.getBoundingClientRect()
+
+  const scaleX = image.naturalWidth / imageRect.width
+  const scaleY = image.naturalHeight / imageRect.height
+
+  const realCanvas = await selection.$toCanvas({
+    width: Math.round(selection.width * scaleX),
+    height: Math.round(selection.height * scaleY)
+  })
+
   realCanvas?.toBlob((blob) => {
     if (blob) {
       emit('start')
@@ -558,14 +577,15 @@ const beforeHideDropBox = () => {
     </q-dialog>
     <q-dialog
       v-model="cropBox.show"
-      full-width
-      full-height
       @show="onShowCropBox"
       @before-hide="onBeforeHideCropBox"
     >
-      <q-card flat bordered class="column no-wrap">
-        <q-card-section class="col row justify-center items-center crop-area">
+      <q-card flat bordered class="column no-wrap crop-wrap">
+        <q-card-section class="col row justify-center items-center">
           <img ref="cropImage" :src="cropBox.origin" />
+          <q-inner-loading :showing="cropBox.loading">
+            <q-spinner size="50px" color="primary" />
+          </q-inner-loading>
         </q-card-section>
         <q-card-actions align="right">
           <q-btn
@@ -627,7 +647,12 @@ const beforeHideDropBox = () => {
   }
 }
 
-.crop-area {
+.crop-wrap {
+  width: 700px;
+  max-width: 90vw;
+  height: 800px !important;
+  max-height: 80vh !important;
+
   & img {
     max-width: 100%;
     max-height: 100%;

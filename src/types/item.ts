@@ -50,6 +50,7 @@ export type DropBox = {
 export type CropBox = {
   show: boolean
   origin?: string
+  loading: boolean
 }
 
 export type MappingId = {
