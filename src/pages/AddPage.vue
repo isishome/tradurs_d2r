@@ -124,13 +124,21 @@ const checkValidate = async () => {
 const modifierRef = ref<QSelect | null>(null)
 const modifierNeedle = ref<string>()
 const modifierOptions = computed(() =>
-  modifiers.filter(
-    (mf) =>
-      mf.label
-        .toLowerCase()
-        .indexOf((modifierNeedle.value ?? '').toLowerCase()) !==
-      (!!modifierNeedle.value ? -1 : -2)
-  )
+  modifiers
+    .filter(
+      (mf) =>
+        mf.label
+          .toLowerCase()
+          .indexOf((modifierNeedle.value ?? '').toLowerCase()) !==
+        (!!modifierNeedle.value ? -1 : -2)
+    )
+    .map((mf) => ({
+      ...mf,
+      label: mf.label
+        .replace(/%d|%i/g, '(#)')
+        .replace(/%\+d/g, '(+#)')
+        .replace(/%s/g, t('skill'))
+    }))
 )
 
 const filterModifier = (e: KeyboardEvent) => {

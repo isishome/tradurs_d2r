@@ -202,5 +202,6 @@ export default {
   socket: {
     disconnect:
       'The connection to the notification server has been disconnected.'
-  }
+  },
+  skill: '(skill)'
 }

@@ -199,5 +199,6 @@ export default {
   },
   socket: {
     disconnect: '알림 서버와의 연결이 해제되었습니다.'
-  }
+  },
+  skill: '(스킬)'
 }
