@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const links = [
   {
+    href: 'https://deckard.tradurs.com',
+    label: 'Deckard | Diablo® II Tradurs',
+    color: 'orange-6'
+  },
+  {
     href: 'https://d4.tradurs.com',
     label: 'Diablo® IV Tradurs',
     color: 'red-6'
